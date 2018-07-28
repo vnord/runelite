@@ -28,11 +28,21 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.common.eventbus.Subscribe;
+<<<<<<< HEAD
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+=======
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -63,6 +73,7 @@ public class ItemManager
 		private final boolean stackable;
 	}
 
+<<<<<<< HEAD
 	@Value
 	private static class OutlineKey
 	{
@@ -70,6 +81,17 @@ public class ItemManager
 		private final int itemQuantity;
 		private final Color outlineColor;
 	}
+=======
+	/**
+	 * not yet looked up
+	 */
+	static final ItemPrice EMPTY = new ItemPrice();
+
+	/**
+	 * has no price
+	 */
+	static final ItemPrice NONE = new ItemPrice();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	private final Client client;
 	private final ScheduledExecutorService scheduledExecutorService;
@@ -77,10 +99,16 @@ public class ItemManager
 
 	private final ItemClient itemClient = new ItemClient();
 	private final LoadingCache<String, SearchResult> itemSearches;
+<<<<<<< HEAD
 	private final ConcurrentMap<Integer, ItemPrice> itemPrices = new ConcurrentHashMap<>();
 	private final LoadingCache<ImageKey, AsyncBufferedImage> itemImages;
 	private final LoadingCache<Integer, ItemComposition> itemCompositions;
 	private final LoadingCache<OutlineKey, BufferedImage> itemOutlines;
+=======
+	private final LoadingCache<Integer, ItemPrice> itemPriceCache;
+	private final LoadingCache<ImageKey, AsyncBufferedImage> itemImages;
+	private final LoadingCache<Integer, ItemComposition> itemCompositions;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Inject
 	public ItemManager(Client client, ScheduledExecutorService executor, ClientThread clientThread)
@@ -89,7 +117,14 @@ public class ItemManager
 		this.scheduledExecutorService = executor;
 		this.clientThread = clientThread;
 
+<<<<<<< HEAD
 		scheduledExecutorService.scheduleWithFixedDelay(this::loadPrices, 0, 30, TimeUnit.MINUTES);
+=======
+		itemPriceCache = CacheBuilder.newBuilder()
+			.maximumSize(1024L)
+			.expireAfterAccess(1, TimeUnit.HOURS)
+			.build(new ItemPriceLoader(executor, itemClient));
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 		itemSearches = CacheBuilder.newBuilder()
 			.maximumSize(512L)
@@ -126,6 +161,7 @@ public class ItemManager
 					return client.getItemDefinition(key);
 				}
 			});
+<<<<<<< HEAD
 
 		itemOutlines = CacheBuilder.newBuilder()
 			.maximumSize(128L)
@@ -181,6 +217,125 @@ public class ItemManager
 	{
 		itemId = ItemMapping.mapFirst(itemId);
 		return itemPrices.get(itemId);
+=======
+	}
+
+	@Subscribe
+	public void onGameStateChanged(final GameStateChanged event)
+	{
+		if (event.getGameState() == GameState.HOPPING || event.getGameState() == GameState.LOGIN_SCREEN)
+		{
+			itemCompositions.invalidateAll();
+		}
+	}
+
+	/**
+	 * Look up an item's price asynchronously.
+	 *
+	 * @param itemId item id
+	 * @return the price, or null if the price is not yet loaded
+	 */
+	public ItemPrice getItemPriceAsync(int itemId)
+	{
+		ItemPrice itemPrice = itemPriceCache.getIfPresent(itemId);
+		if (itemPrice != null && itemPrice != EMPTY)
+		{
+			return itemPrice == NONE ? null : itemPrice;
+		}
+
+		itemPriceCache.refresh(itemId);
+		return null;
+	}
+
+	/**
+	 * Look up bulk item prices asynchronously
+	 *
+	 * @param itemIds array of item Ids
+	 * @return a future called with the looked up prices
+	 */
+	public CompletableFuture<ItemPrice[]> getItemPriceBatch(Collection<Integer> itemIds)
+	{
+		final List<Integer> lookup = new ArrayList<>();
+		final List<ItemPrice> existing = new ArrayList<>();
+		for (int itemId : itemIds)
+		{
+			ItemPrice itemPrice = itemPriceCache.getIfPresent(itemId);
+			if (itemPrice != null)
+			{
+				existing.add(itemPrice);
+			}
+			else
+			{
+				lookup.add(itemId);
+			}
+		}
+		// All cached?
+		if (lookup.isEmpty())
+		{
+			return CompletableFuture.completedFuture(existing.toArray(new ItemPrice[existing.size()]));
+		}
+
+		final CompletableFuture<ItemPrice[]> future = new CompletableFuture<>();
+		scheduledExecutorService.execute(() ->
+		{
+			try
+			{
+				// Do a query for the items not in the cache
+				ItemPrice[] itemPrices = itemClient.lookupItemPrice(lookup.toArray(new Integer[lookup.size()]));
+				if (itemPrices != null)
+				{
+					for (int itemId : lookup)
+					{
+						itemPriceCache.put(itemId, NONE);
+					}
+					for (ItemPrice itemPrice : itemPrices)
+					{
+						itemPriceCache.put(itemPrice.getItem().getId(), itemPrice);
+					}
+					// Append these to the already cached items
+					Arrays.stream(itemPrices).forEach(existing::add);
+				}
+				future.complete(existing.toArray(new ItemPrice[existing.size()]));
+			}
+			catch (Exception ex)
+			{
+				// cache unable to lookup
+				for (int itemId : lookup)
+				{
+					itemPriceCache.put(itemId, NONE);
+				}
+
+				future.completeExceptionally(ex);
+			}
+		});
+		return future;
+	}
+
+	/**
+	 * Look up an item's price synchronously
+	 *
+	 * @param itemId item id
+	 * @return item price
+	 * @throws IOException
+	 */
+	public ItemPrice getItemPrice(int itemId) throws IOException
+	{
+		ItemPrice itemPrice = itemPriceCache.getIfPresent(itemId);
+		if (itemPrice != null && itemPrice != EMPTY)
+		{
+			return itemPrice == NONE ? null : itemPrice;
+		}
+
+		itemPrice = itemClient.lookupItemPrice(itemId);
+		if (itemPrice == null)
+		{
+			itemPriceCache.put(itemId, NONE);
+			return null;
+		}
+
+		itemPriceCache.put(itemId, itemPrice);
+		return itemPrice;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	/**
@@ -272,6 +427,7 @@ public class ItemManager
 			return null;
 		}
 	}
+<<<<<<< HEAD
 
 	/**
 	 * Create item sprite and applies an outline.
@@ -306,4 +462,6 @@ public class ItemManager
 			return null;
 		}
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

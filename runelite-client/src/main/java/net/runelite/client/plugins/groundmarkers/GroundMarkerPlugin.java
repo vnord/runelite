@@ -56,6 +56,7 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @Slf4j
@@ -63,6 +64,12 @@ import net.runelite.client.ui.overlay.OverlayManager;
 	name = "Ground Markers",
 	description = "Enable marking of tiles using the Shift key",
 	tags = {"overlay", "tiles"}
+=======
+
+@Slf4j
+@PluginDescriptor(
+	name = "Ground Markers"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 public class GroundMarkerPlugin extends Plugin
 {
@@ -89,9 +96,12 @@ public class GroundMarkerPlugin extends Plugin
 	private ConfigManager configManager;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private GroundMarkerOverlay overlay;
 
 	@Inject
@@ -285,24 +295,42 @@ public class GroundMarkerPlugin extends Plugin
 			return;
 		}
 
+<<<<<<< HEAD
 		Tile target = client.getSelectedSceneTile();
+=======
+		Tile target = client.getSelectedRegionTile();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		markTile(target.getLocalLocation());
 	}
 
 	@Override
 	protected void startUp()
 	{
+<<<<<<< HEAD
 		overlayManager.add(overlay);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		keyManager.registerKeyListener(inputListener);
 	}
 
 	@Override
 	protected void shutDown()
 	{
+<<<<<<< HEAD
 		overlayManager.remove(overlay);
 		keyManager.unregisterKeyListener(inputListener);
 	}
 
+=======
+		keyManager.unregisterKeyListener(inputListener);
+	}
+
+	@Override
+	public GroundMarkerOverlay getOverlay()
+	{
+		return overlay;
+	}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	protected void markTile(LocalPoint localPoint)
 	{
@@ -316,8 +344,13 @@ public class GroundMarkerPlugin extends Plugin
 		if (client.isInInstancedRegion())
 		{
 			// get position in the scene
+<<<<<<< HEAD
 			int sceneX = localPoint.getSceneX();
 			int sceneY = localPoint.getSceneY();
+=======
+			int sceneX = localPoint.getRegionX();
+			int sceneY = localPoint.getRegionY();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 			// get chunk from scene
 			int chunkX = sceneX / CHUNK_SIZE;

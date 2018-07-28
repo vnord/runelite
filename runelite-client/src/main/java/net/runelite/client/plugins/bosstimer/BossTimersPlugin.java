@@ -28,17 +28,26 @@ package net.runelite.client.plugins.bosstimer;
 import com.google.common.eventbus.Subscribe;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
+<<<<<<< HEAD
 import net.runelite.api.NPC;
 import net.runelite.api.events.NpcDespawned;
+=======
+import net.runelite.api.Actor;
+import net.runelite.api.events.ActorDeath;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 
 @PluginDescriptor(
+<<<<<<< HEAD
 	name = "Boss Timers",
 	description = "Show boss spawn timer overlays",
 	tags = {"combat", "pve", "overlay", "spawn"}
+=======
+	name = "Boss Timers"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 @Slf4j
 public class BossTimersPlugin extends Plugin
@@ -56,6 +65,7 @@ public class BossTimersPlugin extends Plugin
 	}
 
 	@Subscribe
+<<<<<<< HEAD
 	public void onNpcDespawned(NpcDespawned npcDespawned)
 	{
 		NPC npc = npcDespawned.getNpc();
@@ -69,6 +79,13 @@ public class BossTimersPlugin extends Plugin
 
 		Boss boss = Boss.find(npcId);
 
+=======
+	public void onActorDeath(ActorDeath death)
+	{
+		Actor actor = death.getActor();
+
+		Boss boss = Boss.find(actor.getName());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		if (boss == null)
 		{
 			return;
@@ -77,10 +94,17 @@ public class BossTimersPlugin extends Plugin
 		// remove existing timer
 		infoBoxManager.removeIf(t -> t instanceof RespawnTimer && ((RespawnTimer) t).getBoss() == boss);
 
+<<<<<<< HEAD
 		log.debug("Creating spawn timer for {} ({} seconds)", npc.getName(), boss.getSpawnTime());
 
 		RespawnTimer timer = new RespawnTimer(boss, itemManager.getImage(boss.getItemSpriteId()), this);
 		timer.setTooltip(npc.getName());
+=======
+		log.debug("Creating spawn timer for {} ({} seconds)", actor.getName(), boss.getSpawnTime());
+
+		RespawnTimer timer = new RespawnTimer(boss, itemManager.getImage(boss.getItemSpriteId()), this);
+		timer.setTooltip(boss.getName());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		infoBoxManager.addInfoBox(timer);
 	}
 }

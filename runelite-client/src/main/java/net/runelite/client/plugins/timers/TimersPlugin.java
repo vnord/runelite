@@ -26,12 +26,16 @@ package net.runelite.client.plugins.timers;
 
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Provides;
+<<<<<<< HEAD
 import java.awt.image.BufferedImage;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import javax.inject.Inject;
 import net.runelite.api.Actor;
 import net.runelite.api.AnimationID;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
+<<<<<<< HEAD
 import net.runelite.api.EquipmentInventorySlot;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
@@ -39,12 +43,16 @@ import net.runelite.api.ItemContainer;
 import net.runelite.api.ItemID;
 import net.runelite.api.NPC;
 import net.runelite.api.NpcID;
+=======
+import net.runelite.api.ItemID;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.Prayer;
 import net.runelite.api.Varbits;
 import net.runelite.api.events.AnimationChanged;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.ConfigChanged;
 import net.runelite.api.events.GraphicChanged;
+<<<<<<< HEAD
 import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.events.NpcDespawned;
@@ -55,6 +63,13 @@ import net.runelite.client.game.SpriteManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import static net.runelite.client.plugins.timers.GameTimer.ABYSSAL_SIRE_STUN;
+=======
+import net.runelite.api.events.MenuOptionClicked;
+import net.runelite.api.events.VarbitChanged;
+import net.runelite.client.config.ConfigManager;
+import net.runelite.client.plugins.Plugin;
+import net.runelite.client.plugins.PluginDescriptor;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import static net.runelite.client.plugins.timers.GameTimer.ANTIDOTEPLUS;
 import static net.runelite.client.plugins.timers.GameTimer.ANTIDOTEPLUSPLUS;
 import static net.runelite.client.plugins.timers.GameTimer.ANTIFIRE;
@@ -63,7 +78,10 @@ import static net.runelite.client.plugins.timers.GameTimer.ANTIVENOM;
 import static net.runelite.client.plugins.timers.GameTimer.ANTIVENOMPLUS;
 import static net.runelite.client.plugins.timers.GameTimer.BIND;
 import static net.runelite.client.plugins.timers.GameTimer.CANNON;
+<<<<<<< HEAD
 import static net.runelite.client.plugins.timers.GameTimer.CHARGE;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import static net.runelite.client.plugins.timers.GameTimer.ENTANGLE;
 import static net.runelite.client.plugins.timers.GameTimer.EXANTIFIRE;
 import static net.runelite.client.plugins.timers.GameTimer.EXSUPERANTIFIRE;
@@ -84,7 +102,10 @@ import static net.runelite.client.plugins.timers.GameTimer.OVERLOAD_RAID;
 import static net.runelite.client.plugins.timers.GameTimer.PRAYER_ENHANCE;
 import static net.runelite.client.plugins.timers.GameTimer.SANFEW;
 import static net.runelite.client.plugins.timers.GameTimer.SNARE;
+<<<<<<< HEAD
 import static net.runelite.client.plugins.timers.GameTimer.STAFF_OF_THE_DEAD;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import static net.runelite.client.plugins.timers.GameTimer.STAMINA;
 import static net.runelite.client.plugins.timers.GameTimer.SUPERANTIFIRE;
 import static net.runelite.client.plugins.timers.GameTimer.SUPERANTIPOISON;
@@ -93,21 +114,28 @@ import static net.runelite.client.plugins.timers.GameTimer.VENGEANCEOTHER;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 
 @PluginDescriptor(
+<<<<<<< HEAD
 	name = "Timers",
 	description = "Show various timers in an infobox",
 	tags = {"combat", "items", "magic", "potions", "prayer", "overlay", "abyssal", "sire"}
+=======
+	name = "Timers"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 public class TimersPlugin extends Plugin
 {
 	private int lastRaidVarb;
 
 	@Inject
+<<<<<<< HEAD
 	private ItemManager itemManager;
 
 	@Inject
 	private SpriteManager spriteManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private Client client;
 
 	@Inject
@@ -143,6 +171,7 @@ public class TimersPlugin extends Plugin
 	@Subscribe
 	public void updateConfig(ConfigChanged event)
 	{
+<<<<<<< HEAD
 		if (!config.showAntidotePlus())
 		{
 			removeGameTimer(ANTIDOTEPLUS);
@@ -176,6 +205,43 @@ public class TimersPlugin extends Plugin
 		if (!config.showExAntiFire())
 		{
 			removeGameTimer(EXANTIFIRE);
+=======
+		if (!config.showStamina())
+		{
+			removeGameTimer(STAMINA);
+		}
+
+		if (!config.showAntiFire())
+		{
+			removeGameTimer(ANTIFIRE);
+		}
+
+		if (!config.showExAntiFire())
+		{
+			removeGameTimer(EXANTIFIRE);
+		}
+
+		if (!config.showOverload())
+		{
+			removeGameTimer(OVERLOAD);
+			removeGameTimer(OVERLOAD_RAID);
+		}
+
+		if (!config.showCannon())
+		{
+			removeGameTimer(CANNON);
+		}
+
+		if (!config.showMagicImbue())
+		{
+			removeGameTimer(MAGICIMBUE);
+		}
+
+		if (!config.showTeleblock())
+		{
+			removeGameTimer(FULLTB);
+			removeGameTimer(HALFTB);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 
 		if (!config.showSuperAntiFire())
@@ -183,6 +249,7 @@ public class TimersPlugin extends Plugin
 			removeGameTimer(SUPERANTIFIRE);
 		}
 
+<<<<<<< HEAD
 		if (!config.showStamina())
 		{
 			removeGameTimer(STAMINA);
@@ -222,6 +289,31 @@ public class TimersPlugin extends Plugin
 		if (!config.showStaffOfTheDead())
 		{
 			removeGameTimer(STAFF_OF_THE_DEAD);
+=======
+		if (!config.showAntidotePlusPlus())
+		{
+			removeGameTimer(ANTIDOTEPLUSPLUS);
+		}
+
+		if (!config.showAntidotePlus())
+		{
+			removeGameTimer(ANTIDOTEPLUS);
+		}
+
+		if (!config.showAntiVenom())
+		{
+			removeGameTimer(ANTIVENOM);
+		}
+
+		if (!config.showAntiVenomPlus())
+		{
+			removeGameTimer(ANTIVENOMPLUS);
+		}
+
+		if (!config.showSanfew())
+		{
+			removeGameTimer(SANFEW);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 
 		if (!config.showVengeance())
@@ -234,10 +326,16 @@ public class TimersPlugin extends Plugin
 			removeGameTimer(VENGEANCEOTHER);
 		}
 
+<<<<<<< HEAD
 		if (!config.showTeleblock())
 		{
 			removeGameTimer(FULLTB);
 			removeGameTimer(HALFTB);
+=======
+		if (!config.showImbuedHeart())
+		{
+			removeGameTimer(IMBUEDHEART);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 
 		if (!config.showFreezes())
@@ -253,6 +351,14 @@ public class TimersPlugin extends Plugin
 			removeGameTimer(ICEBLITZ);
 			removeGameTimer(ICEBARRAGE);
 		}
+<<<<<<< HEAD
+=======
+
+		if (!config.showPrayerEnhance())
+		{
+			removeGameTimer(PRAYER_ENHANCE);
+		}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe
@@ -303,6 +409,7 @@ public class TimersPlugin extends Plugin
 			createGameTimer(SUPERANTIPOISON);
 			return;
 		}
+<<<<<<< HEAD
 
 		if (config.showStamina()
 			&& event.getMenuOption().contains("Drink")
@@ -313,6 +420,8 @@ public class TimersPlugin extends Plugin
 			createGameTimer(STAMINA);
 			return;
 		}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe
@@ -438,6 +547,7 @@ public class TimersPlugin extends Plugin
 		{
 			createGameTimer(PRAYER_ENHANCE);
 		}
+<<<<<<< HEAD
 
 		if (config.showCharge() && event.getMessage().equals("<col=ef1020>You feel charged with magic power.</col>"))
 		{
@@ -458,6 +568,8 @@ public class TimersPlugin extends Plugin
 		{
 			removeGameTimer(STAFF_OF_THE_DEAD);
 		}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe
@@ -465,6 +577,7 @@ public class TimersPlugin extends Plugin
 	{
 		Actor actor = event.getActor();
 
+<<<<<<< HEAD
 		if (config.showAbyssalSireStun()
 			&& actor instanceof NPC)
 		{
@@ -491,14 +604,20 @@ public class TimersPlugin extends Plugin
 			}
 		}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		if (actor != client.getLocalPlayer())
 		{
 			return;
 		}
 
+<<<<<<< HEAD
 		if (config.showVengeanceOther()
 			&& actor.getAnimation() == AnimationID.ENERGY_TRANSFER_VENGEANCE_OTHER
 			&& actor.getInteracting().getGraphic() == VENGEANCEOTHER.getGraphicId())
+=======
+		if (config.showVengeanceOther() && actor.getAnimation() == AnimationID.VENGEANCE_OTHER)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			createGameTimer(VENGEANCEOTHER);
 		}
@@ -585,6 +704,7 @@ public class TimersPlugin extends Plugin
 		}
 	}
 
+<<<<<<< HEAD
 	/**
 	 * remove SOTD timer when weapon is changed
 	 *
@@ -650,12 +770,27 @@ public class TimersPlugin extends Plugin
 
 		BufferedImage image = timer.getImage(itemManager, spriteManager);
 		TimerTimer t = new TimerTimer(timer, this, image);
+=======
+	public void createGameTimer(GameTimer timer)
+	{
+		removeGameTimer(timer);
+
+		TimerTimer t = new TimerTimer(timer, this);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		t.setTooltip(timer.getDescription());
 		infoBoxManager.addInfoBox(t);
 	}
 
+<<<<<<< HEAD
 	private void removeGameTimer(GameTimer timer)
 	{
 		infoBoxManager.removeIf(t -> t instanceof TimerTimer && ((TimerTimer) t).getTimer() == timer);
 	}
 }
+=======
+	public void removeGameTimer(GameTimer timer)
+	{
+		infoBoxManager.removeIf(t -> t instanceof TimerTimer && ((TimerTimer) t).getTimer() == timer);
+	}
+}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b

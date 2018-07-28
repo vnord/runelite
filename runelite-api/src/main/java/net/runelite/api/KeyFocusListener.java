@@ -24,9 +24,12 @@
  */
 package net.runelite.api;
 
+<<<<<<< HEAD
 /**
  * Detects when the window is focused or unfocused.
  */
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public interface KeyFocusListener
 {
 }

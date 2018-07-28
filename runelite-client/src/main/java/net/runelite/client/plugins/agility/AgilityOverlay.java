@@ -31,6 +31,10 @@ import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.geom.Area;
 import javax.inject.Inject;
+<<<<<<< HEAD
+=======
+import lombok.extern.slf4j.Slf4j;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.Client;
 import net.runelite.api.Point;
 import net.runelite.api.Tile;
@@ -40,7 +44,12 @@ import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.OverlayUtil;
 
+<<<<<<< HEAD
 class AgilityOverlay extends Overlay
+=======
+@Slf4j
+public class AgilityOverlay extends Overlay
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 {
 	private static final int MAX_DISTANCE = 2350;
 
@@ -49,7 +58,11 @@ class AgilityOverlay extends Overlay
 	private final AgilityConfig config;
 
 	@Inject
+<<<<<<< HEAD
 	private AgilityOverlay(Client client, AgilityPlugin plugin, AgilityConfig config)
+=======
+	public AgilityOverlay(Client client, AgilityPlugin plugin, AgilityConfig config)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		setPosition(OverlayPosition.DYNAMIC);
 		setLayer(OverlayLayer.ABOVE_SCENE);

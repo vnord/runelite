@@ -37,6 +37,9 @@ public interface RSNPC extends RSActor, NPC
 	int getIndex();
 
 	void setIndex(int id);
+<<<<<<< HEAD
 
 	void setDead(boolean dead);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

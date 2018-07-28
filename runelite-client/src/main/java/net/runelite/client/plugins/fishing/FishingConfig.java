@@ -28,7 +28,15 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
+<<<<<<< HEAD
 @ConfigGroup("fishing")
+=======
+@ConfigGroup(
+	keyName = "fishing",
+	name = "Fishing",
+	description = "Configuration for the fishing plugin"
+)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public interface FishingConfig extends Config
 {
 	@ConfigItem(
@@ -152,6 +160,7 @@ public interface FishingConfig extends Config
 	}
 
 	@ConfigItem(
+<<<<<<< HEAD
 		keyName = "showCaveEel",
 		name = "Show Cave Eel",
 		description = "Configures whether cave eel is displayed"
@@ -172,6 +181,8 @@ public interface FishingConfig extends Config
 	}
 
 	@ConfigItem(
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		keyName = "showKarambwanji",
 		name = "Show Karambwanji",
 		description = "Configures whether karambwanji is displayed"

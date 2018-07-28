@@ -27,6 +27,10 @@ package net.runelite.client.plugins.hunter;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+<<<<<<< HEAD
+=======
+import java.util.Iterator;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.Map;
 import javax.inject.Inject;
 import net.runelite.api.Client;
@@ -98,8 +102,15 @@ public class TrapOverlay extends Overlay
 	 */
 	private void drawTraps(Graphics2D graphics)
 	{
+<<<<<<< HEAD
 		for (Map.Entry<WorldPoint, HunterTrap> entry : plugin.getTraps().entrySet())
 		{
+=======
+		Iterator<Map.Entry<WorldPoint, HunterTrap>> it = plugin.getTraps().entrySet().iterator();
+		while (it.hasNext())
+		{
+			Map.Entry<WorldPoint, HunterTrap> entry = it.next();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			HunterTrap trap = entry.getValue();
 
 			switch (trap.getState())

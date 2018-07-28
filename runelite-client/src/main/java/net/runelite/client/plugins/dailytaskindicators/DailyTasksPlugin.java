@@ -27,15 +27,27 @@ package net.runelite.client.plugins.dailytaskindicators;
 
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Provides;
+<<<<<<< HEAD
+=======
+import java.awt.Color;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
+<<<<<<< HEAD
 import net.runelite.api.Varbits;
 import net.runelite.api.events.ConfigChanged;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.vars.AccountType;
+=======
+import net.runelite.api.GameState;
+import net.runelite.api.Varbits;
+import net.runelite.api.events.ConfigChanged;
+import net.runelite.api.events.GameStateChanged;
+import net.runelite.client.chat.ChatColor;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.chat.ChatColorType;
 import net.runelite.client.chat.ChatMessageBuilder;
 import net.runelite.client.chat.ChatMessageManager;
@@ -46,7 +58,10 @@ import net.runelite.client.plugins.PluginDescriptor;
 
 @PluginDescriptor(
 	name = "Daily Task Indicator",
+<<<<<<< HEAD
 	description = "Show chat notifications for daily tasks upon login",
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	enabledByDefault = false
 )
 @Slf4j
@@ -61,7 +76,11 @@ public class DailyTasksPlugin extends Plugin
 	@Inject
 	private ChatMessageManager chatMessageManager;
 
+<<<<<<< HEAD
 	private boolean hasSentHerbMsg, hasSentStavesMsg, hasSentEssenceMsg, check;
+=======
+	private boolean hasSentHerbMsg, hasSentStavesMsg, hasSentEssenceMsg;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Provides
 	DailyTasksConfig provideConfig(ConfigManager configManager)
@@ -73,6 +92,10 @@ public class DailyTasksPlugin extends Plugin
 	protected void startUp() throws Exception
 	{
 		hasSentHerbMsg = hasSentStavesMsg = hasSentEssenceMsg = false;
+<<<<<<< HEAD
+=======
+		cacheColors();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Override
@@ -86,6 +109,7 @@ public class DailyTasksPlugin extends Plugin
 	{
 		if (event.getGroup().equals("dailytaskindicators"))
 		{
+<<<<<<< HEAD
 			switch (event.getKey())
 			{
 				case "showHerbBoxes":
@@ -97,6 +121,19 @@ public class DailyTasksPlugin extends Plugin
 				case "showEssence":
 					hasSentEssenceMsg = false;
 					break;
+=======
+			if (event.getKey().equals("showHerbBoxes"))
+			{
+				hasSentHerbMsg = false;
+			}
+			else if (event.getKey().equals("showStaves"))
+			{
+				hasSentStavesMsg = false;
+			}
+			else if (event.getKey().equals("showEssence"))
+			{
+				hasSentEssenceMsg = false;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			}
 		}
 	}
@@ -104,6 +141,7 @@ public class DailyTasksPlugin extends Plugin
 	@Subscribe
 	public void onGameStateChanged(GameStateChanged event)
 	{
+<<<<<<< HEAD
 		switch (event.getGameState())
 		{
 			case HOPPING:
@@ -140,14 +178,38 @@ public class DailyTasksPlugin extends Plugin
 		{
 			sendChatMessage("You have pure essence waiting to be collected from Wizard Cromperty.");
 			hasSentEssenceMsg = true;
+=======
+		if (event.getGameState().equals(GameState.LOGGED_IN))
+		{
+			if (config.showHerbBoxes() && !hasSentHerbMsg && checkCanCollectHerbBox())
+			{
+				sendChatMessage("You have herb boxes waiting to be collected at NMZ.");
+				hasSentHerbMsg = true;
+			}
+			if (config.showStaves() && !hasSentStavesMsg && checkCanCollectStaves())
+			{
+				sendChatMessage("You have staves waiting to be collected from Zaff.");
+				hasSentStavesMsg = true;
+			}
+			if (config.showEssence() && !hasSentEssenceMsg && checkCanCollectEssence())
+			{
+				sendChatMessage("You have pure essence waiting to be collected from Wizard Cromperty.");
+				hasSentEssenceMsg = true;
+			}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
 	private boolean checkCanCollectHerbBox()
 	{
+<<<<<<< HEAD
 		// Exclude ironmen from herb box notifications
 		int value = client.getVar(Varbits.DAILY_HERB_BOX);
 		return client.getAccountType() == AccountType.NORMAL && value < 15; // < 15 can claim
+=======
+		int value = client.getVar(Varbits.DAILY_HERB_BOX);
+		return value < 15; // < 15 can claim
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	private boolean checkCanCollectStaves()
@@ -162,6 +224,14 @@ public class DailyTasksPlugin extends Plugin
 		return value == 0; // 1 = can't claim
 	}
 
+<<<<<<< HEAD
+=======
+	private void cacheColors()
+	{
+		chatMessageManager.cacheColor(new ChatColor(ChatColorType.HIGHLIGHT, Color.RED, false), ChatMessageType.GAME).refreshAll();
+	}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private void sendChatMessage(String chatMessage)
 	{
 		final String message = new ChatMessageBuilder()

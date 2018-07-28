@@ -26,6 +26,12 @@ package net.runelite.client.plugins.tithefarm;
 
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Provides;
+<<<<<<< HEAD
+=======
+import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
+import java.util.Collection;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.HashSet;
 import java.util.Set;
 import javax.inject.Inject;
@@ -33,6 +39,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.GameObject;
 import net.runelite.api.coords.WorldPoint;
+<<<<<<< HEAD
 import net.runelite.api.events.ConfigChanged;
 import net.runelite.api.events.GameObjectSpawned;
 import net.runelite.api.events.GameTick;
@@ -46,11 +53,27 @@ import net.runelite.client.ui.overlay.OverlayManager;
 	name = "Tithe Farm",
 	description = "Show timers for the farming patches within the Tithe Farm minigame",
 	tags = {"farming", "minigame", "overlay", "skilling", "timers"}
+=======
+import net.runelite.api.events.GameObjectSpawned;
+import net.runelite.client.config.ConfigManager;
+import net.runelite.client.plugins.Plugin;
+import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.task.Schedule;
+import net.runelite.client.ui.overlay.Overlay;
+
+@Slf4j
+@PluginDescriptor(
+	name = "Tithe Farm"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 public class TitheFarmPlugin extends Plugin
 {
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
+=======
+	private TitheFarmPluginConfig config;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Inject
 	private TitheFarmPlantOverlay titheFarmOverlay;
@@ -58,6 +81,12 @@ public class TitheFarmPlugin extends Plugin
 	@Inject
 	private TitheFarmSackOverlay titheFarmSackOverlay;
 
+<<<<<<< HEAD
+=======
+	@Inject
+	private TitheFarmInventoryOverlay titheFarmInventoryOverlay;
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Getter
 	private final Set<TitheFarmPlant> plants = new HashSet<>();
 
@@ -68,6 +97,7 @@ public class TitheFarmPlugin extends Plugin
 	}
 
 	@Override
+<<<<<<< HEAD
 	protected void startUp() throws Exception
 	{
 		overlayManager.add(titheFarmOverlay);
@@ -93,6 +123,15 @@ public class TitheFarmPlugin extends Plugin
 
 	@Subscribe
 	public void onGameTick(final GameTick event)
+=======
+	public Collection<Overlay> getOverlays()
+	{
+		return Arrays.asList(titheFarmOverlay, titheFarmSackOverlay, titheFarmInventoryOverlay);
+	}
+
+	@Schedule(period = 600, unit = ChronoUnit.MILLIS)
+	public void checkPlants()
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		plants.removeIf(plant -> plant.getPlantTimeRelative() == 1);
 	}

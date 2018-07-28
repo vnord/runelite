@@ -27,6 +27,7 @@ package net.runelite.client.plugins.agility;
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Provides;
 import java.util.Arrays;
+<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -41,6 +42,22 @@ import net.runelite.api.Tile;
 import net.runelite.api.TileObject;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.ConfigChanged;
+=======
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import javax.inject.Inject;
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Client;
+import net.runelite.api.Item;
+import net.runelite.api.ItemID;
+import net.runelite.api.ItemLayer;
+import net.runelite.api.Node;
+import static net.runelite.api.Skill.AGILITY;
+import net.runelite.api.Tile;
+import net.runelite.api.TileObject;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.events.DecorativeObjectChanged;
 import net.runelite.api.events.DecorativeObjectDespawned;
 import net.runelite.api.events.DecorativeObjectSpawned;
@@ -49,6 +66,7 @@ import net.runelite.api.events.GameObjectChanged;
 import net.runelite.api.events.GameObjectDespawned;
 import net.runelite.api.events.GameObjectSpawned;
 import net.runelite.api.events.GameStateChanged;
+<<<<<<< HEAD
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.GroundObjectChanged;
 import net.runelite.api.events.GroundObjectDespawned;
@@ -74,6 +92,26 @@ public class AgilityPlugin extends Plugin
 {
 	private static final int AGILITY_ARENA_REGION_ID = 11157;
 
+=======
+import net.runelite.api.events.GroundObjectChanged;
+import net.runelite.api.events.GroundObjectDespawned;
+import net.runelite.api.events.GroundObjectSpawned;
+import net.runelite.api.events.ItemLayerChanged;
+import net.runelite.api.events.WallObjectChanged;
+import net.runelite.api.events.WallObjectDespawned;
+import net.runelite.api.events.WallObjectSpawned;
+import net.runelite.client.config.ConfigManager;
+import net.runelite.client.plugins.Plugin;
+import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.ui.overlay.Overlay;
+
+@PluginDescriptor(
+	name = "Agility"
+)
+@Slf4j
+public class AgilityPlugin extends Plugin
+{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Getter
 	private final Map<TileObject, Tile> obstacles = new HashMap<>();
 
@@ -81,6 +119,7 @@ public class AgilityPlugin extends Plugin
 	private Tile markOfGrace;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
@@ -91,21 +130,34 @@ public class AgilityPlugin extends Plugin
 
 	@Inject
 	private Notifier notifier;
+=======
+	@Getter
+	private AgilityOverlay overlay;
+
+	@Inject
+	private LapCounterOverlay lapOverlay;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Inject
 	private Client client;
 
 	@Inject
+<<<<<<< HEAD
 	private InfoBoxManager infoBoxManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private AgilityConfig config;
 
 	@Getter
 	private AgilitySession session;
 
 	private int lastAgilityXp;
+<<<<<<< HEAD
 	private WorldPoint lastArenaTicketPosition;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Provides
 	AgilityConfig getConfig(ConfigManager configManager)
@@ -114,17 +166,26 @@ public class AgilityPlugin extends Plugin
 	}
 
 	@Override
+<<<<<<< HEAD
 	protected void startUp() throws Exception
 	{
 		overlayManager.add(agilityOverlay);
 		overlayManager.add(lapCounterOverlay);
+=======
+	public Collection<Overlay> getOverlays()
+	{
+		return Arrays.asList(overlay, lapOverlay);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
+<<<<<<< HEAD
 		overlayManager.remove(agilityOverlay);
 		overlayManager.remove(lapCounterOverlay);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		markOfGrace = null;
 		obstacles.clear();
 		session = null;
@@ -138,13 +199,17 @@ public class AgilityPlugin extends Plugin
 			case HOPPING:
 			case LOGIN_SCREEN:
 				session = null;
+<<<<<<< HEAD
 				lastArenaTicketPosition = null;
 				removeAgilityArenaTimer();
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				break;
 			case LOADING:
 				markOfGrace = null;
 				obstacles.clear();
 				break;
+<<<<<<< HEAD
 			case LOGGED_IN:
 				if (!isInAgilityArena())
 				{
@@ -161,6 +226,8 @@ public class AgilityPlugin extends Plugin
 		if (!config.showAgilityArenaTimer())
 		{
 			removeAgilityArenaTimer();
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -179,10 +246,14 @@ public class AgilityPlugin extends Plugin
 
 		// Get course
 		Courses course = Courses.getCourse(client.getLocalPlayer().getWorldLocation().getRegionID());
+<<<<<<< HEAD
 		if (course == null
 			|| (course.getCourseEndWorldPoints().length == 0
 			? Math.abs(course.getLastObstacleXp() - skillGained) > 1
 			: Arrays.stream(course.getCourseEndWorldPoints()).noneMatch(wp -> wp.equals(client.getLocalPlayer().getWorldLocation()))))
+=======
+		if (course == null || Math.abs(course.getLastObstacleXp() - skillGained) > 1)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			return;
 		}
@@ -201,13 +272,18 @@ public class AgilityPlugin extends Plugin
 	}
 
 	@Subscribe
+<<<<<<< HEAD
 	public void onItemSpawned(ItemSpawned itemSpawned)
+=======
+	public void onItemLayerChanged(ItemLayerChanged event)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		if (obstacles.isEmpty())
 		{
 			return;
 		}
 
+<<<<<<< HEAD
 		final Item item = itemSpawned.getItem();
 		final Tile tile = itemSpawned.getTile();
 
@@ -276,6 +352,42 @@ public class AgilityPlugin extends Plugin
 	{
 		removeAgilityArenaTimer();
 		infoBoxManager.addInfoBox(new AgilityArenaTimer(this));
+=======
+		final Tile tile = event.getTile();
+		final ItemLayer itemLayer = tile.getItemLayer();
+		final boolean hasMark = tileHasMark(itemLayer);
+
+		if (markOfGrace != null && tile.getWorldLocation().equals(markOfGrace.getWorldLocation()) && !hasMark)
+		{
+			markOfGrace = null;
+		}
+		else if (hasMark)
+		{
+			markOfGrace = tile;
+		}
+	}
+
+	private boolean tileHasMark(ItemLayer itemLayer)
+	{
+		if (itemLayer != null)
+		{
+			Node currentItem = itemLayer.getBottom();
+
+			while (currentItem instanceof Item)
+			{
+				final Item item = (Item) currentItem;
+
+				currentItem = currentItem.getNext();
+
+				if (item.getId() == ItemID.MARK_OF_GRACE)
+				{
+					return true;
+				}
+			}
+		}
+
+		return false;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe
@@ -360,9 +472,14 @@ public class AgilityPlugin extends Plugin
 		}
 
 		if (Obstacles.COURSE_OBSTACLE_IDS.contains(newObject.getId()) ||
+<<<<<<< HEAD
 			Obstacles.SHORTCUT_OBSTACLE_IDS.contains(newObject.getId()) ||
 			(Obstacles.TRAP_OBSTACLE_IDS.contains(newObject.getId())
 				&& Obstacles.TRAP_OBSTACLE_REGIONS.contains(newObject.getWorldLocation().getRegionID())))
+=======
+				Obstacles.SHORTCUT_OBSTACLE_IDS.contains(newObject.getId()) ||
+				Obstacles.TRAP_OBSTACLE_IDS.contains(newObject.getId()))
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			obstacles.put(newObject, tile);
 		}

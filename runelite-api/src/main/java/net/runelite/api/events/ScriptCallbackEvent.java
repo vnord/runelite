@@ -27,6 +27,7 @@ package net.runelite.api.events;
 import lombok.Data;
 import net.runelite.api.Script;
 
+<<<<<<< HEAD
 /**
  * An event where a Runelite ASM script is called.
  */
@@ -40,5 +41,11 @@ public class ScriptCallbackEvent
 	/**
 	 * The name of the event that triggered script execution.
 	 */
+=======
+@Data
+public class ScriptCallbackEvent
+{
+	private Script script;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private String eventName;
 }

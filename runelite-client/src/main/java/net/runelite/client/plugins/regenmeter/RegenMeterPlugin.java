@@ -33,14 +33,20 @@ import lombok.Getter;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.Prayer;
+<<<<<<< HEAD
 import net.runelite.api.Skill;
 import net.runelite.api.VarPlayer;
+=======
+import net.runelite.api.VarPlayer;
+import net.runelite.api.Skill;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
@@ -48,12 +54,18 @@ import net.runelite.client.ui.overlay.OverlayManager;
 	description = "Track and show the hitpoints and special attack regeneration timers",
 	tags = {"combat", "health", "hitpoints", "special", "attack", "overlay"}
 )
+=======
+import net.runelite.client.ui.overlay.Overlay;
+
+@PluginDescriptor(name = "Regeneration Meter")
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public class RegenMeterPlugin extends Plugin
 {
 	private static final int SPEC_REGEN_TICKS = 50;
 	private static final int NORMAL_HP_REGEN_TICKS = 100;
 
 	@Inject
+<<<<<<< HEAD
 	private Client client;
 
 	@Inject
@@ -64,10 +76,25 @@ public class RegenMeterPlugin extends Plugin
 
 	@Inject
 	private RegenMeterConfig config;
+=======
+	private RegenMeterOverlay overlay;
+
+	@Inject
+	private Client client;
+
+	@Inject
+	RegenMeterConfig config;
+
+
+	private int ticksSinceHPRegen;
+
+	private boolean wasRapidHeal;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Getter
 	private double hitpointsPercentage;
 
+<<<<<<< HEAD
 	@Getter
 	private double specialPercentage;
 
@@ -91,6 +118,24 @@ public class RegenMeterPlugin extends Plugin
 	protected void shutDown() throws Exception
 	{
 		overlayManager.remove(overlay);
+=======
+
+	private int ticksSinceSpecRegen;
+
+	@Getter
+	private double specialPercentage;
+
+	@Override
+	public Overlay getOverlay()
+	{
+		return overlay;
+	}
+
+	@Provides
+	RegenMeterConfig provideConfig(ConfigManager configManager)
+	{
+		return configManager.getConfig(RegenMeterConfig.class);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe

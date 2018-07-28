@@ -28,13 +28,20 @@ import lombok.Value;
 import net.runelite.api.Nameable;
 
 /**
+<<<<<<< HEAD
  * An event where a {@link Nameable} has had their name changed.
+=======
+ * Event called when a nameable name changes
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
  */
 @Value
 public class NameableNameChanged
 {
+<<<<<<< HEAD
 	/**
 	 * The nameable that changed names.
 	 */
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private final Nameable nameable;
 }

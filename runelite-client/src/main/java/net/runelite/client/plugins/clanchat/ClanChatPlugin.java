@@ -41,9 +41,13 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.task.Schedule;
 
 @PluginDescriptor(
+<<<<<<< HEAD
 	name = "Clan Chat",
 	description = "Add rank icons to users talking in clan chat",
 	tags = {"icons", "rank"}
+=======
+	name = "Clan Chat"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 @Slf4j
 public class ClanChatPlugin extends Plugin

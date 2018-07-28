@@ -26,22 +26,31 @@ package net.runelite.mixins;
 
 import java.awt.event.MouseEvent;
 import net.runelite.api.mixins.Copy;
+<<<<<<< HEAD
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
+=======
+import net.runelite.api.mixins.Mixin;
+import net.runelite.api.mixins.Replace;
+import net.runelite.client.callback.Hooks;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.rs.api.RSMouseInput;
 
 @Mixin(RSMouseInput.class)
 public abstract class RSMouseInputMixin implements RSMouseInput
 {
+<<<<<<< HEAD
 	@Shadow("clientInstance")
 	private static RSClient client;
 
 	@Inject
 	private int isInEvent;
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Copy("mousePressed")
 	abstract void rs$mousePressed(MouseEvent mouseEvent);
 
@@ -67,6 +76,7 @@ public abstract class RSMouseInputMixin implements RSMouseInput
 	@Replace("mousePressed")
 	public synchronized void mousePressed(MouseEvent mouseEvent)
 	{
+<<<<<<< HEAD
 		if (isInEvent == 0)
 		{
 			mouseEvent = client.getCallbacks().mousePressed(mouseEvent);
@@ -82,6 +92,12 @@ public abstract class RSMouseInputMixin implements RSMouseInput
 			{
 				isInEvent--;
 			}
+=======
+		mouseEvent = Hooks.mousePressed(mouseEvent);
+		if (!mouseEvent.isConsumed())
+		{
+			rs$mousePressed(mouseEvent);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -89,6 +105,7 @@ public abstract class RSMouseInputMixin implements RSMouseInput
 	@Replace("mouseReleased")
 	public synchronized void mouseReleased(MouseEvent mouseEvent)
 	{
+<<<<<<< HEAD
 		if (isInEvent == 0)
 		{
 			mouseEvent = client.getCallbacks().mouseReleased(mouseEvent);
@@ -104,6 +121,12 @@ public abstract class RSMouseInputMixin implements RSMouseInput
 			{
 				isInEvent--;
 			}
+=======
+		mouseEvent = Hooks.mouseReleased(mouseEvent);
+		if (!mouseEvent.isConsumed())
+		{
+			rs$mouseReleased(mouseEvent);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -111,7 +134,11 @@ public abstract class RSMouseInputMixin implements RSMouseInput
 	@Replace("mouseClicked")
 	public void mouseClicked(MouseEvent event)
 	{
+<<<<<<< HEAD
 		event = client.getCallbacks().mouseClicked(event);
+=======
+		event = Hooks.mouseClicked(event);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		if (!event.isConsumed())
 		{
 			rs$mouseClicked(event);
@@ -122,6 +149,7 @@ public abstract class RSMouseInputMixin implements RSMouseInput
 	@Replace("mouseEntered")
 	public synchronized void mouseEntered(MouseEvent mouseEvent)
 	{
+<<<<<<< HEAD
 		if (isInEvent == 0)
 		{
 			mouseEvent = client.getCallbacks().mouseEntered(mouseEvent);
@@ -137,6 +165,12 @@ public abstract class RSMouseInputMixin implements RSMouseInput
 			{
 				isInEvent--;
 			}
+=======
+		mouseEvent = Hooks.mouseEntered(mouseEvent);
+		if (!mouseEvent.isConsumed())
+		{
+			rs$mouseEntered(mouseEvent);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -145,6 +179,7 @@ public abstract class RSMouseInputMixin implements RSMouseInput
 	@Replace("mouseExited")
 	public synchronized void mouseExited(MouseEvent mouseEvent)
 	{
+<<<<<<< HEAD
 		if (isInEvent == 0)
 		{
 			mouseEvent = client.getCallbacks().mouseExited(mouseEvent);
@@ -160,6 +195,12 @@ public abstract class RSMouseInputMixin implements RSMouseInput
 			{
 				isInEvent--;
 			}
+=======
+		mouseEvent = Hooks.mouseExited(mouseEvent);
+		if (!mouseEvent.isConsumed())
+		{
+			rs$mouseExited(mouseEvent);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -167,6 +208,7 @@ public abstract class RSMouseInputMixin implements RSMouseInput
 	@Replace("mouseDragged")
 	public synchronized void mouseDragged(MouseEvent mouseEvent)
 	{
+<<<<<<< HEAD
 		if (isInEvent == 0)
 		{
 			mouseEvent = client.getCallbacks().mouseDragged(mouseEvent);
@@ -182,6 +224,12 @@ public abstract class RSMouseInputMixin implements RSMouseInput
 			{
 				isInEvent--;
 			}
+=======
+		mouseEvent = Hooks.mouseDragged(mouseEvent);
+		if (!mouseEvent.isConsumed())
+		{
+			rs$mouseDragged(mouseEvent);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -189,6 +237,7 @@ public abstract class RSMouseInputMixin implements RSMouseInput
 	@Replace("mouseMoved")
 	public synchronized void mouseMoved(MouseEvent mouseEvent)
 	{
+<<<<<<< HEAD
 		if (isInEvent == 0)
 		{
 			mouseEvent = client.getCallbacks().mouseMoved(mouseEvent);
@@ -204,6 +253,12 @@ public abstract class RSMouseInputMixin implements RSMouseInput
 			{
 				isInEvent--;
 			}
+=======
+		mouseEvent = Hooks.mouseMoved(mouseEvent);
+		if (!mouseEvent.isConsumed())
+		{
+			rs$mouseMoved(mouseEvent);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 }

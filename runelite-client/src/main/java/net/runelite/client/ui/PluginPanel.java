@@ -26,6 +26,10 @@ package net.runelite.client.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+<<<<<<< HEAD
+=======
+import java.awt.GridLayout;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -58,15 +62,25 @@ public abstract class PluginPanel extends JPanel
 		if (wrap)
 		{
 			setBorder(BORDER_PADDING);
+<<<<<<< HEAD
 			setLayout(new DynamicGridLayout(0, 1, 0, 3));
 			setBackground(ColorScheme.DARK_GRAY_COLOR);
+=======
+			setLayout(new GridLayout(0, 1, 0, 3));
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 			final JPanel northPanel = new JPanel();
 			northPanel.setLayout(new BorderLayout());
 			northPanel.add(this, BorderLayout.NORTH);
+<<<<<<< HEAD
 			northPanel.setBackground(ColorScheme.DARK_GRAY_COLOR);
 
 			scrollPane = new JScrollPane(northPanel);
+=======
+
+			scrollPane = new JScrollPane(northPanel);
+			scrollPane.getVerticalScrollBar().setUnitIncrement(16); //Otherwise scrollspeed is really slow
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
 			wrappedPanel = new JPanel();

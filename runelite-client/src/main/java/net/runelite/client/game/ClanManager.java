@@ -60,8 +60,12 @@ public class ClanManager
 			"Friend_clan_rank.png", "Recruit_clan_rank.png",
 			"Corporal_clan_rank.png", "Sergeant_clan_rank.png",
 			"Lieutenant_clan_rank.png", "Captain_clan_rank.png",
+<<<<<<< HEAD
 			"General_clan_rank.png", "Owner_clan_rank.png",
 			"JMod_clan_rank.png"
+=======
+			"General_clan_rank.png", "Owner_clan_rank.png"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		};
 
 	private int modIconsLength;
@@ -128,13 +132,21 @@ public class ClanManager
 		{
 			return null;
 		}
+<<<<<<< HEAD
 
 		return clanChatImages[clanMemberRank.ordinal() - 1];
+=======
+		return clanChatImages[clanMemberRank.getValue()];
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	public int getIconNumber(final ClanMemberRank clanMemberRank)
 	{
+<<<<<<< HEAD
 		return modIconsLength - CLANCHAT_IMAGES.length + clanMemberRank.ordinal() - 1;
+=======
+		return modIconsLength - CLANCHAT_IMAGES.length + clanMemberRank.getValue();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe

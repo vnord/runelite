@@ -289,12 +289,15 @@
       "xp": 11.2
     },
     {
+<<<<<<< HEAD
       "level": 52,
       "icon": 4150,
       "name": "Broad Arrows",
       "xp": 10
     },
     {
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
       "level": 53,
       "icon": 12926,
       "name": "Toxic Blowpipe",

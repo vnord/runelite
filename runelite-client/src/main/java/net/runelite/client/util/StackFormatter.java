@@ -24,7 +24,10 @@
  */
 package net.runelite.client.util;
 
+<<<<<<< HEAD
 import java.text.DecimalFormat;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.regex.Matcher;
@@ -52,11 +55,14 @@ public class StackFormatter
 	private static final NumberFormat NUMBER_FORMATTER = NumberFormat.getInstance();
 
 	/**
+<<<<<<< HEAD
 	 * A decimal number formatter
 	 */
 	private static final NumberFormat DECIMAL_FORMATTER = new DecimalFormat("#,###.#");
 
 	/**
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	 * Convert a quantity to a nicely formatted stack size.
 	 * See the StackFormatterTest to see expected output.
 	 *
@@ -135,6 +141,7 @@ public class StackFormatter
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Convert a quantity to stack size as it would
 	 * appear in RuneScape. (with decimals)
 	 * <p>
@@ -159,6 +166,8 @@ public class StackFormatter
 	}
 
 	/**
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	 * Converts a string representation of a stack
 	 * back to (close to) it's original value.
 	 *
@@ -177,8 +186,13 @@ public class StackFormatter
 	 *
 	 * @param number the long number to format
 	 * @return the formatted String
+<<<<<<< HEAD
 	 * @throws ArithmeticException if rounding is needed with rounding
 	 *                             mode being set to RoundingMode.UNNECESSARY
+=======
+	 * @exception        ArithmeticException if rounding is needed with rounding
+	 *                   mode being set to RoundingMode.UNNECESSARY
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	 * @see java.text.Format#format
 	 */
 	public static String formatNumber(final long number)
@@ -191,8 +205,13 @@ public class StackFormatter
 	 *
 	 * @param number the double number to format
 	 * @return the formatted String
+<<<<<<< HEAD
 	 * @throws ArithmeticException if rounding is needed with rounding
 	 *                             mode being set to RoundingMode.UNNECESSARY
+=======
+	 * @exception        ArithmeticException if rounding is needed with rounding
+	 *                   mode being set to RoundingMode.UNNECESSARY
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	 * @see java.text.Format#format
 	 */
 	public static String formatNumber(double number)

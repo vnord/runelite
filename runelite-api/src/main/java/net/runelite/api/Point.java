@@ -24,9 +24,12 @@
  */
 package net.runelite.api;
 
+<<<<<<< HEAD
 /**
  * A two-dimensional coordinate on the canvas.
  */
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public class Point
 {
 	private final int x;
@@ -44,31 +47,44 @@ public class Point
 		return "Point{" + "x=" + x + ", y=" + y + '}';
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Gets the x-axis coordinate of the point.
 	 *
 	 * @return the x-axis coordinate
 	 */
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public int getX()
 	{
 		return x;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Gets the y-axis coordinate of the point.
 	 *
 	 * @return the y-axis coordinate
 	 */
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public int getY()
 	{
 		return y;
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Gets the distance between this point and another.
 	 *
 	 * @param other other point
 	 * @return the distance
+=======
+	 * Find the distance from this point to another point
+	 *
+	 * @param other
+	 * @return
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	 */
 	public int distanceTo(Point other)
 	{

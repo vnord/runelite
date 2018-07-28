@@ -24,6 +24,7 @@
  */
 package net.runelite.api.widgets;
 
+<<<<<<< HEAD
 /**
  * Utility class mapping widget IDs to global constants.
  * <p>
@@ -37,12 +38,20 @@ package net.runelite.api.widgets;
 public class WidgetID
 {
 	public static final int FAIRY_RING_PANEL_GROUP_ID = 381;
+=======
+public class WidgetID
+{
+	public static final int FAIRY_RING_CODE_GROUP_ID = 381;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int FAIRY_RING_GROUP_ID = 398;
 	public static final int LOGOUT_PANEL_ID = 182;
 	public static final int BANK_GROUP_ID = 12;
 	public static final int BANK_INVENTORY_GROUP_ID = 15;
 	public static final int GRAND_EXCHANGE_INVENTORY_GROUP_ID = 467;
+<<<<<<< HEAD
 	public static final int GRAND_EXCHANGE_GROUP_ID = 465;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int DEPOSIT_BOX_GROUP_ID = 192;
 	public static final int INVENTORY_GROUP_ID = 149;
 	public static final int FRIENDS_LIST_GROUP_ID = 429;
@@ -86,17 +95,25 @@ public class WidgetID
 	public static final int MOTHERLODE_MINE_GROUP_ID = 382;
 	public static final int EXPERIENCE_DROP_GROUP_ID = 122;
 	public static final int PUZZLE_BOX_GROUP_ID = 306;
+<<<<<<< HEAD
 	public static final int LIGHT_BOX_GROUP_ID = 322;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int NIGHTMARE_ZONE_GROUP_ID = 202;
 	public static final int BLAST_FURNACE_GROUP_ID = 474;
 	public static final int WORLD_MAP_GROUP_ID = 595;
 	public static final int PYRAMID_PLUNDER_GROUP_ID = 428;
+<<<<<<< HEAD
 	public static final int CHAMBERS_OF_XERIC_REWARD_GROUP_ID = 539;
 	public static final int THEATRE_OF_BLOOD_REWARD_GROUP_ID = 23;
+=======
+	public static final int RAIDS_REWARD_GROUP_ID = 539;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int EXPERIENCE_TRACKER_GROUP_ID = 122;
 	public static final int TITHE_FARM_GROUP_ID = 241;
 	public static final int KINGDOM_GROUP_ID = 392;
 	public static final int BARROWS_GROUP_ID = 24;
+<<<<<<< HEAD
 	public static final int BLAST_MINE_GROUP_ID = 598;
 	public static final int MTA_ALCHEMY_GROUP_ID = 194;
 	public static final int MTA_ENCHANTMENT_GROUP_ID = 195;
@@ -107,6 +124,8 @@ public class WidgetID
 	public static final int VARROCK_MUSEUM_QUIZ_GROUP_ID = 533;
 	public static final int KILL_LOGS_GROUP_ID = 549;
 	public static final int DIARY_QUEST_GROUP_ID = 275;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	static class WorldMap
 	{
@@ -122,10 +141,17 @@ public class WidgetID
 
 	static class DialogNPC
 	{
+<<<<<<< HEAD
 		static final int HEAD_MODEL = 1;
 		static final int NAME = 2;
 		static final int CONTINUE = 3;
 		static final int TEXT = 4;
+=======
+		static final int HEAD_MODEL = 0;
+		static final int NAME = 1;
+		static final int CONTINUE = 2;
+		static final int TEXT = 3;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	static class LogoutPanel
@@ -171,6 +197,7 @@ public class WidgetID
 
 	static class GrandExchange
 	{
+<<<<<<< HEAD
 		static final int WINDOW_CONTAINER = 0;
 		static final int WINDOW_BORDERS = 2;
 		static final int HISTORY_BUTTON = 3;
@@ -183,6 +210,8 @@ public class WidgetID
 
 	static class GrandExchangeInventory
 	{
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		static final int INVENTORY_ITEM_CONTAINER = 0;
 	}
 
@@ -242,12 +271,16 @@ public class WidgetID
 
 	static class Viewport
 	{
+<<<<<<< HEAD
 		static final int MINIMAP_RESIZABLE_WIDGET = 17;
 		static final int MINIMAP_RESIZABLE_CLICKBOX = 18;
 		static final int MINIMAP_RESIZABLE_DRAW_AREA = 25;
 		static final int MINIMAP_RESIZABLE_DECORATIONS = 27;
 		static final int MINIMAP_RESIZABLE_ORB_HOLDER = 28;
 		static final int MINIMAP_RESIZABLE_LOGOUT_BUTTON = 30;
+=======
+		static final int MINIMAP_WIDGET = 17;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		static final int FIXED_VIEWPORT = 17;
 		static final int RESIZABLE_VIEWPORT_OLD_SCHOOL_BOX = 12;
 		static final int RESIZABLE_VIEWPORT_BOTTOM_LINE = 12;
@@ -255,6 +288,7 @@ public class WidgetID
 
 	static class FixedViewport
 	{
+<<<<<<< HEAD
 		static final int MINIMAP = 3;
 		static final int MINIMAP_DRAW_AREA = 8;
 		static final int CLAN_CHAT_TAB = 31;
@@ -288,10 +322,15 @@ public class WidgetID
 		static final int ROOT_INTERFACE_CONTAINER = 62;
 		static final int BANK_CONTAINER = 64;
 		static final int INTERFACE_CONTAINER = 65;
+=======
+		static final int INVENTORY_TAB = 51;
+		static final int PRAYER_TAB = 53;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	static class ResizableViewport
 	{
+<<<<<<< HEAD
 		static final int CLAN_CHAT_TAB = 35;
 		static final int FRIENDS_TAB = 36;
 		static final int IGNORES_TAB = 37;
@@ -320,16 +359,25 @@ public class WidgetID
 		static final int EQUIPMENT_ICON = 62;
 		static final int PRAYER_ICON = 63;
 		static final int MAGIC_ICON = 64;
+=======
+		static final int INVENTORY_TAB = 54;
+		static final int PRAYER_TAB = 56;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	static class ResizableViewportBottomLine
 	{
+<<<<<<< HEAD
 		static final int LOGOUT_BUTTON_OVERLAY = 29;
 		static final int INVENTORY_TAB = 51;
 		static final int PRAYER_TAB = 53;
 		static final int QUESTS_ICON = 57;
 		static final int INVENTORY_ICON = 58;
 		static final int PRAYER_ICON = 60;
+=======
+		static final int INVENTORY_TAB = 51;
+		static final int PRAYER_TAB = 53;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	static class Chatbox
@@ -461,8 +509,13 @@ public class WidgetID
 
 	static class LevelUp
 	{
+<<<<<<< HEAD
 		static final int SKILL = 1;
 		static final int LEVEL = 2;
+=======
+		static final int SKILL = 0;
+		static final int LEVEL = 1;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	static class QuestCompleted
@@ -491,6 +544,7 @@ public class WidgetID
 		static final int VISIBLE_BOX = 4;
 	}
 
+<<<<<<< HEAD
 	static class LightBox
 	{
 		static final int LIGHT_BOX = 1;
@@ -510,10 +564,17 @@ public class WidgetID
 	{
 		static final int SPRITE = 1;
 		static final int TEXT = 2;
+=======
+	static class DialogSprite
+	{
+		static final int SPRITE = 0;
+		static final int TEXT = 1;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	static class ExperienceTracker
 	{
+<<<<<<< HEAD
 		static final int WIDGET = 2;
 		static final int BOTTOM_BAR = 14;
 	}
@@ -527,6 +588,12 @@ public class WidgetID
 		static final int SCROLLBAR = 152;
 	}
 
+=======
+		static final int WIDGET = 1;
+		static final int BOTTOM_BAR = 14;
+	}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	static class FairyRing
 	{
 		static final int LEFT_ORB_CLOCKWISE = 19;
@@ -545,6 +612,7 @@ public class WidgetID
 
 	static class Barrows
 	{
+<<<<<<< HEAD
 		static final int BARROWS_BROTHERS = 9;
 		static final int BARROWS_POTENTIAL = 10;
 		static final int BARROWS_REWARD_INVENTORY = 3;
@@ -585,3 +653,10 @@ public class WidgetID
 		static final int STREAK = 15;
 	}
 }
+=======
+		static final int BARROWS_BROTHERS = 8;
+		static final int BARROWS_POTENTIAL = 9;
+		static final int BARROWS_REWARD_INVENTORY = 3;
+	}
+}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b

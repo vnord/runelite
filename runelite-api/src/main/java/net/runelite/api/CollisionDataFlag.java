@@ -24,6 +24,7 @@
  */
 package net.runelite.api;
 
+<<<<<<< HEAD
 /**
  * A utility class containing collision data flags for tiles.
  */
@@ -32,6 +33,10 @@ public final class CollisionDataFlag
 	/**
 	 * Directional movement blocking flags.
 	 */
+=======
+public final class CollisionDataFlag
+{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int BLOCK_MOVEMENT_NORTH_WEST = 0x1;
 	public static final int BLOCK_MOVEMENT_NORTH = 0x2;
 	public static final int BLOCK_MOVEMENT_NORTH_EAST = 0x4;
@@ -41,9 +46,12 @@ public final class CollisionDataFlag
 	public static final int BLOCK_MOVEMENT_SOUTH_WEST = 0x40;
 	public static final int BLOCK_MOVEMENT_WEST = 0x80;
 
+<<<<<<< HEAD
 	/**
 	 * Movement blocking type flags.
 	 */
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int BLOCK_MOVEMENT_OBJECT = 0x100;
 	public static final int BLOCK_MOVEMENT_FLOOR_DECORATION = 0x40000;
 	public static final int BLOCK_MOVEMENT_FLOOR = 0x200000; // Eg. water
@@ -52,9 +60,12 @@ public final class CollisionDataFlag
 			BLOCK_MOVEMENT_FLOOR_DECORATION |
 			BLOCK_MOVEMENT_FLOOR;
 
+<<<<<<< HEAD
 	/**
 	 * Directional line of sight blocking flags.
 	 */
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int BLOCK_LINE_OF_SIGHT_NORTH = BLOCK_MOVEMENT_NORTH << 9; // 0x400
 	public static final int BLOCK_LINE_OF_SIGHT_EAST = BLOCK_MOVEMENT_EAST << 9; // 0x1000
 	public static final int BLOCK_LINE_OF_SIGHT_SOUTH = BLOCK_MOVEMENT_SOUTH << 9; // 0x4000

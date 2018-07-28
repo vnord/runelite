@@ -27,14 +27,19 @@ package net.runelite.client.chat;
 
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+=======
+import java.util.Arrays;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import javax.inject.Inject;
 import javax.inject.Provider;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
+<<<<<<< HEAD
 import net.runelite.api.ScriptID;
 import net.runelite.api.VarClientStr;
 import net.runelite.api.events.CommandExecuted;
@@ -42,11 +47,17 @@ import net.runelite.api.events.ScriptCallbackEvent;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.events.ChatboxInput;
 import net.runelite.client.events.PrivateMessageInput;
+=======
+import net.runelite.api.VarClientStr;
+import net.runelite.api.events.CommandExecuted;
+import net.runelite.api.events.ScriptCallbackEvent;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 @Slf4j
 @Singleton
 public class CommandManager
 {
+<<<<<<< HEAD
 	private static final String RUNELITE_COMMAND = "runeliteCommand";
 	private static final String CHATBOX_INPUT = "chatboxInput";
 	private static final String PRIVMATE_MESSAGE = "privateMessage";
@@ -74,16 +85,32 @@ public class CommandManager
 	public void unregister(ChatboxInputListener chatboxInputListener)
 	{
 		chatboxInputListenerList.remove(chatboxInputListener);
+=======
+	private static final String CALLBACK_NAME = "runeliteCommand";
+	private final Provider<Client> clientProvider;
+	private final EventBus eventBus;
+
+	@Inject
+	public CommandManager(Provider<Client> clientProvider, EventBus eventBus)
+	{
+		this.clientProvider = clientProvider;
+		this.eventBus = eventBus;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe
 	private void scriptEvent(ScriptCallbackEvent event)
 	{
+<<<<<<< HEAD
 		if (sending)
+=======
+		if (!CALLBACK_NAME.equals(event.getEventName()))
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			return;
 		}
 
+<<<<<<< HEAD
 		switch (event.getEventName())
 		{
 			case RUNELITE_COMMAND:
@@ -100,6 +127,8 @@ public class CommandManager
 
 	private void runCommand()
 	{
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		Client client = clientProvider.get();
 		String typedText = client.getVar(VarClientStr.CHATBOX_TYPED_TEXT).substring(2); // strip ::
 
@@ -107,18 +136,22 @@ public class CommandManager
 
 		String[] split = typedText.split(" ");
 
+<<<<<<< HEAD
 		// Fixes ArrayIndexOutOfBounds when typing ":: "
 		if (split.length == 0)
 		{
 			return;
 		}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		String command = split[0];
 		String[] args = Arrays.copyOfRange(split, 1, split.length);
 
 		CommandExecuted commandExecuted = new CommandExecuted(command, args);
 		eventBus.post(commandExecuted);
 	}
+<<<<<<< HEAD
 
 	private void handleInput(ScriptCallbackEvent event)
 	{
@@ -222,4 +255,6 @@ public class CommandManager
 		Client client = clientProvider.get();
 		client.runScript(ScriptID.PRIVMSG, target, message);
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

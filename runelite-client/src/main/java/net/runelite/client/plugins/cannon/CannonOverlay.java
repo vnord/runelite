@@ -81,7 +81,11 @@ class CannonOverlay extends Overlay
 			Point cannonLoc = Perspective.getCanvasTextLocation(client,
 				graphics,
 				cannonPoint,
+<<<<<<< HEAD
 				String.valueOf(plugin.getCballsLeft()), 150);
+=======
+				String.valueOf(plugin.getCballsLeft()), 200);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 			if (cannonLoc != null)
 			{

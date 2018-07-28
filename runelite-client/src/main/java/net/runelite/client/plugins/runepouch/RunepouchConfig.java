@@ -30,7 +30,15 @@ import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 import net.runelite.client.plugins.runepouch.config.RunePouchOverlayMode;
 
+<<<<<<< HEAD
 @ConfigGroup("runepouch")
+=======
+@ConfigGroup(
+	keyName = "runepouch",
+	name = "Rune Pouch",
+	description = "Configuration for the Runepouch plugin"
+)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public interface RunepouchConfig extends Config
 {
 	@ConfigItem(

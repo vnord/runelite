@@ -29,22 +29,49 @@ import java.awt.event.MouseEvent;
 import javax.inject.Inject;
 import javax.swing.SwingUtilities;
 import net.runelite.api.Client;
+<<<<<<< HEAD
 import net.runelite.api.MenuEntry;
 import net.runelite.client.input.KeyListener;
 import net.runelite.client.input.MouseListener;
 import static net.runelite.client.plugins.grandexchange.GrandExchangePlugin.SEARCH_GRAND_EXCHANGE;
 import net.runelite.client.util.Text;
+=======
+import net.runelite.api.ItemComposition;
+import net.runelite.api.Point;
+import net.runelite.api.queries.BankItemQuery;
+import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetInfo;
+import net.runelite.api.widgets.WidgetItem;
+import net.runelite.client.game.ItemManager;
+import net.runelite.client.input.KeyListener;
+import net.runelite.client.input.MouseListener;
+import net.runelite.client.util.QueryRunner;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 public class GrandExchangeInputListener extends MouseListener implements KeyListener
 {
 	private final Client client;
 	private final GrandExchangePlugin plugin;
+<<<<<<< HEAD
 
 	@Inject
 	GrandExchangeInputListener(Client client, GrandExchangePlugin plugin)
 	{
 		this.client = client;
 		this.plugin = plugin;
+=======
+	private final ItemManager itemManager;
+	private final QueryRunner queryRunner;
+
+	@Inject
+	GrandExchangeInputListener(Client client, GrandExchangePlugin plugin, ItemManager itemManager,
+		QueryRunner queryRunner)
+	{
+		this.client = client;
+		this.plugin = plugin;
+		this.itemManager = itemManager;
+		this.queryRunner = queryRunner;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Override
@@ -53,6 +80,7 @@ public class GrandExchangeInputListener extends MouseListener implements KeyList
 		// Check if left click + alt
 		if (e.getButton() == MouseEvent.BUTTON1 && e.isAltDown())
 		{
+<<<<<<< HEAD
 			final MenuEntry[] menuEntries = client.getMenuEntries();
 			for (final MenuEntry menuEntry : menuEntries)
 			{
@@ -61,6 +89,38 @@ public class GrandExchangeInputListener extends MouseListener implements KeyList
 					search(Text.removeTags(menuEntry.getTarget()));
 					e.consume();
 					break;
+=======
+			Widget inventoryWidget = client.getWidget(WidgetInfo.INVENTORY);
+			if (inventoryWidget != null && !inventoryWidget.isHidden())
+			{
+				if (findAndSearch(inventoryWidget.getWidgetItems().toArray(new WidgetItem[0])))
+				{
+					e.consume();
+					return super.mouseClicked(e);
+				}
+			}
+
+			// Check the inventory when the bank is open aswell
+			Widget bankInventoryWidget = client.getWidget(WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER);
+			if (bankInventoryWidget != null && !bankInventoryWidget.isHidden())
+			{
+				if (findAndSearch(bankInventoryWidget.getDynamicChildren()))
+				{
+					e.consume();
+					return super.mouseClicked(e);
+				}
+			}
+
+			Widget bankWidget = client.getWidget(WidgetInfo.BANK_ITEM_CONTAINER);
+			if (bankWidget != null && !bankWidget.isHidden())
+			{
+				// Use bank item query for only checking the active tab
+				WidgetItem[] items = queryRunner.runQuery(new BankItemQuery());
+				if (findAndSearch(items))
+				{
+					e.consume();
+					return super.mouseClicked(e);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				}
 			}
 		}
@@ -68,7 +128,46 @@ public class GrandExchangeInputListener extends MouseListener implements KeyList
 		return super.mouseClicked(e);
 	}
 
+<<<<<<< HEAD
 	private void search(final String itemName)
+=======
+	private boolean findAndSearch(Widget[] widgets)
+	{
+		Point mousePosition = client.getMouseCanvasPosition();
+		for (Widget widget : widgets)
+		{
+			if (widget.getBounds().contains(mousePosition.getX(), mousePosition.getY()))
+			{
+				ItemComposition itemComposition = itemManager.getItemComposition(widget.getItemId());
+				search(itemComposition);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Finds the item clicked based on the mouse location
+	 * @param items
+	 * @return true if an item is found, false otherwise
+	 */
+	private boolean findAndSearch(WidgetItem[] items)
+	{
+		Point mousePosition = client.getMouseCanvasPosition();
+		for (WidgetItem item : items)
+		{
+			if (item.getCanvasBounds().contains(mousePosition.getX(), mousePosition.getY()))
+			{
+				ItemComposition itemComposition = itemManager.getItemComposition(item.getId());
+				search(itemComposition);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private void search(ItemComposition itemComposition)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		SwingUtilities.invokeLater(() ->
 		{
@@ -79,7 +178,11 @@ public class GrandExchangeInputListener extends MouseListener implements KeyList
 				plugin.getButton().getOnSelect().run();
 			}
 
+<<<<<<< HEAD
 			plugin.getPanel().getSearchPanel().priceLookup(itemName);
+=======
+			plugin.getPanel().getSearchPanel().priceLookup(itemComposition.getName());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		});
 	}
 

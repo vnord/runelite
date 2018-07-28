@@ -26,12 +26,15 @@ package net.runelite.api;
 
 import java.util.function.Predicate;
 
+<<<<<<< HEAD
 /**
  * A query to search the game for objects that match.
  *
  * @param <EntityType> the returned object type
  * @param <QueryType> the query type
  */
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public abstract class Query<EntityType, QueryType>
 {
 	protected Predicate<EntityType> predicate = x -> true;
@@ -40,6 +43,7 @@ public abstract class Query<EntityType, QueryType>
 	{
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Executes the query and filters through possible objects, returning only
 	 * those who evaluate true using {@link #predicate}.
@@ -56,6 +60,10 @@ public abstract class Query<EntityType, QueryType>
 	 * @param other the passed predicate
 	 * @return the combined predicate
 	 */
+=======
+	public abstract EntityType[] result(Client client);
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	protected Predicate<EntityType> and(Predicate<EntityType> other)
 	{
 		if (predicate == null)

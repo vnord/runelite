@@ -1,6 +1,9 @@
 /*
  * Copyright (c) 2018, Kruithne <kruithne@gmail.com>
+<<<<<<< HEAD
  * Copyright (c) 2018, Psikoi <https://github.com/psikoi>
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -25,6 +28,7 @@
  */
 package net.runelite.client.plugins.skillcalculator;
 
+<<<<<<< HEAD
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -38,6 +42,23 @@ import net.runelite.client.ui.components.FlatTextField;
 
 class UICalculatorInputArea extends JPanel
 {
+=======
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+class UICalculatorInputArea extends JPanel
+{
+	private final GridBagLayout uiLayout;
+	private final GridBagConstraints uiConstraints;
+
+	private int gridX = 0;
+	private int gridY = 0;
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	JTextField uiFieldCurrentLevel;
 	JTextField uiFieldCurrentXP;
 	JTextField uiFieldTargetLevel;
@@ -45,11 +66,23 @@ class UICalculatorInputArea extends JPanel
 
 	UICalculatorInputArea()
 	{
+<<<<<<< HEAD
 		setLayout(new GridLayout(2, 2, 7, 7));
 		uiFieldCurrentLevel = addComponent("Current Level");
 		uiFieldCurrentXP = addComponent("Current Experience");
 		uiFieldTargetLevel = addComponent("Target Level");
 		uiFieldTargetXP = addComponent("Target Experience");
+=======
+		uiLayout = new GridBagLayout();
+		uiConstraints = new GridBagConstraints();
+		uiConstraints.insets = new Insets(3, 9, 3, 9);
+		setLayout(uiLayout);
+
+		uiFieldCurrentLevel = addComponent("Current Level");
+		uiFieldCurrentXP = addComponent("Current XP");
+		uiFieldTargetLevel = addComponent("Target Level");
+		uiFieldTargetXP = addComponent("Target XP");
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	int getCurrentLevelInput()
@@ -111,6 +144,7 @@ class UICalculatorInputArea extends JPanel
 
 	private JTextField addComponent(String label)
 	{
+<<<<<<< HEAD
 		final JPanel container = new JPanel();
 		container.setLayout(new BorderLayout());
 
@@ -131,5 +165,28 @@ class UICalculatorInputArea extends JPanel
 		add(container);
 
 		return uiInput.getTextField();
+=======
+		final JLabel uiLabel = new JLabel(label);
+		final JTextField uiField = new JTextField(6);
+
+		uiConstraints.gridx = gridX;
+		uiConstraints.gridy = gridY;
+
+		uiLayout.setConstraints(uiLabel, uiConstraints);
+		add(uiLabel);
+
+		uiConstraints.gridy++;
+		uiLayout.setConstraints(uiField, uiConstraints);
+		add(uiField);
+
+		gridX++;
+		if (gridX % 2 == 0)
+		{
+			gridY += 2;
+			gridX = 0;
+		}
+
+		return uiField;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

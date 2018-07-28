@@ -32,6 +32,11 @@ import com.google.inject.Provides;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+<<<<<<< HEAD
+=======
+import java.util.Arrays;
+import java.util.Collection;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.HashSet;
 import java.util.Set;
 import javax.inject.Inject;
@@ -60,22 +65,36 @@ import net.runelite.api.events.GameObjectChanged;
 import net.runelite.api.events.GameObjectDespawned;
 import net.runelite.api.events.GameObjectSpawned;
 import net.runelite.api.events.GameStateChanged;
+<<<<<<< HEAD
+=======
+import net.runelite.api.events.MapRegionChanged;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.events.WallObjectChanged;
 import net.runelite.api.events.WallObjectDespawned;
 import net.runelite.api.events.WallObjectSpawned;
+<<<<<<< HEAD
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.task.Schedule;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
 	name = "Motherlode Mine",
 	description = "Show helpful information inside the Motherload Mine",
 	tags = {"pay", "dirt", "mining", "mlm", "skilling", "overlay"},
+=======
+import net.runelite.client.ui.overlay.Overlay;
+
+@PluginDescriptor(
+	name = "Motherlode Mine",
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	enabledByDefault = false
 )
 public class MotherlodePlugin extends Plugin
@@ -92,9 +111,12 @@ public class MotherlodePlugin extends Plugin
 	private static final int UPPER_FLOOR_HEIGHT = -500;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private MotherlodeOverlay overlay;
 
 	@Inject
@@ -122,7 +144,11 @@ public class MotherlodePlugin extends Plugin
 	@Getter(AccessLevel.PACKAGE)
 	private Integer depositsLeft;
 
+<<<<<<< HEAD
 	private MotherlodeSession session;
+=======
+	private final MotherlodeSession session = new MotherlodeSession();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Getter(AccessLevel.PACKAGE)
 	private final Set<WallObject> veins = new HashSet<>();
@@ -136,6 +162,7 @@ public class MotherlodePlugin extends Plugin
 	}
 
 	@Override
+<<<<<<< HEAD
 	protected void startUp()
 	{
 		overlayManager.add(overlay);
@@ -150,11 +177,23 @@ public class MotherlodePlugin extends Plugin
 		{
 			refreshSackValues();
 		}
+=======
+	public Collection<Overlay> getOverlays()
+	{
+		return Arrays.asList(overlay, rocksOverlay, motherlodeSackOverlay, motherlodeGemOverlay);
+	}
+
+	@Override
+	protected void startUp()
+	{
+		inMlm = checkInMlm();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
+<<<<<<< HEAD
 		overlayManager.remove(overlay);
 		overlayManager.remove(rocksOverlay);
 		overlayManager.remove(motherlodeGemOverlay);
@@ -169,6 +208,10 @@ public class MotherlodePlugin extends Plugin
 		{
 			sack.setHidden(false);
 		}
+=======
+		veins.clear();
+		rocks.clear();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	public MotherlodeSession getSession()
@@ -181,7 +224,13 @@ public class MotherlodePlugin extends Plugin
 	{
 		if (inMlm)
 		{
+<<<<<<< HEAD
 			refreshSackValues();
+=======
+			curSackSize = client.getVar(Varbits.SACK_NUMBER);
+			boolean sackUpgraded = client.getVar(Varbits.SACK_UPGRADED) == 1;
+			maxSackSize = sackUpgraded ? SACK_LARGE_SIZE : SACK_SIZE;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -340,6 +389,15 @@ public class MotherlodePlugin extends Plugin
 	}
 
 	@Subscribe
+<<<<<<< HEAD
+=======
+	public void onRegionChanged(MapRegionChanged event)
+	{
+		inMlm = checkInMlm();
+	}
+
+	@Subscribe
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public void onGameStateChanged(GameStateChanged event)
 	{
 		if (event.getGameState() == GameState.LOADING)
@@ -423,6 +481,7 @@ public class MotherlodePlugin extends Plugin
 		return true;
 	}
 
+<<<<<<< HEAD
 	private void refreshSackValues()
 	{
 		curSackSize = client.getVar(Varbits.SACK_NUMBER);
@@ -430,6 +489,8 @@ public class MotherlodePlugin extends Plugin
 		maxSackSize = sackUpgraded ? SACK_LARGE_SIZE : SACK_SIZE;
 	}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	/**
 	 * Checks if the given point is "upstairs" in the mlm.
 	 * The upper floor is actually on z=0.

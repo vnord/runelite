@@ -27,8 +27,11 @@ package net.runelite.client.plugins.fishing;
 import java.util.HashMap;
 import java.util.Map;
 import net.runelite.api.ItemID;
+<<<<<<< HEAD
 import static net.runelite.api.NpcID.FISHING_SPOT_1497;
 import static net.runelite.api.NpcID.FISHING_SPOT_1498;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import static net.runelite.api.NpcID.FISHING_SPOT_1510;
 import static net.runelite.api.NpcID.FISHING_SPOT_1511;
 import static net.runelite.api.NpcID.FISHING_SPOT_1518;
@@ -36,20 +39,27 @@ import static net.runelite.api.NpcID.FISHING_SPOT_1519;
 import static net.runelite.api.NpcID.FISHING_SPOT_1520;
 import static net.runelite.api.NpcID.FISHING_SPOT_1521;
 import static net.runelite.api.NpcID.FISHING_SPOT_1522;
+<<<<<<< HEAD
 import static net.runelite.api.NpcID.FISHING_SPOT_1523;
 import static net.runelite.api.NpcID.FISHING_SPOT_1524;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import static net.runelite.api.NpcID.FISHING_SPOT_1525;
 import static net.runelite.api.NpcID.FISHING_SPOT_1528;
 import static net.runelite.api.NpcID.FISHING_SPOT_1530;
 import static net.runelite.api.NpcID.FISHING_SPOT_1542;
 import static net.runelite.api.NpcID.FISHING_SPOT_1544;
+<<<<<<< HEAD
 import static net.runelite.api.NpcID.FISHING_SPOT_2653;
 import static net.runelite.api.NpcID.FISHING_SPOT_2654;
 import static net.runelite.api.NpcID.FISHING_SPOT_2655;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import static net.runelite.api.NpcID.FISHING_SPOT_3913;
 import static net.runelite.api.NpcID.FISHING_SPOT_3914;
 import static net.runelite.api.NpcID.FISHING_SPOT_3915;
 import static net.runelite.api.NpcID.FISHING_SPOT_4316;
+<<<<<<< HEAD
 import static net.runelite.api.NpcID.FISHING_SPOT_4476;
 import static net.runelite.api.NpcID.FISHING_SPOT_4477;
 import static net.runelite.api.NpcID.FISHING_SPOT_4710;
@@ -59,11 +69,17 @@ import static net.runelite.api.NpcID.FISHING_SPOT_5233;
 import static net.runelite.api.NpcID.FISHING_SPOT_5234;
 import static net.runelite.api.NpcID.FISHING_SPOT_5820;
 import static net.runelite.api.NpcID.FISHING_SPOT_5821;
+=======
+import static net.runelite.api.NpcID.FISHING_SPOT_4710;
+import static net.runelite.api.NpcID.FISHING_SPOT_4712;
+import static net.runelite.api.NpcID.FISHING_SPOT_4713;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import static net.runelite.api.NpcID.FISHING_SPOT_6488;
 import static net.runelite.api.NpcID.FISHING_SPOT_7155;
 import static net.runelite.api.NpcID.FISHING_SPOT_7199;
 import static net.runelite.api.NpcID.FISHING_SPOT_7200;
 import static net.runelite.api.NpcID.FISHING_SPOT_7323;
+<<<<<<< HEAD
 import static net.runelite.api.NpcID.FISHING_SPOT_7459;
 import static net.runelite.api.NpcID.FISHING_SPOT_7460;
 import static net.runelite.api.NpcID.FISHING_SPOT_7461;
@@ -71,13 +87,18 @@ import static net.runelite.api.NpcID.FISHING_SPOT_7462;
 import static net.runelite.api.NpcID.FISHING_SPOT_7465;
 import static net.runelite.api.NpcID.FISHING_SPOT_7466;
 import static net.runelite.api.NpcID.FISHING_SPOT_7467;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import static net.runelite.api.NpcID.FISHING_SPOT_7469;
 import static net.runelite.api.NpcID.FISHING_SPOT_7470;
 import static net.runelite.api.NpcID.FISHING_SPOT_7730;
 import static net.runelite.api.NpcID.FISHING_SPOT_7731;
 import static net.runelite.api.NpcID.FISHING_SPOT_7732;
 import static net.runelite.api.NpcID.FISHING_SPOT_7733;
+<<<<<<< HEAD
 import static net.runelite.api.NpcID.FISHING_SPOT_7946;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import static net.runelite.api.NpcID.FISHING_SPOT_7947;
 import static net.runelite.api.NpcID.ROD_FISHING_SPOT;
 import static net.runelite.api.NpcID.ROD_FISHING_SPOT_1508;
@@ -87,14 +108,18 @@ import static net.runelite.api.NpcID.ROD_FISHING_SPOT_1515;
 import static net.runelite.api.NpcID.ROD_FISHING_SPOT_1526;
 import static net.runelite.api.NpcID.ROD_FISHING_SPOT_1527;
 import static net.runelite.api.NpcID.ROD_FISHING_SPOT_6825;
+<<<<<<< HEAD
 import static net.runelite.api.NpcID.ROD_FISHING_SPOT_7463;
 import static net.runelite.api.NpcID.ROD_FISHING_SPOT_7464;
 import static net.runelite.api.NpcID.ROD_FISHING_SPOT_7468;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import static net.runelite.api.NpcID.ROD_FISHING_SPOT_7676;
 
 public enum FishingSpot
 {
 	SHRIMP("Shrimp, Anchovies", ItemID.RAW_SHRIMPS,
+<<<<<<< HEAD
 		FISHING_SPOT_1518, FISHING_SPOT_1521, FISHING_SPOT_1523,
 		FISHING_SPOT_1524, FISHING_SPOT_1525, FISHING_SPOT_1528,
 		FISHING_SPOT_1530, FISHING_SPOT_1544, FISHING_SPOT_3913,
@@ -112,6 +137,20 @@ public enum FishingSpot
 		FISHING_SPOT_4476, FISHING_SPOT_4477, FISHING_SPOT_5233,
 		FISHING_SPOT_5234, FISHING_SPOT_5821, FISHING_SPOT_7200,
 		FISHING_SPOT_7461, FISHING_SPOT_7466
+=======
+		FISHING_SPOT_1518, FISHING_SPOT_1521, FISHING_SPOT_1525,
+		FISHING_SPOT_1528, FISHING_SPOT_1530, FISHING_SPOT_1544,
+		FISHING_SPOT_3913, FISHING_SPOT_7155, FISHING_SPOT_7469,
+		FISHING_SPOT_7947
+	),
+	LOBSTER("Lobster, Swordfish, Tuna", ItemID.RAW_LOBSTER,
+		FISHING_SPOT_1510, FISHING_SPOT_1519, FISHING_SPOT_1522,
+		FISHING_SPOT_3914, FISHING_SPOT_7199, FISHING_SPOT_7470
+	),
+	SHARK("Shark, Bass", ItemID.RAW_SHARK,
+		FISHING_SPOT_1511, FISHING_SPOT_1520, FISHING_SPOT_3915,
+		FISHING_SPOT_7200
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	),
 	MONKFISH("Monkfish", ItemID.RAW_MONKFISH,
 		FISHING_SPOT_4316
@@ -119,8 +158,12 @@ public enum FishingSpot
 	SALMON("Salmon, Trout", ItemID.RAW_SALMON,
 		ROD_FISHING_SPOT, ROD_FISHING_SPOT_1508, ROD_FISHING_SPOT_1509,
 		ROD_FISHING_SPOT_1513, ROD_FISHING_SPOT_1515, ROD_FISHING_SPOT_1526,
+<<<<<<< HEAD
 		ROD_FISHING_SPOT_1527, ROD_FISHING_SPOT_7463, ROD_FISHING_SPOT_7464,
 		ROD_FISHING_SPOT_7468
+=======
+		ROD_FISHING_SPOT_1527
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	),
 	BARB_FISH("Sturgeon, Salmon, Trout", ItemID.LEAPING_STURGEON,
 		FISHING_SPOT_1542, FISHING_SPOT_7323
@@ -142,12 +185,15 @@ public enum FishingSpot
 	),
 	SACRED_EEL("Sacred eel", ItemID.SACRED_EEL,
 		FISHING_SPOT_6488
+<<<<<<< HEAD
 	),
 	CAVE_EEL("Cave eel", ItemID.RAW_CAVE_EEL,
 		FISHING_SPOT_1497, FISHING_SPOT_1498
 	),
 	SLIMY_EEL("Slimy eel", ItemID.RAW_SLIMY_EEL,
 		FISHING_SPOT_2653, FISHING_SPOT_2654, FISHING_SPOT_2655
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	);
 
 	private static final Map<Integer, FishingSpot> fishingSpots = new HashMap<>();

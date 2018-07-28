@@ -25,13 +25,19 @@
 package net.runelite.client.plugins.screenshot;
 
 import com.google.common.annotations.VisibleForTesting;
+<<<<<<< HEAD
 import com.google.common.collect.ImmutableList;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import com.google.common.collect.ImmutableMap;
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Provides;
 import java.awt.Desktop;
 import java.awt.Graphics;
+<<<<<<< HEAD
 import java.awt.Image;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.awt.Toolkit;
 import java.awt.TrayIcon;
 import java.awt.datatransfer.Clipboard;
@@ -43,10 +49,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+<<<<<<< HEAD
 import net.runelite.api.events.GameTick;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.EnumSet;
+=======
+import java.time.LocalDate;
+import java.util.Date;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.function.Consumer;
 import java.util.regex.Matcher;
@@ -58,6 +69,7 @@ import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.Point;
+<<<<<<< HEAD
 import net.runelite.api.WorldType;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.WidgetLoaded;
@@ -71,6 +83,21 @@ import static net.runelite.api.widgets.WidgetID.LEVEL_UP_GROUP_ID;
 import static net.runelite.api.widgets.WidgetID.QUEST_COMPLETED_GROUP_ID;
 import static net.runelite.api.widgets.WidgetID.THEATRE_OF_BLOOD_REWARD_GROUP_ID;
 import net.runelite.api.widgets.WidgetInfo;
+=======
+import net.runelite.api.events.ChatMessage;
+import net.runelite.api.events.WidgetHiddenChanged;
+import net.runelite.api.events.WidgetLoaded;
+import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetID;
+import static net.runelite.api.widgets.WidgetID.BARROWS_REWARD_GROUP_ID;
+import static net.runelite.api.widgets.WidgetID.CLUE_SCROLL_REWARD_GROUP_ID;
+import static net.runelite.api.widgets.WidgetID.DIALOG_SPRITE_GROUP_ID;
+import static net.runelite.api.widgets.WidgetID.LEVEL_UP_GROUP_ID;
+import static net.runelite.api.widgets.WidgetID.QUEST_COMPLETED_GROUP_ID;
+import static net.runelite.api.widgets.WidgetID.RAIDS_REWARD_GROUP_ID;
+import net.runelite.api.widgets.WidgetInfo;
+import static net.runelite.api.widgets.WidgetInfo.TO_GROUP;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.Notifier;
 import static net.runelite.client.RuneLite.SCREENSHOT_DIR;
 import net.runelite.client.config.ConfigManager;
@@ -83,8 +110,12 @@ import net.runelite.client.ui.ClientUI;
 import net.runelite.client.ui.DrawManager;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.ui.TitleToolbar;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.util.HotkeyListener;
+=======
+import net.runelite.client.ui.overlay.Overlay;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.util.Text;
 import net.runelite.http.api.RuneLiteAPI;
 import okhttp3.Call;
@@ -96,9 +127,13 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 @PluginDescriptor(
+<<<<<<< HEAD
 	name = "Screenshot",
 	description = "Enable the manual and automatic taking of screenshots",
 	tags = {"external", "images", "imgur", "integration", "notifications"}
+=======
+	name = "Screenshot"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 @Slf4j
 public class ScreenshotPlugin extends Plugin
@@ -107,6 +142,7 @@ public class ScreenshotPlugin extends Plugin
 	private static final HttpUrl IMGUR_IMAGE_UPLOAD_URL = HttpUrl.parse("https://api.imgur.com/3/image");
 	private static final MediaType JSON = MediaType.parse("application/json");
 
+<<<<<<< HEAD
 	private static final DateFormat TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
 
 	private static final Pattern NUMBER_PATTERN = Pattern.compile("([0-9]+)");
@@ -128,25 +164,38 @@ public class ScreenshotPlugin extends Plugin
 			return TIME_FORMAT.format(date);
 		}
 	}
+=======
+	static final DateFormat TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+
+	private static final Pattern NUMBER_PATTERN = Pattern.compile("([0-9]+)");
+	private static final Pattern LEVEL_UP_PATTERN = Pattern.compile("Your ([a-zA-Z]+) (?:level is|are)? now (\\d+)\\.");
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	private String clueType;
 	private Integer clueNumber;
 
 	private Integer barrowsNumber;
 
+<<<<<<< HEAD
 	private Integer chambersOfXericNumber;
 
 	private Integer theatreOfBloodNumber;
 
 	private boolean shouldTakeScreenshot;
+=======
+	private Integer raidsNumber;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Inject
 	private ScreenshotConfig config;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private ScreenshotOverlay screenshotOverlay;
 
 	@Inject
@@ -165,6 +214,12 @@ public class ScreenshotPlugin extends Plugin
 	private DrawManager drawManager;
 
 	@Inject
+<<<<<<< HEAD
+=======
+	private ScreenshotInput inputListener;
+
+	@Inject
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private ScheduledExecutorService executor;
 
 	@Inject
@@ -172,6 +227,7 @@ public class ScreenshotPlugin extends Plugin
 
 	private NavigationButton titleBarButton;
 
+<<<<<<< HEAD
 	private final HotkeyListener hotkeyListener = new HotkeyListener(() -> config.hotkey())
 	{
 		@Override
@@ -181,6 +237,8 @@ public class ScreenshotPlugin extends Plugin
 		}
 	};
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Provides
 	ScreenshotConfig getConfig(ConfigManager configManager)
 	{
@@ -188,11 +246,24 @@ public class ScreenshotPlugin extends Plugin
 	}
 
 	@Override
+<<<<<<< HEAD
 	protected void startUp() throws Exception
 	{
 		overlayManager.add(screenshotOverlay);
 		SCREENSHOT_DIR.mkdirs();
 		keyManager.registerKeyListener(hotkeyListener);
+=======
+	public Overlay getOverlay()
+	{
+		return screenshotOverlay;
+	}
+
+	@Override
+	protected void startUp() throws Exception
+	{
+		SCREENSHOT_DIR.mkdirs();
+		keyManager.registerKeyListener(inputListener);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 		try
 		{
@@ -205,7 +276,11 @@ public class ScreenshotPlugin extends Plugin
 			titleBarButton = NavigationButton.builder()
 				.tooltip("Take screenshot")
 				.icon(iconImage)
+<<<<<<< HEAD
 				.onClick(() -> takeScreenshot(format(new Date())))
+=======
+				.onClick(() -> takeScreenshot(TIME_FORMAT.format(new Date())))
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				.popup(ImmutableMap
 					.<String, Runnable>builder()
 					.put("Open screenshot folder...", () ->
@@ -234,6 +309,7 @@ public class ScreenshotPlugin extends Plugin
 	@Override
 	protected void shutDown() throws Exception
 	{
+<<<<<<< HEAD
 		overlayManager.remove(screenshotOverlay);
 		titleToolbar.removeNavigation(titleBarButton);
 		keyManager.unregisterKeyListener(hotkeyListener);
@@ -269,6 +345,10 @@ public class ScreenshotPlugin extends Plugin
 		{
 			takeScreenshot(fileName);
 		}
+=======
+		titleToolbar.removeNavigation(titleBarButton);
+		keyManager.unregisterKeyListener(inputListener);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe
@@ -307,6 +387,7 @@ public class ScreenshotPlugin extends Plugin
 			Matcher m = NUMBER_PATTERN.matcher(Text.removeTags(chatMessage));
 			if (m.find())
 			{
+<<<<<<< HEAD
 				chambersOfXericNumber = Integer.valueOf(m.group());
 				return;
 			}
@@ -331,11 +412,30 @@ public class ScreenshotPlugin extends Plugin
 		if (config.screenshotKills() && KILL_MESSAGES.stream().anyMatch(chatMessage::contains))
 		{
 			String fileName = "Kill " + format(new Date());
+=======
+				raidsNumber = Integer.valueOf(m.group());
+				return;
+			}
+		}
+	}
+
+	@Subscribe
+	public void loadWidgets(WidgetLoaded event)
+	{
+		if (!config.screenshotKingdom())
+		{
+			return;
+		}
+		if (event.getGroupId() == WidgetID.KINGDOM_GROUP_ID)
+		{
+			String fileName = "Kingdom " + LocalDate.now();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			takeScreenshot(fileName);
 		}
 	}
 
 	@Subscribe
+<<<<<<< HEAD
 	public void onWidgetLoaded(WidgetLoaded event)
 	{
 		String fileName;
@@ -353,6 +453,19 @@ public class ScreenshotPlugin extends Plugin
 					return;
 				}
 				break;
+=======
+	public void hideWidgets(WidgetHiddenChanged event)
+	{
+		Widget widget = event.getWidget();
+
+		if (widget.isHidden())
+		{
+			return;
+		}
+
+		switch (TO_GROUP(widget.getId()))
+		{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			case LEVEL_UP_GROUP_ID:
 			case DIALOG_SPRITE_GROUP_ID:
 				if (!config.screenshotLevels())
@@ -360,14 +473,23 @@ public class ScreenshotPlugin extends Plugin
 					return;
 				}
 				break;
+<<<<<<< HEAD
 			case KINGDOM_GROUP_ID:
 				if (!config.screenshotKingdom())
+=======
+			case QUEST_COMPLETED_GROUP_ID:
+			case CLUE_SCROLL_REWARD_GROUP_ID:
+			case BARROWS_REWARD_GROUP_ID:
+			case RAIDS_REWARD_GROUP_ID:
+				if (!config.screenshotRewards())
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				{
 					return;
 				}
 				break;
 		}
 
+<<<<<<< HEAD
 		switch (groupId)
 		{
 			case KINGDOM_GROUP_ID:
@@ -379,10 +501,32 @@ public class ScreenshotPlugin extends Plugin
 			case CHAMBERS_OF_XERIC_REWARD_GROUP_ID:
 			{
 				if (chambersOfXericNumber == null)
+=======
+		String fileName;
+
+		switch (TO_GROUP(widget.getId()))
+		{
+			case LEVEL_UP_GROUP_ID:
+			{
+				fileName = parseLevelUpWidget(WidgetInfo.LEVEL_UP_LEVEL);
+				break;
+			}
+			case DIALOG_SPRITE_GROUP_ID:
+			{
+				fileName = parseLevelUpWidget(WidgetInfo.DIALOG_SPRITE_TEXT);
+				break;
+			}
+			case QUEST_COMPLETED_GROUP_ID:
+			{
+				Widget textChild = client.getWidget(WidgetInfo.QUEST_COMPLETED_NAME_TEXT);
+
+				if (textChild == null)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				{
 					return;
 				}
 
+<<<<<<< HEAD
 				fileName = "Chambers of Xeric(" + chambersOfXericNumber + ")";
 				chambersOfXericNumber = null;
 				break;
@@ -390,12 +534,29 @@ public class ScreenshotPlugin extends Plugin
 			case THEATRE_OF_BLOOD_REWARD_GROUP_ID:
 			{
 				if (theatreOfBloodNumber == null)
+=======
+				// "You have completed The Corsair Curse!"
+				String text = textChild.getText();
+
+				fileName = text.substring(19, text.length() - 1);
+				break;
+			}
+			case CLUE_SCROLL_REWARD_GROUP_ID:
+			{
+				if (clueType == null || clueNumber == null)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				{
 					return;
 				}
 
+<<<<<<< HEAD
 				fileName = "Theatre of Blood(" + theatreOfBloodNumber + ")";
 				theatreOfBloodNumber = null;
+=======
+				fileName = Character.toUpperCase(clueType.charAt(0)) + clueType.substring(1) + "(" + clueNumber + ")";
+				clueType = null;
+				clueNumber = null;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				break;
 			}
 			case BARROWS_REWARD_GROUP_ID:
@@ -409,6 +570,7 @@ public class ScreenshotPlugin extends Plugin
 				barrowsNumber = null;
 				break;
 			}
+<<<<<<< HEAD
 			case LEVEL_UP_GROUP_ID:
 			case DIALOG_SPRITE_GROUP_ID:
 			case QUEST_COMPLETED_GROUP_ID:
@@ -420,19 +582,37 @@ public class ScreenshotPlugin extends Plugin
 			case CLUE_SCROLL_REWARD_GROUP_ID:
 			{
 				if (clueType == null || clueNumber == null)
+=======
+			case RAIDS_REWARD_GROUP_ID:
+			{
+				if (raidsNumber == null)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				{
 					return;
 				}
 
+<<<<<<< HEAD
 				fileName = Character.toUpperCase(clueType.charAt(0)) + clueType.substring(1) + "(" + clueNumber + ")";
 				clueType = null;
 				clueNumber = null;
+=======
+				fileName = "Raids(" + raidsNumber + ")";
+				raidsNumber = null;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				break;
 			}
 			default:
 				return;
 		}
 
+<<<<<<< HEAD
+=======
+		if (fileName == null)
+		{
+			return;
+		}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		takeScreenshot(fileName);
 	}
 
@@ -478,11 +658,19 @@ public class ScreenshotPlugin extends Plugin
 			return;
 		}
 
+<<<<<<< HEAD
 		Consumer<Image> screenshotConsumer = image ->
 		{
 			BufferedImage screenshot = config.includeFrame()
 				? new BufferedImage(clientUi.getWidth(), clientUi.getHeight(), BufferedImage.TYPE_INT_ARGB)
 				: new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+=======
+		Consumer<BufferedImage> screenshotConsumer = image ->
+		{
+			BufferedImage screenshot = config.includeFrame()
+				? new BufferedImage(clientUi.getWidth(), clientUi.getHeight(), BufferedImage.TYPE_INT_ARGB)
+				: new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 			Graphics graphics = screenshot.getGraphics();
 
@@ -506,6 +694,7 @@ public class ScreenshotPlugin extends Plugin
 			File playerFolder;
 			if (client.getLocalPlayer() != null && client.getLocalPlayer().getName() != null)
 			{
+<<<<<<< HEAD
 				final EnumSet<WorldType> worldTypes = client.getWorldType();
 				final boolean dmm = worldTypes.contains(WorldType.DEADMAN);
 				final boolean sdmm = worldTypes.contains(WorldType.SEASONAL_DEADMAN);
@@ -517,6 +706,9 @@ public class ScreenshotPlugin extends Plugin
 					playerDir += "-Deadman";
 				}
 				playerFolder = new File(SCREENSHOT_DIR, playerDir);
+=======
+				playerFolder = new File(SCREENSHOT_DIR, client.getLocalPlayer().getName());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			}
 			else
 			{
@@ -629,6 +821,7 @@ public class ScreenshotPlugin extends Plugin
 	}
 
 	@VisibleForTesting
+<<<<<<< HEAD
 	int getChambersOfXericNumber()
 	{
 		return chambersOfXericNumber;
@@ -638,5 +831,10 @@ public class ScreenshotPlugin extends Plugin
 	int gettheatreOfBloodNumber()
 	{
 		return theatreOfBloodNumber;
+=======
+	int getRaidsNumber()
+	{
+		return raidsNumber;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

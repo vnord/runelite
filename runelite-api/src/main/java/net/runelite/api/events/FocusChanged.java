@@ -26,6 +26,7 @@ package net.runelite.api.events;
 
 import lombok.Data;
 
+<<<<<<< HEAD
 /**
  * An event where the focus state of the client changes.
  * <p>
@@ -42,5 +43,10 @@ public class FocusChanged
 	/**
 	 * The new focus state.
 	 */
+=======
+@Data
+public class FocusChanged
+{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private boolean focused;
 }

@@ -38,11 +38,15 @@ import net.runelite.client.ui.ClientUI;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.ui.PluginToolbar;
 
+<<<<<<< HEAD
 @PluginDescriptor(
 	name = "Skill Calculator",
 	description = "Enable the Skill Calculator panel",
 	tags = {"panel", "skilling"}
 )
+=======
+@PluginDescriptor(name = "Skill Calculator")
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public class SkillCalculatorPlugin extends Plugin
 {
 	@Inject
@@ -79,12 +83,16 @@ public class SkillCalculatorPlugin extends Plugin
 		SkillCalculator.itemManager = itemManager;
 
 		uiPanel = new SkillCalculatorPanel(skillIconManager, client);
+<<<<<<< HEAD
 		uiNavigationButton = NavigationButton.builder()
 			.tooltip("Skill Calculator")
 			.icon(icon)
 			.priority(6)
 			.panel(uiPanel)
 			.build();
+=======
+		uiNavigationButton = NavigationButton.builder().name("Skill Calculator").icon(icon).panel(uiPanel).build();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		pluginToolbar.addNavigation(uiNavigationButton);
 	}
 

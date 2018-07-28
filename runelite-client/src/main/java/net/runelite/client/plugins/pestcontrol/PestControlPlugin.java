@@ -27,16 +27,24 @@ package net.runelite.client.plugins.pestcontrol;
 import javax.inject.Inject;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
 	name = "Pest Control",
 	description = "Show helpful information for the Pest Control minigame",
 	tags = {"minigame", "overlay"}
+=======
+import net.runelite.client.ui.overlay.Overlay;
+
+@PluginDescriptor(
+	name = "Pest Control"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 public class PestControlPlugin extends Plugin
 {
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
@@ -52,5 +60,13 @@ public class PestControlPlugin extends Plugin
 	protected void shutDown() throws Exception
 	{
 		overlayManager.remove(overlay);
+=======
+	private PestControlOverlay overlay;
+
+	@Override
+	public Overlay getOverlay()
+	{
+		return overlay;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

@@ -43,12 +43,19 @@ import net.runelite.client.plugins.PluginDependency;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.xptracker.XpTrackerPlugin;
 import net.runelite.client.task.Schedule;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
 	name = "XP Globes",
 	description = "Show XP globes for the respective skill when gaining XP",
 	tags = {"experience", "levels", "overlay"}
+=======
+import net.runelite.client.ui.overlay.Overlay;
+
+@PluginDescriptor(
+	name = "XP Globes"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 @PluginDependency(XpTrackerPlugin.class)
 public class XpGlobesPlugin extends Plugin
@@ -65,9 +72,12 @@ public class XpGlobesPlugin extends Plugin
 	private XpGlobesConfig config;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private XpGlobesOverlay overlay;
 
 	@Provides
@@ -77,6 +87,7 @@ public class XpGlobesPlugin extends Plugin
 	}
 
 	@Override
+<<<<<<< HEAD
 	protected void startUp() throws Exception
 	{
 		overlayManager.add(overlay);
@@ -86,6 +97,11 @@ public class XpGlobesPlugin extends Plugin
 	protected void shutDown() throws Exception
 	{
 		overlayManager.remove(overlay);
+=======
+	public Overlay getOverlay()
+	{
+		return overlay;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe
@@ -131,8 +147,16 @@ public class XpGlobesPlugin extends Plugin
 
 	public void addXpGlobe(XpGlobe xpGlobe, int maxLength)
 	{
+<<<<<<< HEAD
 		//remove the old globe, allowing it to be readded as the most recent (right) side when drawn
 		xpGlobes.remove(xpGlobe);
+=======
+		if (xpGlobes.contains(xpGlobe))
+		{
+			//remove the old globe, allowing it to be readded as the most recent (right) side when drawn
+			xpGlobes.remove(xpGlobe);
+		}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		if (getXpGlobesSize() >= maxLength)
 		{
 			xpGlobes.remove(0);

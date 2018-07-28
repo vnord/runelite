@@ -39,12 +39,18 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Proxy;
+<<<<<<< HEAD
 import java.time.Instant;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+<<<<<<< HEAD
 import java.util.Objects;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.Properties;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.stream.Collectors;
@@ -185,7 +191,11 @@ public class ConfigManager
 		{
 			log.debug("Unable to load settings - no such file");
 		}
+<<<<<<< HEAD
 		catch (IllegalArgumentException | IOException ex)
+=======
+		catch (IOException ex)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			log.warn("Unable to load settings", ex);
 		}
@@ -195,7 +205,11 @@ public class ConfigManager
 			Map<String, String> copy = (Map) ImmutableMap.copyOf(properties);
 			copy.forEach((groupAndKey, value) ->
 			{
+<<<<<<< HEAD
 				final String[] split = groupAndKey.split("\\.", 2);
+=======
+				final String[] split = ((String) groupAndKey).split("\\.", 2);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				if (split.length != 2)
 				{
 					log.debug("Properties key malformed!: {}", groupAndKey);
@@ -209,7 +223,11 @@ public class ConfigManager
 				configChanged.setGroup(groupName);
 				configChanged.setKey(key);
 				configChanged.setOldValue(null);
+<<<<<<< HEAD
 				configChanged.setNewValue(value);
+=======
+				configChanged.setNewValue((String) value);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				eventBus.post(configChanged);
 			});
 		}
@@ -254,6 +272,7 @@ public class ConfigManager
 		String value = getConfiguration(groupName, key);
 		if (!Strings.isNullOrEmpty(value))
 		{
+<<<<<<< HEAD
 			try
 			{
 				return (T) stringToObject(value, clazz);
@@ -262,6 +281,9 @@ public class ConfigManager
 			{
 				log.warn("Unable to unmarshal {}.{} ", groupName, key, e);
 			}
+=======
+			return (T) stringToObject(value, clazz);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 		return null;
 	}
@@ -274,7 +296,23 @@ public class ConfigManager
 
 		if (client != null)
 		{
+<<<<<<< HEAD
 			client.set(groupName + "." + key, value);
+=======
+			Runnable task = () ->
+			{
+				try
+				{
+					client.set(groupName + "." + key, value);
+				}
+				catch (IOException ex)
+				{
+					log.warn("unable to set configuration item", ex);
+				}
+			};
+			executor.execute(task);
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 
 		Runnable task = () ->
@@ -312,7 +350,23 @@ public class ConfigManager
 
 		if (client != null)
 		{
+<<<<<<< HEAD
 			client.unset(groupName + "." + key);
+=======
+			final Runnable task = () ->
+			{
+				try
+				{
+					client.unset(groupName + "." + key);
+				}
+				catch (IOException ex)
+				{
+					log.warn("unable to set configuration item", ex);
+				}
+			};
+
+			executor.execute(task);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 
 		Runnable task = () ->
@@ -359,7 +413,10 @@ public class ConfigManager
 
 	/**
 	 * Initialize the configuration from the default settings
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	 * @param proxy
 	 */
 	public void setDefaultConfiguration(Object proxy, boolean override)
@@ -376,6 +433,7 @@ public class ConfigManager
 		{
 			ConfigItem item = method.getAnnotation(ConfigItem.class);
 
+<<<<<<< HEAD
 			// only apply default configuration for methods which read configuration (0 args)
 			if (item == null || method.getParameterCount() != 0)
 			{
@@ -393,12 +451,20 @@ public class ConfigManager
 						unsetConfiguration(group.value(), item.keyName());
 					}
 				}
+=======
+			if (item == null || !method.isDefault())
+			{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				continue;
 			}
 
 			if (!override)
 			{
+<<<<<<< HEAD
 				String current = getConfiguration(group.value(), item.keyName());
+=======
+				String current = getConfiguration(group.keyName(), item.keyName());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				if (current != null)
 				{
 					continue; // something else is already set
@@ -416,6 +482,7 @@ public class ConfigManager
 				continue;
 			}
 
+<<<<<<< HEAD
 			String current = getConfiguration(group.value(), item.keyName());
 			String valueString = objectToString(defaultValue);
 			if (Objects.equals(current, valueString))
@@ -426,6 +493,12 @@ public class ConfigManager
 			log.debug("Setting default configuration value for {}.{} to {}", group.value(), item.keyName(), defaultValue);
 
 			setConfiguration(group.value(), item.keyName(), valueString);
+=======
+			log.debug("Setting default configuration value for {}.{} to {}", group.keyName(), item.keyName(), defaultValue);
+
+			String valueString = objectToString(defaultValue);
+			setConfiguration(group.keyName(), item.keyName(), valueString);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -460,7 +533,11 @@ public class ConfigManager
 		if (type == Rectangle.class)
 		{
 			String[] splitStr = str.split(":");
+<<<<<<< HEAD
 			int x = Integer.parseInt(splitStr[0]);
+=======
+			int x  = Integer.parseInt(splitStr[0]);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			int y = Integer.parseInt(splitStr[1]);
 			int width = Integer.parseInt(splitStr[2]);
 			int height = Integer.parseInt(splitStr[3]);
@@ -470,6 +547,7 @@ public class ConfigManager
 		{
 			return Enum.valueOf((Class<? extends Enum>) type, str);
 		}
+<<<<<<< HEAD
 		if (type == Instant.class)
 		{
 			return Instant.parse(str);
@@ -481,6 +559,8 @@ public class ConfigManager
 			int mods = Integer.parseInt(splitStr[1]);
 			return new Keybind(code, mods);
 		}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		return str;
 	}
 
@@ -506,6 +586,7 @@ public class ConfigManager
 		}
 		if (object instanceof Rectangle)
 		{
+<<<<<<< HEAD
 			Rectangle r = (Rectangle) object;
 			return r.x + ":" + r.y + ":" + r.width + ":" + r.height;
 		}
@@ -518,6 +599,11 @@ public class ConfigManager
 			Keybind k = (Keybind) object;
 			return k.getKeyCode() + ":" + k.getModifiers();
 		}
+=======
+			Rectangle r = (Rectangle)object;
+			return r.x + ":" + r.y + ":" + r.width + ":" + r.height;
+		}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		return object.toString();
 	}
 }

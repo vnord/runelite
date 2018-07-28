@@ -25,13 +25,18 @@
 package net.runelite.client.ui.overlay.infobox;
 
 import java.awt.Color;
+<<<<<<< HEAD
 import java.awt.Image;
+=======
+import java.awt.image.BufferedImage;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import lombok.Getter;
 import lombok.Setter;
 import net.runelite.client.plugins.Plugin;
 
 public abstract class InfoBox
 {
+<<<<<<< HEAD
 	@Getter
 	private final Plugin plugin;
 
@@ -42,11 +47,18 @@ public abstract class InfoBox
 	@Getter
 	@Setter
 	private Image scaledImage;
+=======
+	private final BufferedImage image;
+
+	@Getter
+	private final Plugin plugin;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Getter
 	@Setter
 	private InfoBoxPriority priority;
 
+<<<<<<< HEAD
 	@Getter
 	@Setter
 	private String tooltip;
@@ -58,6 +70,22 @@ public abstract class InfoBox
 		setPriority(InfoBoxPriority.NONE);
 	}
 
+=======
+	private String tooltip;
+
+	public InfoBox(BufferedImage image, Plugin plugin)
+	{
+		this.image = image;
+		this.plugin = plugin;
+		setPriority(InfoBoxPriority.NONE);
+	}
+
+	public BufferedImage getImage()
+	{
+		return image;
+	}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public abstract String getText();
 
 	public abstract Color getTextColor();
@@ -71,4 +99,17 @@ public abstract class InfoBox
 	{
 		return false;
 	}
+<<<<<<< HEAD
+=======
+
+	public String getTooltip()
+	{
+		return tooltip;
+	}
+
+	public void setTooltip(String tooltip)
+	{
+		this.tooltip = tooltip;
+	}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

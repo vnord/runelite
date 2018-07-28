@@ -82,11 +82,17 @@ class XpState
 	 * and also first-login when the skills are not initialized (the start XP will be -1 in this case).
 	 * @param skill Skill to update
 	 * @param currentXp Current known XP for this skill
+<<<<<<< HEAD
 	 * @param goalStartXp Possible XP start goal
 	 * @param goalEndXp Possible XP end goal
 	 * @return Whether or not the skill has been initialized, there was no change, or it has been updated
 	 */
 	XpUpdateResult updateSkill(Skill skill, int currentXp, int goalStartXp, int goalEndXp)
+=======
+	 * @return Whether or not the skill has been initialized, there was no change, or it has been updated
+	 */
+	XpUpdateResult updateSkill(Skill skill, int currentXp)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		XpStateSingle state = getSkill(skill);
 
@@ -115,16 +121,23 @@ class XpState
 			}
 			else
 			{
+<<<<<<< HEAD
 				return state.update(currentXp, goalStartXp, goalEndXp) ? XpUpdateResult.UPDATED : XpUpdateResult.NO_CHANGE;
+=======
+				return state.update(currentXp) ? XpUpdateResult.UPDATED : XpUpdateResult.NO_CHANGE;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			}
 		}
 	}
 
+<<<<<<< HEAD
 	void tick(Skill skill, long delta)
 	{
 		getSkill(skill).tick(delta);
 	}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	/**
 	 * Forcefully initialize a skill with a known start XP from the current XP.
 	 * This is used in resetAndInitState by the plugin. It should not result in showing the XP in the UI.

@@ -28,6 +28,10 @@ import com.google.common.eventbus.Subscribe;
 import com.google.inject.Binder;
 import javax.inject.Inject;
 import net.runelite.api.events.GameStateChanged;
+<<<<<<< HEAD
+=======
+import net.runelite.api.events.MapRegionChanged;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.events.WidgetMenuOptionClicked;
 import net.runelite.api.widgets.WidgetInfo;
 import static net.runelite.api.widgets.WidgetInfo.WORLD_MAP_OPTION;
@@ -37,11 +41,18 @@ import net.runelite.client.menus.MenuManager;
 import net.runelite.client.menus.WidgetMenuOption;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
 	name = "Instance Map",
 	description = "Add an instanced map, accessible by right-clicking the map button"
+=======
+import net.runelite.client.ui.overlay.Overlay;
+
+@PluginDescriptor(
+	name = "Instance Map"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 public class InstanceMapPlugin extends Plugin
 {
@@ -51,9 +62,12 @@ public class InstanceMapPlugin extends Plugin
 	private InstanceMapInputListener inputListener;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private InstanceMapOverlay overlay;
 
 	@Inject
@@ -84,7 +98,10 @@ public class InstanceMapPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
+<<<<<<< HEAD
 		overlayManager.add(overlay);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		addCustomOptions();
 		keyManager.registerKeyListener(inputListener);
 		mouseManager.registerMouseListener(inputListener);
@@ -94,7 +111,10 @@ public class InstanceMapPlugin extends Plugin
 	@Override
 	protected void shutDown() throws Exception
 	{
+<<<<<<< HEAD
 		overlayManager.remove(overlay);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		removeCustomOptions();
 		keyManager.unregisterKeyListener(inputListener);
 		mouseManager.registerMouseListener(inputListener);
@@ -102,6 +122,15 @@ public class InstanceMapPlugin extends Plugin
 	}
 
 	@Subscribe
+<<<<<<< HEAD
+=======
+	public void regionChange(MapRegionChanged event)
+	{
+		overlay.onRegionChange(event);
+	}
+
+	@Subscribe
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public void gameStateChange(GameStateChanged event)
 	{
 		overlay.onGameStateChange(event);
@@ -133,6 +162,15 @@ public class InstanceMapPlugin extends Plugin
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	@Override
+	public Overlay getOverlay()
+	{
+		return overlay;
+	}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public void showMap()
 	{
 		overlay.setShowMap(true);

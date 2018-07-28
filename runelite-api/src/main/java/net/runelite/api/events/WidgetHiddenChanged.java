@@ -27,6 +27,7 @@ package net.runelite.api.events;
 import lombok.Data;
 import net.runelite.api.widgets.Widget;
 
+<<<<<<< HEAD
 /**
  * An event where the hidden state of a {@link Widget} has been modified.
  */
@@ -40,5 +41,11 @@ public class WidgetHiddenChanged
 	/**
 	 * The new hidden state of the widget.
 	 */
+=======
+@Data
+public class WidgetHiddenChanged
+{
+	private Widget widget;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private boolean hidden;
 }

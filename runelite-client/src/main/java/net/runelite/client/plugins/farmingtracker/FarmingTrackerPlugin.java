@@ -48,9 +48,13 @@ import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.ui.PluginToolbar;
 
 @PluginDescriptor(
+<<<<<<< HEAD
 	name = "Farming Tracker",
 	description = "Show when your farming plots would be fully grown",
 	tags = {"skilling", "panel", "timers"}
+=======
+	name = "Farming Tracker"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 @Slf4j
 public class FarmingTrackerPlugin extends Plugin
@@ -97,10 +101,16 @@ public class FarmingTrackerPlugin extends Plugin
 		panel = new FarmingTrackerPanel(client, itemManager, configManager, config, farmingWorld);
 
 		navButton = NavigationButton.builder()
+<<<<<<< HEAD
 			.tooltip("Farming Tracker")
 			.icon(icon)
 			.panel(panel)
 			.priority(4)
+=======
+			.name("Farming Tracker")
+			.icon(icon)
+			.panel(panel)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			.build();
 
 		pluginToolbar.addNavigation(navButton);

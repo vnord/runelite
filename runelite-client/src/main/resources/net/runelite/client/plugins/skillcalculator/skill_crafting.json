@@ -380,7 +380,11 @@
     },
     {
       "level": 67,
+<<<<<<< HEAD
       "icon": 6575,
+=======
+      "icon": 6564,
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
       "name": "Onyx Ring",
       "xp": 115
     },
@@ -500,7 +504,11 @@
     },
     {
       "level": 89,
+<<<<<<< HEAD
       "icon": 19538,
+=======
+      "icon": 19499,
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
       "name": "Zenyte Ring",
       "xp": 150
     },
@@ -518,7 +526,11 @@
     },
     {
       "level": 92,
+<<<<<<< HEAD
       "icon": 19535,
+=======
+      "icon": 19500,
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
       "name": "Zenyte Necklace",
       "xp": 165
     },

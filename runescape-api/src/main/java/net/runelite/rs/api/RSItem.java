@@ -25,7 +25,10 @@
 package net.runelite.rs.api;
 
 import net.runelite.api.Item;
+<<<<<<< HEAD
 import net.runelite.api.Tile;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.mapping.Import;
 
 public interface RSItem extends RSRenderable, Item
@@ -43,6 +46,7 @@ public interface RSItem extends RSRenderable, Item
 
 	@Import("quantity")
 	void setQuantity(int quantity);
+<<<<<<< HEAD
 
 	int getX();
 
@@ -57,4 +61,6 @@ public interface RSItem extends RSRenderable, Item
 	 * @return
 	 */
 	Tile getTile();
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

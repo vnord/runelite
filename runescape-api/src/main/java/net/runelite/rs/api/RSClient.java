@@ -131,11 +131,19 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	int getMouseCurrentButton();
 
+<<<<<<< HEAD
 	@Import("selectedSceneTileX")
 	int getSelectedSceneTileX();
 
 	@Import("selectedSceneTileY")
 	int getSelectedSceneTileY();
+=======
+	@Import("selectedRegionTileX")
+	int getSelectedRegionTileX();
+
+	@Import("selectedRegionTileY")
+	int getSelectedRegionTileY();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Import("draggingWidget")
 	@Override
@@ -156,6 +164,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("widgets")
 	RSWidget[][] getWidgets();
 
+<<<<<<< HEAD
 	/**
 	 * Gets an array of widgets that correspond to the passed group ID.
 	 *
@@ -168,6 +177,11 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("scene")
 	@Override
 	RSScene getScene();
+=======
+	@Import("region")
+	@Override
+	RSRegion getRegion();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Import("localPlayer")
 	@Override
@@ -460,8 +474,13 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("lowMemory")
 	void setLowMemory(boolean lowMemory);
 
+<<<<<<< HEAD
 	@Import("sceneLowMemory")
 	void setSceneLowMemory(boolean lowMemory);
+=======
+	@Import("regionLowMemory")
+	void setRegionLowMemory(boolean lowMemory);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Import("audioHighMemory")
 	void setAudioHighMemory(boolean highMemory);
@@ -630,6 +649,7 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("flags")
 	int getFlags();
+<<<<<<< HEAD
 
 	@Import("compass")
 	void setCompass(SpritePixels spritePixels);
@@ -657,4 +677,6 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("revalidateWidgetScroll")
 	void revalidateWidgetScroll(Widget[] group, Widget w, boolean postEvent);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

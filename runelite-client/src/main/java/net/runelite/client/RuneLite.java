@@ -31,16 +31,26 @@ import com.google.common.eventbus.EventBus;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
+<<<<<<< HEAD
 import java.io.File;
 import java.util.Locale;
 import javax.annotation.Nullable;
 import javax.inject.Provider;
+=======
+import com.google.inject.Provider;
+import java.applet.Applet;
+import java.io.File;
+import java.util.Locale;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import javax.inject.Singleton;
 import joptsimple.ArgumentAcceptingOptionSpec;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 import joptsimple.util.EnumConverter;
+<<<<<<< HEAD
 import lombok.Getter;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.client.account.SessionManager;
@@ -52,6 +62,7 @@ import net.runelite.client.game.ClanManager;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.menus.MenuManager;
 import net.runelite.client.plugins.PluginManager;
+<<<<<<< HEAD
 import net.runelite.client.rs.ClientUpdateCheckMode;
 import net.runelite.client.ui.ClientUI;
 import net.runelite.client.ui.DrawManager;
@@ -62,6 +73,12 @@ import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 import net.runelite.client.ui.overlay.infobox.InfoBoxOverlay;
 import net.runelite.client.ui.overlay.tooltip.TooltipOverlay;
 import net.runelite.client.ui.overlay.worldmap.WorldMapOverlay;
+=======
+import net.runelite.client.ui.ClientUI;
+import net.runelite.client.ui.DrawManager;
+import net.runelite.client.ui.TitleToolbar;
+import net.runelite.client.ui.overlay.OverlayRenderer;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
@@ -75,8 +92,13 @@ public class RuneLite
 	private static final File LOGS_DIR = new File(RUNELITE_DIR, "logs");
 	private static final File LOGS_FILE_NAME = new File(LOGS_DIR, "application");
 
+<<<<<<< HEAD
 	@Getter
 	private static Injector injector;
+=======
+	private static Injector injector;
+	private static OptionSet options;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Inject
 	private PluginManager pluginManager;
@@ -115,6 +137,7 @@ public class RuneLite
 	private ClientUI clientUI;
 
 	@Inject
+<<<<<<< HEAD
 	private Provider<ItemManager> itemManager;
 
 	@Inject
@@ -138,11 +161,23 @@ public class RuneLite
 	@Inject
 	@Nullable
 	private Client client;
+=======
+	private TitleToolbar titleToolbar;
+
+	@Inject
+	private Provider<ItemManager> itemManager;
+
+	@Inject
+	private ClanManager clanManager;
+
+	Client client;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	public static void main(String[] args) throws Exception
 	{
 		Locale.setDefault(Locale.ENGLISH);
 
+<<<<<<< HEAD
 		final OptionParser parser = new OptionParser();
 		parser.accepts("developer-mode", "Enable developer tools");
 		parser.accepts("debug", "Show extra debugging output");
@@ -156,20 +191,41 @@ public class RuneLite
 			{
 				@Override
 				public ClientUpdateCheckMode convert(String v)
+=======
+		OptionParser parser = new OptionParser();
+		parser.accepts("developer-mode", "Enable developer tools");
+		parser.accepts("debug", "Show extra debugging output");
+		ArgumentAcceptingOptionSpec<UpdateCheckMode> updateMode = parser.accepts("rs", "Select client type")
+			.withRequiredArg()
+			.ofType(UpdateCheckMode.class)
+			.defaultsTo(UpdateCheckMode.AUTO)
+			.withValuesConvertedBy(new EnumConverter<UpdateCheckMode>(UpdateCheckMode.class)
+			{
+				@Override
+				public UpdateCheckMode convert(String v)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				{
 					return super.convert(v.toUpperCase());
 				}
 			});
+<<<<<<< HEAD
 
 		parser.accepts("help", "Show this text").forHelp();
 		OptionSet options = parser.parse(args);
 
 		if (options.has("help"))
+=======
+		parser.accepts("help", "Show this text").forHelp();
+		setOptions(parser.parse(args));
+
+		if (getOptions().has("help"))
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			parser.printHelpOn(System.out);
 			System.exit(0);
 		}
 
+<<<<<<< HEAD
 		final boolean developerMode = options.has("developer-mode");
 
 		if (developerMode && RuneLiteProperties.getLauncherVersion() == null)
@@ -182,6 +238,8 @@ public class RuneLite
 			}
 		}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		PROFILES_DIR.mkdirs();
 
 		// Setup logger
@@ -202,6 +260,7 @@ public class RuneLite
 			}
 		});
 
+<<<<<<< HEAD
 		injector = Guice.createInjector(new RuneLiteModule(
 			options.valueOf(updateMode),
 			developerMode));
@@ -218,6 +277,42 @@ public class RuneLite
 		{
 			// Inject members into client
 			injector.injectMembers(client);
+=======
+		setInjector(Guice.createInjector(new RuneLiteModule()));
+		injector.getInstance(RuneLite.class).start(getOptions().valueOf(updateMode));
+	}
+
+	public void start(UpdateCheckMode updateMode) throws Exception
+	{
+		// Load RuneLite or Vanilla client
+		final Applet client = new ClientLoader().loadRs(updateMode);
+
+		final boolean isOutdated = !(client instanceof Client);
+
+		if (!isOutdated)
+		{
+			this.client = (Client) client;
+		}
+
+		// Initialize UI
+		clientUI.init(client);
+
+		// Initialize Discord service
+		discordService.init();
+
+		// Register event listeners
+		eventBus.register(clientUI);
+		eventBus.register(overlayRenderer);
+		eventBus.register(drawManager);
+		eventBus.register(menuManager);
+		eventBus.register(chatMessageManager);
+		eventBus.register(commandManager);
+		eventBus.register(pluginManager);
+		eventBus.register(clanManager);
+		if (this.client != null)
+		{
+			eventBus.register(itemManager.get());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 
 		// Load user configuration
@@ -240,6 +335,7 @@ public class RuneLite
 		// Load the session, including saved configuration
 		sessionManager.loadSession();
 
+<<<<<<< HEAD
 		// Initialize UI
 		clientUI.open(this);
 
@@ -275,6 +371,16 @@ public class RuneLite
 
 		// Start plugins
 		pluginManager.startCorePlugins();
+=======
+		// Start plugins
+		pluginManager.startCorePlugins();
+
+		// Refresh title toolbar
+		titleToolbar.refresh();
+
+		// Show UI after all plugins are loaded
+		clientUI.show();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	public void shutdown()
@@ -284,8 +390,34 @@ public class RuneLite
 	}
 
 	@VisibleForTesting
+<<<<<<< HEAD
+=======
+	public void setClient(Client client)
+	{
+		this.client = client;
+	}
+
+	public static Injector getInjector()
+	{
+		return injector;
+	}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static void setInjector(Injector injector)
 	{
 		RuneLite.injector = injector;
 	}
+<<<<<<< HEAD
+=======
+
+	public static OptionSet getOptions()
+	{
+		return options;
+	}
+
+	public static void setOptions(OptionSet options)
+	{
+		RuneLite.options = options;
+	}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

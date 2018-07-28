@@ -27,16 +27,23 @@ package net.runelite.mixins;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
+<<<<<<< HEAD
 import net.runelite.api.mixins.Shadow;
+=======
+import net.runelite.client.callback.Hooks;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSRunException;
 
 @Mixin(RSClient.class)
 public abstract class ProcessClientErrorMixin implements RSClient
 {
+<<<<<<< HEAD
 	@Shadow("clientInstance")
 	private static RSClient client;
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Copy("processClientError")
 	static void rs$processClientError(String string, Throwable throwable)
 	{
@@ -55,7 +62,11 @@ public abstract class ProcessClientErrorMixin implements RSClient
 				throwableToScan = ((RSRunException) throwable).getParent();
 			}
 
+<<<<<<< HEAD
 			client.getLogger().error("Game crash", throwableToScan);
+=======
+			Hooks.log.error("Game crash", throwableToScan);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 			StackTraceElement[] stackTrace = throwableToScan.getStackTrace();
 

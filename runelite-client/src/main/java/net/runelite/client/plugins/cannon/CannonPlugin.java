@@ -29,6 +29,11 @@ import com.google.inject.Provides;
 import java.awt.Color;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+<<<<<<< HEAD
+=======
+import java.util.Arrays;
+import java.util.Collection;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -57,6 +62,7 @@ import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.task.Schedule;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 
@@ -64,6 +70,13 @@ import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 	name = "Cannon",
 	description = "Show information about cannon placement and/or amount of cannonballs",
 	tags = {"combat", "notifications", "ranged", "overlay"}
+=======
+import net.runelite.client.ui.overlay.Overlay;
+import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
+
+@PluginDescriptor(
+	name = "Cannon"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 public class CannonPlugin extends Plugin
 {
@@ -98,9 +111,12 @@ public class CannonPlugin extends Plugin
 	private Notifier notifier;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private CannonOverlay cannonOverlay;
 
 	@Inject
@@ -122,17 +138,26 @@ public class CannonPlugin extends Plugin
 	}
 
 	@Override
+<<<<<<< HEAD
 	protected void startUp() throws Exception
 	{
 		overlayManager.add(cannonOverlay);
 		overlayManager.add(cannonSpotOverlay);
+=======
+	public Collection<Overlay> getOverlays()
+	{
+		return Arrays.asList(cannonOverlay, cannonSpotOverlay);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
+<<<<<<< HEAD
 		overlayManager.remove(cannonOverlay);
 		overlayManager.remove(cannonSpotOverlay);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		cannonPlaced = false;
 		cannonPosition = null;
 		cballsLeft = 0;

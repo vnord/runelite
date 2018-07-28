@@ -27,10 +27,13 @@ package net.runelite.client.plugins.menuentryswapper;
 
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Provides;
+<<<<<<< HEAD
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.Collection;
 import java.util.Collections;
 import javax.inject.Inject;
@@ -61,8 +64,11 @@ import org.apache.commons.lang3.ArrayUtils;
 
 @PluginDescriptor(
 	name = "Menu Entry Swapper",
+<<<<<<< HEAD
 	description = "Change the default option that is displayed when hovering over objects",
 	tags = {"npcs", "inventory", "items", "objects"},
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	enabledByDefault = false
 )
 public class MenuEntrySwapperPlugin extends Plugin
@@ -335,6 +341,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 		String option = Text.removeTags(event.getOption()).toLowerCase();
 		String target = Text.removeTags(event.getTarget()).toLowerCase();
 
+<<<<<<< HEAD
 
 		if (option.equals( "pickpocket" ) && shiftModifier){
 		    swap("knock-out", option, target, false);
@@ -348,6 +355,10 @@ public class MenuEntrySwapperPlugin extends Plugin
 //            swap("pickpocket", option, target, true);
             }
 
+=======
+		if (option.equals("talk-to"))
+		{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			if (config.swapPickpocket() && target.contains("h.a.m."))
 			{
 				swap("pickpocket", option, target, true);
@@ -358,7 +369,10 @@ public class MenuEntrySwapperPlugin extends Plugin
 				swap("teleport", option, target, true);
 			}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			if (config.swapBank())
 			{
 				swap("bank", option, target, true);
@@ -369,12 +383,15 @@ public class MenuEntrySwapperPlugin extends Plugin
 				swap("exchange", option, target, true);
 			}
 
+<<<<<<< HEAD
 			// make sure assignment swap is higher priority than trade swap for slayer masters
 			if (config.swapAssignment())
 			{
 				swap("assignment", option, target, true);
 			}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			if (config.swapTrade())
 			{
 				swap("trade", option, target, true);
@@ -403,11 +420,14 @@ public class MenuEntrySwapperPlugin extends Plugin
 			{
 				swap("pay", option, target, true);
 			}
+<<<<<<< HEAD
 
 			if (config.swapDecant())
 			{
 				swap("decant", option, target, true);
 			}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 		else if (config.swapTravel() && option.equals("pass") && target.equals("energy barrier"))
 		{
@@ -417,10 +437,13 @@ public class MenuEntrySwapperPlugin extends Plugin
 		{
 			swap("pay-toll(10gp)", option, target, true);
 		}
+<<<<<<< HEAD
 		else if (config.swapTravel() && option.equals("inspect") && target.equals("trapdoor"))
 		{
 			swap("travel", option, target, true);
 		}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		else if (config.swapHarpoon() && option.equals("cage"))
 		{
 			swap("harpoon", option, target, true);
@@ -429,6 +452,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 		{
 			swap("harpoon", option, target, true);
 		}
+<<<<<<< HEAD
 		else if (config.swapHomePortal() != HouseMode.ENTER && option.equals("enter"))
 		{
 			switch (config.swapHomePortal())
@@ -454,6 +478,15 @@ public class MenuEntrySwapperPlugin extends Plugin
 			{
 				swap("configure", option, target, false);
 			}
+=======
+		else if (config.swapHome() && option.equals("enter"))
+		{
+			swap("home", option, target, true);
+		}
+		else if (config.swapLastDestination() && (option.equals("zanaris") || option.equals("tree")))
+		{
+			swap("last-destination (", option, target, false);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 		else if (config.swapBoxTrap() && (option.equals("check") || option.equals("dismantle")))
 		{
@@ -463,6 +496,13 @@ public class MenuEntrySwapperPlugin extends Plugin
 		{
 			swap("lay", option, target, true);
 		}
+<<<<<<< HEAD
+=======
+		else if (config.swapCatacombEntrance() && option.equals("read"))
+		{
+			swap("investigate", option, target, true);
+		}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		else if (config.swapChase() && option.equals("pick-up"))
 		{
 			swap("chase", option, target, true);
@@ -493,6 +533,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 		{
 			swap("use", option, target, true);
 		}
+<<<<<<< HEAD
 		else if (config.swapBirdhouseEmpty() && option.equals("interact") && target.contains("birdhouse"))
 		{
 			swap("empty", option, target, true);
@@ -507,6 +548,10 @@ public class MenuEntrySwapperPlugin extends Plugin
 //        }
 //    }V
 
+=======
+	}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Subscribe
 	public void onPostItemComposition(PostItemComposition event)
 	{
@@ -567,6 +612,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 		}
 	}
 
+<<<<<<< HEAD
 	private void remove(String optionToRemove, String target)
 	{
 		MenuEntry[] entries = client.getMenuEntries();
@@ -588,6 +634,8 @@ public class MenuEntrySwapperPlugin extends Plugin
 
 	}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private void removeShiftClickCustomizationMenus()
 	{
 		menuManager.removeManagedCustomMenu(FIXED_INVENTORY_TAB_CONFIGURE);

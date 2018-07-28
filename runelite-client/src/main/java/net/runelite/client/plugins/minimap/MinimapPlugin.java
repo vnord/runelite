@@ -42,9 +42,13 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 
 @PluginDescriptor(
+<<<<<<< HEAD
 	name = "Minimap",
 	description = "Customize the color of minimap dots",
 	tags = {"items", "npcs", "players"}
+=======
+	name = "Minimap"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 public class MinimapPlugin extends Plugin
 {
@@ -67,7 +71,17 @@ public class MinimapPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
+<<<<<<< HEAD
 		updateMinimapWidgetVisibility(config.hideMinimap());
+=======
+		Widget minimapWidget = client.getWidget(WidgetInfo.MINIMAP_WIDGET);
+
+		if (minimapWidget != null)
+		{
+			minimapWidget.setHidden(config.hideMinimap());
+		}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		storeOriginalDots();
 		replaceMapDots();
 	}
@@ -75,7 +89,17 @@ public class MinimapPlugin extends Plugin
 	@Override
 	protected void shutDown() throws Exception
 	{
+<<<<<<< HEAD
 		updateMinimapWidgetVisibility(false);
+=======
+		Widget minimapWidget = client.getWidget(WidgetInfo.MINIMAP_WIDGET);
+
+		if (minimapWidget != null)
+		{
+			minimapWidget.setHidden(false);
+		}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		restoreOriginalDots();
 	}
 
@@ -89,6 +113,45 @@ public class MinimapPlugin extends Plugin
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	private Color[] getColors()
+	{
+		Color[] colors = new Color[NUM_MAPDOTS];
+		colors[0] = config.itemColor();
+		colors[1] = config.npcColor();
+		colors[2] = config.playerColor();
+		colors[3] = config.friendColor();
+		colors[4] = config.teamColor();
+		colors[5] = config.clanColor();
+		return colors;
+	}
+
+	private void storeOriginalDots()
+	{
+		SpritePixels[] originalDots = client.getMapDots();
+
+		if (originalDots == null)
+		{
+			return;
+		}
+
+		originalDotSprites = Arrays.copyOf(originalDots, originalDots.length);
+	}
+
+	private void restoreOriginalDots()
+	{
+		SpritePixels[] mapDots = client.getMapDots();
+
+		if (originalDotSprites == null || mapDots == null)
+		{
+			return;
+		}
+
+		System.arraycopy(originalDotSprites, 0, mapDots, 0, mapDots.length);
+	}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Subscribe
 	public void configChanged(ConfigChanged event)
 	{
@@ -99,7 +162,16 @@ public class MinimapPlugin extends Plugin
 
 		if (event.getKey().equals("hideMinimap"))
 		{
+<<<<<<< HEAD
 			updateMinimapWidgetVisibility(config.hideMinimap());
+=======
+			Widget minimapWidget = client.getWidget(WidgetInfo.MINIMAP_WIDGET);
+
+			if (minimapWidget != null)
+			{
+				minimapWidget.setHidden(config.hideMinimap());
+			}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			return;
 		}
 
@@ -109,6 +181,7 @@ public class MinimapPlugin extends Plugin
 	@Subscribe
 	public void onWidgetHiddenChange(WidgetHiddenChanged event)
 	{
+<<<<<<< HEAD
 		updateMinimapWidgetVisibility(config.hideMinimap());
 	}
 
@@ -133,6 +206,13 @@ public class MinimapPlugin extends Plugin
 					widget.setHidden(enable);
 				}
 			}
+=======
+		Widget minimapWidget = client.getWidget(WidgetInfo.MINIMAP_WIDGET);
+
+		if (event.getWidget() == minimapWidget)
+		{
+			minimapWidget.setHidden(config.hideMinimap());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -152,6 +232,7 @@ public class MinimapPlugin extends Plugin
 		}
 	}
 
+<<<<<<< HEAD
 	private Color[] getColors()
 	{
 		Color[] colors = new Color[NUM_MAPDOTS];
@@ -188,3 +269,6 @@ public class MinimapPlugin extends Plugin
 		System.arraycopy(originalDotSprites, 0, mapDots, 0, mapDots.length);
 	}
 }
+=======
+}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b

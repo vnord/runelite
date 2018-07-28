@@ -24,7 +24,10 @@
  */
 package net.runelite.mixins;
 
+<<<<<<< HEAD
 import java.awt.Color;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.awt.image.BufferedImage;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
@@ -69,6 +72,7 @@ public abstract class RSSpritePixelsMixin implements RSSpritePixels
 
 		img.setRGB(0, 0, width, height, transPixels, 0, width);
 	}
+<<<<<<< HEAD
 
 	@Inject
 	@Override
@@ -133,4 +137,6 @@ public abstract class RSSpritePixelsMixin implements RSSpritePixels
 
 		img.setRGB(0, 0, width, height, newPixels, 0, width);
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

@@ -25,24 +25,33 @@
 package net.runelite.mixins;
 
 import net.runelite.api.ChatMessageType;
+<<<<<<< HEAD
 import net.runelite.api.events.SetMessage;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
+=======
+import net.runelite.api.mixins.Inject;
+import net.runelite.api.mixins.Mixin;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.rs.api.RSMessageNode;
 
 @Mixin(RSMessageNode.class)
 public abstract class RSMessageNodeMixin implements RSMessageNode
 {
+<<<<<<< HEAD
 	@Shadow("clientInstance")
 	private static RSClient client;
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Inject
 	private String runeLiteFormatMessage;
 
 	@Inject
+<<<<<<< HEAD
 	RSMessageNodeMixin()
 	{
 		final SetMessage setMessage = new SetMessage();
@@ -55,6 +64,8 @@ public abstract class RSMessageNodeMixin implements RSMessageNode
 	}
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Override
 	public ChatMessageType getType()
 	{
@@ -74,6 +85,7 @@ public abstract class RSMessageNodeMixin implements RSMessageNode
 	{
 		this.runeLiteFormatMessage = runeLiteFormatMessage;
 	}
+<<<<<<< HEAD
 
 	@Inject
 	@MethodHook(value = "setMessage", end = true)
@@ -87,4 +99,6 @@ public abstract class RSMessageNodeMixin implements RSMessageNode
 		setMessage.setValue(value);
 		client.getCallbacks().post(setMessage);
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

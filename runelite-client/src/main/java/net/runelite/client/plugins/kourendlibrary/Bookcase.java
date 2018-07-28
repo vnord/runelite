@@ -34,7 +34,11 @@ import net.runelite.api.coords.WorldPoint;
 
 class Bookcase
 {
+<<<<<<< HEAD
 	Bookcase(WorldPoint location)
+=======
+	public Bookcase(WorldPoint location)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		this.location = location;
 		this.index = new ArrayList<>();
@@ -62,18 +66,27 @@ class Bookcase
 	@Getter
 	private Set<Book> possibleBooks = new HashSet<>();
 
+<<<<<<< HEAD
 	void clearBook()
+=======
+	public void clearBook()
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		book = null;
 		isBookSet = false;
 	}
 
+<<<<<<< HEAD
 	void setBook(Book book)
+=======
+	public void setBook(Book book)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		this.book = book;
 		this.isBookSet = true;
 	}
 
+<<<<<<< HEAD
 	String getLocationString()
 	{
 		StringBuilder b = new StringBuilder();
@@ -89,6 +102,14 @@ class Bookcase
 			west = location.getX() < 1627;
 		}
 
+=======
+	public String getLocationString()
+	{
+		StringBuilder b = new StringBuilder();
+
+		boolean north = location.getY() > 3815;
+		boolean west = location.getX() < 1625;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		if (north && west)
 		{
 			b.append("Northwest");

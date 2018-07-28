@@ -49,12 +49,18 @@ import net.runelite.api.events.GroundObjectSpawned;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.task.Schedule;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
 	name = "Rogues' Den",
 	description = "Mark tiles and clickboxes to help traverse the maze",
 	tags = {"agility", "maze", "minigame", "overlay", "thieving"}
+=======
+
+@PluginDescriptor(
+	name = "Rogues' Den"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 @Slf4j
 public class RoguesDenPlugin extends Plugin
@@ -72,6 +78,7 @@ public class RoguesDenPlugin extends Plugin
 	private Client client;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
@@ -87,6 +94,14 @@ public class RoguesDenPlugin extends Plugin
 	protected void shutDown() throws Exception
 	{
 		overlayManager.remove(overlay);
+=======
+	@Getter
+	private RoguesDenOverlay overlay;
+
+	@Override
+	protected void shutDown()
+	{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		obstaclesHull.clear();
 		obstaclesTile.clear();
 		hasGem = false;

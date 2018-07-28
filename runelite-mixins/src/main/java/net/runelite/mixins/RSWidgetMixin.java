@@ -28,12 +28,18 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+<<<<<<< HEAD
 import net.runelite.api.HashTable;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.Node;
 import net.runelite.api.Point;
 import net.runelite.api.WidgetNode;
 import net.runelite.api.events.WidgetHiddenChanged;
+<<<<<<< HEAD
 import net.runelite.api.events.WidgetPositioned;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
@@ -42,6 +48,10 @@ import net.runelite.api.widgets.Widget;
 import static net.runelite.api.widgets.WidgetInfo.TO_CHILD;
 import static net.runelite.api.widgets.WidgetInfo.TO_GROUP;
 import net.runelite.api.widgets.WidgetItem;
+<<<<<<< HEAD
+=======
+import static net.runelite.client.callback.Hooks.eventBus;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSHashTable;
 import net.runelite.rs.api.RSNode;
@@ -56,6 +66,7 @@ public abstract class RSWidgetMixin implements RSWidget
 	private static RSClient client;
 
 	@Inject
+<<<<<<< HEAD
 	private static int rl$widgetLastPosChanged;
 
 	@Inject
@@ -97,6 +108,8 @@ public abstract class RSWidgetMixin implements RSWidget
 	}
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Override
 	public Widget getParent()
 	{
@@ -113,6 +126,7 @@ public abstract class RSWidgetMixin implements RSWidget
 	@Override
 	public int getParentId()
 	{
+<<<<<<< HEAD
 		int rsParentId = getRSParentId();
 		if (rsParentId != -1)
 		{
@@ -154,6 +168,21 @@ public abstract class RSWidgetMixin implements RSWidget
 		RSNode[] buckets = componentTable.getBuckets();
 		for (RSNode node : buckets)
 		{
+=======
+		int parentId = getRSParentId();
+		if (parentId != -1)
+		{
+			return parentId;
+		}
+
+		int groupId = TO_GROUP(getId());
+		RSHashTable componentTable = client.getComponentTable();
+		RSNode[] buckets = componentTable.getBuckets();
+		for (int i = 0; i < buckets.length; ++i)
+		{
+			Node node = buckets[i];
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			// It looks like the first node in the bucket is always
 			// a sentinel
 			Node cur = node.getNext();
@@ -165,11 +194,17 @@ public abstract class RSWidgetMixin implements RSWidget
 				{
 					return (int) wn.getHash();
 				}
+<<<<<<< HEAD
 
 				cur = cur.getNext();
 			}
 		}
 
+=======
+				cur = cur.getNext();
+			}
+		}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		return -1;
 	}
 
@@ -198,11 +233,14 @@ public abstract class RSWidgetMixin implements RSWidget
 	@Override
 	public boolean isHidden()
 	{
+<<<<<<< HEAD
 		if (isSelfHidden())
 		{
 			return true;
 		}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		Widget parent = getParent();
 
 		if (parent == null)
@@ -220,14 +258,57 @@ public abstract class RSWidgetMixin implements RSWidget
 			return true;
 		}
 
+<<<<<<< HEAD
 		return false;
+=======
+		return isSelfHidden();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Inject
 	@Override
 	public Point getCanvasLocation()
 	{
+<<<<<<< HEAD
 		return new Point(rl$x, rl$y);
+=======
+		int x = 0;
+		int y = 0;
+		RSWidget cur;
+
+		for (cur = this; cur.getParent() != null; cur = (RSWidget) cur.getParent())
+		{
+			x += cur.getRelativeX();
+			y += cur.getRelativeY();
+
+			x -= cur.getScrollX();
+			y -= cur.getScrollY();
+		}
+
+		// cur is now the root
+		int[] widgetBoundsWidth = client.getWidgetPositionsX();
+		int[] widgetBoundsHeight = client.getWidgetPositionsY();
+
+		int boundsIndex = cur.getBoundsIndex();
+		if (boundsIndex != -1)
+		{
+			x += widgetBoundsWidth[boundsIndex];
+			y += widgetBoundsHeight[boundsIndex];
+
+			if (cur.getType() > 0)
+			{
+				x += cur.getRelativeX();
+				y += cur.getRelativeY();
+			}
+		}
+		else
+		{
+			x += cur.getRelativeX();
+			y += cur.getRelativeY();
+		}
+
+		return new Point(x, y);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Inject
@@ -324,9 +405,15 @@ public abstract class RSWidgetMixin implements RSWidget
 		}
 
 		List<Widget> widgets = new ArrayList<Widget>();
+<<<<<<< HEAD
 		for (RSWidget widget : children)
 		{
 			if (widget != null && widget.getRSParentId() == getId())
+=======
+		for (Widget widget : children)
+		{
+			if (widget != null && widget.getParentId() == getId())
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			{
 				widgets.add(widget);
 			}
@@ -338,6 +425,7 @@ public abstract class RSWidgetMixin implements RSWidget
 	@Override
 	public Widget[] getStaticChildren()
 	{
+<<<<<<< HEAD
 		if (getRSParentId() == getId())
 		{
 			// This is a dynamic widget, so it can't have static children
@@ -348,17 +436,28 @@ public abstract class RSWidgetMixin implements RSWidget
 		for (RSWidget widget : client.getGroup(TO_GROUP(getId())))
 		{
 			if (widget != null && widget.getRSParentId() == getId())
+=======
+		List<Widget> widgets = new ArrayList<Widget>();
+		for (Widget widget : client.getGroup(TO_GROUP(getId())))
+		{
+			if (widget != null && widget.getParentId() == getId())
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			{
 				widgets.add(widget);
 			}
 		}
+<<<<<<< HEAD
 		return widgets.toArray(new RSWidget[widgets.size()]);
+=======
+		return widgets.toArray(new Widget[widgets.size()]);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Inject
 	@Override
 	public Widget[] getNestedChildren()
 	{
+<<<<<<< HEAD
 		if (getRSParentId() == getId())
 		{
 			// This is a dynamic widget, so it can't have nested children
@@ -379,11 +478,42 @@ public abstract class RSWidgetMixin implements RSWidget
 		for (RSWidget widget : client.getGroup(group))
 		{
 			if (widget != null && widget.getRSParentId() == -1)
+=======
+		RSHashTable componentTable = client.getComponentTable();
+		int group = -1;
+
+		// XXX can actually use hashtable lookup instead of table
+		// iteration here...
+		for (Node node : componentTable.getNodes())
+		{
+			WidgetNode wn = (WidgetNode) node;
+
+			if (wn.getHash() == getId())
+			{
+				group = wn.getId();
+				break;
+			}
+		}
+
+		if (group == -1)
+		{
+			return new Widget[0];
+		}
+
+		List<Widget> widgets = new ArrayList<Widget>();
+		for (Widget widget : client.getGroup(group))
+		{
+			if (widget != null && widget.getParentId() == getId())
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			{
 				widgets.add(widget);
 			}
 		}
+<<<<<<< HEAD
 		return widgets.toArray(new RSWidget[widgets.size()]);
+=======
+		return widgets.toArray(new Widget[widgets.size()]);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Inject
@@ -402,7 +532,11 @@ public abstract class RSWidgetMixin implements RSWidget
 		event.setWidget(this);
 		event.setHidden(hidden);
 
+<<<<<<< HEAD
 		client.getCallbacks().post(event);
+=======
+		eventBus.post(event);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 		RSWidget[] children = getChildren();
 
@@ -413,9 +547,13 @@ public abstract class RSWidgetMixin implements RSWidget
 			{
 				// if the widget is hidden it will not magically unhide from its parent changing
 				if (child == null || child.isSelfHidden())
+<<<<<<< HEAD
 				{
 					continue;
 				}
+=======
+					continue;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 				child.broadcastHidden(hidden);
 			}
@@ -428,9 +566,13 @@ public abstract class RSWidgetMixin implements RSWidget
 		for (Widget nestedChild : nestedChildren)
 		{
 			if (nestedChild == null || nestedChild.isSelfHidden())
+<<<<<<< HEAD
 			{
 				continue;
 			}
+=======
+				continue;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 			((RSWidget) nestedChild).broadcastHidden(hidden);
 		}
@@ -465,6 +607,7 @@ public abstract class RSWidgetMixin implements RSWidget
 
 		broadcastHidden(isSelfHidden());
 	}
+<<<<<<< HEAD
 
 	@FieldHook("relativeY")
 	@Inject
@@ -547,4 +690,6 @@ public abstract class RSWidgetMixin implements RSWidget
 		client.revalidateWidget(this);
 		client.revalidateWidgetScroll(client.getWidgets()[TO_GROUP(this.getId())], this, false);
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

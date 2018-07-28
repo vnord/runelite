@@ -24,9 +24,12 @@
  */
 package net.runelite.api;
 
+<<<<<<< HEAD
 /**
  * Represents a player in the chat.
  */
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public interface ChatPlayer extends Nameable
 {
 }

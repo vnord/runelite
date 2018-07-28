@@ -27,6 +27,11 @@ package net.runelite.client.plugins.examine;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.eventbus.Subscribe;
+<<<<<<< HEAD
+=======
+import com.google.inject.Provides;
+import java.io.IOException;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.time.Instant;
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -35,8 +40,15 @@ import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
+<<<<<<< HEAD
 import net.runelite.api.ItemComposition;
 import net.runelite.api.events.ChatMessage;
+=======
+import net.runelite.api.GameState;
+import net.runelite.api.ItemComposition;
+import net.runelite.api.events.ChatMessage;
+import net.runelite.api.events.ConfigChanged;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.widgets.Widget;
@@ -44,10 +56,18 @@ import net.runelite.api.widgets.WidgetInfo;
 import static net.runelite.api.widgets.WidgetInfo.TO_CHILD;
 import static net.runelite.api.widgets.WidgetInfo.TO_GROUP;
 import net.runelite.api.widgets.WidgetItem;
+<<<<<<< HEAD
+=======
+import net.runelite.client.chat.ChatColor;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.chat.ChatColorType;
 import net.runelite.client.chat.ChatMessageBuilder;
 import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.chat.QueuedMessage;
+<<<<<<< HEAD
+=======
+import net.runelite.client.config.ConfigManager;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
@@ -61,9 +81,13 @@ import net.runelite.http.api.item.ItemPrice;
  * @author Adam
  */
 @PluginDescriptor(
+<<<<<<< HEAD
 	name = "Examine",
 	description = "Send examine information to the API",
 	tags = {"npcs", "items", "inventory", "objects"}
+=======
+	name = "Examine"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 @Slf4j
 public class ExaminePlugin extends Plugin
@@ -80,6 +104,12 @@ public class ExaminePlugin extends Plugin
 	private Client client;
 
 	@Inject
+<<<<<<< HEAD
+=======
+	private ExamineConfig config;
+
+	@Inject
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private ItemManager itemManager;
 
 	@Inject
@@ -88,11 +118,57 @@ public class ExaminePlugin extends Plugin
 	@Inject
 	private ScheduledExecutorService executor;
 
+<<<<<<< HEAD
+=======
+	@Override
+	protected void startUp()
+	{
+		cacheConfiguredColors();
+		chatMessageManager.refreshAll();
+	}
+
+	@Provides
+	ExamineConfig provideConfig(ConfigManager configManager)
+	{
+		return configManager.getConfig(ExamineConfig.class);
+	}
+
+	@Subscribe
+	public void onConfigChanged(ConfigChanged event)
+	{
+		if (event.getGroup().equals("examine"))
+		{
+			cacheConfiguredColors();
+			chatMessageManager.refreshAll();
+		}
+	}
+
+	private void cacheConfiguredColors()
+	{
+		chatMessageManager
+			.cacheColor(new ChatColor(ChatColorType.NORMAL, config.getExamineRecolor(), false),
+				ChatMessageType.EXAMINE_ITEM, ChatMessageType.EXAMINE_NPC, ChatMessageType.EXAMINE_OBJECT)
+			.cacheColor(new ChatColor(ChatColorType.HIGHLIGHT, config.getExamineHRecolor(), false),
+				ChatMessageType.EXAMINE_ITEM, ChatMessageType.EXAMINE_NPC, ChatMessageType.EXAMINE_OBJECT)
+			.cacheColor(new ChatColor(ChatColorType.NORMAL, config.getTransparentExamineRecolor(), true),
+				ChatMessageType.EXAMINE_ITEM, ChatMessageType.EXAMINE_NPC, ChatMessageType.EXAMINE_OBJECT)
+			.cacheColor(new ChatColor(ChatColorType.HIGHLIGHT, config.getTransparentExamineHRecolor(), true),
+				ChatMessageType.EXAMINE_ITEM, ChatMessageType.EXAMINE_NPC, ChatMessageType.EXAMINE_OBJECT);
+	}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Subscribe
 	public void onGameStateChange(GameStateChanged event)
 	{
 		pending.clear();
+<<<<<<< HEAD
+=======
+
+		if (event.getGameState().equals(GameState.LOGIN_SCREEN))
+		{
+			cacheConfiguredColors();
+		}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe
@@ -117,7 +193,11 @@ public class ExaminePlugin extends Plugin
 				break;
 			case EXAMINE_OBJECT:
 				type = ExamineType.OBJECT;
+<<<<<<< HEAD
 				id = event.getId();
+=======
+				id = event.getId() >>> 14;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				break;
 			case EXAMINE_NPC:
 				type = ExamineType.NPC;
@@ -184,7 +264,11 @@ public class ExaminePlugin extends Plugin
 		}
 
 		cache.put(key, Boolean.TRUE);
+<<<<<<< HEAD
 		submitExamine(pendingExamine, event.getMessage());
+=======
+		executor.submit(() -> submitExamine(pendingExamine, event.getMessage()));
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	private void findExamineItem(PendingExamine pendingExamine)
@@ -272,9 +356,20 @@ public class ExaminePlugin extends Plugin
 		final boolean note = itemComposition.getNote() != -1;
 		final int id = note ? itemComposition.getLinkedNoteId() : itemComposition.getId();
 
+<<<<<<< HEAD
 		ItemPrice itemPrice = itemManager.getItemPrice(id);
 		if (itemPrice == null)
 		{
+=======
+		ItemPrice itemPrice;
+		try
+		{
+			itemPrice = itemManager.getItemPrice(id);
+		}
+		catch (IOException e)
+		{
+			log.warn("Error looking up item price", e);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			return;
 		}
 
@@ -352,6 +447,7 @@ public class ExaminePlugin extends Plugin
 	{
 		int id = examine.getId();
 
+<<<<<<< HEAD
 		switch (examine.getType())
 		{
 			case ITEM:
@@ -363,6 +459,26 @@ public class ExaminePlugin extends Plugin
 			case NPC:
 				examineClient.submitNpc(id, text);
 				break;
+=======
+		try
+		{
+			switch (examine.getType())
+			{
+				case ITEM:
+					examineClient.submitItem(id, text);
+					break;
+				case OBJECT:
+					examineClient.submitObject(id, text);
+					break;
+				case NPC:
+					examineClient.submitNpc(id, text);
+					break;
+			}
+		}
+		catch (IOException ex)
+		{
+			log.warn("Error submitting examine", ex);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 

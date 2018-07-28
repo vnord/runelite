@@ -26,6 +26,7 @@ package net.runelite.api;
 
 import lombok.Getter;
 
+<<<<<<< HEAD
 /**
  * A hitsplat that has been applied to an {@link Actor}.
  */
@@ -68,6 +69,19 @@ public class Hitsplat
 		 * @param type the type value
 		 * @return hitsplat type
 		 */
+=======
+public class Hitsplat
+{
+	public enum HitsplatType
+	{
+		BLOCK, // Blue
+		DAMAGE, // Red
+		POISON, // Green
+		VENOM, // Darkgreen
+		DISEASE, // Yellow
+		HEAL; // Purple
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		public static HitsplatType fromInteger(int type)
 		{
 			switch (type)
@@ -83,6 +97,7 @@ public class Hitsplat
 		}
 	}
 
+<<<<<<< HEAD
 	/**
 	 * The type of hitsplat.
 	 */
@@ -98,6 +113,14 @@ public class Hitsplat
 	/**
 	 * When the hitsplat will disappear.
 	 */
+=======
+	@Getter
+	private HitsplatType hitsplatType;
+
+	@Getter
+	private int amount;
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Getter
 	private int disappearsOnGameCycle;
 

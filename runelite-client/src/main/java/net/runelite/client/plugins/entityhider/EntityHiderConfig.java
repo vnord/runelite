@@ -29,7 +29,15 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
+<<<<<<< HEAD
 @ConfigGroup("entityhider")
+=======
+@ConfigGroup(
+	keyName = "entityhider",
+	name = "Entity Hider",
+	description = "Hides various entities such as players and NPCs"
+)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public interface EntityHiderConfig extends Config
 {
 	@ConfigItem(
@@ -106,7 +114,11 @@ public interface EntityHiderConfig extends Config
 	)
 	default boolean hideNPCs()
 	{
+<<<<<<< HEAD
 		return false;
+=======
+		return true;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@ConfigItem(
@@ -117,7 +129,11 @@ public interface EntityHiderConfig extends Config
 	)
 	default boolean hideNPCs2D()
 	{
+<<<<<<< HEAD
 		return false;
+=======
+		return true;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@ConfigItem(

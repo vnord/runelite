@@ -34,7 +34,10 @@ import java.awt.Stroke;
 import java.awt.geom.Arc2D;
 import javax.inject.Inject;
 import net.runelite.api.Client;
+<<<<<<< HEAD
 import net.runelite.api.VarPlayer;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.ui.overlay.Overlay;
@@ -45,9 +48,13 @@ public class RegenMeterOverlay extends Overlay
 {
 	private static final Color HITPOINTS_COLOR = brighter(0x9B0703);
 	private static final Color SPECIAL_COLOR = brighter(0x1E95B0);
+<<<<<<< HEAD
 	private static final Color OVERLAY_COLOR = new Color(255, 255, 255, 60);
 	private static final double DIAMETER = 26D;
 	private static final int OFFSET = 27;
+=======
+	private static final double DIAMETER = 25D;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	private final Client client;
 	private RegenMeterPlugin plugin;
@@ -82,6 +89,7 @@ public class RegenMeterOverlay extends Overlay
 
 		if (config.showSpecial())
 		{
+<<<<<<< HEAD
 			if (client.getVar(VarPlayer.SPECIAL_ATTACK_ENABLED) == 1)
 			{
 				final Widget widget = client.getWidget(WidgetInfo.MINIMAP_SPEC_ORB);
@@ -97,6 +105,8 @@ public class RegenMeterOverlay extends Overlay
 				}
 			}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			renderRegen(g, WidgetInfo.MINIMAP_SPEC_ORB, plugin.getSpecialPercentage(), SPECIAL_COLOR);
 		}
 
@@ -106,13 +116,21 @@ public class RegenMeterOverlay extends Overlay
 	private void renderRegen(Graphics2D g, WidgetInfo widgetInfo, double percent, Color color)
 	{
 		Widget widget = client.getWidget(widgetInfo);
+<<<<<<< HEAD
 		if (widget == null || widget.isHidden())
+=======
+		if (widget == null)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			return;
 		}
 		Rectangle bounds = widget.getBounds();
 
+<<<<<<< HEAD
 		Arc2D.Double arc = new Arc2D.Double(bounds.x + OFFSET, bounds.y + (bounds.height / 2 - DIAMETER / 2), DIAMETER, DIAMETER, 88.d, -360.d * percent, Arc2D.OPEN);
+=======
+		Arc2D.Double arc = new Arc2D.Double(bounds.x + 28d, bounds.y + (bounds.height / 2 - DIAMETER / 2), DIAMETER, DIAMETER, 88.d, -360.d * percent, Arc2D.OPEN);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		final Stroke STROKE = new BasicStroke(2f);
 		g.setStroke(STROKE);
 		g.setColor(color);

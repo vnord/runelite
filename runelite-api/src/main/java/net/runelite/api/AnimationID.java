@@ -24,12 +24,17 @@
  */
 package net.runelite.api;
 
+<<<<<<< HEAD
 /**
  * Utility class used for mapping animation IDs.
  * <p>
  * Note: This class is not complete and may not contain a specific animation
  * required.
  */
+=======
+// Note: This class is not complete: these animations were manually gathered
+// through getAnimation(). Please add animations as you happen to use them.
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public final class AnimationID
 {
 	public static final int IDLE = -1;
@@ -45,10 +50,15 @@ public final class AnimationID
 	public static final int WOODCUTTING_3A_AXE = 7264;
 	public static final int CONSUMING = 829; // consuming consumables
 	public static final int FIREMAKING = 733;
+<<<<<<< HEAD
 	public static final int DEATH = 836;
 	public static final int COOKING_FIRE = 897;
 	public static final int COOKING_RANGE = 896;
 	public static final int COOKING_WINE = 7529;
+=======
+	public static final int COOKING_FIRE = 897;
+	public static final int COOKING_RANGE = 896;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int FLETCHING_BOW_CUTTING = 1248;
 	public static final int HUNTER_LAY_BOXTRAP_BIRDSNARE = 5208; //same for laying bird snares and box traps
 	public static final int HUNTER_LAY_DEADFALLTRAP = 5212; //setting up deadfall trap
@@ -118,24 +128,37 @@ public final class AnimationID
 	public static final int MINING_MOTHERLODE_3A = 7282;
 	public static final int HERBLORE_POTIONMAKING = 363; //used for both herb and secondary
 	public static final int MAGIC_CHARGING_ORBS = 726;
+<<<<<<< HEAD
 	public static final int MAGIC_LUNAR_STRING_JEWELRY = 4412;
 	public static final int MAGIC_LUNAR_BAKE_PIE = 4413;
 	public static final int BURYING_BONES = 827;
 	public static final int USING_GILDED_ALTAR = 3705;
 	public static final int LOOKING_INTO = 832;
 	public static final int DIG = 830;
+=======
+	public static final int BURYING_BONES = 827;
+	public static final int LOOKING_INTO = 832;
+	public static final int DIG = 830;
+	public static final int VENGEANCE_OTHER = 4411;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int DEMONIC_GORILLA_MAGIC_ATTACK = 7225;
 	public static final int DEMONIC_GORILLA_MELEE_ATTACK = 7226;
 	public static final int DEMONIC_GORILLA_RANGED_ATTACK = 7227;
 	public static final int DEMONIC_GORILLA_AOE_ATTACK = 7228;
 	public static final int DEMONIC_GORILLA_PRAYER_SWITCH = 7228;
 	public static final int DEMONIC_GORILLA_DEFEND = 7224;
+<<<<<<< HEAD
 	public static final int IMP_DEATH = 172;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	// NPC animations
 	public static final int TZTOK_JAD_MAGIC_ATTACK = 2656;
 	public static final int TZTOK_JAD_RANGE_ATTACK = 2652;
+<<<<<<< HEAD
 	public static final int HELLHOUND_DEFENCE = 6566;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	// Farming
 	public static final int FARMING_HARVEST_FRUIT_TREE = 2280;
@@ -147,14 +170,20 @@ public final class AnimationID
 	public static final int FARMING_HARVEST_FLOWER = 2292;
 
 	// Lunar spellbook
+<<<<<<< HEAD
 	public static final int ENERGY_TRANSFER_VENGEANCE_OTHER = 4411;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int MAGIC_LUNAR_FERTILE_SOIL = 4413;
 	public static final int MAGIC_LUNAR_CURE_PLANT = 4432;
 	public static final int MAGIC_LUNAR_GEOMANCY = 7118;
 
 	// Arceuus spellbook
 	public static final int MAGIC_ARCEUUS_RESURRECT_CROPS = 7118;
+<<<<<<< HEAD
 
 	// Battlestaff Crafting
 	public static final int CRAFTING_BATTLESTAVES = 7531;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

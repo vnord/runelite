@@ -659,8 +659,13 @@ public final class ItemID
 	public static final int GREEN_CAPE = 1027;
 	public static final int PURPLE_CAPE = 1029;
 	public static final int ORANGE_CAPE = 1031;
+<<<<<<< HEAD
 	public static final int ZAMORAK_MONK_BOTTOM = 1033;
 	public static final int ZAMORAK_MONK_TOP = 1035;
+=======
+	public static final int ZAMORAK_ROBE = 1033;
+	public static final int ZAMORAK_ROBE_1035 = 1035;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int BUNNY_EARS = 1037;
 	public static final int RED_PARTYHAT = 1038;
 	public static final int YELLOW_PARTYHAT = 1040;
@@ -1804,7 +1809,11 @@ public final class ItemID
 	public static final int DRUID_POUCH_2958 = 2958;
 	public static final int ROTTEN_FOOD = 2959;
 	public static final int SILVER_SICKLE = 2961;
+<<<<<<< HEAD
 	public static final int SILVER_SICKLE_B = 2963;
+=======
+	public static final int SILVER_SICKLEB = 2963;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int WASHING_BOWL = 2964;
 	public static final int MIRROR = 2966;
 	public static final int JOURNAL = 2967;
@@ -1996,7 +2005,11 @@ public final class ItemID
 	public static final int ALCOCHUNKS = 3270;
 	public static final int COMPOST_BIN = 3271;
 	public static final int CAVE_KRAKEN = 3272;
+<<<<<<< HEAD
 	public static final int VAMPYRE_DUST = 3325;
+=======
+	public static final int VAMPIRE_DUST = 3325;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int MYRE_SNELM = 3327;
 	public static final int BLOODNTAR_SNELM = 3329;
 	public static final int OCHRE_SNELM = 3331;
@@ -4663,6 +4676,7 @@ public final class ItemID
 	public static final int ROD_DUST = 7636;
 	public static final int SILVTHRILL_ROD = 7637;
 	public static final int SILVTHRILL_ROD_7638 = 7638;
+<<<<<<< HEAD
 	public static final int ROD_OF_IVANDIS_10 = 7639;
 	public static final int ROD_OF_IVANDIS_9 = 7640;
 	public static final int ROD_OF_IVANDIS_8 = 7641;
@@ -4673,6 +4687,18 @@ public final class ItemID
 	public static final int ROD_OF_IVANDIS_3 = 7646;
 	public static final int ROD_OF_IVANDIS_2 = 7647;
 	public static final int ROD_OF_IVANDIS_1 = 7648;
+=======
+	public static final int ROD_OF_IVANDIS10 = 7639;
+	public static final int ROD_OF_IVANDIS9 = 7640;
+	public static final int ROD_OF_IVANDIS8 = 7641;
+	public static final int ROD_OF_IVANDIS7 = 7642;
+	public static final int ROD_OF_IVANDIS6 = 7643;
+	public static final int ROD_OF_IVANDIS5 = 7644;
+	public static final int ROD_OF_IVANDIS4 = 7645;
+	public static final int ROD_OF_IVANDIS3 = 7646;
+	public static final int ROD_OF_IVANDIS2 = 7647;
+	public static final int ROD_OF_IVANDIS1 = 7648;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int ROD_CLAY_MOULD = 7649;
 	public static final int SILVER_DUST = 7650;
 	public static final int GUTHIX_BALANCE_UNF = 7652;
@@ -5978,12 +6004,21 @@ public final class ItemID
 	public static final int SEALED_MESSAGE = 9653;
 	public static final int DOOR_KEY_9654 = 9654;
 	public static final int LADDER_TOP = 9655;
+<<<<<<< HEAD
 	public static final int TOME_OF_EXPERIENCE_3 = 9656;
 	public static final int TOME_OF_EXPERIENCE_2 = 9657;
 	public static final int TOME_OF_EXPERIENCE_1 = 9658;
 	public static final int BUCKET_OF_WATER_9659 = 9659;
 	public static final int BUCKET_9660 = 9660;
 	public static final int USELESS_KEY = 9662;
+=======
+	public static final int TOME_OF_XP_3 = 9656;
+	public static final int TOME_OF_XP_2 = 9657;
+	public static final int TOME_OF_XP_1 = 9658;
+	public static final int BUCKET_OF_WATER_9659 = 9659;
+	public static final int BUCKET_9660 = 9660;
+	public static final int SHORTCUT_KEY = 9662;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int TORCH_9665 = 9665;
 	public static final int PROSELYTE_HARNESS_M = 9666;
 	public static final int INITIATE_HARNESS_M = 9668;
@@ -8786,7 +8821,10 @@ public final class ItemID
 	public static final int CABBAGE_CAPE = 13679;
 	public static final int CABBAGE_RUNE = 13680;
 	public static final int CRUCIFEROUS_CODEX = 13681;
+<<<<<<< HEAD
 	public static final int USELESS_KEY_16684 = 16684;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int DEAD_ORB_17152 = 17152;
 	public static final int BAG_FULL_OF_GEMS = 19473;
 	public static final int ACHIEVEMENT_DIARY_CAPE = 19476;
@@ -10320,7 +10358,12 @@ public final class ItemID
 	public static final int SCYTHE_OF_VITUR = 22325;
 	public static final int JUSTICIAR_FACEGUARD = 22326;
 	public static final int JUSTICIAR_CHESTGUARD = 22327;
+<<<<<<< HEAD
 	public static final int JUSTICIAR_LEGGUARDS = 22328;
+=======
+	public static final int JUSTICIAR_LEG_GUARDS = 22328;
+	public static final int VAMPYRIUM_VAMBRACES = 22329;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int DEADMAN_STARTER_PACK = 22330;
 	public static final int STARTER_SWORD = 22331;
 	public static final int STARTER_BOW = 22333;
@@ -10338,6 +10381,7 @@ public final class ItemID
 	public static final int BRYOPHYTAS_STAFF = 22370;
 	public static final int BRYOPHYTAS_ESSENCE = 22372;
 	public static final int MOSSY_KEY = 22374;
+<<<<<<< HEAD
 	public static final int PUPPADILE = 22376;
 	public static final int TEKTINY = 22378;
 	public static final int MINI_VANGUARD = 22380;
@@ -10426,4 +10470,6 @@ public final class ItemID
 	public static final int COIN_POUCH_22537 = 22537;
 	public static final int COIN_POUCH_22538 = 22538;
 	/* This file is automatically generated. Do not edit. */
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

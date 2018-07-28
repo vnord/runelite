@@ -1,6 +1,9 @@
 /*
  * Copyright (c) 2018, Joshua Filby <joshua@filby.me>
+<<<<<<< HEAD
  * Copyright (c) 2018, Jordan Atwood <jordan.atwood423@gmail.com>
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -25,14 +28,20 @@
  */
 package net.runelite.client.util;
 
+<<<<<<< HEAD
 import java.util.regex.Pattern;
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 /**
  * A set of utilities to use when dealing with text.
  */
 public class Text
 {
+<<<<<<< HEAD
 	private static final Pattern TAG_REGEXP = Pattern.compile("<[^>]*>");
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	/**
 	 * Removes all tags from the given `str`.
@@ -42,7 +51,32 @@ public class Text
 	 */
 	public static String removeTags(String str)
 	{
+<<<<<<< HEAD
 		return TAG_REGEXP.matcher(str).replaceAll("");
+=======
+		StringBuilder builder = new StringBuilder(str.length());
+		boolean inTag = false;
+
+		for (int i = 0; i < str.length(); i++)
+		{
+			char currentChar = str.charAt(i);
+
+			if (currentChar == '<')
+			{
+				inTag = true;
+			}
+			else if (currentChar == '>')
+			{
+				inTag = false;
+			}
+			else if (!inTag)
+			{
+				builder.append(currentChar);
+			}
+		}
+
+		return builder.toString();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 }

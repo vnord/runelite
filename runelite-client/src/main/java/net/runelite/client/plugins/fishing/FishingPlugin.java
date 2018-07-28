@@ -30,6 +30,10 @@ import com.google.common.primitives.Ints;
 import com.google.inject.Provides;
 import java.util.ArrayList;
 import java.util.Arrays;
+<<<<<<< HEAD
+=======
+import java.util.Collection;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.Comparator;
 import java.util.List;
 import javax.inject.Inject;
@@ -49,6 +53,7 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDependency;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.xptracker.XpTrackerPlugin;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.util.QueryRunner;
 
@@ -56,6 +61,13 @@ import net.runelite.client.util.QueryRunner;
 	name = "Fishing",
 	description = "Show fishing stats and mark fishing spots",
 	tags = {"overlay", "skilling"}
+=======
+import net.runelite.client.ui.overlay.Overlay;
+import net.runelite.client.util.QueryRunner;
+
+@PluginDescriptor(
+	name = "Fishing"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 @PluginDependency(XpTrackerPlugin.class)
 @Singleton
@@ -73,9 +85,12 @@ public class FishingPlugin extends Plugin
 	private QueryRunner queryRunner;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private FishingConfig config;
 
 	@Inject
@@ -98,18 +113,28 @@ public class FishingPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
+<<<<<<< HEAD
 		overlayManager.add(overlay);
 		overlayManager.add(spotOverlay);
 		overlayManager.add(fishingSpotMinimapOverlay);
+=======
+		// Initialize overlay config
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		updateConfig();
 	}
 
 	@Override
+<<<<<<< HEAD
 	protected void shutDown() throws Exception
 	{
 		overlayManager.remove(overlay);
 		overlayManager.remove(spotOverlay);
 		overlayManager.remove(fishingSpotMinimapOverlay);
+=======
+	public Collection<Overlay> getOverlays()
+	{
+		return Arrays.asList(overlay, spotOverlay, fishingSpotMinimapOverlay);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	public FishingSession getSession()
@@ -175,11 +200,16 @@ public class FishingPlugin extends Plugin
 		if (config.showInfernalEel())
 		{
 			spotIds.addAll(Ints.asList(FishingSpot.INFERNAL_EEL.getIds()));
+<<<<<<< HEAD
 		}
+=======
+		}	
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		if (config.showSacredEel())
 		{
 			spotIds.addAll(Ints.asList(FishingSpot.SACRED_EEL.getIds()));
 		}
+<<<<<<< HEAD
 		if (config.showCaveEel())
 		{
 			spotIds.addAll(Ints.asList(FishingSpot.CAVE_EEL.getIds()));
@@ -188,6 +218,8 @@ public class FishingPlugin extends Plugin
 		{
 			spotIds.addAll(Ints.asList(FishingSpot.SLIMY_EEL.getIds()));
 		}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		if (config.showKarambwanji())
 		{
 			spotIds.addAll(Ints.asList(FishingSpot.KARAMBWANJI.getIds()));

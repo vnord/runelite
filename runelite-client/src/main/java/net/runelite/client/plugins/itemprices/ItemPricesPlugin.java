@@ -29,19 +29,30 @@ import javax.inject.Inject;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
 	name = "Item Prices",
 	description = "Show prices on hover for items in your inventory and bank",
 	tags = {"bank", "inventory", "overlay", "high", "alchemy", "grand", "exchange"},
+=======
+import net.runelite.client.ui.overlay.Overlay;
+
+@PluginDescriptor(
+	name = "Item Prices",
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	enabledByDefault = false
 )
 public class ItemPricesPlugin extends Plugin
 {
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
+=======
+	private ItemPricesConfig config;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Inject
 	private ItemPricesOverlay overlay;
 
@@ -52,6 +63,7 @@ public class ItemPricesPlugin extends Plugin
 	}
 
 	@Override
+<<<<<<< HEAD
 	protected void startUp() throws Exception
 	{
 		overlayManager.add(overlay);
@@ -61,5 +73,10 @@ public class ItemPricesPlugin extends Plugin
 	protected void shutDown() throws Exception
 	{
 		overlayManager.remove(overlay);
+=======
+	public Overlay getOverlay()
+	{
+		return overlay;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

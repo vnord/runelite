@@ -24,8 +24,11 @@
  */
 package net.runelite.client.plugins.farmingtracker;
 
+<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.Map;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -36,7 +39,10 @@ public class PatchImplementationTest
 	{
 		for (PatchImplementation impl : PatchImplementation.values())
 		{
+<<<<<<< HEAD
 			Map<Produce, boolean[]> harvestStages = new HashMap<>();
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			for (int i = 0; i < 256; i++)
 			{
 				PatchState s = impl.forVarbitValue(i);
@@ -56,6 +62,7 @@ public class PatchImplementationTest
 					{
 						Assert.assertTrue(pfx + ": dead seed", s.getStage() > 0);
 					}
+<<<<<<< HEAD
 					if (s.getCropState() == CropState.GROWING && s.getProduce() != Produce.WEEDS)
 					{
 						harvestStages.computeIfAbsent(s.getProduce(), k -> new boolean[s.getProduce().getStages()])[s.getStage()] = true;
@@ -70,6 +77,8 @@ public class PatchImplementationTest
 				for (int i = 0; i < states.length - 1; i++)
 				{
 					Assert.assertTrue(produce.getKey().getName() + " stage " + i + " never found by varbit", states[i]);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				}
 			}
 		}

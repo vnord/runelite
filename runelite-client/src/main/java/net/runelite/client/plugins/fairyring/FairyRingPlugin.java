@@ -1,6 +1,9 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2018 Abex
  * Copyright (c) 2017, Tyler <https://github.com/tylerthardy>
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
  * Copyright (c) 2018, Yoav Ram <https://github.com/yoyo421>
  * Copyright (c) 2018, Infinitay <https://github.com/Infinitay>
  * All rights reserved.
@@ -28,6 +31,7 @@
 
 package net.runelite.client.plugins.fairyring;
 
+<<<<<<< HEAD
 import com.google.common.base.Strings;
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Provides;
@@ -46,11 +50,18 @@ import net.runelite.api.Varbits;
 import net.runelite.api.WidgetType;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.MenuOptionClicked;
+=======
+import com.google.common.eventbus.Subscribe;
+import javax.inject.Inject;
+import net.runelite.api.Client;
+import net.runelite.api.Varbits;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
+<<<<<<< HEAD
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.game.ChatboxInputManager;
 import net.runelite.client.plugins.Plugin;
@@ -62,6 +73,13 @@ import net.runelite.client.util.Text;
 	name = "Fairy Rings",
 	description = "Show the location of the fairy ring teleport",
 	tags = {"teleportation"}
+=======
+import net.runelite.client.plugins.Plugin;
+import net.runelite.client.plugins.PluginDescriptor;
+
+@PluginDescriptor(
+	name = "Fairy Ring Helper"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 public class FairyRingPlugin extends Plugin
 {
@@ -69,6 +87,7 @@ public class FairyRingPlugin extends Plugin
 	private static final String[] middleDial = new String[]{"I", "L", "K", "J"};
 	private static final String[] rightDial = new String[]{"P", "S", "R", "Q"};
 
+<<<<<<< HEAD
 	private static final int ENTRY_PADDING = 3;
 
 	private static final String MENU_OPEN = "Open";
@@ -107,6 +126,11 @@ public class FairyRingPlugin extends Plugin
 		return configManager.getConfig(FairyRingConfig.class);
 	}
 
+=======
+	@Inject
+	private Client client;
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Subscribe
 	public void onVarbitChanged(VarbitChanged event)
 	{
@@ -116,6 +140,7 @@ public class FairyRingPlugin extends Plugin
 	@Subscribe
 	public void onWidgetLoaded(WidgetLoaded widgetLoaded)
 	{
+<<<<<<< HEAD
 		if (widgetLoaded.getGroupId() == WidgetID.FAIRY_RING_PANEL_GROUP_ID)
 		{
 			setWidgetTextToDestination();
@@ -165,6 +190,11 @@ public class FairyRingPlugin extends Plugin
 					client.playSoundEffect(SoundEffectID.UI_BOOP);
 					break;
 			}
+=======
+		if (widgetLoaded.getGroupId() == WidgetID.FAIRY_RING_CODE_GROUP_ID)
+		{
+			setWidgetTextToDestination();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -193,6 +223,7 @@ public class FairyRingPlugin extends Plugin
 	{
 		return FairyRings.valueOf(leftDial[varbitValueDialLeft] + middleDial[varbitValueDialMiddle] + rightDial[varbitValueDialRight]);
 	}
+<<<<<<< HEAD
 
 	private void openSearch()
 	{
@@ -367,4 +398,6 @@ public class FairyRingPlugin extends Plugin
 			0
 		);
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

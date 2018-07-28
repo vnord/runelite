@@ -24,6 +24,7 @@
  */
 package net.runelite.api;
 
+<<<<<<< HEAD
 /**
  * Represents an inventory that contains items.
  */
@@ -33,6 +34,13 @@ public interface ItemContainer extends Node
 	 * Gets an array of all items in the container.
 	 *
 	 * @return the items held
+=======
+public interface ItemContainer extends Node
+{
+	/**
+	 * Get the items from the container
+	 * @return items
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	 */
 	Item[] getItems();
 }

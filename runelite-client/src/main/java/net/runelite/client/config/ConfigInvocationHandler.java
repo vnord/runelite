@@ -24,11 +24,18 @@
  */
 package net.runelite.client.config;
 
+<<<<<<< HEAD
+=======
+import com.google.common.base.Objects;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+<<<<<<< HEAD
 import java.util.Objects;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -64,13 +71,21 @@ class ConfigInvocationHandler implements InvocationHandler
 		if (args == null)
 		{
 			// Getting configuration item
+<<<<<<< HEAD
 			String value = manager.getConfiguration(group.value(), item.keyName());
+=======
+			String value = manager.getConfiguration(group.keyName(), item.keyName());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 			if (value == null)
 			{
 				if (method.isDefault())
 				{
+<<<<<<< HEAD
 					return callDefaultMethod(proxy, method, null);
+=======
+					return callDefaultMethod(proxy, method, args);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				}
 
 				return null;
@@ -78,6 +93,7 @@ class ConfigInvocationHandler implements InvocationHandler
 
 			// Convert value to return type
 			Class<?> returnType = method.getReturnType();
+<<<<<<< HEAD
 			
 			try
 			{
@@ -92,6 +108,18 @@ class ConfigInvocationHandler implements InvocationHandler
 				}
 				return null;
 			}
+=======
+			Object objectValue = ConfigManager.stringToObject(value, returnType);
+
+			// objectValue automatically gets unboxed
+//			if (!objectValue.getClass().equals(returnType))
+//			{
+//				log.warn("Unable to convert return type for configuration item {}.{}: {}", group.keyName(), item.keyName(), returnType);
+//				return null;
+//			}
+
+			return objectValue;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 		else
 		{
@@ -104,6 +132,7 @@ class ConfigInvocationHandler implements InvocationHandler
 
 			Object newValue = args[0];
 
+<<<<<<< HEAD
 			Class<?> type = method.getParameterTypes()[0];
 			Object oldValue = manager.getConfiguration(group.value(), item.keyName(), type);
 
@@ -113,18 +142,28 @@ class ConfigInvocationHandler implements InvocationHandler
 				return null;
 			}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			if (method.isDefault())
 			{
 				Object defaultValue = callDefaultMethod(proxy, method, args);
 
+<<<<<<< HEAD
 				if (Objects.equals(newValue, defaultValue))
 				{
 					// Just unset if it goes back to the default
 					manager.unsetConfiguration(group.value(), item.keyName());
+=======
+				if (Objects.equal(newValue, defaultValue))
+				{
+					// Just unset if it goes back to the default
+					manager.unsetConfiguration(group.keyName(), item.keyName());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 					return null;
 				}
 			}
 
+<<<<<<< HEAD
 			if (newValue == null)
 			{
 				manager.unsetConfiguration(group.value(), item.keyName());
@@ -134,6 +173,9 @@ class ConfigInvocationHandler implements InvocationHandler
 				String newValueStr = ConfigManager.objectToString(newValue);
 				manager.setConfiguration(group.value(), item.keyName(), newValueStr);
 			}
+=======
+			manager.setConfiguration(group.keyName(), item.keyName(), args[0].toString());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			return null;
 		}
 	}

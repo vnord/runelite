@@ -28,7 +28,15 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
+<<<<<<< HEAD
 @ConfigGroup("zoom")
+=======
+@ConfigGroup(
+	keyName = "zoom",
+	name = "Camera Zoom",
+	description = "Configuration for the camera zoom limit"
+)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public interface ZoomConfig extends Config
 {
 	@ConfigItem(
@@ -38,7 +46,11 @@ public interface ZoomConfig extends Config
 	)
 	default boolean outerLimit()
 	{
+<<<<<<< HEAD
 		return true;
+=======
+		return false;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@ConfigItem(

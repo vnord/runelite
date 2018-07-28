@@ -28,22 +28,33 @@ import net.runelite.api.events.RemovedFriend;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
+<<<<<<< HEAD
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
+=======
+import static net.runelite.client.callback.Hooks.eventBus;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.rs.api.RSFriend;
 import net.runelite.rs.api.RSFriendManager;
 
 @Mixin(RSFriendManager.class)
 public abstract class RSFriendManagerMixin implements RSFriend
 {
+<<<<<<< HEAD
 	@Shadow("clientInstance")
 	private static RSClient client;
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@MethodHook("removeFriend")
 	@Inject
 	public void rl$removeFriend(String friendName)
 	{
 		RemovedFriend removedFriend = new RemovedFriend(friendName);
+<<<<<<< HEAD
 		client.getCallbacks().post(removedFriend);
+=======
+		eventBus.post(removedFriend);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

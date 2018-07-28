@@ -24,6 +24,7 @@
  */
 package net.runelite.modelviewer;
 
+<<<<<<< HEAD
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,6 +37,16 @@ import net.runelite.cache.fs.Archive;
 import net.runelite.cache.fs.Index;
 import net.runelite.cache.fs.Storage;
 import net.runelite.cache.fs.Store;
+=======
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.HashMap;
+import java.util.Map;
+import net.runelite.cache.definitions.ModelDefinition;
+import net.runelite.cache.definitions.ObjectDefinition;
+import net.runelite.cache.definitions.loaders.ModelLoader;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.cache.region.Location;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,6 +55,7 @@ public class ModelManager
 {
 	private static final Logger logger = LoggerFactory.getLogger(ModelManager.class);
 
+<<<<<<< HEAD
 	private final Store store;
 	private final Map<ModelKey, ModelDefinition> models = new HashMap<>();
 	private final ModelLoader loader = new ModelLoader();
@@ -168,5 +180,92 @@ public class ModelManager
 		md.computeNormals();
 		models.put(key, md);
 		return md;
+=======
+	private static Map<LocationKey, ModelDefinition> models = new HashMap<>();
+
+	public static ModelDefinition getModel(int id, ObjectDefinition object, Location location)
+	{
+		LocationKey key;
+
+		int rot = location.getOrientation();
+
+		if (location != null)
+		{
+			key = new LocationKey(id, location.getType(), rot);
+		}
+		else
+		{
+			key = new LocationKey(id, -1, -1);
+		}
+
+		ModelDefinition md = models.get(key);
+		if (md != null)
+		{
+			return md;
+		}
+
+		try
+		{
+			byte[] b = Files.readAllBytes(new File("models/" + id + ".model").toPath());
+
+			ModelLoader loader = new ModelLoader();
+			md = loader.load(id, b);
+
+			if (object != null && location != null)
+			{
+				rotate(md, object, location, rot);
+				md.computeNormals();
+			}
+
+			models.put(key, md);
+			return md;
+		}
+		catch (IOException ex)
+		{
+			logger.warn(null, ex);
+			return null;
+		}
+	}
+
+	// this logic is from method3697 in 140
+	private static void rotate(ModelDefinition md, ObjectDefinition object, Location location, int rot)
+	{
+		if (object.getObjectTypes() == null)
+		{
+			boolean isRotate = object.isRotated();
+
+			if (location.getType() == 2 && rot > 3)
+			{
+				isRotate = !isRotate;
+			}
+
+			if (isRotate)
+			{
+				md.method1493();
+			}
+		}
+		else
+		{
+			boolean isRotate = object.isRotated() ^ rot > 3;
+
+			if (isRotate)
+			{
+				md.method1493();
+			}
+		}
+
+		switch (rot & 3)
+		{
+			case 1:
+				md.rotate1();
+				break;
+			case 2:
+				md.rotate2();
+				break;
+			case 3:
+				md.rotate3();
+				break;
+		}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

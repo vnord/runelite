@@ -24,6 +24,7 @@
  */
 package net.runelite.api;
 
+<<<<<<< HEAD
 /**
  * Represents the template of a specific object.
  */
@@ -71,5 +72,19 @@ public interface ObjectComposition
 	 *
 	 * @return the impostor
 	 */
+=======
+public interface ObjectComposition
+{
+	String getName();
+
+	String[] getActions();
+
+	int getMapSceneId();
+
+	int getMapIconId();
+
+	int[] getImpostorIds();
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	ObjectComposition getImpostor();
 }

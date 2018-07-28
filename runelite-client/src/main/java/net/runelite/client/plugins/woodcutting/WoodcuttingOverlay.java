@@ -27,7 +27,23 @@ package net.runelite.client.plugins.woodcutting;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+<<<<<<< HEAD
 import javax.inject.Inject;
+=======
+import java.time.Duration;
+import java.time.Instant;
+import java.util.stream.IntStream;
+import javax.inject.Inject;
+import static net.runelite.api.AnimationID.WOODCUTTING_ADAMANT;
+import static net.runelite.api.AnimationID.WOODCUTTING_BLACK;
+import static net.runelite.api.AnimationID.WOODCUTTING_BRONZE;
+import static net.runelite.api.AnimationID.WOODCUTTING_DRAGON;
+import static net.runelite.api.AnimationID.WOODCUTTING_INFERNAL;
+import static net.runelite.api.AnimationID.WOODCUTTING_IRON;
+import static net.runelite.api.AnimationID.WOODCUTTING_MITHRIL;
+import static net.runelite.api.AnimationID.WOODCUTTING_RUNE;
+import static net.runelite.api.AnimationID.WOODCUTTING_STEEL;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.Client;
 import net.runelite.api.Skill;
 import net.runelite.client.plugins.xptracker.XpTrackerService;
@@ -39,6 +55,16 @@ import net.runelite.client.ui.overlay.components.TitleComponent;
 
 class WoodcuttingOverlay extends Overlay
 {
+<<<<<<< HEAD
+=======
+	private static final int[] animationIds =
+	{
+		WOODCUTTING_BRONZE, WOODCUTTING_IRON, WOODCUTTING_STEEL, WOODCUTTING_BLACK,
+		WOODCUTTING_MITHRIL, WOODCUTTING_ADAMANT, WOODCUTTING_RUNE, WOODCUTTING_DRAGON,
+		WOODCUTTING_INFERNAL
+	};
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private final Client client;
 	private final WoodcuttingPlugin plugin;
 	private final WoodcuttingConfig config;
@@ -46,7 +72,11 @@ class WoodcuttingOverlay extends Overlay
 	private final PanelComponent panelComponent = new PanelComponent();
 
 	@Inject
+<<<<<<< HEAD
 	private WoodcuttingOverlay(Client client, WoodcuttingPlugin plugin, WoodcuttingConfig config, XpTrackerService xpTrackerService)
+=======
+	public WoodcuttingOverlay(Client client, WoodcuttingPlugin plugin, WoodcuttingConfig config, XpTrackerService xpTrackerService)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		setPosition(OverlayPosition.TOP_LEFT);
 		this.client = client;
@@ -64,15 +94,32 @@ class WoodcuttingOverlay extends Overlay
 		}
 
 		WoodcuttingSession session = plugin.getSession();
+<<<<<<< HEAD
 		if (session == null)
+=======
+
+		if (session.getLastLogCut() == null)
+		{
+			return null;
+		}
+
+		Duration statTimeout = Duration.ofMinutes(config.statTimeout());
+		Duration sinceCut = Duration.between(session.getLastLogCut(), Instant.now());
+
+		if (sinceCut.compareTo(statTimeout) >= 0)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			return null;
 		}
 
 		panelComponent.getChildren().clear();
 
+<<<<<<< HEAD
 		Axe axe = plugin.getAxe();
 		if (axe != null && axe.getAnimId() == client.getLocalPlayer().getAnimation())
+=======
+		if (IntStream.of(animationIds).anyMatch(x -> x == client.getLocalPlayer().getAnimation()))
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			panelComponent.getChildren().add(TitleComponent.builder()
 				.text("Woodcutting")
@@ -106,5 +153,9 @@ class WoodcuttingOverlay extends Overlay
 
 		return panelComponent.render(graphics);
 	}
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b

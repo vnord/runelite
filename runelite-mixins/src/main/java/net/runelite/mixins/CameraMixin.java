@@ -40,8 +40,13 @@ public abstract class CameraMixin implements RSClient
 	@Shadow("clientInstance")
 	static RSClient client;
 
+<<<<<<< HEAD
 	@Shadow("isDrawingScene")
 	static boolean isDrawingScene;
+=======
+	@Shadow("isDrawingRegion")
+	static boolean isDrawingRegion;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Inject
 	static boolean pitchRelaxEnabled = false;
@@ -91,13 +96,21 @@ public abstract class CameraMixin implements RSClient
 		lastPitch = pitch;
 	}
 
+<<<<<<< HEAD
 	// All of this is to bypass a check in Scene.drawScene
+=======
+	// All of this is to bypass a check in Region.drawRegion
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@FieldHook("pitchSin")
 	@Inject
 	static void onPitchSinChanged(int idx)
 	{
+<<<<<<< HEAD
 		if (pitchRelaxEnabled && isDrawingScene)
+=======
+		if (pitchRelaxEnabled && isDrawingRegion)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			client.setPitchSin(Perspective.SINE[client.getCameraPitch()]);
 		}
@@ -108,7 +121,11 @@ public abstract class CameraMixin implements RSClient
 	@Inject
 	static void onPitchCosChanged(int idx)
 	{
+<<<<<<< HEAD
 		if (pitchRelaxEnabled && isDrawingScene)
+=======
+		if (pitchRelaxEnabled && isDrawingRegion)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			client.setPitchCos(Perspective.COSINE[client.getCameraPitch()]);
 		}

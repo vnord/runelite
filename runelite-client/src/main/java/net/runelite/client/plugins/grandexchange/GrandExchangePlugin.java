@@ -31,19 +31,26 @@ import com.google.common.eventbus.Subscribe;
 import com.google.inject.Provides;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+<<<<<<< HEAD
 import java.util.concurrent.ScheduledExecutorService;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import javax.swing.SwingUtilities;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+<<<<<<< HEAD
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.GrandExchangeOffer;
 import net.runelite.api.ItemComposition;
+<<<<<<< HEAD
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.events.ChatMessage;
@@ -58,6 +65,15 @@ import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.Notifier;
+=======
+import net.runelite.api.MenuEntry;
+import net.runelite.api.events.ConfigChanged;
+import net.runelite.api.events.FocusChanged;
+import net.runelite.api.events.GrandExchangeOfferChanged;
+import net.runelite.api.events.MenuEntryAdded;
+import net.runelite.api.widgets.WidgetID;
+import net.runelite.api.widgets.WidgetInfo;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.input.KeyManager;
@@ -66,6 +82,7 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.ui.PluginToolbar;
+<<<<<<< HEAD
 import net.runelite.client.util.StackFormatter;
 import net.runelite.client.util.Text;
 import net.runelite.http.api.osbuddy.GrandExchangeClient;
@@ -85,6 +102,14 @@ public class GrandExchangePlugin extends Plugin
 
 	static final String SEARCH_GRAND_EXCHANGE = "Search Grand Exchange";
 
+=======
+
+@PluginDescriptor(
+	name = "Grand Exchange"
+)
+public class GrandExchangePlugin extends Plugin
+{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Getter(AccessLevel.PACKAGE)
 	private NavigationButton button;
 
@@ -116,6 +141,7 @@ public class GrandExchangePlugin extends Plugin
 	@Inject
 	private GrandExchangeConfig config;
 
+<<<<<<< HEAD
 	@Inject
 	private Notifier notifier;
 
@@ -127,6 +153,8 @@ public class GrandExchangePlugin extends Plugin
 
 	private int lastItem = -1;
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Provides
 	GrandExchangeConfig provideConfig(ConfigManager configManager)
 	{
@@ -145,9 +173,14 @@ public class GrandExchangePlugin extends Plugin
 		}
 
 		button = NavigationButton.builder()
+<<<<<<< HEAD
 			.tooltip("Grand Exchange")
 			.icon(icon)
 			.priority(3)
+=======
+			.name("GE Offers")
+			.icon(icon)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			.panel(panel)
 			.build();
 
@@ -196,6 +229,7 @@ public class GrandExchangePlugin extends Plugin
 		ItemComposition offerItem = itemManager.getItemComposition(offer.getItemId());
 		boolean shouldStack = offerItem.isStackable() || offer.getTotalQuantity() > 1;
 		BufferedImage itemImage = itemManager.getImage(offer.getItemId(), offer.getTotalQuantity(), shouldStack);
+<<<<<<< HEAD
 		SwingUtilities.invokeLater(() -> panel.getOffersPanel().updateOffer(offerItem, itemImage, offerEvent.getOffer(), offerEvent.getSlot()));
 	}
 
@@ -222,6 +256,9 @@ public class GrandExchangePlugin extends Plugin
 		{
 			panel.getOffersPanel().resetOffers();
 		}
+=======
+		SwingUtilities.invokeLater(() -> panel.updateOffer(offerItem, itemImage, offerEvent.getOffer(), offerEvent.getSlot()));
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe
@@ -250,10 +287,14 @@ public class GrandExchangePlugin extends Plugin
 				}
 			case WidgetID.INVENTORY_GROUP_ID:
 			case WidgetID.BANK_INVENTORY_GROUP_ID:
+<<<<<<< HEAD
 			case WidgetID.GRAND_EXCHANGE_INVENTORY_GROUP_ID:
 			case WidgetID.SHOP_INVENTORY_GROUP_ID:
 				menuEntry.setOption(SEARCH_GRAND_EXCHANGE);
 				menuEntry.setType(MenuAction.RUNELITE.getId());
+=======
+				menuEntry.setOption("Search Grand Exchange");
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				client.setMenuEntries(entries);
 		}
 	}
@@ -266,6 +307,7 @@ public class GrandExchangePlugin extends Plugin
 			setHotKeyPressed(false);
 		}
 	}
+<<<<<<< HEAD
 
 	@Subscribe
 	public void onWidgetLoaded(WidgetLoaded event)
@@ -334,4 +376,6 @@ public class GrandExchangePlugin extends Plugin
 			}
 		});
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

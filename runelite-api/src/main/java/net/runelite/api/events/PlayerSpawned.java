@@ -28,6 +28,7 @@ import lombok.Value;
 import net.runelite.api.Actor;
 import net.runelite.api.Player;
 
+<<<<<<< HEAD
 /**
  * An event where a {@link Player} has spawned.
  */
@@ -37,6 +38,11 @@ public class PlayerSpawned implements ActorSpawned
 	/**
 	 * The spawned player.
 	 */
+=======
+@Value
+public class PlayerSpawned implements ActorSpawned
+{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private final Player player;
 
 	@Override

@@ -27,7 +27,12 @@ package net.runelite.cache.definitions;
 public class FramemapDefinition
 {
 	public int id;
+<<<<<<< HEAD
 	public int[] types;
 	public int[][] frameMaps;
+=======
+	public int[] field1456;
+	public int[][] field1457;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public int length;
 }

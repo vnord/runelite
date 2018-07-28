@@ -38,6 +38,7 @@ import net.runelite.client.Notifier;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.util.Text;
 
@@ -45,6 +46,13 @@ import net.runelite.client.util.Text;
 	name = "Nightmare Zone",
 	description = "Show NMZ points/absorption and/or notify about expiring potions",
 	tags = {"combat", "nmz", "minigame", "notifications"}
+=======
+import net.runelite.client.ui.overlay.Overlay;
+import net.runelite.client.util.Text;
+
+@PluginDescriptor(
+	name = "Nightmare Zone"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 public class NightmareZonePlugin extends Plugin
 {
@@ -57,9 +65,12 @@ public class NightmareZonePlugin extends Plugin
 	private Client client;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private NightmareZoneConfig config;
 
 	@Inject
@@ -70,6 +81,7 @@ public class NightmareZonePlugin extends Plugin
 	private boolean absorptionNotificationSend = true;
 
 	@Override
+<<<<<<< HEAD
 	protected void startUp() throws Exception
 	{
 		overlayManager.add(overlay);
@@ -80,6 +92,10 @@ public class NightmareZonePlugin extends Plugin
 	protected void shutDown() throws Exception
 	{
 		overlayManager.remove(overlay);
+=======
+	protected void shutDown()
+	{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		overlay.removeAbsorptionCounter();
 	}
 
@@ -95,6 +111,15 @@ public class NightmareZonePlugin extends Plugin
 		return configManager.getConfig(NightmareZoneConfig.class);
 	}
 
+<<<<<<< HEAD
+=======
+	@Override
+	public Overlay getOverlay()
+	{
+		return overlay;
+	}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Subscribe
 	public void onGameTick(GameTick event)
 	{

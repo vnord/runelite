@@ -29,6 +29,10 @@ public enum OverlayPriority
 	LOW,
 	NONE,
 	MED,
+<<<<<<< HEAD
 	HIGH,
 	HIGHEST
+=======
+	HIGH
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

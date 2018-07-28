@@ -28,6 +28,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+<<<<<<< HEAD
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -49,15 +50,35 @@ public class InfoBoxComponent implements LayoutableRenderableEntity
 
 	@Setter
 	private Dimension preferredSize = new Dimension(DEFAULT_SIZE, DEFAULT_SIZE);
+=======
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.util.Objects;
+import lombok.Setter;
+import net.runelite.client.ui.overlay.RenderableEntity;
+
+@Setter
+public class InfoBoxComponent implements RenderableEntity
+{
+	private static final int BOX_SIZE = 35;
+	private static final int SEPARATOR = 2;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	private String text;
 	private Color color = Color.WHITE;
 	private Color backgroundColor = ComponentConstants.STANDARD_BACKGROUND_COLOR;
+<<<<<<< HEAD
 	private Image image;
+=======
+	private Point position = new Point();
+	private BufferedImage image;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Override
 	public Dimension render(Graphics2D graphics)
 	{
+<<<<<<< HEAD
 		if (image == null)
 		{
 			return new Dimension();
@@ -72,11 +93,16 @@ public class InfoBoxComponent implements LayoutableRenderableEntity
 		final Rectangle bounds = new Rectangle(size, size);
 
 		// Render background
+=======
+		final FontMetrics metrics = graphics.getFontMetrics();
+		final Rectangle bounds = new Rectangle(position.x, position.y, BOX_SIZE, BOX_SIZE);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		final BackgroundComponent backgroundComponent = new BackgroundComponent();
 		backgroundComponent.setBackgroundColor(backgroundColor);
 		backgroundComponent.setRectangle(bounds);
 		backgroundComponent.render(graphics);
 
+<<<<<<< HEAD
 		// Render image
 		graphics.drawImage(
 			image,
@@ -103,5 +129,22 @@ public class InfoBoxComponent implements LayoutableRenderableEntity
 	private int getSize()
 	{
 		return Math.max(preferredSize.width, preferredSize.height);
+=======
+		if (Objects.nonNull(image))
+		{
+			graphics.drawImage(image,
+				position.x + (BOX_SIZE - image.getWidth()) / 2,
+				position.y + (BOX_SIZE - image.getHeight()) / 2, null);
+		}
+
+		final TextComponent textComponent = new TextComponent();
+		textComponent.setColor(color);
+		textComponent.setText(text);
+		textComponent.setPosition(new Point(
+			position.x + ((BOX_SIZE - metrics.stringWidth(text)) / 2),
+			position.y + BOX_SIZE - SEPARATOR));
+		textComponent.render(graphics);
+		return new Dimension(BOX_SIZE, BOX_SIZE);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

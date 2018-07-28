@@ -57,7 +57,11 @@ public abstract class VarbitMixin implements RSClient
 	public int getVar(Varbits varbit)
 	{
 		int varbitId = varbit.getId();
+<<<<<<< HEAD
 		return getVarbitValue(getVarps(), varbitId);
+=======
+		return getVarbitValue(varbitId);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Inject
@@ -65,12 +69,20 @@ public abstract class VarbitMixin implements RSClient
 	public void setSetting(Varbits varbit, int value)
 	{
 		int varbitId = varbit.getId();
+<<<<<<< HEAD
 		setVarbitValue(getVarps(), varbitId, value);
+=======
+		setVarbitValue(varbitId, value);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Inject
 	@Override
+<<<<<<< HEAD
 	public int getVarbitValue(int[] varps, int varbitId)
+=======
+	public int getVarbitValue(int varbitId)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		RSVarbit v = varbitCache.getIfPresent(varbitId);
 		if (v == null)
@@ -81,11 +93,15 @@ public abstract class VarbitMixin implements RSClient
 			varbitCache.put(varbitId, v);
 		}
 
+<<<<<<< HEAD
 		if (v.getIndex() == 0 && v.getLeastSignificantBit() == 0 && v.getMostSignificantBit() == 0)
 		{
 			throw new IndexOutOfBoundsException("Varbit " + varbitId + " does not exist");
 		}
 
+=======
+		int[] varps = getVarps();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		int value = varps[v.getIndex()];
 		int lsb = v.getLeastSignificantBit();
 		int msb = v.getMostSignificantBit();
@@ -95,7 +111,11 @@ public abstract class VarbitMixin implements RSClient
 
 	@Inject
 	@Override
+<<<<<<< HEAD
 	public void setVarbitValue(int[] varps, int varbitId, int value)
+=======
+	public void setVarbitValue(int varbitId, int value)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		RSVarbit v = varbitCache.getIfPresent(varbitId);
 		if (v == null)
@@ -106,6 +126,10 @@ public abstract class VarbitMixin implements RSClient
 			varbitCache.put(varbitId, v);
 		}
 
+<<<<<<< HEAD
+=======
+		int[] varps = getVarps();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		int lsb = v.getLeastSignificantBit();
 		int msb = v.getMostSignificantBit();
 		int mask = (1 << ((msb - lsb) + 1)) - 1;
@@ -116,13 +140,18 @@ public abstract class VarbitMixin implements RSClient
 	@Override
 	public int getVar(VarClientInt varClientInt)
 	{
+<<<<<<< HEAD
 		return getIntVarcs()[varClientInt.getIndex()];
+=======
+		return getVarcs().getIntVarcs()[varClientInt.getIndex()];
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Inject
 	@Override
 	public String getVar(VarClientStr varClientStr)
 	{
+<<<<<<< HEAD
 		return getStrVarcs()[varClientStr.getIndex()];
 	}
 
@@ -146,5 +175,8 @@ public abstract class VarbitMixin implements RSClient
 	public String[] getStrVarcs()
 	{
 		return getVarcs().getStrVarcs();
+=======
+		return getVarcs().getStrVarcs()[varClientStr.getIndex()];
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

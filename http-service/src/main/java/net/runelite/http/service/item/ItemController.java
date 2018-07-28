@@ -24,8 +24,11 @@
  */
 package net.runelite.http.service.item;
 
+<<<<<<< HEAD
 import com.google.common.base.Supplier;
 import com.google.common.base.Suppliers;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import java.time.Duration;
@@ -62,12 +65,16 @@ public class ItemController
 
 	private final ItemService itemService;
 
+<<<<<<< HEAD
 	private final Supplier<ItemPrice[]> memorizedPrices;
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Autowired
 	public ItemController(ItemService itemService)
 	{
 		this.itemService = itemService;
+<<<<<<< HEAD
 
 		memorizedPrices = Suppliers.memoizeWithExpiration(() -> itemService.fetchPrices().stream()
 			.map(priceEntry ->
@@ -82,6 +89,8 @@ public class ItemController
 				return itemPrice;
 			})
 			.toArray(ItemPrice[]::new), 30, TimeUnit.MINUTES);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@RequestMapping("/{itemId}")
@@ -168,12 +177,26 @@ public class ItemController
 		else if (priceEntry == null)
 		{
 			// Price is unknown
+<<<<<<< HEAD
+=======
+			itemService.queuePriceLookup(itemId); // queue lookup
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			cachedEmpty.put(itemId, itemId);
 			return ResponseEntity.notFound()
 				.header(RUNELITE_CACHE, "MISS")
 				.build();
 		}
 
+<<<<<<< HEAD
+=======
+		Instant cacheTime = now.minus(CACHE_DUATION);
+		if (priceEntry.getFetched_time().isBefore(cacheTime))
+		{
+			// Queue a check for the price
+			itemService.queuePriceLookup(itemId);
+		}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		ItemPrice itemPrice = new ItemPrice();
 		itemPrice.setItem(item.toItem());
 		itemPrice.setPrice(priceEntry.getPrice());
@@ -222,6 +245,7 @@ public class ItemController
 			})
 			.toArray(ItemPrice[]::new);
 	}
+<<<<<<< HEAD
 
 	@RequestMapping("/prices")
 	public ResponseEntity<ItemPrice[]> prices()
@@ -230,4 +254,6 @@ public class ItemController
 			.cacheControl(CacheControl.maxAge(30, TimeUnit.MINUTES).cachePublic())
 			.body(memorizedPrices.get());
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

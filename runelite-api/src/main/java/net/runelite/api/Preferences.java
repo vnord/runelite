@@ -24,6 +24,7 @@
  */
 package net.runelite.api;
 
+<<<<<<< HEAD
 /**
  * Stores the clients persisting preferences.
  */
@@ -41,5 +42,11 @@ public interface Preferences
 	 *
 	 * @param username the new remembered username
 	 */
+=======
+public interface Preferences
+{
+	String getRememberedUsername();
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	void setRememberedUsername(String username);
 }

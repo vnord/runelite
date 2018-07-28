@@ -25,6 +25,7 @@
 package net.runelite.client.plugins.xtea;
 
 import com.google.common.eventbus.Subscribe;
+<<<<<<< HEAD
 import java.util.HashSet;
 import java.util.Set;
 import javax.inject.Inject;
@@ -37,6 +38,20 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.http.api.xtea.XteaClient;
 import net.runelite.http.api.xtea.XteaKey;
 import net.runelite.http.api.xtea.XteaRequest;
+=======
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.ScheduledExecutorService;
+import javax.inject.Inject;
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Client;
+import net.runelite.api.events.MapRegionChanged;
+import net.runelite.client.plugins.Plugin;
+import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.http.api.xtea.XteaClient;
+import okhttp3.Response;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 @PluginDescriptor(
 	name = "Xtea",
@@ -52,18 +67,33 @@ public class XteaPlugin extends Plugin
 	@Inject
 	private Client client;
 
+<<<<<<< HEAD
 	@Subscribe
 	public void onGameStateChanged(GameStateChanged gameStateChanged)
 	{
 		if (gameStateChanged.getGameState() != GameState.LOGGED_IN)
 		{
 			return;
+=======
+	@Inject
+	private ScheduledExecutorService executor;
+
+	@Subscribe
+	public void onMapRegionChanged(MapRegionChanged event)
+	{
+		int idx = event.getIndex();
+
+		if (idx == -1)
+		{
+			return; // this is the new array being assigned to the field
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 
 		int revision = client.getRevision();
 		int[] regions = client.getMapRegions();
 		int[][] xteaKeys = client.getXteaKeys();
 
+<<<<<<< HEAD
 		XteaRequest xteaRequest = new XteaRequest();
 		xteaRequest.setRevision(revision);
 
@@ -88,10 +118,38 @@ public class XteaPlugin extends Plugin
 		}
 
 		if (xteaRequest.getKeys().isEmpty())
+=======
+		int region = regions[idx];
+		int[] keys = xteaKeys[idx];
+
+		log.debug("Region {} keys {}, {}, {}, {}", region, keys[0], keys[1], keys[2], keys[3]);
+
+		// No need to ever send more than once
+		if (sentRegions.contains(region))
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			return;
 		}
 
+<<<<<<< HEAD
 		xteaClient.submit(xteaRequest);
+=======
+		sentRegions.add(region);
+
+		executor.execute(() ->
+		{
+			try (Response response = xteaClient.submit(revision, region, keys))
+			{
+				if (!response.isSuccessful())
+				{
+					log.debug("unsuccessful xtea response");
+				}
+			}
+			catch (IOException ex)
+			{
+				log.debug("unable to submit xtea keys", ex);
+			}
+		});
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

@@ -26,20 +26,28 @@ package net.runelite.client.ui.overlay.infobox;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ComparisonChain;
+<<<<<<< HEAD
 import com.google.common.eventbus.Subscribe;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
+<<<<<<< HEAD
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.events.ConfigChanged;
 import net.runelite.client.config.RuneLiteConfig;
+=======
+import javax.inject.Singleton;
+import lombok.extern.slf4j.Slf4j;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.plugins.PluginDescriptor;
 
 @Singleton
@@ -47,6 +55,7 @@ import net.runelite.client.plugins.PluginDescriptor;
 public class InfoBoxManager
 {
 	private final List<InfoBox> infoBoxes = new ArrayList<>();
+<<<<<<< HEAD
 	private final RuneLiteConfig runeLiteConfig;
 
 	@Inject
@@ -63,14 +72,21 @@ public class InfoBoxManager
 			infoBoxes.forEach(this::updateInfoBoxImage);
 		}
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	public void addInfoBox(InfoBox infoBox)
 	{
 		Preconditions.checkNotNull(infoBox);
 		log.debug("Adding InfoBox {}", infoBox);
+<<<<<<< HEAD
 
 		updateInfoBoxImage(infoBox);
 		infoBoxes.add(infoBox);
+=======
+		infoBoxes.add(infoBox);
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		refreshInfoBoxes();
 	}
 
@@ -116,6 +132,7 @@ public class InfoBoxManager
 		}
 	}
 
+<<<<<<< HEAD
 	private void updateInfoBoxImage(final InfoBox infoBox)
 	{
 		if (infoBox.getImage() == null)
@@ -156,6 +173,11 @@ public class InfoBoxManager
 	private void refreshInfoBoxes()
 	{
 		infoBoxes.sort((b1, b2) -> ComparisonChain
+=======
+	private void refreshInfoBoxes()
+	{
+		Collections.sort(infoBoxes, (b1, b2) -> ComparisonChain
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			.start()
 			.compare(b1.getPriority(), b2.getPriority())
 			.compare(b1.getPlugin().getClass().getAnnotation(PluginDescriptor.class).name(), b2.getPlugin().getClass().getAnnotation(PluginDescriptor.class).name())

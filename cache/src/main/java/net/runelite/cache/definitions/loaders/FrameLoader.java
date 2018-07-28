@@ -30,13 +30,20 @@ import net.runelite.cache.io.InputStream;
 
 public class FrameLoader
 {
+<<<<<<< HEAD
 	public FrameDefinition load(FramemapDefinition framemap, int id, byte[] b)
+=======
+	public FrameDefinition load(FramemapDefinition framemap, byte[] b)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		FrameDefinition def = new FrameDefinition();
 		InputStream in = new InputStream(b);
 		InputStream data = new InputStream(b);
 
+<<<<<<< HEAD
 		def.id = id;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		def.framemap = framemap;
 
 		int framemapArchiveIndex = in.readUnsignedShort();
@@ -60,11 +67,19 @@ public class FrameLoader
 				continue;
 			}
 
+<<<<<<< HEAD
 			if (def.framemap.types[i] != 0)
 			{
 				for (int var10 = i - 1; var10 > lastI; --var10)
 				{
 					if (def.framemap.types[var10] == 0)
+=======
+			if (def.framemap.field1456[i] != 0)
+			{
+				for (int var10 = i - 1; var10 > lastI; --var10)
+				{
+					if (def.framemap.field1456[var10] == 0)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 					{
 						indexFrameIds[index] = var10;
 						scratchTranslatorX[index] = 0;
@@ -78,7 +93,11 @@ public class FrameLoader
 
 			indexFrameIds[index] = i;
 			short var11 = 0;
+<<<<<<< HEAD
 			if (def.framemap.types[i] == 3)
+=======
+			if (def.framemap.field1456[i] == 3)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			{
 				var11 = 128;
 			}
@@ -112,9 +131,15 @@ public class FrameLoader
 
 			lastI = i;
 			++index;
+<<<<<<< HEAD
 			if (def.framemap.types[i] == 5)
 			{
 				def.showing = true;
+=======
+			if (def.framemap.field1456[i] == 5)
+			{
+				def.field1315 = true;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			}
 		}
 
@@ -123,7 +148,11 @@ public class FrameLoader
 			throw new RuntimeException();
 		}
 
+<<<<<<< HEAD
 		def.translatorCount = index;
+=======
+		def.field1310 = index;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		def.indexFrameIds = new int[index];
 		def.translator_x = new int[index];
 		def.translator_y = new int[index];

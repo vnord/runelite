@@ -42,25 +42,44 @@ string_var_value: INT ;
 
 line: instruction | label | switch_lookup ;
 instruction: instruction_name instruction_operand ;
+<<<<<<< HEAD
 label: IDENTIFIER ':' ;
 
 instruction_name: name_string | name_opcode ;
 name_string: IDENTIFIER ;
+=======
+label: 'LABEL' INT ':' ;
+
+instruction_name: name_string | name_opcode ;
+name_string: INSTRUCTION ;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 name_opcode: INT ;
 
 instruction_operand: operand_int | operand_qstring | operand_label | ;
 operand_int: INT ;
 operand_qstring: QSTRING ;
+<<<<<<< HEAD
 operand_label: IDENTIFIER ;
 
 switch_lookup: switch_key ':' switch_value ;
 switch_key: INT ;
 switch_value: IDENTIFIER ;
+=======
+operand_label: 'LABEL' INT ;
+
+switch_lookup: switch_key ':' switch_value ;
+switch_key: INT ;
+switch_value: 'LABEL' INT ;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 NEWLINE: ( '\r' | '\n' )+ ;
 INT: '-'? [0-9]+ ;
 QSTRING: '"' (~('"' | '\\' | '\r' | '\n') | '\\' ('"' | '\\'))* '"' ;
+<<<<<<< HEAD
 IDENTIFIER: [a-zA-Z0-9_]+ ;
+=======
+INSTRUCTION: [a-z0-9_]+ ;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 COMMENT: ';' ~( '\r' | '\n' )* -> channel(HIDDEN) ;
 
 WS: (' ' | '\t')+ -> channel(HIDDEN) ;

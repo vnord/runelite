@@ -28,6 +28,7 @@ import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.SubscriberExceptionContext;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
+<<<<<<< HEAD
 import com.google.inject.name.Names;
 import java.applet.Applet;
 import java.util.concurrent.Executors;
@@ -41,11 +42,21 @@ import net.runelite.client.account.SessionManager;
 import net.runelite.client.callback.Hooks;
 import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.config.ChatColorConfig;
+=======
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import javax.inject.Singleton;
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Client;
+import net.runelite.client.account.SessionManager;
+import net.runelite.client.chat.ChatMessageManager;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.menus.MenuManager;
 import net.runelite.client.plugins.PluginManager;
+<<<<<<< HEAD
 import net.runelite.client.rs.ClientUpdateCheckMode;
 import net.runelite.client.rs.ClientLoader;
 import net.runelite.client.task.Scheduler;
@@ -55,10 +66,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import net.runelite.http.api.RuneLiteAPI;
 import okhttp3.OkHttpClient;
+=======
+import net.runelite.client.task.Scheduler;
+import net.runelite.client.util.QueryRunner;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 @Slf4j
 public class RuneLiteModule extends AbstractModule
 {
+<<<<<<< HEAD
 	private final ClientUpdateCheckMode updateCheckMode;
 	private final boolean developerMode;
 
@@ -75,6 +91,12 @@ public class RuneLiteModule extends AbstractModule
 		bindConstant().annotatedWith(Names.named("developerMode")).to(developerMode);
 		bind(ScheduledExecutorService.class).toInstance(Executors.newSingleThreadScheduledExecutor());
 		bind(OkHttpClient.class).toInstance(RuneLiteAPI.CLIENT);
+=======
+	@Override
+	protected void configure()
+	{
+		bind(ScheduledExecutorService.class).toInstance(Executors.newSingleThreadScheduledExecutor());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		bind(QueryRunner.class);
 		bind(MenuManager.class);
 		bind(ChatMessageManager.class);
@@ -83,6 +105,7 @@ public class RuneLiteModule extends AbstractModule
 		bind(PluginManager.class);
 		bind(RuneLiteProperties.class);
 		bind(SessionManager.class);
+<<<<<<< HEAD
 
 		bind(Callbacks.class).to(Hooks.class);
 
@@ -107,6 +130,14 @@ public class RuneLiteModule extends AbstractModule
 	Client provideClient(@Nullable Applet applet)
 	{
 		return applet instanceof Client ? (Client) applet : null;
+=======
+	}
+
+	@Provides
+	Client provideClient(RuneLite runeLite)
+	{
+		return runeLite.client;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Provides
@@ -118,6 +149,7 @@ public class RuneLiteModule extends AbstractModule
 
 	@Provides
 	@Singleton
+<<<<<<< HEAD
 	ChatColorConfig provideChatColorConfig(ConfigManager configManager)
 	{
 		return configManager.getConfig(ChatColorConfig.class);
@@ -125,6 +157,8 @@ public class RuneLiteModule extends AbstractModule
 
 	@Provides
 	@Singleton
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	EventBus provideEventBus()
 	{
 		return new EventBus(RuneLiteModule::eventExceptionHandler);

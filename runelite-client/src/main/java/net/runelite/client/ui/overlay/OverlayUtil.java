@@ -60,9 +60,15 @@ public class OverlayUtil
 	public static void renderMinimapLocation(Graphics2D graphics, Point mini, Color color)
 	{
 		graphics.setColor(Color.BLACK);
+<<<<<<< HEAD
 		graphics.fillOval(mini.getX() - 2, mini.getY() - 2 + 1, 5, 5);
 		graphics.setColor(color);
 		graphics.fillOval(mini.getX() - 2, mini.getY() - 2, 5, 5);
+=======
+		graphics.fillOval(mini.getX(), mini.getY() + 1, 5, 5);
+		graphics.setColor(color);
+		graphics.fillOval(mini.getX(), mini.getY(), 5, 5);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	public static void renderTextLocation(Graphics2D graphics, Point txtLoc, String text, Color color)
@@ -225,7 +231,10 @@ public class OverlayUtil
 			case BOTTOM_RIGHT:
 			case ABOVE_CHATBOX_RIGHT:
 				result.y = result.y - dimension.height;
+<<<<<<< HEAD
 				// FALLTHROUGH
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			case TOP_RIGHT:
 				result.x = result.x - dimension.width;
 				break;

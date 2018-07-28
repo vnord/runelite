@@ -28,11 +28,19 @@ package net.runelite.client.plugins.xptracker;
 import static com.google.common.base.MoreObjects.firstNonNull;
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Binder;
+<<<<<<< HEAD
 import com.google.inject.Provides;
 import java.awt.image.BufferedImage;
 import java.time.temporal.ChronoUnit;
 import java.util.EnumSet;
 import java.util.Objects;
+=======
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.EnumSet;
+import java.util.Objects;
+import java.util.concurrent.ScheduledExecutorService;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
@@ -40,16 +48,23 @@ import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.Player;
 import net.runelite.api.Skill;
+<<<<<<< HEAD
 import net.runelite.api.VarPlayer;
 import net.runelite.api.WorldType;
 import net.runelite.api.events.ExperienceChanged;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.client.config.ConfigManager;
+=======
+import net.runelite.api.events.ExperienceChanged;
+import net.runelite.api.events.GameStateChanged;
+import net.runelite.api.events.GameTick;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.game.SkillIconManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import static net.runelite.client.plugins.xptracker.XpWorldType.NORMAL;
+<<<<<<< HEAD
 import net.runelite.client.task.Schedule;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.ui.PluginToolbar;
@@ -59,6 +74,18 @@ import net.runelite.http.api.xp.XpClient;
 	name = "XP Tracker",
 	description = "Enable the XP Tracker panel",
 	tags = {"experience", "levels", "panel"}
+=======
+import net.runelite.client.ui.NavigationButton;
+import net.runelite.client.ui.PluginToolbar;
+import net.runelite.http.api.worlds.World;
+import net.runelite.http.api.worlds.WorldClient;
+import net.runelite.http.api.worlds.WorldResult;
+import net.runelite.http.api.worlds.WorldType;
+import net.runelite.http.api.xp.XpClient;
+
+@PluginDescriptor(
+	name = "XP Tracker"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 @Slf4j
 public class XpTrackerPlugin extends Plugin
@@ -73,6 +100,7 @@ public class XpTrackerPlugin extends Plugin
 	private SkillIconManager skillIconManager;
 
 	@Inject
+<<<<<<< HEAD
 	private XpTrackerConfig xpTrackerConfig;
 
 	private NavigationButton navButton;
@@ -90,6 +118,20 @@ public class XpTrackerPlugin extends Plugin
 	{
 		return configManager.getConfig(XpTrackerConfig.class);
 	}
+=======
+	private ScheduledExecutorService executor;
+
+	private NavigationButton navButton;
+	private XpPanel xpPanel;
+
+	private final XpState xpState = new XpState();
+
+	private WorldResult worlds;
+	private XpWorldType lastWorldType;
+	private String lastUsername;
+
+	private final XpClient xpClient = new XpClient();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Override
 	public void configure(Binder binder)
@@ -100,6 +142,27 @@ public class XpTrackerPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
+<<<<<<< HEAD
+=======
+		WorldClient worldClient = new WorldClient();
+		try
+		{
+			worlds = worldClient.lookupWorlds();
+			if (worlds != null)
+			{
+				log.debug("Worlds list contains {} worlds", worlds.getWorlds().size());
+			}
+			else
+			{
+				log.warn("Unable to look up worlds");
+			}
+		}
+		catch (IOException e)
+		{
+			log.warn("Error looking up worlds list", e);
+		}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		xpPanel = new XpPanel(this, client, skillIconManager);
 
 		BufferedImage icon;
@@ -109,9 +172,14 @@ public class XpTrackerPlugin extends Plugin
 		}
 
 		navButton = NavigationButton.builder()
+<<<<<<< HEAD
 			.tooltip("XP Tracker")
 			.icon(icon)
 			.priority(2)
+=======
+			.name("XP Tracker")
+			.icon(icon)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			.panel(xpPanel)
 			.build();
 
@@ -121,7 +189,10 @@ public class XpTrackerPlugin extends Plugin
 	@Override
 	protected void shutDown() throws Exception
 	{
+<<<<<<< HEAD
 		xpState.reset();
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		pluginToolbar.removeNavigation(navButton);
 	}
 
@@ -132,7 +203,11 @@ public class XpTrackerPlugin extends Plugin
 		{
 			// LOGGED_IN is triggered between region changes too.
 			// Check that the username changed or the world type changed.
+<<<<<<< HEAD
 			XpWorldType type = worldSetToType(client.getWorldType());
+=======
+			XpWorldType type = getWorldType(client.getWorld());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 			if (!Objects.equals(client.getUsername(), lastUsername) || lastWorldType != type)
 			{
@@ -153,11 +228,49 @@ public class XpTrackerPlugin extends Plugin
 			String username = local != null ? local.getName() : null;
 			if (username != null)
 			{
+<<<<<<< HEAD
 				xpClient.update(username);
+=======
+				log.debug("Submitting xp track for {}", username);
+
+				executor.submit(() ->
+				{
+					try
+					{
+						xpClient.update(username);
+					}
+					catch (IOException ex)
+					{
+						log.warn("error submitting xp track", ex);
+					}
+				});
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			}
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	private XpWorldType getWorldType(int worldNum)
+	{
+		if (worlds == null)
+		{
+			return null;
+		}
+
+		World world = worlds.findWorld(worldNum);
+
+		if (world == null)
+		{
+			log.warn("Logged into nonexistent world {}?", client.getWorld());
+			return null;
+		}
+
+		XpWorldType type = worldSetToType(world.getTypes());
+		return type;
+	}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private XpWorldType worldSetToType(EnumSet<WorldType> types)
 	{
 		XpWorldType xpType = NORMAL;
@@ -177,7 +290,11 @@ public class XpTrackerPlugin extends Plugin
 	 * This is called by the user manually clicking resetSkillState in the UI.
 	 * It reloads the current skills from the client after resetting internal state.
 	 */
+<<<<<<< HEAD
 	void resetAndInitState()
+=======
+	public void resetAndInitState()
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		resetState();
 
@@ -192,7 +309,11 @@ public class XpTrackerPlugin extends Plugin
 	 * Throw out everything, the user has chosen a different account or world type.
 	 * This resets both the internal state and UI elements
 	 */
+<<<<<<< HEAD
 	private void resetState()
+=======
+	public void resetState()
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		xpState.reset();
 		xpPanel.resetAllInfoBoxes();
@@ -204,7 +325,11 @@ public class XpTrackerPlugin extends Plugin
 	 * Will also clear the skill from the UI.
 	 * @param skill Skill to reset
 	 */
+<<<<<<< HEAD
 	void resetSkillState(Skill skill)
+=======
+	public void resetSkillState(Skill skill)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		int currentXp = client.getSkillExperience(skill);
 		xpState.resetSkill(skill, currentXp);
@@ -213,6 +338,7 @@ public class XpTrackerPlugin extends Plugin
 		xpPanel.updateTotal(xpState.getTotalSnapshot());
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Reset all skills except for the one provided
 	 * @param skill Skill to ignore during reset
@@ -228,11 +354,14 @@ public class XpTrackerPlugin extends Plugin
 		}
 	}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Subscribe
 	public void onXpChanged(ExperienceChanged event)
 	{
 		final Skill skill = event.getSkill();
+<<<<<<< HEAD
 		final int currentXp = client.getSkillExperience(skill);
 		final VarPlayer startGoal = startGoalVarpForSkill(skill);
 		final VarPlayer endGoal = endGoalVarpForSkill(skill);
@@ -243,6 +372,15 @@ public class XpTrackerPlugin extends Plugin
 
 		final boolean updated = XpUpdateResult.UPDATED.equals(updateResult);
 		xpPanel.updateSkillExperience(updated, xpPauseState.isPaused(skill), skill, xpState.getSkillSnapshot(skill));
+=======
+		int currentXp = client.getSkillExperience(skill);
+
+		XpUpdateResult updateResult = xpState.updateSkill(skill, currentXp);
+
+		boolean updated = XpUpdateResult.UPDATED.equals(updateResult);
+
+		xpPanel.updateSkillExperience(updated, skill, xpState.getSkillSnapshot(skill));
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		xpState.recalculateTotal();
 		xpPanel.updateTotal(xpState.getTotalSnapshot());
 	}
@@ -250,6 +388,7 @@ public class XpTrackerPlugin extends Plugin
 	@Subscribe
 	public void onGameTick(GameTick event)
 	{
+<<<<<<< HEAD
 		rebuildSkills();
 	}
 
@@ -409,17 +548,29 @@ public class XpTrackerPlugin extends Plugin
 		for (Skill skill : Skill.values())
 		{
 			xpPanel.updateSkillExperience(false, xpPauseState.isPaused(skill), skill, xpState.getSkillSnapshot(skill));
+=======
+		// Rebuild calculated values like xp/hr in panel
+		for (Skill skill : Skill.values())
+		{
+			xpPanel.updateSkillExperience(false, skill, xpState.getSkillSnapshot(skill));
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 
 		xpState.recalculateTotal();
 		xpPanel.updateTotal(xpState.getTotalSnapshot());
 	}
 
+<<<<<<< HEAD
 	void pauseSkill(Skill skill, boolean pause)
 	{
 		if (pause ? xpPauseState.pauseSkill(skill) : xpPauseState.unpauseSkill(skill))
 		{
 			xpPanel.updateSkillExperience(false, xpPauseState.isPaused(skill), skill, xpState.getSkillSnapshot(skill));
 		}
+=======
+	public XpSnapshotSingle getSkillSnapshot(Skill skill)
+	{
+		return xpState.getSkillSnapshot(skill);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

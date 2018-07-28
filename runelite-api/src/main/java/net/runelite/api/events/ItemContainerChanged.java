@@ -27,6 +27,7 @@ package net.runelite.api.events;
 import lombok.Value;
 import net.runelite.api.ItemContainer;
 
+<<<<<<< HEAD
 /**
  * An event called whenever the stack size of an {@link net.runelite.api.Item}
  * in an {@link ItemContainer} is modified.
@@ -44,5 +45,10 @@ public class ItemContainerChanged
 	/**
 	 * The modified item container.
 	 */
+=======
+@Value
+public class ItemContainerChanged
+{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private final ItemContainer itemContainer;
 }

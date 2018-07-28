@@ -55,6 +55,7 @@ import net.runelite.api.events.NpcSpawned;
 import net.runelite.api.events.PlayerDespawned;
 import net.runelite.api.events.PlayerSpawned;
 import net.runelite.api.events.ProjectileMoved;
+<<<<<<< HEAD
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
@@ -64,6 +65,14 @@ import net.runelite.client.ui.overlay.OverlayManager;
 	name = "Demonic Gorillas",
 	description = "Count demonic gorilla attacks and display their next possible attack styles",
 	tags = {"combat", "overlay"}
+=======
+import net.runelite.client.plugins.Plugin;
+import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.ui.overlay.Overlay;
+
+@PluginDescriptor(
+	name = "Demonic Gorillas"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 @Slf4j
 public class DemonicGorillaPlugin extends Plugin
@@ -72,6 +81,7 @@ public class DemonicGorillaPlugin extends Plugin
 	private Client client;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
@@ -80,6 +90,10 @@ public class DemonicGorillaPlugin extends Plugin
 	@Inject
 	private ClientThread clientThread;
 
+=======
+	private DemonicGorillaOverlay overlay;
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Getter
 	private Map<NPC, DemonicGorilla> gorillas;
 
@@ -92,24 +106,34 @@ public class DemonicGorillaPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
+<<<<<<< HEAD
 		overlayManager.add(overlay);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		gorillas = new HashMap<>();
 		recentBoulders = new ArrayList<>();
 		pendingAttacks = new ArrayList<>();
 		memorizedPlayers = new HashMap<>();
+<<<<<<< HEAD
 		clientThread.invokeLater(this::reset); // Updates the list of gorillas and players
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
+<<<<<<< HEAD
 		overlayManager.remove(overlay);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		gorillas = null;
 		recentBoulders = null;
 		pendingAttacks = null;
 		memorizedPlayers = null;
 	}
 
+<<<<<<< HEAD
 	private void clear()
 	{
 		recentBoulders.clear();
@@ -136,6 +160,20 @@ public class DemonicGorillaPlugin extends Plugin
 				gorillas.put(npc, new DemonicGorilla(npc));
 			}
 		}
+=======
+	@Override
+	public Overlay getOverlay()
+	{
+		return overlay;
+	}
+
+	private void clear()
+	{
+		recentBoulders.clear();
+		pendingAttacks.clear();
+		gorillas.clear();
+		memorizedPlayers.clear();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	private void resetPlayers()
@@ -654,7 +692,11 @@ public class DemonicGorillaPlugin extends Plugin
 			gs == GameState.CONNECTION_LOST ||
 			gs == GameState.HOPPING)
 		{
+<<<<<<< HEAD
 			reset();
+=======
+			clear();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 

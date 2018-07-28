@@ -24,11 +24,21 @@
  */
 package net.runelite.client.plugins.grounditems;
 
+<<<<<<< HEAD
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import javax.inject.Inject;
 import javax.swing.SwingUtilities;
+=======
+import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.util.Map;
+import javax.inject.Inject;
+import net.runelite.api.Client;
+import net.runelite.api.Point;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.input.KeyListener;
 import net.runelite.client.input.MouseListener;
 
@@ -37,6 +47,12 @@ public class GroundItemInputListener extends MouseListener implements KeyListene
 	private static final int HOTKEY = KeyEvent.VK_ALT;
 
 	@Inject
+<<<<<<< HEAD
+=======
+	private Client client;
+
+	@Inject
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private GroundItemsPlugin plugin;
 
 	@Override
@@ -60,15 +76,21 @@ public class GroundItemInputListener extends MouseListener implements KeyListene
 		if (e.getKeyCode() == HOTKEY)
 		{
 			plugin.setHotKeyPressed(false);
+<<<<<<< HEAD
 			plugin.setTextBoxBounds(null);
 			plugin.setHiddenBoxBounds(null);
 			plugin.setHighlightBoxBounds(null);
+=======
+			plugin.getHighlightBoxes().clear();
+			plugin.getHiddenBoxes().clear();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
 	@Override
 	public MouseEvent mousePressed(MouseEvent e)
 	{
+<<<<<<< HEAD
 		final Point mousePos = e.getPoint();
 
 		if (plugin.isHotKeyPressed())
@@ -105,6 +127,33 @@ public class GroundItemInputListener extends MouseListener implements KeyListene
 					plugin.updateList(plugin.getTextBoxBounds().getValue().getName(), true);
 					e.consume();
 					return e;
+=======
+		if (plugin.isHotKeyPressed())
+		{
+			// Check if left click
+			if (e.getButton() == MouseEvent.BUTTON1)
+			{
+				Point mousePos = client.getMouseCanvasPosition();
+
+				for (Map.Entry<Rectangle, String> entry : plugin.getHiddenBoxes().entrySet())
+				{
+					if (entry.getKey().contains(mousePos.getX(), mousePos.getY()))
+					{
+						plugin.updateList(entry.getValue(), true);
+						e.consume();
+						return e;
+					}
+				}
+
+				for (Map.Entry<Rectangle, String> entry : plugin.getHighlightBoxes().entrySet())
+				{
+					if (entry.getKey().contains(mousePos.getX(), mousePos.getY()))
+					{
+						plugin.updateList(entry.getValue(), false);
+						e.consume();
+						return e;
+					}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				}
 			}
 		}

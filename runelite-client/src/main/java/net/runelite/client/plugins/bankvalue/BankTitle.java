@@ -92,6 +92,7 @@ class BankTitle
 
 		if (config.showGE() && gePrice != 0)
 		{
+<<<<<<< HEAD
 			strCurrentTab += " (EX: ";
 
 			if (config.showExact())
@@ -102,10 +103,14 @@ class BankTitle
 			{
 				strCurrentTab += StackFormatter.quantityToStackSize(gePrice) + ")";
 			}
+=======
+			strCurrentTab += " (EX: " + StackFormatter.quantityToStackSize(gePrice) + ")";
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 
 		if (config.showHA() && haPrice != 0)
 		{
+<<<<<<< HEAD
 			strCurrentTab += " (HA: ";
 
 			if (config.showExact())
@@ -116,6 +121,9 @@ class BankTitle
 			{
 				strCurrentTab += StackFormatter.quantityToStackSize(haPrice) + ")";
 			}
+=======
+			strCurrentTab += " (HA: " + StackFormatter.quantityToStackSize(haPrice) + ")";
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 
 		log.debug("Setting bank title: {}", bankTitle + strCurrentTab);

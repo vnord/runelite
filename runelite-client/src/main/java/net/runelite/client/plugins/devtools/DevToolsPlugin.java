@@ -32,6 +32,11 @@ import com.google.inject.Provides;
 import java.awt.Font;
 import java.awt.image.BufferedImage;
 import static java.lang.Math.min;
+<<<<<<< HEAD
+=======
+import java.util.Arrays;
+import java.util.Collection;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
@@ -50,12 +55,19 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.ui.PluginToolbar;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
+=======
+import net.runelite.client.ui.overlay.Overlay;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import org.slf4j.LoggerFactory;
 
 @PluginDescriptor(
 	name = "Developer Tools",
+<<<<<<< HEAD
 	tags = {"panel"},
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	developerPlugin = true
 )
 @Slf4j
@@ -68,9 +80,12 @@ public class DevToolsPlugin extends Plugin
 	private PluginToolbar pluginToolbar;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private DevToolsOverlay overlay;
 
 	@Inject
@@ -80,12 +95,15 @@ public class DevToolsPlugin extends Plugin
 	private SceneOverlay sceneOverlay;
 
 	@Inject
+<<<<<<< HEAD
 	private CameraOverlay cameraOverlay;
 
 	@Inject
 	private WorldMapLocationOverlay worldMapLocationOverlay;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private EventBus eventBus;
 
 	private boolean togglePlayers;
@@ -103,9 +121,12 @@ public class DevToolsPlugin extends Plugin
 	private boolean toggleValidMovement;
 	private boolean toggleLineOfSight;
 	private boolean toggleGraphicsObjects;
+<<<<<<< HEAD
 	private boolean toggleCamera;
 	private boolean toggleWorldMapLocation;
 	private boolean toggleTileLocation;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	Widget currentWidget;
 	int itemIndex = -1;
@@ -122,12 +143,15 @@ public class DevToolsPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
+<<<<<<< HEAD
 		overlayManager.add(overlay);
 		overlayManager.add(locationOverlay);
 		overlayManager.add(sceneOverlay);
 		overlayManager.add(cameraOverlay);
 		overlayManager.add(worldMapLocationOverlay);
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		final DevToolsPanel panel = injector.getInstance(DevToolsPanel.class);
 
 		BufferedImage icon;
@@ -137,9 +161,14 @@ public class DevToolsPlugin extends Plugin
 		}
 
 		navButton = NavigationButton.builder()
+<<<<<<< HEAD
 			.tooltip("Developer Tools")
 			.icon(icon)
 			.priority(1)
+=======
+			.name("Developer Tools")
+			.icon(icon)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			.panel(panel)
 			.build();
 
@@ -152,6 +181,7 @@ public class DevToolsPlugin extends Plugin
 	@Override
 	protected void shutDown() throws Exception
 	{
+<<<<<<< HEAD
 		overlayManager.remove(overlay);
 		overlayManager.remove(locationOverlay);
 		overlayManager.remove(sceneOverlay);
@@ -160,6 +190,17 @@ public class DevToolsPlugin extends Plugin
 		pluginToolbar.removeNavigation(navButton);
 	}
 
+=======
+		pluginToolbar.removeNavigation(navButton);
+	}
+
+	@Override
+	public Collection<Overlay> getOverlays()
+	{
+		return Arrays.asList(overlay, locationOverlay, sceneOverlay);
+	}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Subscribe
 	public void onCommand(CommandExecuted commandExecuted)
 	{
@@ -187,6 +228,7 @@ public class DevToolsPlugin extends Plugin
 				client.addChatMessage(ChatMessageType.SERVER, "", message, null);
 				break;
 			}
+<<<<<<< HEAD
 			case "getvarp":
 			{
 				int varp = Integer.parseInt(args[0]);
@@ -215,6 +257,20 @@ public class DevToolsPlugin extends Plugin
 				int varbit = Integer.parseInt(args[0]);
 				int value = Integer.parseInt(args[1]);
 				client.setVarbitValue(client.getVarps(), varbit, value);
+=======
+			case "getvar":
+			{
+				int varbit = Integer.parseInt(args[0]);
+				int value = client.getVarbitValue(varbit);
+				client.addChatMessage(ChatMessageType.SERVER, "", "Varbit " + varbit + ": " + value, null);
+				break;
+			}
+			case "setvar":
+			{
+				int varbit = Integer.parseInt(args[0]);
+				int value = Integer.parseInt(args[1]);
+				client.setVarbitValue(varbit, value);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				client.addChatMessage(ChatMessageType.SERVER, "", "Set varbit " + varbit + " to " + value, null);
 				eventBus.post(new VarbitChanged()); // fake event
 				break;
@@ -257,6 +313,7 @@ public class DevToolsPlugin extends Plugin
 				localPlayer.setSpotAnimFrame(0);
 				break;
 			}
+<<<<<<< HEAD
 			case "transform":
 			{
 				int id = Integer.parseInt(args[0]);
@@ -266,6 +323,8 @@ public class DevToolsPlugin extends Plugin
 				player.setPoseAnimation(-1);
 				break;
 			}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -349,6 +408,7 @@ public class DevToolsPlugin extends Plugin
 		toggleGraphicsObjects = !toggleGraphicsObjects;
 	}
 
+<<<<<<< HEAD
 	void toggleCamera()
 	{
 		toggleCamera = !toggleCamera;
@@ -364,6 +424,8 @@ public class DevToolsPlugin extends Plugin
 		toggleTileLocation = !toggleTileLocation;
 	}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	boolean isTogglePlayers()
 	{
 		return togglePlayers;
@@ -438,6 +500,7 @@ public class DevToolsPlugin extends Plugin
 	{
 		return toggleGraphicsObjects;
 	}
+<<<<<<< HEAD
 
 	boolean isToggleCamera()
 	{
@@ -453,4 +516,6 @@ public class DevToolsPlugin extends Plugin
 	{
 		return toggleTileLocation;
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

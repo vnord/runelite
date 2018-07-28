@@ -26,6 +26,7 @@
 
 package net.runelite.api;
 
+<<<<<<< HEAD
 /**
  * Represents the buffer containing all messages in the chatbox.
  */
@@ -35,13 +36,23 @@ public interface ChatLineBuffer
 	 * Gets an array of message nodes currently in the chatbox.
 	 *
 	 * @return messages in the chatbox
+=======
+public interface ChatLineBuffer
+{
+	/**
+	 * @return the MessageNode arrays which contain the messages in the chatbox
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	 */
 	MessageNode[] getLines();
 
 	/**
+<<<<<<< HEAD
 	 * Gets the length of the {@link #getLines()} array.
 	 *
 	 * @return the length
+=======
+	 * @return the length of the MessageNode array getLines()
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	 */
 	int getLength();
 }

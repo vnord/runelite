@@ -28,7 +28,15 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
+<<<<<<< HEAD
 @ConfigGroup(FpsPlugin.CONFIG_GROUP_KEY)
+=======
+@ConfigGroup(
+	keyName = FpsPlugin.CONFIG_GROUP_KEY,
+	name = "FPS Control",
+	description = "Lets you control what your game frame rate is, often helps keep CPU down too"
+)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public interface FpsConfig extends Config
 {
 	@ConfigItem(

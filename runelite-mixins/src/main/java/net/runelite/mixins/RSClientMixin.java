@@ -28,14 +28,20 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 import javax.annotation.Nullable;
+<<<<<<< HEAD
 import javax.inject.Named;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.ClanMember;
 import net.runelite.api.Friend;
 import net.runelite.api.GameState;
 import net.runelite.api.GrandExchangeOffer;
 import net.runelite.api.GraphicsObject;
+<<<<<<< HEAD
 import net.runelite.api.HashTable;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.HintArrowType;
 import net.runelite.api.IndexedSprite;
 import net.runelite.api.InventoryID;
@@ -51,7 +57,10 @@ import static net.runelite.api.MenuAction.PLAYER_THIRD_OPTION;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.NPC;
 import net.runelite.api.Node;
+<<<<<<< HEAD
 import net.runelite.api.PacketBuffer;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import static net.runelite.api.Perspective.LOCAL_TILE_SIZE;
 import net.runelite.api.Player;
 import net.runelite.api.Point;
@@ -67,15 +76,23 @@ import net.runelite.api.WorldType;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.BoostedLevelChanged;
+<<<<<<< HEAD
 import net.runelite.api.events.ChatMessage;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.events.ClanChanged;
 import net.runelite.api.events.DraggingWidgetChanged;
 import net.runelite.api.events.ExperienceChanged;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GrandExchangeOfferChanged;
+<<<<<<< HEAD
 import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.api.events.MenuOpened;
 import net.runelite.api.events.MenuOptionClicked;
+=======
+import net.runelite.api.events.MapRegionChanged;
+import net.runelite.api.events.MenuEntryAdded;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.events.NpcSpawned;
 import net.runelite.api.events.PlayerDespawned;
 import net.runelite.api.events.PlayerMenuOptionsChanged;
@@ -84,17 +101,29 @@ import net.runelite.api.events.ResizeableChanged;
 import net.runelite.api.events.UsernameChanged;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.events.WidgetLoaded;
+<<<<<<< HEAD
 import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
+=======
+import net.runelite.api.mixins.Copy;
+import net.runelite.api.mixins.FieldHook;
+import net.runelite.api.mixins.Inject;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.api.vars.AccountType;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
+<<<<<<< HEAD
+=======
+import net.runelite.client.callback.Hooks;
+import static net.runelite.client.callback.Hooks.deferredEventBus;
+import static net.runelite.client.callback.Hooks.eventBus;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.rs.api.RSClanMemberManager;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSDeque;
@@ -102,14 +131,20 @@ import net.runelite.rs.api.RSFriendContainer;
 import net.runelite.rs.api.RSFriendManager;
 import net.runelite.rs.api.RSHashTable;
 import net.runelite.rs.api.RSIndexedSprite;
+<<<<<<< HEAD
 import net.runelite.rs.api.RSItem;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.rs.api.RSItemContainer;
 import net.runelite.rs.api.RSNPC;
 import net.runelite.rs.api.RSName;
 import net.runelite.rs.api.RSNameable;
 import net.runelite.rs.api.RSPlayer;
 import net.runelite.rs.api.RSWidget;
+<<<<<<< HEAD
 import org.slf4j.Logger;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 @Mixin(RSClient.class)
 public abstract class RSClientMixin implements RSClient
@@ -118,6 +153,7 @@ public abstract class RSClientMixin implements RSClient
 	private static RSClient client;
 
 	@Inject
+<<<<<<< HEAD
 	@javax.inject.Inject
 	private Callbacks callbacks;
 
@@ -127,6 +163,8 @@ public abstract class RSClientMixin implements RSClient
 	private Logger logger;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private static int tickCount;
 
 	@Inject
@@ -151,6 +189,7 @@ public abstract class RSClientMixin implements RSClient
 	private static int oldMenuEntryCount;
 
 	@Inject
+<<<<<<< HEAD
 	private static RSItem lastItemDespawn;
 
 	@Inject
@@ -168,6 +207,8 @@ public abstract class RSClientMixin implements RSClient
 	}
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Override
 	public boolean isInterpolatePlayerAnimations()
 	{
@@ -237,17 +278,28 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	@Override
+<<<<<<< HEAD
 	public Tile getSelectedSceneTile()
 	{
 		int tileX = getSelectedSceneTileX();
 		int tileY = getSelectedSceneTileY();
+=======
+	public Tile getSelectedRegionTile()
+	{
+		int tileX = getSelectedRegionTileX();
+		int tileY = getSelectedRegionTileY();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 		if (tileX == -1 || tileY == -1)
 		{
 			return null;
 		}
 
+<<<<<<< HEAD
 		return getScene().getTiles()[getPlane()][tileX][tileY];
+=======
+		return getRegion().getTiles()[getPlane()][tileX][tileY];
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Inject
@@ -327,9 +379,15 @@ public abstract class RSClientMixin implements RSClient
 	{
 		int topGroup = getWidgetRoot();
 		List<Widget> widgets = new ArrayList<Widget>();
+<<<<<<< HEAD
 		for (RSWidget widget : getWidgets()[topGroup])
 		{
 			if (widget != null && widget.getRSParentId() == -1)
+=======
+		for (Widget widget : getWidgets()[topGroup])
+		{
+			if (widget != null && widget.getParentId() == -1)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			{
 				widgets.add(widget);
 			}
@@ -349,7 +407,11 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	@Override
+<<<<<<< HEAD
 	public RSWidget[] getGroup(int groupId)
+=======
+	public Widget[] getGroup(int groupId)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		RSWidget[][] widgets = getWidgets();
 
@@ -358,7 +420,19 @@ public abstract class RSClientMixin implements RSClient
 			return null;
 		}
 
+<<<<<<< HEAD
 		return widgets[groupId];
+=======
+		List<Widget> w = new ArrayList<Widget>();
+		for (Widget widget : widgets[groupId])
+		{
+			if (widget != null)
+			{
+				w.add(widget);
+			}
+		}
+		return w.toArray(new Widget[w.size()]);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Inject
@@ -391,6 +465,7 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	@Override
+<<<<<<< HEAD
 	public int getVarpValue(int[] varps, int varpId)
 	{
 		return varps[varpId];
@@ -405,6 +480,8 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	@Override
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public boolean isPrayerActive(Prayer prayer)
 	{
 		return getVar(prayer.getVarbit()) == 1;
@@ -546,7 +623,11 @@ public abstract class RSClientMixin implements RSClient
 				client.getMenuActionParams1()[newCount - 1]
 			);
 
+<<<<<<< HEAD
 			client.getCallbacks().post(event);
+=======
+			eventBus.post(event);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -576,7 +657,11 @@ public abstract class RSClientMixin implements RSClient
 
 		for (Node node = head.getNext(); node != head; node = node.getNext())
 		{
+<<<<<<< HEAD
 			graphicsObjects.add((GraphicsObject) node);
+=======
+			graphicsObjects.add((GraphicsObject)node);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 
 		return graphicsObjects;
@@ -594,11 +679,19 @@ public abstract class RSClientMixin implements RSClient
 	@Nullable
 	public LocalPoint getLocalDestinationLocation()
 	{
+<<<<<<< HEAD
 		int sceneX = getDestinationX();
 		int sceneY = getDestinationY();
 		if (sceneX != 0 && sceneY != 0)
 		{
 			return LocalPoint.fromScene(sceneX, sceneY);
+=======
+		int regionX = getDestinationX();
+		int regionY = getDestinationY();
+		if (regionX != 0 && regionY != 0)
+		{
+			return LocalPoint.fromRegion(regionX, regionY);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 		return null;
 	}
@@ -608,7 +701,11 @@ public abstract class RSClientMixin implements RSClient
 	public void changeMemoryMode(boolean lowMemory)
 	{
 		setLowMemory(lowMemory);
+<<<<<<< HEAD
 		setSceneLowMemory(lowMemory);
+=======
+		setRegionLowMemory(lowMemory);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		setAudioHighMemory(true);
 		setObjectCompositionLowDetail(lowMemory);
 	}
@@ -679,7 +776,11 @@ public abstract class RSClientMixin implements RSClient
 	{
 		DraggingWidgetChanged draggingWidgetChanged = new DraggingWidgetChanged();
 		draggingWidgetChanged.setDraggingWidget(client.isDraggingWidget());
+<<<<<<< HEAD
 		client.getCallbacks().post(draggingWidgetChanged);
+=======
+		eventBus.post(draggingWidgetChanged);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Inject
@@ -699,6 +800,23 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	@Copy("closeWidget")
+	public static void rs$closeWidget(WidgetNode widget, boolean b)
+	{
+		throw new RuntimeException();
+	}
+
+	@Replace("closeWidget")
+	public static void rl$closeWidget(WidgetNode widget, boolean b)
+	{
+		MenuEntry[] entries = client.getMenuEntries();
+		rs$closeWidget(widget, b);
+		client.setMenuEntries(entries);
+	}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Copy("runWidgetOnLoadListener")
 	public static void rs$runWidgetOnLoadListener(int groupId)
 	{
@@ -717,7 +835,11 @@ public abstract class RSClientMixin implements RSClient
 		{
 			WidgetLoaded event = new WidgetLoaded();
 			event.setGroupId(groupId);
+<<<<<<< HEAD
 			client.getCallbacks().post(event);
+=======
+			eventBus.post(event);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -755,7 +877,11 @@ public abstract class RSClientMixin implements RSClient
 		{
 			Skill updatedSkill = possibleSkills[idx];
 			experienceChanged.setSkill(updatedSkill);
+<<<<<<< HEAD
 			client.getCallbacks().post(experienceChanged);
+=======
+			eventBus.post(experienceChanged);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -770,10 +896,26 @@ public abstract class RSClientMixin implements RSClient
 			Skill updatedSkill = skills[idx];
 			BoostedLevelChanged boostedLevelChanged = new BoostedLevelChanged();
 			boostedLevelChanged.setSkill(updatedSkill);
+<<<<<<< HEAD
 			client.getCallbacks().post(boostedLevelChanged);
 		}
 	}
 
+=======
+			eventBus.post(boostedLevelChanged);
+		}
+	}
+
+	@FieldHook("mapRegions")
+	@Inject
+	public static void mapRegionsChanged(int idx)
+	{
+		MapRegionChanged regionChanged = new MapRegionChanged();
+		regionChanged.setIndex(idx);
+		eventBus.post(regionChanged);
+	}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@FieldHook("playerOptions")
 	@Inject
 	public static void playerOptionsChanged(int idx)
@@ -789,7 +931,11 @@ public abstract class RSClientMixin implements RSClient
 
 		PlayerMenuOptionsChanged optionsChanged = new PlayerMenuOptionsChanged();
 		optionsChanged.setIndex(idx);
+<<<<<<< HEAD
 		client.getCallbacks().post(optionsChanged);
+=======
+		eventBus.post(optionsChanged);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@FieldHook("gameState")
@@ -798,7 +944,11 @@ public abstract class RSClientMixin implements RSClient
 	{
 		GameStateChanged gameStateChange = new GameStateChanged();
 		gameStateChange.setGameState(client.getGameState());
+<<<<<<< HEAD
 		client.getCallbacks().post(gameStateChange);
+=======
+		eventBus.post(gameStateChange);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 
@@ -817,7 +967,11 @@ public abstract class RSClientMixin implements RSClient
 		{
 			npc.setIndex(idx);
 
+<<<<<<< HEAD
 			client.getCallbacks().postDeferred(new NpcSpawned(npc));
+=======
+			deferredEventBus.post(new NpcSpawned(npc));
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -837,11 +991,19 @@ public abstract class RSClientMixin implements RSClient
 
 		if (oldPlayer != null)
 		{
+<<<<<<< HEAD
 			client.getCallbacks().post(new PlayerDespawned(oldPlayer));
 		}
 		if (player != null)
 		{
 			client.getCallbacks().postDeferred(new PlayerSpawned(player));
+=======
+			eventBus.post(new PlayerDespawned(oldPlayer));
+		}
+		if (player != null)
+		{
+			deferredEventBus.post(new PlayerSpawned(player));
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -864,7 +1026,11 @@ public abstract class RSClientMixin implements RSClient
 		GrandExchangeOfferChanged offerChangedEvent = new GrandExchangeOfferChanged();
 		offerChangedEvent.setOffer(internalOffer);
 		offerChangedEvent.setSlot(idx);
+<<<<<<< HEAD
 		client.getCallbacks().post(offerChangedEvent);
+=======
+		eventBus.post(offerChangedEvent);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@FieldHook("clientVarps")
@@ -872,7 +1038,11 @@ public abstract class RSClientMixin implements RSClient
 	public static void settingsChanged(int idx)
 	{
 		VarbitChanged varbitChanged = new VarbitChanged();
+<<<<<<< HEAD
 		client.getCallbacks().post(varbitChanged);
+=======
+		eventBus.post(varbitChanged);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@FieldHook("isResized")
@@ -882,20 +1052,29 @@ public abstract class RSClientMixin implements RSClient
 		//maybe couple with varbitChanged. resizeable may not be a varbit but it would fit with the other client settings.
 		ResizeableChanged resizeableChanged = new ResizeableChanged();
 		resizeableChanged.setResized(client.isResized());
+<<<<<<< HEAD
 		client.getCallbacks().post(resizeableChanged);
+=======
+		eventBus.post(resizeableChanged);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@FieldHook("clanMemberManager")
 	@Inject
 	public static void clanMemberManagerChanged(int idx)
 	{
+<<<<<<< HEAD
 		client.getCallbacks().post(new ClanChanged(client.getClanMemberManager() != null));
+=======
+		eventBus.post(new ClanChanged(client.getClanMemberManager() != null));
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Inject
 	@Override
 	public boolean hasHintArrow()
 	{
+<<<<<<< HEAD
 		return client.getHintArrowTargetType() != HintArrowType.NONE.getValue();
 	}
 
@@ -920,6 +1099,9 @@ public abstract class RSClientMixin implements RSClient
 		{
 			return HintArrowType.NONE;
 		}
+=======
+		return client.getHintArrowTargetType() == HintArrowType.NONE.getValue();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Inject
@@ -957,6 +1139,7 @@ public abstract class RSClientMixin implements RSClient
 		client.setHintArrowOffsetY(LOCAL_TILE_SIZE / 2);
 	}
 
+<<<<<<< HEAD
 	@Inject
 	@Override
 	public WorldPoint getHintArrowPoint()
@@ -1011,6 +1194,8 @@ public abstract class RSClientMixin implements RSClient
 		return null;
 	}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Copy("menuAction")
 	static void rs$menuAction(int var0, int var1, int var2, int var3, String var4, String var5, int var6, int var7)
 	{
@@ -1018,6 +1203,7 @@ public abstract class RSClientMixin implements RSClient
 	}
 
 	@Replace("menuAction")
+<<<<<<< HEAD
 	static void rl$menuAction(int actionParam, int widgetId, int menuAction, int id, String menuOption, String menuTarget, int var6, int var7)
 	{
 		/* Along the way, the RuneScape client may change a menuAction by incrementing it with 2000.
@@ -1043,13 +1229,26 @@ public abstract class RSClientMixin implements RSClient
 		}
 
 		rs$menuAction(actionParam, widgetId, menuAction, id, menuOption, menuTarget, var6, var7);
+=======
+	static void rl$menuAction(int var0, int var1, int var2, int var3, String var4, String var5, int var6, int var7)
+	{
+		if (Hooks.menuActionHook(var0, var1, var2, var3, var4, var5, var6, var7))
+		{
+			return;
+		}
+		rs$menuAction(var0, var1, var2, var3, var4, var5, var6, var7);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@FieldHook("username")
 	@Inject
 	public static void onUsernameChanged(int idx)
 	{
+<<<<<<< HEAD
 		client.getCallbacks().post(new UsernameChanged());
+=======
+		eventBus.post(new UsernameChanged());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Override
@@ -1073,6 +1272,7 @@ public abstract class RSClientMixin implements RSClient
 		int flags = getFlags();
 		return WorldType.fromMask(flags);
 	}
+<<<<<<< HEAD
 
 	@Inject
 	@MethodHook("openMenu")
@@ -1164,3 +1364,6 @@ public abstract class RSClientMixin implements RSClient
 		RSClientMixin.lastItemDespawn = lastItemDespawn;
 	}
 }
+=======
+}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b

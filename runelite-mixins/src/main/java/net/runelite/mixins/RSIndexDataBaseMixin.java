@@ -35,19 +35,29 @@ import java.io.InputStreamReader;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
+<<<<<<< HEAD
 import net.runelite.api.mixins.Shadow;
 import net.runelite.api.overlay.OverlayIndex;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSIndexData;
 import net.runelite.rs.api.RSIndexDataBase;
 import org.slf4j.Logger;
+=======
+import net.runelite.api.overlay.OverlayIndex;
+import static net.runelite.client.callback.Hooks.log;
+import net.runelite.rs.api.RSIndexData;
+import net.runelite.rs.api.RSIndexDataBase;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 @Mixin(RSIndexDataBase.class)
 public abstract class RSIndexDataBaseMixin implements RSIndexDataBase
 {
+<<<<<<< HEAD
 	@Shadow("clientInstance")
 	private static RSClient client;
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Copy("getConfigData")
 	abstract byte[] rs$getConfigData(int archiveId, int fileId);
 
@@ -62,8 +72,11 @@ public abstract class RSIndexDataBaseMixin implements RSIndexDataBase
 			return rsData;
 		}
 
+<<<<<<< HEAD
 		Logger log = client.getLogger();
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		InputStream in = getClass().getResourceAsStream("/runelite/" + indexData.getIndex() + "/" + archiveId);
 		if (in == null)
 		{

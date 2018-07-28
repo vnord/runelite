@@ -29,17 +29,28 @@ import javax.inject.Inject;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
 	name = "Rune Pouch",
 	description = "Show the contents of your rune pouch",
 	tags = {"combat", "magic", "overlay"}
+=======
+import net.runelite.client.ui.overlay.Overlay;
+
+@PluginDescriptor(
+	name = "Rune Pouch"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 public class RunepouchPlugin extends Plugin
 {
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
+=======
+	private ConfigManager configManager;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Inject
 	private RunepouchOverlay overlay;
@@ -51,6 +62,7 @@ public class RunepouchPlugin extends Plugin
 	}
 
 	@Override
+<<<<<<< HEAD
 	protected void startUp() throws Exception
 	{
 		overlayManager.add(overlay);
@@ -60,5 +72,10 @@ public class RunepouchPlugin extends Plugin
 	protected void shutDown() throws Exception
 	{
 		overlayManager.remove(overlay);
+=======
+	public Overlay getOverlay()
+	{
+		return overlay;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

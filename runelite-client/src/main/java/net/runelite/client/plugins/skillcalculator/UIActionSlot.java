@@ -1,6 +1,9 @@
 /*
  * Copyright (c) 2018, Kruithne <kruithne@gmail.com>
+<<<<<<< HEAD
  * Copyright (c) 2018, Psikoi <https://github.com/psikoi>
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,6 +33,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+<<<<<<< HEAD
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -81,11 +85,31 @@ class UIActionSlot extends JPanel
 	@Getter(AccessLevel.PACKAGE)
 	@Setter(AccessLevel.PACKAGE)
 	private double value = 0;
+=======
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import net.runelite.client.plugins.skillcalculator.beans.SkillDataEntry;
+import net.runelite.client.ui.FontManager;
+import net.runelite.client.ui.JShadowedLabel;
+
+class UIActionSlot extends JPanel
+{
+	SkillDataEntry action;
+	private JShadowedLabel uiLabelActions;
+	private static final Dimension ICON_SIZE = new Dimension(32, 32);
+
+	boolean isAvailable = false;
+	boolean isSelected = false;
+
+	double value = 0;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	UIActionSlot(SkillDataEntry action)
 	{
 		this.action = action;
 
+<<<<<<< HEAD
 		setLayout(new BorderLayout());
 		setBorder(RED_BORDER);
 		setBackground(ColorScheme.DARKER_GRAY_COLOR);
@@ -119,11 +143,26 @@ class UIActionSlot extends JPanel
 			SkillCalculator.itemManager.getImage(action.getIcon()).addTo(uiIcon);
 		else if (action.getSprite() != null)
 			SkillCalculator.spriteManager.addSpriteTo(uiIcon, action.getSprite(), 0);
+=======
+		BorderLayout layout = new BorderLayout();
+		layout.setHgap(8);
+		setLayout(layout);
+
+		setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
+
+		JLabel uiIcon = new JLabel();
+
+		if (action.icon != null)
+			SkillCalculator.itemManager.getImage(action.icon).addTo(uiIcon);
+		else if (action.sprite != null)
+			SkillCalculator.spriteManager.addSpriteTo(uiIcon, action.sprite, 0);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 		uiIcon.setMinimumSize(ICON_SIZE);
 		uiIcon.setMaximumSize(ICON_SIZE);
 		uiIcon.setPreferredSize(ICON_SIZE);
 		uiIcon.setHorizontalAlignment(JLabel.CENTER);
+<<<<<<< HEAD
 
 		uiInfo = new JPanel(new GridLayout(2, 1));
 		uiInfo.setBackground(ColorScheme.DARKER_GRAY_COLOR);
@@ -140,18 +179,37 @@ class UIActionSlot extends JPanel
 		uiInfo.add(uiLabelActions);
 
 		add(uiIcon, BorderLayout.LINE_START);
+=======
+		add(uiIcon, BorderLayout.LINE_START);
+
+		JPanel uiInfo = new JPanel(new GridLayout(2, 1));
+		uiInfo.setOpaque(false);
+
+		JShadowedLabel uiLabelName = new JShadowedLabel(action.name);
+		uiInfo.add(uiLabelName);
+
+		uiLabelActions = new JShadowedLabel("Unknown");
+		uiLabelActions.setFont(FontManager.getRunescapeSmallFont());
+		uiInfo.add(uiLabelActions);
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		add(uiInfo, BorderLayout.CENTER);
 	}
 
 	void setSelected(boolean selected)
 	{
 		isSelected = selected;
+<<<<<<< HEAD
 		this.updateBackground();
+=======
+		updateBackground();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	void setAvailable(boolean available)
 	{
 		isAvailable = available;
+<<<<<<< HEAD
 		this.updateBackground();
 	}
 
@@ -159,6 +217,9 @@ class UIActionSlot extends JPanel
 	{
 		isOverlapping = overlapping;
 		this.updateBackground();
+=======
+		updateBackground();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	void setText(String text)
@@ -168,6 +229,7 @@ class UIActionSlot extends JPanel
 
 	private void updateBackground()
 	{
+<<<<<<< HEAD
 		if (isAvailable)
 		{
 			this.setBorder(GREEN_BORDER);
@@ -192,5 +254,11 @@ class UIActionSlot extends JPanel
 		{
 			uiInfo.setBackground(color);
 		}
+=======
+		if (isSelected)
+			this.setBackground(isAvailable ? Color.GREEN : Color.RED);
+		else
+			this.setBackground(isAvailable ? Color.GREEN.darker() : Color.RED.darker());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

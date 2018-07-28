@@ -28,18 +28,27 @@ package net.runelite.client.plugins.cerberus;
 import com.google.common.collect.ComparisonChain;
 import com.google.common.eventbus.Subscribe;
 import java.util.ArrayList;
+<<<<<<< HEAD
+=======
+import java.util.Collections;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.Getter;
+<<<<<<< HEAD
 import net.runelite.api.GameState;
 import net.runelite.api.NPC;
 import net.runelite.api.events.GameStateChanged;
+=======
+import net.runelite.api.NPC;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.NpcDespawned;
 import net.runelite.api.events.NpcSpawned;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
@@ -47,6 +56,11 @@ import net.runelite.client.ui.overlay.OverlayManager;
 	description = "Show what to pray against the summoned souls",
 	tags = {"bosses", "combat", "ghosts", "prayer", "pve", "overlay", "souls"}
 )
+=======
+import net.runelite.client.ui.overlay.Overlay;
+
+@PluginDescriptor(name = "Cerberus")
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 @Singleton
 public class CerberusPlugin extends Plugin
 {
@@ -54,6 +68,7 @@ public class CerberusPlugin extends Plugin
 	private final List<NPC> ghosts = new ArrayList<>();
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
@@ -79,6 +94,20 @@ public class CerberusPlugin extends Plugin
 		{
 			ghosts.clear();
 		}
+=======
+	private CerberusOverlay overlay;
+
+	@Override
+	protected void shutDown() throws Exception
+	{
+		ghosts.clear();
+	}
+
+	@Override
+	public Overlay getOverlay()
+	{
+		return overlay;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe
@@ -102,7 +131,11 @@ public class CerberusPlugin extends Plugin
 			return;
 		}
 
+<<<<<<< HEAD
 		ghosts.sort((a, b) -> ComparisonChain.start()
+=======
+		Collections.sort(ghosts, (a, b) -> ComparisonChain.start()
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			// First, sort by the southernmost ghost (e.g with lowest y)
 			.compare(a.getLocalLocation().getY(), b.getLocalLocation().getY())
 			// Then, sort by the westernmost ghost (e.g with lowest x)

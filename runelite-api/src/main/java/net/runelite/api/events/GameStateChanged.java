@@ -27,6 +27,7 @@ package net.runelite.api.events;
 import lombok.Data;
 import net.runelite.api.GameState;
 
+<<<<<<< HEAD
 /**
  * An event where the clients game state has changed.
  */
@@ -36,5 +37,10 @@ public class GameStateChanged
 	/**
 	 * The new game state.
 	 */
+=======
+@Data
+public class GameStateChanged
+{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private GameState gameState;
 }

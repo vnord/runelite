@@ -26,6 +26,7 @@ package net.runelite.api.events;
 
 import lombok.Data;
 
+<<<<<<< HEAD
 /**
  * Called every game cycle the client is dragging a widget on
  * the cursor.
@@ -36,5 +37,10 @@ public class DraggingWidgetChanged
 	/**
 	 * Whether a widget is currently being dragged.
 	 */
+=======
+@Data
+public class DraggingWidgetChanged
+{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private boolean draggingWidget;
 }

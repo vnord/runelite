@@ -36,11 +36,15 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 
+<<<<<<< HEAD
 @PluginDescriptor(
 	name = "Bank Value",
 	description = "Show the value of your bank and/or current tab",
 	tags = {"grand", "exchange", "high", "alchemy", "prices"}
 )
+=======
+@PluginDescriptor(name = "Bank Value")
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public class BankValuePlugin extends Plugin
 {
 	@Inject
@@ -76,7 +80,14 @@ public class BankValuePlugin extends Plugin
 
 		bankTitle.save();
 		calculate(widgetBankTitleBar);
+<<<<<<< HEAD
 		bankTitle.update(bankCalculation.getGePrice(), bankCalculation.getHaPrice());
+=======
+		if (bankCalculation.isFinished())
+		{
+			bankTitle.update(bankCalculation.getGePrice(), bankCalculation.getHaPrice());
+		}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	private void calculate(Widget bankTitleBar)

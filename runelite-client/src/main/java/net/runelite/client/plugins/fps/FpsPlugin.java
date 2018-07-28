@@ -33,7 +33,11 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.DrawManager;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
+=======
+import net.runelite.client.ui.overlay.Overlay;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 /**
  * FPS Control has two primary areas, this plugin class just keeps those areas up to date and handles setup / teardown.
@@ -47,8 +51,11 @@ import net.runelite.client.ui.overlay.OverlayManager;
  */
 @PluginDescriptor(
 	name = "FPS Control",
+<<<<<<< HEAD
 	description = "Show current FPS and/or set an FPS limit",
 	tags = {"frames", "framerate", "limit", "overlay"},
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	enabledByDefault = false
 )
 public class FpsPlugin extends Plugin
@@ -56,9 +63,12 @@ public class FpsPlugin extends Plugin
 	static final String CONFIG_GROUP_KEY = "fpscontrol";
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private FpsOverlay overlay;
 
 	@Inject
@@ -73,6 +83,15 @@ public class FpsPlugin extends Plugin
 		return configManager.getConfig(FpsConfig.class);
 	}
 
+<<<<<<< HEAD
+=======
+	@Override
+	public Overlay getOverlay()
+	{
+		return overlay;
+	}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Subscribe
 	public void onConfigChanged(ConfigChanged event)
 	{
@@ -92,7 +111,10 @@ public class FpsPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
+<<<<<<< HEAD
 		overlayManager.add(overlay);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		drawManager.registerEveryFrameListener(drawListener);
 		drawListener.reloadConfig();
 	}
@@ -100,7 +122,10 @@ public class FpsPlugin extends Plugin
 	@Override
 	protected void shutDown() throws Exception
 	{
+<<<<<<< HEAD
 		overlayManager.remove(overlay);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		drawManager.unregisterEveryFrameListener(drawListener);
 	}
 }

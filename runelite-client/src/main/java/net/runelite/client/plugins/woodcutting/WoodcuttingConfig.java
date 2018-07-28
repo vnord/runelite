@@ -28,6 +28,7 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
+<<<<<<< HEAD
 @ConfigGroup("woodcutting")
 public interface WoodcuttingConfig extends Config
 {
@@ -36,6 +37,19 @@ public interface WoodcuttingConfig extends Config
 		keyName = "statTimeout",
 		name = "Reset stats (minutes)",
 		description = "Configures the time until statistic is reset. Also configures when tree indicator is hidden"
+=======
+@ConfigGroup(
+	keyName = "woodcutting",
+	name = "Woodcutting",
+	description = "Configuration for the woodcutting plugin"
+)
+public interface WoodcuttingConfig extends Config
+{
+	@ConfigItem(
+		keyName = "statTimeout",
+		name = "Reset stats (minutes)",
+		description = "Configures the time until statistic is reset"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	)
 	default int statTimeout()
 	{
@@ -43,7 +57,10 @@ public interface WoodcuttingConfig extends Config
 	}
 
 	@ConfigItem(
+<<<<<<< HEAD
 		position = 2,
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		keyName = "showNestNotification",
 		name = "Bird nest notification",
 		description = "Configures whether to notify you of a bird nest spawn"
@@ -54,15 +71,21 @@ public interface WoodcuttingConfig extends Config
 	}
 
 	@ConfigItem(
+<<<<<<< HEAD
 		position = 3,
 		keyName = "showWoodcuttingStats",
 		name = "Show session stats",
+=======
+		keyName = "showWoodcuttingStats",
+		name = "Show Woodcutting session stats",
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		description = "Configures whether to display woodcutting session stats"
 	)
 	default boolean showWoodcuttingStats()
 	{
 		return true;
 	}
+<<<<<<< HEAD
 
 	@ConfigItem(
 		position = 4,
@@ -75,3 +98,6 @@ public interface WoodcuttingConfig extends Config
 		return true;
 	}
 }
+=======
+}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b

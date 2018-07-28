@@ -28,19 +28,33 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
+<<<<<<< HEAD
 @ConfigGroup("blastfurnace")
+=======
+@ConfigGroup(
+	keyName = "blastfurnace",
+	name = "Blast Furnace",
+	description = "Configuration for the Blast furnace plugin"
+)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public interface BlastFurnaceConfig extends Config
 {
 	@ConfigItem(
 		keyName = "showConveyorBelt",
+<<<<<<< HEAD
 		name = "Show conveyor belt clickbox",
 		description = "Configures whether or not the clickbox for the conveyor belt is displayed",
 		position = 1
+=======
+		name = "Show Conveyor belt clickbox",
+		description = "Configures whether or not the clickbox for the conveyor belt is displayed"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	)
 	default boolean showConveyorBelt()
 	{
 		return true;
 	}
+<<<<<<< HEAD
 
 	@ConfigItem(
 		keyName = "showBarDispenser",
@@ -52,4 +66,6 @@ public interface BlastFurnaceConfig extends Config
 	{
 		return true;
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

@@ -26,6 +26,7 @@ package net.runelite.client.ui.overlay.components;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+<<<<<<< HEAD
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,17 @@ public class ImageComponent implements LayoutableRenderableEntity
 {
 	private final BufferedImage image;
 	private Point preferredLocation = new Point();
+=======
+import java.awt.image.BufferedImage;
+import lombok.AllArgsConstructor;
+import lombok.Setter;
+
+@AllArgsConstructor
+@Setter
+public class ImageComponent implements LayoutableRenderableEntity
+{
+	private BufferedImage image;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Override
 	public Dimension render(Graphics2D graphics)
@@ -46,7 +58,11 @@ public class ImageComponent implements LayoutableRenderableEntity
 			return null;
 		}
 
+<<<<<<< HEAD
 		graphics.drawImage(image, preferredLocation.x, preferredLocation.y, null);
+=======
+		graphics.drawImage(image, 0, -graphics.getFontMetrics().getHeight(), null);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		return new Dimension(image.getWidth(), image.getHeight());
 	}
 

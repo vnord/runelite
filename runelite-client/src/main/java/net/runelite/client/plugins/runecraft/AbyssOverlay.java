@@ -53,6 +53,10 @@ import net.runelite.api.DecorativeObject;
 import net.runelite.api.NPC;
 import net.runelite.api.Perspective;
 import net.runelite.api.Point;
+<<<<<<< HEAD
+=======
+import net.runelite.api.coords.LocalPoint;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
@@ -61,6 +65,10 @@ import net.runelite.client.ui.overlay.OverlayUtil;
 
 class AbyssOverlay extends Overlay
 {
+<<<<<<< HEAD
+=======
+	private static final int MAX_DISTANCE = 2350;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private static final Dimension IMAGE_SIZE = new Dimension(15, 14);
 
 	private final Set<AbyssRifts> rifts = new HashSet<>();
@@ -88,9 +96,20 @@ class AbyssOverlay extends Overlay
 	{
 		if (config.showRifts())
 		{
+<<<<<<< HEAD
 			for (DecorativeObject object : plugin.getAbyssObjects())
 			{
 				renderRifts(graphics, object);
+=======
+			LocalPoint localLocation = client.getLocalPlayer().getLocalLocation();
+			for (DecorativeObject object : plugin.getAbyssObjects())
+			{
+				LocalPoint location = object.getLocalLocation();
+				if (localLocation.distanceTo(location) <= MAX_DISTANCE)
+				{
+					renderRifts(graphics, object);
+				}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			}
 		}
 

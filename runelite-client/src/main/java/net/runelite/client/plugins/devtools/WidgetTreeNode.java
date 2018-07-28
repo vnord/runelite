@@ -49,6 +49,7 @@ class WidgetTreeNode extends DefaultMutableTreeNode
 	public String toString()
 	{
 		Widget widget = getWidget();
+<<<<<<< HEAD
 
 		int id = widget.getId();
 		String str = type + " " + TO_GROUP(id) + "." + TO_CHILD(id);
@@ -65,5 +66,10 @@ class WidgetTreeNode extends DefaultMutableTreeNode
 		}
 
 		return str;
+=======
+		int id = widget.getId();
+		WidgetInfo info = WidgetInspector.getWidgetInfo(id);
+		return type + " " + TO_GROUP(id) + "." + TO_CHILD(id) + ((info != null) ? " " + info.name() : "");
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

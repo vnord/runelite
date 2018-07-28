@@ -26,6 +26,7 @@ package net.runelite.client.chat;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Strings;
+<<<<<<< HEAD
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.google.common.eventbus.Subscribe;
@@ -34,6 +35,16 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
 import java.util.Queue;
+=======
+import com.google.common.eventbus.Subscribe;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Queue;
+import java.util.Set;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.atomic.AtomicReference;
@@ -46,30 +57,48 @@ import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.MessageNode;
 import net.runelite.api.Varbits;
+<<<<<<< HEAD
 import net.runelite.api.events.ConfigChanged;
 import net.runelite.api.events.ResizeableChanged;
 import net.runelite.api.events.SetMessage;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.client.config.ChatColorConfig;
+=======
+import net.runelite.api.events.ResizeableChanged;
+import net.runelite.api.events.VarbitChanged;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 @Slf4j
 @Singleton
 public class ChatMessageManager
 {
+<<<<<<< HEAD
 	private final Multimap<ChatMessageType, ChatColor> colorCache = HashMultimap.create();
 	private final Provider<Client> clientProvider;
 	private final ScheduledExecutorService executor;
 	private final ChatColorConfig chatColorConfig;
+=======
+	private final Map<ChatMessageType, Set<ChatColor>> colorCache = new HashMap<>();
+	private final Provider<Client> clientProvider;
+	private final ScheduledExecutorService executor;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private int transparencyVarbit = -1;
 	private final Queue<QueuedMessage> queuedMessages = new ConcurrentLinkedQueue<>();
 
 	@Inject
+<<<<<<< HEAD
 	private ChatMessageManager(Provider<Client> clientProvider, ScheduledExecutorService executor,
 		ChatColorConfig chatColorConfig)
 	{
 		this.clientProvider = clientProvider;
 		this.executor = executor;
 		this.chatColorConfig = chatColorConfig;
+=======
+	public ChatMessageManager(Provider<Client> clientProvider, ScheduledExecutorService executor)
+	{
+		this.clientProvider = clientProvider;
+		this.executor = executor;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe
@@ -90,6 +119,7 @@ public class ChatMessageManager
 		refreshAll();
 	}
 
+<<<<<<< HEAD
 	@Subscribe
 	public void onConfigChanged(ConfigChanged event)
 	{
@@ -494,6 +524,16 @@ public class ChatMessageManager
 			// color is excluded from equals/hashCode on ChatColor
 			colorCache.remove(chatMessageType, chatColor);
 			colorCache.put(chatMessageType, chatColor);
+=======
+	public ChatMessageManager cacheColor(final ChatColor chatColor, final ChatMessageType... types)
+	{
+		for (ChatMessageType chatMessageType : types)
+		{
+			colorCache.putIfAbsent(chatMessageType, new HashSet<>());
+			final Set<ChatColor> chatColors = colorCache.get(chatMessageType);
+			chatColors.remove(chatColor);
+			chatColors.add(chatColor);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 
 		return this;
@@ -519,10 +559,17 @@ public class ChatMessageManager
 
 		// this updates chat cycle
 		client.addChatMessage(
+<<<<<<< HEAD
 			message.getType(),
 			MoreObjects.firstNonNull(message.getName(), ""),
 			MoreObjects.firstNonNull(message.getValue(), message.getRuneLiteFormattedMessage()),
 			message.getSender());
+=======
+				message.getType(),
+				MoreObjects.firstNonNull(message.getName(), ""),
+				MoreObjects.firstNonNull(message.getValue(), message.getRuneLiteFormattedMessage()),
+				message.getSender());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 		// Get last message from line buffer (the one we just added)
 		final ChatLineBuffer chatLineBuffer = client.getChatLineMap().get(message.getType().getType());
@@ -543,7 +590,11 @@ public class ChatMessageManager
 
 		final Client client = clientProvider.get();
 		final boolean transparent = client.isResized() && client.getVar(Varbits.TRANSPARENT_CHATBOX) != 0;
+<<<<<<< HEAD
 		final Collection<ChatColor> chatColors = colorCache.get(target.getType());
+=======
+		final Set<ChatColor> chatColors = colorCache.get(target.getType());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 		// If we do not have any colors cached, simply set clean message
 		if (chatColors == null || chatColors.isEmpty())
@@ -557,7 +608,11 @@ public class ChatMessageManager
 
 	private String recolorMessage(boolean transparent, String message, ChatMessageType messageType)
 	{
+<<<<<<< HEAD
 		final Collection<ChatColor> chatColors = colorCache.get(messageType);
+=======
+		final Set<ChatColor> chatColors = colorCache.get(messageType);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		final AtomicReference<String> resultMessage = new AtomicReference<>(message);
 
 		// Replace custom formatting with actual colors

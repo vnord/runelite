@@ -24,6 +24,7 @@
  */
 package net.runelite.client.plugins.agility;
 
+<<<<<<< HEAD
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import java.util.List;
@@ -34,6 +35,15 @@ import static net.runelite.api.NullObjectID.*;
 class Obstacles
 {
 	static final Set<Integer> COURSE_OBSTACLE_IDS = ImmutableSet.of(
+=======
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+import static net.runelite.api.ObjectID.*;
+
+public class Obstacles
+{
+	public static final Set<Integer> COURSE_OBSTACLE_IDS = ImmutableSet.of(
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		// Gnome
 		OBSTACLE_NET_23134, TREE_BRANCH_23559, TREE_BRANCH_23560, OBSTACLE_NET_23135, OBSTACLE_PIPE_23138,
 		OBSTACLE_PIPE_23139, LOG_BALANCE_23145, BALANCING_ROPE_23557,
@@ -69,7 +79,11 @@ class Obstacles
 		WALL_11373, GAP_11374, TIGHTROPE_11378, GAP_11375, GAP_11376, EDGE_11377,
 		// Dorgesh-Kaan
 		CABLE_22569, CABLE_22572, LADDER_22564, JUTTING_WALL_22552, TUNNEL_22557, PYLON_22664,
+<<<<<<< HEAD
 		CONSOLE, BOILER_22635, STAIRS_22650, STAIRS_22651, STAIRS_22609, STAIRS_22608,
+=======
+		CONSOLE, STAIRS_22650, STAIRS_22651, STAIRS_22609, STAIRS_22608,
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		// Pollniveach
 		BASKET_11380, MARKET_STALL_11381, BANNER_11382, GAP_11383, TREE_11384, ROUGH_WALL_11385,
 		MONKEYBARS, TREE_11389, DRYING_LINE,
@@ -79,7 +93,11 @@ class Obstacles
 		GAP_11406, GAP_11429, GAP_11430, STEEP_ROOF, GAP_11630, PLANK_11631, WOODEN_BEAMS
 	);
 
+<<<<<<< HEAD
 	static final Set<Integer> SHORTCUT_OBSTACLE_IDS = ImmutableSet.of(
+=======
+	public static final Set<Integer> SHORTCUT_OBSTACLE_IDS = ImmutableSet.of(
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		// Grand Exchange
 		UNDERWALL_TUNNEL_16529, UNDERWALL_TUNNEL_16530,
 		// South Varrock
@@ -111,8 +129,13 @@ class Obstacles
 		STEPPING_STONE_16466,
 		// Vine east of Shilo Village
 		NULL_26884, NULL_26886,
+<<<<<<< HEAD
 		// Stepping stones east of Shilo Village
 		STEPPING_STONES, STEPPING_STONES_23646, STEPPING_STONES_23647,
+=======
+		// Stepping stones east of Shilo Village (does not work)
+		NULL_23465, NULL_23466, NULL_23467,
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		// Middle of Karamja
 		A_WOODEN_LOG,
 		// Slayer Tower
@@ -129,7 +152,11 @@ class Obstacles
 		GAP_29326,
 		// Gnome Stronghold Slayer Underground
 		TUNNEL_30174, TUNNEL_30175,
+<<<<<<< HEAD
 		// Taverley Underground
+=======
+		// Taverly Underground
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		OBSTACLE_PIPE_16509, STRANGE_FLOOR, ROCKS, ROCKS_14106, LOOSE_RAILING_28849,
 		// Heroes Guild
 		CREVICE_9739, CREVICE_9740,
@@ -181,6 +208,7 @@ class Obstacles
 		PILLAR_31561,
 		// Elf Camp Isafdar Tirranwn
 		LOG_BALANCE_3931, LOG_BALANCE_3930, LOG_BALANCE_3929, LOG_BALANCE_3932, DENSE_FOREST_3938, DENSE_FOREST_3939,
+<<<<<<< HEAD
 		DENSE_FOREST_3998, DENSE_FOREST_3999, DENSE_FOREST, LEAVES, LEAVES_3924, LEAVES_3925, STICKS, TRIPWIRE,
 		// Gu'Tanoth bridge
 		GAP, GAP_2831,
@@ -198,4 +226,13 @@ class Obstacles
 	);
 
 	static final List<Integer> TRAP_OBSTACLE_REGIONS = ImmutableList.of(12105, 13356);
+=======
+		DENSE_FOREST, LEAVES, LEAVES_3924, LEAVES_3925, STICKS, TRIPWIRE
+	);
+
+	public static final Set<Integer> TRAP_OBSTACLE_IDS = ImmutableSet.of(
+		// Agility pyramid
+		NULL_3550, NULL_10872, NULL_10873
+	);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

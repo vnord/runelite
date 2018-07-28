@@ -643,12 +643,15 @@
       "xp": 120
     },
     {
+<<<<<<< HEAD
       "level": 47,
       "icon": 21913,
       "name": "Mounted Mythical Cape",
       "xp": 370
     },
     {
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
       "level": 48,
       "icon": 5755,
       "name": "Chef's Delight",
@@ -693,7 +696,11 @@
     {
       "level": 52,
       "icon": 8118,
+<<<<<<< HEAD
       "name": "Teak Kitchen Table",
+=======
+      "name": "Teak Table",
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
       "xp": 270
     },
     {
@@ -764,12 +771,15 @@
     },
     {
       "level": 59,
+<<<<<<< HEAD
       "icon": 8154,
       "name": "Limestone attack stone",
       "xp": 200
     },
     {
       "level": 59,
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
       "icon": 8343,
       "name": "Lunar Globe",
       "xp": 570
@@ -848,12 +858,15 @@
     },
     {
       "level": 66,
+<<<<<<< HEAD
       "icon": 20649,
       "name": "Teak Garden Bench",
       "xp": 540
     },
     {
       "level": 66,
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
       "icon": 8353,
       "name": "Crystal of Power",
       "xp": 890

@@ -29,7 +29,15 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
+<<<<<<< HEAD
 @ConfigGroup("metronome")
+=======
+@ConfigGroup(
+	keyName = "metronome",
+	name = "Metronome",
+	description = "Plays a sound on the specified tick to aid in efficient skilling"
+)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public interface MetronomePluginConfiguration extends Config
 {
 	@ConfigItem(

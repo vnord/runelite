@@ -26,6 +26,7 @@ package net.runelite.api.events;
 
 import lombok.Data;
 import net.runelite.api.GrandExchangeOffer;
+<<<<<<< HEAD
 import net.runelite.api.GrandExchangeOfferState;
 
 /**
@@ -51,5 +52,12 @@ public class GrandExchangeOfferChanged
 	/**
 	 * The index value of the slot.
 	 */
+=======
+
+@Data
+public class GrandExchangeOfferChanged
+{
+	private GrandExchangeOffer offer;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private int slot;
 }

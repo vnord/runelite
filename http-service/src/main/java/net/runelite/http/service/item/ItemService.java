@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+<<<<<<< HEAD
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -41,6 +42,13 @@ import net.runelite.cache.definitions.ItemDefinition;
 import net.runelite.http.api.RuneLiteAPI;
 import net.runelite.http.api.item.ItemType;
 import net.runelite.http.service.cache.CacheService;
+=======
+import java.util.Set;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.http.api.RuneLiteAPI;
+import net.runelite.http.api.item.ItemType;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import okhttp3.HttpUrl;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -51,6 +59,10 @@ import org.springframework.stereotype.Service;
 import org.sql2o.Connection;
 import org.sql2o.Query;
 import org.sql2o.Sql2o;
+<<<<<<< HEAD
+=======
+import org.sql2o.Sql2oException;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 @Service
 @Slf4j
@@ -82,6 +94,7 @@ public class ItemService
 		+ "  KEY `item_fetched_time` (`item`,`fetched_time`)\n"
 		+ ") ENGINE=InnoDB";
 
+<<<<<<< HEAD
 	private static final int MAX_PENDING = 512;
 
 	private final Sql2o sql2o;
@@ -97,6 +110,20 @@ public class ItemService
 	{
 		this.sql2o = sql2o;
 		this.cacheService = cacheService;
+=======
+	private static final String CREATE_PRICES_FK = "ALTER TABLE `prices`\n"
+		+ "  ADD CONSTRAINT `item` FOREIGN KEY (`item`) REFERENCES `items` (`id`);";
+
+	private static final int MAX_PENDING = 512;
+
+	private final Sql2o sql2o;
+	private final ConcurrentLinkedQueue<PendingLookup> pendingLookups = new ConcurrentLinkedQueue<PendingLookup>();
+
+	@Autowired
+	public ItemService(@Qualifier("Runelite SQL2O") Sql2o sql2o)
+	{
+		this.sql2o = sql2o;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 		try (Connection con = sql2o.open())
 		{
@@ -105,6 +132,19 @@ public class ItemService
 
 			con.createQuery(CREATE_PRICES)
 				.executeUpdate();
+<<<<<<< HEAD
+=======
+
+			try
+			{
+				con.createQuery(CREATE_PRICES_FK)
+					.executeUpdate();
+			}
+			catch (Sql2oException ex)
+			{
+				// Ignore, happens when index already exists
+			}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -243,6 +283,7 @@ public class ItemService
 
 	public List<PriceEntry> fetchPrice(int itemId)
 	{
+<<<<<<< HEAD
 		RSPrices rsprice;
 		try
 		{
@@ -256,6 +297,11 @@ public class ItemService
 
 		try (Connection con = sql2o.beginTransaction())
 		{
+=======
+		try (Connection con = sql2o.beginTransaction())
+		{
+			RSPrices rsprice = fetchRSPrices(itemId);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			List<PriceEntry> entries = new ArrayList<>();
 			Instant now = Instant.now();
 
@@ -289,6 +335,7 @@ public class ItemService
 
 			return entries;
 		}
+<<<<<<< HEAD
 	}
 
 	public List<PriceEntry> fetchPrices()
@@ -298,6 +345,12 @@ public class ItemService
 			Query query = con.createQuery("select t2.item, t2.time, prices.price, prices.fetched_time from (select t1.item as item, max(t1.time) as time from prices t1 group by item) t2 join prices on t2.item=prices.item and t2.time=prices.time");
 			List<PriceEntry> entries = query.executeAndFetch(PriceEntry.class);
 			return entries;
+=======
+		catch (IOException ex)
+		{
+			log.warn("unable to fetch price for item {}", itemId, ex);
+			return null;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -407,6 +460,21 @@ public class ItemService
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	public void queuePriceLookup(int itemId)
+	{
+		if (pendingLookups.size() < MAX_PENDING)
+		{
+			pendingLookups.add(new PendingLookup(itemId, PendingLookup.Type.PRICE));
+		}
+		else
+		{
+			log.debug("Dropping pending price lookup for {}", itemId);
+		}
+	}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public void queueSearch(String search)
 	{
 		if (pendingLookups.size() < MAX_PENDING)
@@ -442,6 +510,12 @@ public class ItemService
 
 		switch (pendingLookup.getType())
 		{
+<<<<<<< HEAD
+=======
+			case PRICE:
+				fetchPrice(pendingLookup.getItemId());
+				break;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			case SEARCH:
 				try
 				{
@@ -460,6 +534,7 @@ public class ItemService
 		}
 	}
 
+<<<<<<< HEAD
 	@Scheduled(fixedDelay = 20_000)
 	public void crawlPrices()
 	{
@@ -487,4 +562,6 @@ public class ItemService
 		log.debug("Loaded {} tradeable items", tradeableItems.length);
 	}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

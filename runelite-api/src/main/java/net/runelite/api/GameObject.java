@@ -28,6 +28,7 @@ import java.awt.Polygon;
 import net.runelite.api.coords.Angle;
 
 /**
+<<<<<<< HEAD
  * Represents a game object.
  * <p>
  * Most object in the RuneScape world are considered as game objects. Things
@@ -66,5 +67,29 @@ public interface GameObject extends TileObject
 	 *
 	 * @return the orientation
 	 */
+=======
+ *
+ * @author Adam
+ */
+public interface GameObject extends TileObject
+{
+	/**
+	 * Returns the min x,y for this game object
+	 *
+	 * @return
+	 */
+	Point getRegionMinLocation();
+
+	/**
+	 * Returns the max x,y for this game object. This is different from
+	 * {@link #getRegionMinLocation()} for objects larger than 1 tile.
+	 *
+	 * @return
+	 */
+	Point getRegionMaxLocation();
+
+	Polygon getConvexHull();
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	Angle getOrientation();
 }

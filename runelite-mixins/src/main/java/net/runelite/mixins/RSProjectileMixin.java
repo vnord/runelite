@@ -25,10 +25,14 @@
 package net.runelite.mixins;
 
 import net.runelite.api.Actor;
+<<<<<<< HEAD
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.events.ProjectileMoved;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
+=======
+import net.runelite.api.mixins.Inject;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
@@ -80,6 +84,7 @@ public abstract class RSProjectileMixin implements RSProjectile
 			return players[idx];
 		}
 	}
+<<<<<<< HEAD
 
 	/**
 	 * Called when a projectile is set to move towards a point. For
@@ -102,4 +107,6 @@ public abstract class RSProjectileMixin implements RSProjectile
 		projectileMoved.setZ(targetZ);
 		client.getCallbacks().post(projectileMoved);
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

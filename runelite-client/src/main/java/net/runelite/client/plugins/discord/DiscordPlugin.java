@@ -1,6 +1,9 @@
 /*
  * Copyright (c) 2018, Tomas Slusny <slusnucky@gmail.com>
+<<<<<<< HEAD
  * Copyright (c) 2018, PandahRS <https://github.com/PandahRS>
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,11 +33,15 @@ import com.google.inject.Inject;
 import com.google.inject.Provides;
 import java.awt.image.BufferedImage;
 import java.time.temporal.ChronoUnit;
+<<<<<<< HEAD
 import java.util.EnumSet;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.HashMap;
 import java.util.Map;
 import javax.imageio.ImageIO;
 import net.runelite.api.Client;
+<<<<<<< HEAD
 import static net.runelite.api.Constants.CHUNK_SIZE;
 import net.runelite.api.GameState;
 import net.runelite.api.Skill;
@@ -42,10 +49,18 @@ import net.runelite.api.WorldType;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.ConfigChanged;
+=======
+import net.runelite.api.GameState;
+import net.runelite.api.Skill;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.events.ExperienceChanged;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.client.RuneLiteProperties;
 import net.runelite.client.config.ConfigManager;
+<<<<<<< HEAD
+=======
+import net.runelite.client.discord.DiscordService;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.task.Schedule;
@@ -54,9 +69,13 @@ import net.runelite.client.ui.TitleToolbar;
 import net.runelite.client.util.LinkBrowser;
 
 @PluginDescriptor(
+<<<<<<< HEAD
 	name = "Discord",
 	description = "Show your status and activity in the Discord user panel",
 	tags = {"action", "activity", "external", "integration", "status"}
+=======
+	name = "Discord"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 public class DiscordPlugin extends Plugin
 {
@@ -67,6 +86,7 @@ public class DiscordPlugin extends Plugin
 	private DiscordConfig config;
 
 	@Inject
+<<<<<<< HEAD
 	private TitleToolbar titleToolbar;
 
 	@Inject
@@ -78,6 +98,20 @@ public class DiscordPlugin extends Plugin
 	private Map<Skill, Integer> skillExp = new HashMap<>();
 	private NavigationButton discordButton;
 	private boolean loginFlag;
+=======
+	private DiscordService discordService;
+
+	@Inject
+	private TitleToolbar titleToolbar;
+
+	@Inject
+	private RuneLiteProperties properties;
+
+	private final DiscordState discordState = new DiscordState();
+	private Map<Skill, Integer> skillExp = new HashMap<>();
+	private boolean loggedIn = false;
+	private NavigationButton discordButton;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Provides
 	private DiscordConfig provideConfig(ConfigManager configManager)
@@ -101,19 +135,28 @@ public class DiscordPlugin extends Plugin
 			.build();
 
 		titleToolbar.addNavigation(discordButton);
+<<<<<<< HEAD
 		checkForGameStateUpdate();
+=======
+		updateGameStatus(client.getGameState(), true);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
 		titleToolbar.removeNavigation(discordButton);
+<<<<<<< HEAD
+=======
+		discordService.clearPresence();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		discordState.reset();
 	}
 
 	@Subscribe
 	public void onGameStateChanged(GameStateChanged event)
 	{
+<<<<<<< HEAD
 		switch (event.getGameState())
 		{
 			case LOGIN_SCREEN:
@@ -143,6 +186,9 @@ public class DiscordPlugin extends Plugin
 			checkForGameStateUpdate();
 			checkForAreaUpdate();
 		}
+=======
+		updateGameStatus(event.getGameState(), false);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe
@@ -158,9 +204,15 @@ public class DiscordPlugin extends Plugin
 
 		final DiscordGameEventType discordGameEventType = DiscordGameEventType.fromSkill(event.getSkill());
 
+<<<<<<< HEAD
 		if (discordGameEventType != null && config.showSkillingActivity())
 		{
 			discordState.triggerEvent(discordGameEventType);
+=======
+		if (discordGameEventType != null)
+		{
+			discordState.triggerEvent(discordGameEventType, config.actionDelay());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -170,6 +222,7 @@ public class DiscordPlugin extends Plugin
 	)
 	public void checkForValidStatus()
 	{
+<<<<<<< HEAD
 		discordState.checkForTimeout();
 	}
 
@@ -263,4 +316,35 @@ public class DiscordPlugin extends Plugin
 		return worldPoint.getRegionID();
 	}
 
+=======
+		if (discordState.checkForTimeout(config.actionTimeout()))
+		{
+			updateGameStatus(client.getGameState(), true);
+		}
+	}
+
+	@Schedule(
+		period = 1,
+		unit = ChronoUnit.SECONDS
+	)
+	public void flushDiscordStatus()
+	{
+		discordState.flushEvent(discordService);
+	}
+
+	private void updateGameStatus(GameState gameState, boolean force)
+	{
+		if (gameState == GameState.LOGIN_SCREEN)
+		{
+			skillExp.clear();
+			loggedIn = false;
+			discordState.triggerEvent(DiscordGameEventType.IN_MENU, config.actionDelay());
+		}
+		else if (client.getGameState() == GameState.LOGGED_IN && (force || !loggedIn))
+		{
+			loggedIn = true;
+			discordState.triggerEvent(DiscordGameEventType.IN_GAME, config.actionDelay());
+		}
+	}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

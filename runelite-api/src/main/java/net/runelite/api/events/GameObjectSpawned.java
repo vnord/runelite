@@ -28,6 +28,7 @@ import lombok.Data;
 import net.runelite.api.GameObject;
 import net.runelite.api.Tile;
 
+<<<<<<< HEAD
 /**
  * An event where a {@link GameObject} is added to a {@link Tile}.
  */
@@ -41,5 +42,11 @@ public class GameObjectSpawned
 	/**
 	 * The newly spawned game object.
 	 */
+=======
+@Data
+public class GameObjectSpawned
+{
+	private Tile tile;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private GameObject gameObject;
 }

@@ -27,9 +27,12 @@ package net.runelite.api;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+<<<<<<< HEAD
 /**
  * An enumeration of local client variables.
  */
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 @AllArgsConstructor
 @Getter
 public enum Varbits
@@ -202,6 +205,7 @@ public enum Varbits
 	IN_GAME_BA(3923),
 
 	/**
+<<<<<<< HEAD
 	 * Blast Furnace Bar Dispenser
 	 *
 	 * These are the expected values:
@@ -213,6 +217,8 @@ public enum Varbits
 	BAR_DISPENSER(936),
 
 	/**
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	 * Motherlode mine sack
 	 */
 	SACK_NUMBER(5558),
@@ -220,11 +226,14 @@ public enum Varbits
 
 	/**
 	 * Experience tracker
+<<<<<<< HEAD
 	 *
 	 * EXPERIENCE_TRACKER_POSITION expected values:
 	 *   0 = Right
 	 *   1 = Middle
 	 *   2 = Left
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	 */
 	EXPERIENCE_TRACKER_POSITION(4692),
 	EXPERIENCE_TRACKER_COUNTER(4697),
@@ -241,6 +250,7 @@ public enum Varbits
 	TITHE_FARM_SACK_AMOUNT(4900),
 	TITHE_FARM_SACK_ICON(5370),
 	TITHE_FARM_POINTS(4893),
+<<<<<<< HEAD
 	
 	/**
 	 * Blast Mine
@@ -250,6 +260,8 @@ public enum Varbits
 	BLAST_MINE_MITHRIL(4926),
 	BLAST_MINE_ADAMANTITE(4921),
 	BLAST_MINE_RUNITE(4922),
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	/**
 	 * Raids
@@ -372,6 +384,7 @@ public enum Varbits
 	/**
 	 * The varbit that stores the players {@code AccountType}.
 	 */
+<<<<<<< HEAD
 	ACCOUNT_TYPE(1777),
 
 	/**
@@ -381,6 +394,12 @@ public enum Varbits
 
 	/**
 	 * The raw varbit ID.
+=======
+	ACCOUNT_TYPE(1777);
+
+	/**
+	 * varbit id
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	 */
 	private final int id;
 }

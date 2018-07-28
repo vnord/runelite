@@ -63,16 +63,25 @@ public class WorldMapOverlay extends Overlay
 	private final Provider<Client> clientProvider;
 
 	@Inject
+<<<<<<< HEAD
 	private WorldMapOverlay(
 		Provider<Client> clientProvider,
 		WorldMapPointManager worldMapPointManager,
 		MouseManager mouseManager,
 		WorldMapOverlayMouseListener worldMapOverlayMouseListener)
+=======
+	private WorldMapOverlay(Provider<Client> clientProvider, WorldMapPointManager worldMapPointManager,
+		MouseManager mouseManager, WorldMapOverlayMouseListener worldMapOverlayMouseListener)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		this.clientProvider = clientProvider;
 		this.worldMapPointManager = worldMapPointManager;
 		setPosition(OverlayPosition.DYNAMIC);
+<<<<<<< HEAD
 		setPriority(OverlayPriority.HIGHEST);
+=======
+		setPriority(OverlayPriority.HIGH);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		setLayer(OverlayLayer.ALWAYS_ON_TOP);
 		mouseManager.registerMouseListener(worldMapOverlayMouseListener);
 	}
@@ -174,12 +183,16 @@ public class WorldMapOverlay extends Overlay
 		return null;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Get the screen coordinates for a WorldPoint on the world map
 	 * @param worldPoint WorldPoint to get screen coordinates of
 	 * @return Point of screen coordinates of the center of the world point
 	 */
 	public Point mapWorldPointToGraphicsPoint(WorldPoint worldPoint)
+=======
+	private Point mapWorldPointToGraphicsPoint(WorldPoint worldPoint)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		RenderOverview ro = clientProvider.get().getRenderOverview();
 

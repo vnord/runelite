@@ -37,24 +37,43 @@ public class FramemapLoader
 		def.id = id;
 
 		def.length = in.readUnsignedByte();
+<<<<<<< HEAD
 		def.types = new int[def.length];
 		def.frameMaps = new int[def.length][];
 
 		for (int i = 0; i < def.length; ++i)
 		{
 			def.types[i] = in.readUnsignedByte();
+=======
+		def.field1456 = new int[def.length];
+		def.field1457 = new int[def.length][];
+
+		for (int i = 0; i < def.length; ++i)
+		{
+			def.field1456[i] = in.readUnsignedByte();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 
 		for (int i = 0; i < def.length; ++i)
 		{
+<<<<<<< HEAD
 			def.frameMaps[i] = new int[in.readUnsignedByte()];
+=======
+			def.field1457[i] = new int[in.readUnsignedByte()];
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 
 		for (int i = 0; i < def.length; ++i)
 		{
+<<<<<<< HEAD
 			for (int j = 0; j < def.frameMaps[i].length; ++j)
 			{
 				def.frameMaps[i][j] = in.readUnsignedByte();
+=======
+			for (int j = 0; j < def.field1457[i].length; ++j)
+			{
+				def.field1457[i][j] = in.readUnsignedByte();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			}
 		}
 

@@ -26,6 +26,7 @@ package net.runelite.client.plugins.tileindicators;
 
 import com.google.inject.Provides;
 import javax.inject.Inject;
+<<<<<<< HEAD
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
@@ -35,15 +36,34 @@ import net.runelite.client.ui.overlay.OverlayManager;
 	name = "Tile Indicators",
 	description = "Highlight the tile you are currently moving to",
 	tags = {"highlight", "overlay"},
+=======
+import net.runelite.api.Client;
+import net.runelite.client.config.ConfigManager;
+import net.runelite.client.plugins.Plugin;
+import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.ui.overlay.Overlay;
+
+@PluginDescriptor(
+	name = "Tile Indicators",
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	enabledByDefault = false
 )
 public class TileIndicatorsPlugin extends Plugin
 {
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
 	private TileIndicatorsOverlay overlay;
+=======
+	private Client client;
+
+	@Inject
+	private TileIndicatorsConfig config;
+
+	private TileIndicatorsOverlay tileIndicatorsOverlay;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Provides
 	TileIndicatorsConfig provideConfig(ConfigManager configManager)
@@ -54,6 +74,7 @@ public class TileIndicatorsPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
+<<<<<<< HEAD
 		overlayManager.add(overlay);
 	}
 
@@ -61,5 +82,14 @@ public class TileIndicatorsPlugin extends Plugin
 	protected void shutDown() throws Exception
 	{
 		overlayManager.remove(overlay);
+=======
+		tileIndicatorsOverlay = new TileIndicatorsOverlay(client, config);
+	}
+
+	@Override
+	public Overlay getOverlay()
+	{
+		return tileIndicatorsOverlay;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

@@ -37,6 +37,7 @@ public @interface PluginDescriptor
 {
 	String name();
 
+<<<<<<< HEAD
 	/**
 	 * A short, one-line summary of the plugin.
 	 */
@@ -48,10 +49,16 @@ public @interface PluginDescriptor
 	 */
 	String[] tags() default {};
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	boolean enabledByDefault() default true;
 
 	/**
 	 * Whether or not plugin is hidden from configuration panel
+<<<<<<< HEAD
+=======
+	 * @return
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	 */
 	boolean hidden() default false;
 

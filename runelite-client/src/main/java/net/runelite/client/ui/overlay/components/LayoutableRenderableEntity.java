@@ -25,11 +25,17 @@
 package net.runelite.client.ui.overlay.components;
 
 import java.awt.Dimension;
+<<<<<<< HEAD
 import java.awt.Point;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.ui.overlay.RenderableEntity;
 
 public interface LayoutableRenderableEntity extends RenderableEntity
 {
+<<<<<<< HEAD
 	void setPreferredLocation(Point position);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	void setPreferredSize(Dimension dimension);
 }

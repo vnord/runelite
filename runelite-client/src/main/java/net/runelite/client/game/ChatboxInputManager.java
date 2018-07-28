@@ -29,7 +29,10 @@ import com.google.common.eventbus.Subscribe;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.function.Consumer;
+<<<<<<< HEAD
 import lombok.Getter;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.ScriptID;
@@ -40,17 +43,26 @@ import net.runelite.client.callback.ClientThread;
 @Slf4j
 public class ChatboxInputManager
 {
+<<<<<<< HEAD
 	public static final int NO_LIMIT = Integer.MAX_VALUE;
+=======
+	private static final int NO_LIMIT = Integer.MAX_VALUE;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private final Client client;
 	private final ClientThread clientThread;
 
 	private Consumer<String> done;
+<<<<<<< HEAD
 	private Consumer<String> changed;
 	private int characterLimit = NO_LIMIT;
 
 	@Getter
 	private boolean open = false;
 
+=======
+	private int characterLimit = NO_LIMIT;
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Inject
 	public ChatboxInputManager(Client client, ClientThread clientThread, EventBus eventBus)
 	{
@@ -73,6 +85,7 @@ public class ChatboxInputManager
 
 	public void openInputWindow(String text, String defaul, int characterLimit, Consumer<String> done)
 	{
+<<<<<<< HEAD
 		openInputWindow(text, defaul, characterLimit, null, done);
 	}
 
@@ -82,6 +95,10 @@ public class ChatboxInputManager
 		this.changed = changed;
 		this.characterLimit = characterLimit;
 		this.open = true;
+=======
+		this.done = done;
+		this.characterLimit = characterLimit;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		clientThread.invokeLater(() -> client.runScript(
 			ScriptID.RUNELITE_CHATBOX_INPUT_INIT,
 			text,
@@ -89,6 +106,7 @@ public class ChatboxInputManager
 		));
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Closes the RuneScape-style chatbox input
 	 */
@@ -106,6 +124,8 @@ public class ChatboxInputManager
 		));
 	}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Subscribe
 	public void scriptCallback(ScriptCallbackEvent ev)
 	{
@@ -122,6 +142,7 @@ public class ChatboxInputManager
 			{
 				case 27: // Escape
 					str = "";
+<<<<<<< HEAD
 					if (changed != null)
 					{
 						changed.accept(str);
@@ -133,6 +154,11 @@ public class ChatboxInputManager
 						done.accept(str);
 					}
 					this.open = false;
+=======
+					// fallthrough
+				case '\n':
+					done.accept(str);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 					retval = 1;
 					break;
 				case '\b':
@@ -148,11 +174,14 @@ public class ChatboxInputManager
 					}
 			}
 
+<<<<<<< HEAD
 			if (changed != null)
 			{
 				changed.accept(str);
 			}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			client.getStringStack()[stringStackSize++] = str;
 			client.getIntStack()[intStackSize++] = retval;
 			client.setIntStackSize(intStackSize);

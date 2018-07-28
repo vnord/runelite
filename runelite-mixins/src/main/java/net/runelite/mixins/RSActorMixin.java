@@ -28,7 +28,10 @@ import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.image.BufferedImage;
 import net.runelite.api.Actor;
+<<<<<<< HEAD
 import net.runelite.api.Hitsplat;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.NPC;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.Perspective;
@@ -40,6 +43,7 @@ import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.AnimationChanged;
 import net.runelite.api.events.GraphicChanged;
+<<<<<<< HEAD
 import net.runelite.api.events.HitsplatApplied;
 import net.runelite.api.events.InteractingChanged;
 import net.runelite.api.events.LocalPlayerDeath;
@@ -48,6 +52,13 @@ import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
+=======
+import net.runelite.api.mixins.FieldHook;
+import net.runelite.api.mixins.Inject;
+import net.runelite.api.mixins.Mixin;
+import net.runelite.api.mixins.Shadow;
+import static net.runelite.client.callback.Hooks.eventBus;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.rs.api.RSActor;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSCombatInfo1;
@@ -55,7 +66,10 @@ import net.runelite.rs.api.RSCombatInfo2;
 import net.runelite.rs.api.RSCombatInfoList;
 import net.runelite.rs.api.RSCombatInfoListHolder;
 import net.runelite.rs.api.RSModel;
+<<<<<<< HEAD
 import net.runelite.rs.api.RSNPC;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.rs.api.RSNode;
 
 @Mixin(RSActor.class)
@@ -69,7 +83,11 @@ public abstract class RSActorMixin implements RSActor
 	public Actor getInteracting()
 	{
 		int i = getRSInteracting();
+<<<<<<< HEAD
 		if (i == -1 || i == 65535)
+=======
+		if (i == -1)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			return null;
 		}
@@ -188,7 +206,11 @@ public abstract class RSActorMixin implements RSActor
 	{
 		AnimationChanged animationChange = new AnimationChanged();
 		animationChange.setActor(this);
+<<<<<<< HEAD
 		client.getCallbacks().post(animationChange);
+=======
+		eventBus.post(animationChange);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@FieldHook("graphic")
@@ -197,6 +219,7 @@ public abstract class RSActorMixin implements RSActor
 	{
 		GraphicChanged graphicChanged = new GraphicChanged();
 		graphicChanged.setActor(this);
+<<<<<<< HEAD
 		client.getCallbacks().post(graphicChanged);
 	}
 
@@ -206,6 +229,9 @@ public abstract class RSActorMixin implements RSActor
 	{
 		InteractingChanged interactingChanged = new InteractingChanged(this, getInteracting());
 		client.getCallbacks().post(interactingChanged);
+=======
+		eventBus.post(graphicChanged);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Inject
@@ -240,6 +266,7 @@ public abstract class RSActorMixin implements RSActor
 
 		return new WorldArea(this.getWorldLocation(), size, size);
 	}
+<<<<<<< HEAD
 
 	@Inject
 	@MethodHook("setCombatInfo")
@@ -283,4 +310,6 @@ public abstract class RSActorMixin implements RSActor
 		event.setHitsplat(hitsplat);
 		client.getCallbacks().post(event);
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

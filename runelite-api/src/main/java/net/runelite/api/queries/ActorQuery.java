@@ -91,7 +91,11 @@ public abstract class ActorQuery<EntityType extends Actor, QueryType> extends Qu
 	@SuppressWarnings("unchecked")
 	public QueryType isInteractingWith(Actor actor)
 	{
+<<<<<<< HEAD
 		predicate = and(a -> a.getInteracting().equals(actor));
+=======
+		predicate = and(a -> a.getInteracting().equals(a));
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		return (QueryType) this;
 	}
 

@@ -24,6 +24,7 @@
  */
 package net.runelite.client.plugins.boosts;
 
+<<<<<<< HEAD
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import net.runelite.client.ui.overlay.infobox.InfoBox;
@@ -62,5 +63,20 @@ public class StatChangeIndicator extends InfoBox
 	{
 		final int time = up ? plugin.getChangeUpTicks() : plugin.getChangeDownTicks();
 		return config.displayIndicators() && time != -1;
+=======
+import java.awt.image.BufferedImage;
+import java.time.temporal.ChronoUnit;
+import net.runelite.client.plugins.Plugin;
+import net.runelite.client.ui.overlay.infobox.InfoBoxPriority;
+import net.runelite.client.ui.overlay.infobox.Timer;
+
+public class StatChangeIndicator extends Timer
+{
+	public StatChangeIndicator(long period, ChronoUnit unit, BufferedImage image, Plugin plugin)
+	{
+		super(period, unit, image, plugin);
+		setPriority(InfoBoxPriority.MED);
+		setTooltip("Next stat change");
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

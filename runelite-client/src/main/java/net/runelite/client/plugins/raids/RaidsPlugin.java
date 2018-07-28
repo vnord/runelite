@@ -27,12 +27,20 @@ package net.runelite.client.plugins.raids;
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Binder;
 import com.google.inject.Provides;
+<<<<<<< HEAD
+=======
+import java.awt.Color;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
+<<<<<<< HEAD
+=======
+import java.util.List;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
@@ -43,18 +51,31 @@ import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.InstanceTemplates;
+<<<<<<< HEAD
 import net.runelite.api.NullObjectID;
 import static net.runelite.api.Perspective.SCENE_SIZE;
 import net.runelite.api.Point;
 import net.runelite.api.Tile;
 import net.runelite.api.VarPlayer;
 import net.runelite.api.Varbits;
+=======
+import net.runelite.api.ObjectID;
+import net.runelite.api.Point;
+import net.runelite.api.VarPlayer;
+import net.runelite.api.Tile;
+import net.runelite.api.Varbits;
+import static net.runelite.api.Perspective.SCENE_SIZE;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.ConfigChanged;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.events.WidgetHiddenChanged;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
+<<<<<<< HEAD
+=======
+import net.runelite.client.chat.ChatColor;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.chat.ChatColorType;
 import net.runelite.client.chat.ChatMessageBuilder;
 import net.runelite.client.chat.ChatMessageManager;
@@ -65,14 +86,22 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.raids.solver.Layout;
 import net.runelite.client.plugins.raids.solver.LayoutSolver;
 import net.runelite.client.plugins.raids.solver.RotationSolver;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
+=======
+import net.runelite.client.ui.overlay.Overlay;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 import net.runelite.client.util.Text;
 
 @PluginDescriptor(
+<<<<<<< HEAD
 	name = "Chambers Of Xeric",
 	description = "Show helpful information for the Chambers of Xeric raid",
 	tags = {"combat", "raid", "overlay"}
+=======
+	name = "Chambers Of Xeric"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 @Slf4j
 public class RaidsPlugin extends Plugin
@@ -82,9 +111,15 @@ public class RaidsPlugin extends Plugin
 	private static final String LEVEL_COMPLETE_MESSAGE = "level complete!";
 	private static final String RAID_COMPLETE_MESSAGE = "Congratulations - your raid is complete!";
 	private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("###.##");
+<<<<<<< HEAD
 	static final DecimalFormat POINTS_FORMAT = new DecimalFormat("#,###");
 	private static final String SPLIT_REGEX = "\\s*,\\s*";
 	private static final Pattern ROTATION_REGEX = Pattern.compile("\\[(.*?)]");
+=======
+	public static final DecimalFormat POINTS_FORMAT = new DecimalFormat("#,###");
+	private static final String SPLIT_REGEX = "\\s*,\\s*";
+	private static final Pattern ROTATION_REGEX = Pattern.compile("\\[(.*?)\\]");
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	private BufferedImage raidsIcon;
 	private RaidsTimer timer;
@@ -105,9 +140,12 @@ public class RaidsPlugin extends Plugin
 	private RaidsConfig config;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private RaidsOverlay overlay;
 
 	@Inject
@@ -144,26 +182,48 @@ public class RaidsPlugin extends Plugin
 	}
 
 	@Override
+<<<<<<< HEAD
 	protected void startUp() throws Exception
 	{
 		overlayManager.add(overlay);
 		overlayManager.add(pointsOverlay);
 
+=======
+	public List<Overlay> getOverlays()
+	{
+		return Arrays.asList(overlay, pointsOverlay);
+	}
+
+	@Override
+	protected void startUp() throws Exception
+	{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		if (client.getGameState() == GameState.LOGGED_IN)
 		{
 			inRaidChambers = client.getVar(Varbits.IN_RAID) == 1;
 			updateInfoBoxState();
 		}
 
+<<<<<<< HEAD
+=======
+		if (config.pointsMessage())
+		{
+			cacheColors();
+		}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		updateLists();
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
+<<<<<<< HEAD
 		overlayManager.remove(overlay);
 		overlayManager.remove(pointsOverlay);
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		if (timer != null)
 		{
 			infoBoxManager.removeInfoBox(timer);
@@ -173,6 +233,14 @@ public class RaidsPlugin extends Plugin
 	@Subscribe
 	public void onConfigChanged(ConfigChanged event)
 	{
+<<<<<<< HEAD
+=======
+		if (config.pointsMessage())
+		{
+			cacheColors();
+		}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		if (event.getKey().equals("raidsTimer"))
 		{
 			updateInfoBoxState();
@@ -371,6 +439,18 @@ public class RaidsPlugin extends Plugin
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	private void cacheColors()
+	{
+		chatMessageManager.cacheColor(new ChatColor(ChatColorType.NORMAL, Color.BLACK, false), ChatMessageType.CLANCHAT_INFO)
+				.cacheColor(new ChatColor(ChatColorType.HIGHLIGHT, Color.RED, false), ChatMessageType.CLANCHAT_INFO)
+				.cacheColor(new ChatColor(ChatColorType.NORMAL, Color.WHITE, true), ChatMessageType.CLANCHAT_INFO)
+				.cacheColor(new ChatColor(ChatColorType.HIGHLIGHT, Color.RED, true), ChatMessageType.CLANCHAT_INFO)
+				.refreshAll();
+	}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public int getRotationMatches()
 	{
 		String rotation = raid.getRotationString().toLowerCase();
@@ -410,7 +490,11 @@ public class RaidsPlugin extends Plugin
 
 	private Point findLobbyBase()
 	{
+<<<<<<< HEAD
 		Tile[][] tiles = client.getScene().getTiles()[LOBBY_PLANE];
+=======
+		Tile[][] tiles = client.getRegion().getTiles()[LOBBY_PLANE];
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 		for (int x = 0; x < SCENE_SIZE; x++)
 		{
@@ -421,9 +505,15 @@ public class RaidsPlugin extends Plugin
 					continue;
 				}
 
+<<<<<<< HEAD
 				if (tiles[x][y].getWallObject().getId() == NullObjectID.NULL_12231)
 				{
 					return tiles[x][y].getSceneLocation();
+=======
+				if (tiles[x][y].getWallObject().getId() == ObjectID.NULL_12231)
+				{
+					return tiles[x][y].getRegionLocation();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				}
 			}
 		}
@@ -447,7 +537,11 @@ public class RaidsPlugin extends Plugin
 
 		for (int plane = 3; plane > 1; plane--)
 		{
+<<<<<<< HEAD
 			tiles = client.getScene().getTiles()[plane];
+=======
+			tiles = client.getRegion().getTiles()[plane];
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 			if (tiles[gridBase.getX() + RaidRoom.ROOM_MAX_SIZE][gridBase.getY()] == null)
 			{
@@ -510,7 +604,11 @@ public class RaidsPlugin extends Plugin
 	private RaidRoom determineRoom(Tile base)
 	{
 		RaidRoom room = new RaidRoom(base, RaidRoom.Type.EMPTY);
+<<<<<<< HEAD
 		int chunkData = client.getInstanceTemplateChunks()[base.getPlane()][(base.getSceneLocation().getX()) / 8][base.getSceneLocation().getY() / 8];
+=======
+		int chunkData = client.getInstanceTemplateChunks()[base.getPlane()][(base.getRegionLocation().getX()) / 8][base.getRegionLocation().getY() / 8];
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		InstanceTemplates template = InstanceTemplates.findMatch(chunkData);
 
 		if (template == null)

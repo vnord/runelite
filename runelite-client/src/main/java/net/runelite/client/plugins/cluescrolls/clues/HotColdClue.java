@@ -29,6 +29,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Point;
+<<<<<<< HEAD
+=======
+import java.awt.Polygon;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
@@ -41,6 +45,10 @@ import java.util.regex.Pattern;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import net.runelite.api.NPC;
+<<<<<<< HEAD
+=======
+import net.runelite.api.Perspective;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import static net.runelite.client.plugins.cluescrolls.ClueScrollOverlay.TITLED_CONTENT_COLOR;
@@ -215,12 +223,17 @@ public class HotColdClue extends ClueScroll implements LocationClueScroll, Locat
 			}
 		}
 
+<<<<<<< HEAD
 		// once the number of possible dig locations is below 10, show the dig spots
+=======
+		// once the number of possible dig locations is below 10, highlight their ground areas
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		if (digLocations.size() < 10)
 		{
 			// Mark potential dig locations
 			for (HotColdLocation hotColdLocation : digLocations)
 			{
+<<<<<<< HEAD
 				WorldPoint wp = hotColdLocation.getWorldPoint();
 				LocalPoint localLocation = LocalPoint.fromWorld(plugin.getClient(), wp.getX(), wp.getY());
 
@@ -230,6 +243,28 @@ public class HotColdClue extends ClueScroll implements LocationClueScroll, Locat
 				}
 
 				OverlayUtil.renderTileOverlay(plugin.getClient(), graphics, localLocation, SPADE_IMAGE, Color.ORANGE);
+=======
+				Rectangle2D r = hotColdLocation.getRect();
+
+				for (int i = (int) r.getMinX(); i <= r.getMaxX(); i++)
+				{
+					for (int j = (int) r.getMinY(); j <= r.getMaxY(); j++)
+					{
+						LocalPoint localLocation = LocalPoint.fromWorld(plugin.getClient(), new WorldPoint(i, j, 0));
+
+						if (localLocation != null)
+						{
+							Polygon poly = Perspective.getCanvasTilePoly(plugin.getClient(), localLocation);
+							graphics.setColor(new Color(Color.BLUE.getRed(), Color.BLUE.getGreen(), Color.BLUE.getBlue(), 50));
+
+							if (poly != null)
+							{
+								graphics.fillPolygon(poly);
+							}
+						}
+					}
+				}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			}
 		}
 	}

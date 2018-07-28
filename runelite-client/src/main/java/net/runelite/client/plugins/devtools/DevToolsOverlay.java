@@ -37,7 +37,10 @@ import java.util.List;
 import javax.inject.Inject;
 import net.runelite.api.Actor;
 import net.runelite.api.Client;
+<<<<<<< HEAD
 import net.runelite.api.Constants;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.DecorativeObject;
 import net.runelite.api.GameObject;
 import net.runelite.api.GraphicsObject;
@@ -51,7 +54,11 @@ import net.runelite.api.Perspective;
 import net.runelite.api.Player;
 import net.runelite.api.Point;
 import net.runelite.api.Projectile;
+<<<<<<< HEAD
 import net.runelite.api.Scene;
+=======
+import net.runelite.api.Region;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.Tile;
 import net.runelite.api.WallObject;
 import net.runelite.api.coords.LocalPoint;
@@ -62,8 +69,11 @@ import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.OverlayUtil;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.tooltip.Tooltip;
 import net.runelite.client.ui.overlay.tooltip.TooltipManager;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 public class DevToolsOverlay extends Overlay
 {
@@ -80,20 +90,33 @@ public class DevToolsOverlay extends Overlay
 	private static final Color PURPLE = new Color(170, 0, 255);
 	private static final Color GRAY = new Color(158, 158, 158);
 
+<<<<<<< HEAD
+=======
+	private static final int REGION_SIZE = 104;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private static final int MAX_DISTANCE = 2400;
 
 	private final Client client;
 	private final DevToolsPlugin plugin;
+<<<<<<< HEAD
 	private final TooltipManager toolTipManager;
 
 	@Inject
 	public DevToolsOverlay(Client client, DevToolsPlugin plugin, TooltipManager toolTipManager)
+=======
+
+	@Inject
+	public DevToolsOverlay(Client client, DevToolsPlugin plugin)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		setPosition(OverlayPosition.DYNAMIC);
 		setLayer(OverlayLayer.ALWAYS_ON_TOP);
 		this.client = client;
 		this.plugin = plugin;
+<<<<<<< HEAD
 		this.toolTipManager = toolTipManager;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Override
@@ -115,7 +138,11 @@ public class DevToolsOverlay extends Overlay
 			renderNpcs(graphics);
 		}
 
+<<<<<<< HEAD
 		if (plugin.isToggleGroundItems() || plugin.isToggleGroundObjects() || plugin.isToggleGameObjects() || plugin.isToggleWalls() || plugin.isToggleDecor() || plugin.isToggleTileLocation())
+=======
+		if (plugin.isToggleGroundItems() || plugin.isToggleGroundObjects() || plugin.isToggleGameObjects() || plugin.isToggleWalls() || plugin.isToggleDecor())
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			renderTileObjects(graphics);
 		}
@@ -191,6 +218,7 @@ public class DevToolsOverlay extends Overlay
 
 	private void renderTileObjects(Graphics2D graphics)
 	{
+<<<<<<< HEAD
 		Scene scene = client.getScene();
 		Tile[][][] tiles = scene.getTiles();
 
@@ -199,6 +227,16 @@ public class DevToolsOverlay extends Overlay
 		for (int x = 0; x < Constants.SCENE_SIZE; ++x)
 		{
 			for (int y = 0; y < Constants.SCENE_SIZE; ++y)
+=======
+		Region region = client.getRegion();
+		Tile[][][] tiles = region.getTiles();
+
+		int z = client.getPlane();
+
+		for (int x = 0; x < REGION_SIZE; ++x)
+		{
+			for (int y = 0; y < REGION_SIZE; ++y)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			{
 				Tile tile = tiles[z][x][y];
 
@@ -237,15 +275,19 @@ public class DevToolsOverlay extends Overlay
 				{
 					renderDecorObject(graphics, tile, player);
 				}
+<<<<<<< HEAD
 
 				if (plugin.isToggleTileLocation())
 				{
 					renderTileTooltip(graphics, tile);
 				}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			}
 		}
 	}
 
+<<<<<<< HEAD
 	private void renderTileTooltip(Graphics2D graphics, Tile tile)
 	{
 		Polygon poly = Perspective.getCanvasTilePoly(client, tile.getLocalLocation());
@@ -256,6 +298,8 @@ public class DevToolsOverlay extends Overlay
 		}
 	}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private void renderGroundItems(Graphics2D graphics, Tile tile, Player player)
 	{
 		ItemLayer itemLayer = tile.getItemLayer();

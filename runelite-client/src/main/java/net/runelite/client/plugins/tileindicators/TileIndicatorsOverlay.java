@@ -27,7 +27,10 @@ package net.runelite.client.plugins.tileindicators;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
+<<<<<<< HEAD
 import javax.inject.Inject;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.Client;
 import net.runelite.api.Perspective;
 import net.runelite.api.coords.LocalPoint;
@@ -42,8 +45,12 @@ public class TileIndicatorsOverlay extends Overlay
 	private final Client client;
 	private final TileIndicatorsConfig config;
 
+<<<<<<< HEAD
 	@Inject
 	private TileIndicatorsOverlay(Client client, TileIndicatorsConfig config)
+=======
+	TileIndicatorsOverlay(Client client, TileIndicatorsConfig config)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		this.client = client;
 		this.config = config;

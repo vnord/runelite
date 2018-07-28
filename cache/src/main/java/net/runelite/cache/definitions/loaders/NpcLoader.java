@@ -179,6 +179,7 @@ public class NpcLoader
 		}
 		else if (opcode == 103)
 		{
+<<<<<<< HEAD
 			def.rotation = stream.readUnsignedShort();
 		}
 		else if (opcode == 106)
@@ -208,6 +209,37 @@ public class NpcLoader
 			}
 
 			def.configs[length + 1] = -1;
+=======
+			def.anInt2156 = stream.readUnsignedShort();
+		}
+		else if (opcode == 106)
+		{
+			def.anInt2174 = stream.readUnsignedShort();
+			if ('\uffff' == def.anInt2174)
+			{
+				def.anInt2174 = -1;
+			}
+
+			def.anInt2187 = stream.readUnsignedShort();
+			if ('\uffff' == def.anInt2187)
+			{
+				def.anInt2187 = -1;
+			}
+
+			length = stream.readUnsignedByte();
+			def.anIntArray2185 = new int[length + 2];
+
+			for (index = 0; index <= length; ++index)
+			{
+				def.anIntArray2185[index] = stream.readUnsignedShort();
+				if (def.anIntArray2185[index] == '\uffff')
+				{
+					def.anIntArray2185[index] = -1;
+				}
+			}
+
+			def.anIntArray2185[length + 1] = -1;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 		}
 		else if (opcode == 107)
@@ -224,6 +256,7 @@ public class NpcLoader
 		}
 		else if (opcode == 118)
 		{
+<<<<<<< HEAD
 			def.varbitIndex = stream.readUnsignedShort();
 			if ('\uffff' == def.varbitIndex)
 			{
@@ -234,6 +267,18 @@ public class NpcLoader
 			if ('\uffff' == def.varpIndex)
 			{
 				def.varpIndex = -1;
+=======
+			def.anInt2174 = stream.readUnsignedShort();
+			if ('\uffff' == def.anInt2174)
+			{
+				def.anInt2174 = -1;
+			}
+
+			def.anInt2187 = stream.readUnsignedShort();
+			if ('\uffff' == def.anInt2187)
+			{
+				def.anInt2187 = -1;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			}
 
 			int var = stream.readUnsignedShort();
@@ -243,6 +288,7 @@ public class NpcLoader
 			}
 
 			length = stream.readUnsignedByte();
+<<<<<<< HEAD
 			def.configs = new int[length + 2];
 
 			for (index = 0; index <= length; ++index)
@@ -255,6 +301,20 @@ public class NpcLoader
 			}
 
 			def.configs[length + 1] = var;
+=======
+			def.anIntArray2185 = new int[length + 2];
+
+			for (index = 0; index <= length; ++index)
+			{
+				def.anIntArray2185[index] = stream.readUnsignedShort();
+				if (def.anIntArray2185[index] == '\uffff')
+				{
+					def.anIntArray2185[index] = -1;
+				}
+			}
+
+			def.anIntArray2185[length + 1] = var;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 		else if (opcode == 249)
 		{

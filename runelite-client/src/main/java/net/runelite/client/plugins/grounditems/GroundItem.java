@@ -41,6 +41,7 @@ class GroundItem
 	private int height;
 	private int haPrice;
 	private int gePrice;
+<<<<<<< HEAD
 	private int offset;
 	private boolean tradeable;
 
@@ -53,6 +54,8 @@ class GroundItem
 	{
 		return gePrice * quantity;
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Value
 	static class GroundItemKey

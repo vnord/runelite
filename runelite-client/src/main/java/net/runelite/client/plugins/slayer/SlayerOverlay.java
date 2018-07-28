@@ -24,13 +24,18 @@
  */
 package net.runelite.client.plugins.slayer;
 
+<<<<<<< HEAD
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import static com.google.common.collect.ObjectArrays.concat;
+=======
+import com.google.common.collect.ImmutableSet;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
+<<<<<<< HEAD
 import java.util.Set;
 import javax.inject.Inject;
 import com.google.common.primitives.ImmutableIntArray;
@@ -39,12 +44,19 @@ import net.runelite.api.Query;
 import net.runelite.api.queries.EquipmentItemQuery;
 import net.runelite.api.queries.InventoryWidgetItemQuery;
 import net.runelite.api.widgets.WidgetInfo;
+=======
+import java.util.Collection;
+import java.util.Set;
+import javax.inject.Inject;
+import net.runelite.api.ItemID;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.components.TextComponent;
+<<<<<<< HEAD
 import net.runelite.client.util.QueryRunner;
 
 class SlayerOverlay extends Overlay
@@ -94,11 +106,53 @@ class SlayerOverlay extends Overlay
 
 	@Inject
 	private SlayerOverlay(SlayerPlugin plugin, SlayerConfig config, QueryRunner queryRunner)
+=======
+
+class SlayerOverlay extends Overlay
+{
+	private final SlayerConfig config;
+	private final SlayerPlugin plugin;
+
+	private final Set<Integer> slayerJewelry = ImmutableSet.of(
+		ItemID.SLAYER_RING_1,
+		ItemID.SLAYER_RING_2,
+		ItemID.SLAYER_RING_3,
+		ItemID.SLAYER_RING_4,
+		ItemID.SLAYER_RING_5,
+		ItemID.SLAYER_RING_6,
+		ItemID.SLAYER_RING_7,
+		ItemID.SLAYER_RING_8
+	);
+
+	private final Set<Integer> slayerEquipment = ImmutableSet.of(
+		ItemID.SLAYER_HELMET,
+		ItemID.SLAYER_HELMET_I,
+		ItemID.BLACK_SLAYER_HELMET,
+		ItemID.BLACK_SLAYER_HELMET_I,
+		ItemID.GREEN_SLAYER_HELMET,
+		ItemID.GREEN_SLAYER_HELMET_I,
+		ItemID.PURPLE_SLAYER_HELMET,
+		ItemID.PURPLE_SLAYER_HELMET_I,
+		ItemID.RED_SLAYER_HELMET,
+		ItemID.RED_SLAYER_HELMET_I,
+		ItemID.TURQUOISE_SLAYER_HELMET,
+		ItemID.TURQUOISE_SLAYER_HELMET_I,
+		ItemID.SLAYER_RING_ETERNAL,
+		ItemID.ENCHANTED_GEM,
+		ItemID.ETERNAL_GEM,
+		ItemID.BRACELET_OF_SLAUGHTER,
+		ItemID.EXPEDITIOUS_BRACELET
+	);
+
+	@Inject
+	private SlayerOverlay(SlayerPlugin plugin, SlayerConfig config)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		setPosition(OverlayPosition.DYNAMIC);
 		setLayer(OverlayLayer.ABOVE_WIDGETS);
 		this.plugin = plugin;
 		this.config = config;
+<<<<<<< HEAD
 		this.queryRunner = queryRunner;
 	}
 
@@ -113,6 +167,8 @@ class SlayerOverlay extends Overlay
 
 		WidgetItem[] items = concat(inventoryWidgetItems, equipmentWidgetItems, WidgetItem.class);
 		return ImmutableList.copyOf(items);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Override
@@ -134,10 +190,23 @@ class SlayerOverlay extends Overlay
 
 		graphics.setFont(FontManager.getRunescapeSmallFont());
 
+<<<<<<< HEAD
 		for (WidgetItem item : getSlayerItems())
 		{
 			int itemId = item.getId();
 
+=======
+		Collection<WidgetItem> items = plugin.getSlayerItems();
+		for (WidgetItem item : items)
+		{
+			int itemId = item.getId();
+
+			if (!slayerEquipment.contains(itemId) && !slayerJewelry.contains(itemId))
+			{
+				continue;
+			}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			final Rectangle bounds = item.getCanvasBounds();
 			final TextComponent textComponent = new TextComponent();
 
@@ -155,7 +224,11 @@ class SlayerOverlay extends Overlay
 			}
 
 			// Draw the counter in the bottom left for equipment, and top left for jewelry
+<<<<<<< HEAD
 			textComponent.setPosition(new Point(bounds.x, bounds.y + (SLAYER_JEWELRY.contains(itemId)
+=======
+			textComponent.setPosition(new Point(bounds.x, bounds.y + (slayerJewelry.contains(itemId)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				? bounds.height
 				: graphics.getFontMetrics().getHeight())));
 			textComponent.render(graphics);

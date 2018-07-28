@@ -24,6 +24,7 @@
  */
 package net.runelite.api;
 
+<<<<<<< HEAD
 /**
  * Represents a widget as an iterable node.
  */
@@ -35,5 +36,9 @@ public interface WidgetNode extends Node
 	 * @return the ID of the widget
 	 * @see net.runelite.api.widgets.Widget
 	 */
+=======
+public interface WidgetNode extends Node
+{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	int getId();
 }

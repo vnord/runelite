@@ -33,13 +33,17 @@ import java.awt.Rectangle;
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Provider;
+<<<<<<< HEAD
 import javax.inject.Singleton;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.Client;
 import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.OverlayUtil;
 import net.runelite.client.ui.overlay.components.InfoBoxComponent;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.components.LayoutableRenderableEntity;
 import net.runelite.client.ui.overlay.components.PanelComponent;
 import net.runelite.client.ui.overlay.tooltip.Tooltip;
@@ -49,45 +53,90 @@ import net.runelite.client.ui.overlay.tooltip.TooltipManager;
 public class InfoBoxOverlay extends Overlay
 {
 	private final PanelComponent panelComponent = new PanelComponent();
+=======
+import net.runelite.client.ui.overlay.tooltip.Tooltip;
+import net.runelite.client.ui.overlay.tooltip.TooltipManager;
+
+public class InfoBoxOverlay extends Overlay
+{
+	private static final int BOXSIZE = 35;
+	private static final int SEPARATOR = 2;
+	private static final int TOTAL_BOXSIZE = BOXSIZE + SEPARATOR;
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private final InfoBoxManager infoboxManager;
 	private final TooltipManager tooltipManager;
 	private final Provider<Client> clientProvider;
 	private final RuneLiteConfig config;
 
 	@Inject
+<<<<<<< HEAD
 	private InfoBoxOverlay(
 		InfoBoxManager infoboxManager,
 		TooltipManager tooltipManager,
 		Provider<Client> clientProvider,
 		RuneLiteConfig config)
 	{
+=======
+	public InfoBoxOverlay(InfoBoxManager infoboxManager, TooltipManager tooltipManager, Provider<Client> clientProvider, RuneLiteConfig config)
+	{
+		setPosition(OverlayPosition.TOP_LEFT);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		this.tooltipManager = tooltipManager;
 		this.infoboxManager = infoboxManager;
 		this.clientProvider = clientProvider;
 		this.config = config;
+<<<<<<< HEAD
 		setPosition(OverlayPosition.TOP_LEFT);
 
 		panelComponent.setBackgroundColor(null);
 		panelComponent.setBorder(new Rectangle());
 		panelComponent.setGap(new Point(1, 1));
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Override
 	public Dimension render(Graphics2D graphics)
 	{
+<<<<<<< HEAD
 		final List<InfoBox> infoBoxes = infoboxManager.getInfoBoxes();
+=======
+		List<InfoBox> infoBoxes = infoboxManager.getInfoBoxes();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 		if (infoBoxes.isEmpty())
 		{
 			return null;
 		}
 
+<<<<<<< HEAD
 		panelComponent.getChildren().clear();
 		panelComponent.setWrapping(config.infoBoxWrap());
 		panelComponent.setOrientation(config.infoBoxVertical()
 			? PanelComponent.Orientation.VERTICAL
 			: PanelComponent.Orientation.HORIZONTAL);
 		panelComponent.setPreferredSize(new Dimension(config.infoBoxSize(), config.infoBoxSize()));
+=======
+		int wrap = config.infoBoxWrap();
+		int infoBoxCount = infoBoxes.size();
+		boolean vertical = config.infoBoxVertical();
+
+		int width, height;
+		if (!vertical)
+		{
+			width = getWidth(infoBoxCount, wrap);
+			height = getHeight(infoBoxCount, wrap);
+		}
+		else
+		{
+			width = getHeight(infoBoxCount, wrap);
+			height = getWidth(infoBoxCount, wrap);
+		}
+
+		int x = 0;
+		int y = 0;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 		for (InfoBox box : infoBoxes)
 		{
@@ -96,6 +145,7 @@ public class InfoBoxOverlay extends Overlay
 				continue;
 			}
 
+<<<<<<< HEAD
 			final InfoBoxComponent infoBoxComponent = new InfoBoxComponent();
 			infoBoxComponent.setColor(box.getTextColor());
 			infoBoxComponent.setImage(box.getScaledImage());
@@ -134,10 +184,76 @@ public class InfoBoxOverlay extends Overlay
 							tooltipManager.add(new Tooltip(component.getTooltip()));
 						}
 					}
+=======
+
+			final InfoBoxComponent infoBoxComponent = new InfoBoxComponent();
+			infoBoxComponent.setColor(box.getTextColor());
+			infoBoxComponent.setImage(box.getImage());
+			infoBoxComponent.setText(box.getText());
+			infoBoxComponent.setPosition(new Point(x, y));
+			final Dimension infoBoxBounds = infoBoxComponent.render(graphics);
+
+			if (!Strings.isNullOrEmpty(box.getTooltip()))
+			{
+				final Rectangle intersectionRectangle = new Rectangle(infoBoxBounds);
+				intersectionRectangle.setLocation(getBounds().getLocation());
+				intersectionRectangle.translate(x, y);
+				final Point transformed = OverlayUtil.transformPosition(getPosition(), intersectionRectangle.getSize());
+				intersectionRectangle.translate(transformed.x, transformed.y);
+
+				final Client client = clientProvider.get();
+
+				if (client != null && intersectionRectangle.contains(new Point(client.getMouseCanvasPosition().getX(),
+					client.getMouseCanvasPosition().getY())))
+				{
+					tooltipManager.add(new Tooltip(box.getTooltip()));
+				}
+			}
+
+			// Determine which axis to reset/increase
+			if (vertical)
+			{
+				// Reset y if newbox reaches height limit
+				if (y + TOTAL_BOXSIZE < height)
+				{
+					y += TOTAL_BOXSIZE;
+				}
+				else
+				{
+					y = 0;
+					x += TOTAL_BOXSIZE;
+				}
+			}
+			else
+			{
+				// Reset x if newbox reaches width limit
+				if (x + TOTAL_BOXSIZE < width)
+				{
+					x += TOTAL_BOXSIZE;
+				}
+				else
+				{
+					x = 0;
+					y += TOTAL_BOXSIZE;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				}
 			}
 		}
 
+<<<<<<< HEAD
 		return dimension;
+=======
+		return new Dimension(width, height);
+	}
+
+	private static int getHeight(int infoBoxCount, int maxRow)
+	{
+		return maxRow == 0 ? TOTAL_BOXSIZE : (int) Math.ceil((double)infoBoxCount / maxRow) * TOTAL_BOXSIZE;
+	}
+
+	private static int getWidth(int infoBoxCount, int maxRow)
+	{
+		return maxRow == 0 ? infoBoxCount * TOTAL_BOXSIZE : (maxRow > infoBoxCount ? infoBoxCount : maxRow) * TOTAL_BOXSIZE;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

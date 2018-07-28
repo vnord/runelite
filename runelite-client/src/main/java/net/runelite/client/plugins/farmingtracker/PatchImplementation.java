@@ -31,7 +31,11 @@ import lombok.RequiredArgsConstructor;
 @Getter
 public enum PatchImplementation
 {
+<<<<<<< HEAD
 	CACTUS(Tab.SPECIAL, "")
+=======
+	CACTUS(Tab.SPECIAL)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			@Override
 			PatchState forVarbitValue(int value)
@@ -51,11 +55,23 @@ public enum PatchImplementation
 					// Cactus[,Inspect,,Guide,] 7747,7748,7749,7750,7751,7752,7753
 					return new PatchState(Produce.CACTUS, CropState.GROWING, value - 8);
 				}
+<<<<<<< HEAD
 				if (value >= 15 && value <= 18)
 				{
 					// Cactus[Clear,Inspect,,Guide,] 7754
 					// Cactus[Pick-spine,Inspect,,Guide,] 7755,7756,7757
 					return new PatchState(Produce.CACTUS, CropState.HARVESTABLE, value - 15);
+=======
+				if (value == 15)
+				{
+					// Cactus[Clear,Inspect,,Guide,] 7754
+					return new PatchState(Produce.CACTUS, CropState.GROWING, 0);
+				}
+				if (value >= 16 && value <= 18)
+				{
+					// Cactus[Pick-spine,Inspect,,Guide,] 7755,7756,7757
+					return new PatchState(Produce.CACTUS, CropState.HARVESTABLE, value - 16);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				}
 				if (value >= 19 && value <= 24)
 				{
@@ -70,7 +86,11 @@ public enum PatchImplementation
 				if (value == 31)
 				{
 					// Cactus[Check-health,Inspect,,Guide,] 7758
+<<<<<<< HEAD
 					return new PatchState(Produce.CACTUS, CropState.GROWING, 7);
+=======
+					return new PatchState(Produce.CACTUS, CropState.GROWING, 6);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				}
 				if (value >= 32 && value <= 255)
 				{
@@ -80,7 +100,11 @@ public enum PatchImplementation
 				return null;
 			}
 		},
+<<<<<<< HEAD
 	BELLADONNA(Tab.SPECIAL, "")
+=======
+	BELLADONNA(Tab.SPECIAL)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			@Override
 			PatchState forVarbitValue(int value)
@@ -118,7 +142,11 @@ public enum PatchImplementation
 				return null;
 			}
 		},
+<<<<<<< HEAD
 	MUSHROOM(Tab.SPECIAL, "")
+=======
+	MUSHROOM(Tab.SPECIAL)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			@Override
 			PatchState forVarbitValue(int value)
@@ -156,7 +184,11 @@ public enum PatchImplementation
 				return null;
 			}
 		},
+<<<<<<< HEAD
 	ALLOTMENT(Tab.ALLOTMENT, "")
+=======
+	ALLOTMENT(Tab.ALLOTMENT)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			@Override
 			PatchState forVarbitValue(int value)
@@ -469,7 +501,244 @@ public enum PatchImplementation
 				return null;
 			}
 		},
+<<<<<<< HEAD
 	HERB(Tab.HERB, "")
+=======
+	FLOWER(Tab.SPECIAL)
+		{
+			@Override
+			PatchState forVarbitValue(int value)
+			{
+				if (value >= 0 && value <= 3)
+				{
+					// Flower Patch[Rake,Inspect,,Guide,] 7843,7842,7841,7840
+					return new PatchState(Produce.WEEDS, CropState.GROWING, 3 - value);
+				}
+				if (value >= 4 && value <= 7)
+				{
+					// Flower Patch[Rake,Inspect,,Guide,] 7843,7843,7843,7843
+					return new PatchState(Produce.WEEDS, CropState.GROWING, 3);
+				}
+				if (value >= 8 && value <= 11)
+				{
+					// Marigold[,Inspect,,Guide,] 7867,7868,7869,7870
+					return new PatchState(Produce.MARIGOLD, CropState.GROWING, value - 8);
+				}
+				if (value == 12)
+				{
+					// Marigold[Pick,Inspect,,Guide,] 7871
+					return new PatchState(Produce.MARIGOLD, CropState.HARVESTABLE, 12 - value);
+				}
+				if (value >= 13 && value <= 16)
+				{
+					// Rosemary[,Inspect,,Guide,] 7899,7900,7901,7902
+					return new PatchState(Produce.ROSEMARY, CropState.GROWING, value - 13);
+				}
+				if (value == 17)
+				{
+					// Rosemary[Pick,Inspect,,Guide,] 7903
+					return new PatchState(Produce.ROSEMARY, CropState.HARVESTABLE, 17 - value);
+				}
+				if (value >= 18 && value <= 21)
+				{
+					// Nasturtium[,Inspect,,Guide,] 7883,7884,7885,7886
+					return new PatchState(Produce.NASTURTIUM, CropState.GROWING, value - 18);
+				}
+				if (value == 22)
+				{
+					// Nasturtium[Pick,Inspect,,Guide,] 7887
+					return new PatchState(Produce.NASTURTIUM, CropState.HARVESTABLE, 22 - value);
+				}
+				if (value >= 23 && value <= 26)
+				{
+					// Woad[,Inspect,,Guide,] 7919,7920,7921,7922
+					return new PatchState(Produce.WOAD, CropState.GROWING, value - 23);
+				}
+				if (value == 27)
+				{
+					// Woad[Pick,Inspect,,Guide,] 7923
+					return new PatchState(Produce.WOAD, CropState.HARVESTABLE, 27 - value);
+				}
+				if (value >= 28 && value <= 31)
+				{
+					// Limpwurt[,Inspect,,Guide,] 7851,7852,7853,7854
+					return new PatchState(Produce.LIMPWURT, CropState.GROWING, value - 28);
+				}
+				if (value == 32)
+				{
+					// Limpwurt[Pick,Inspect,,Guide,] 7855
+					return new PatchState(Produce.LIMPWURT, CropState.HARVESTABLE, 32 - value);
+				}
+				if (value >= 33 && value <= 35)
+				{
+					// Scarecrow[Rake,Inspect,,Guide,Remove] 7918,7917,7916
+					return new PatchState(Produce.SCARECROW, CropState.GROWING, 35 - value);
+				}
+				if (value == 36)
+				{
+					// Scarecrow[Remove,Inspect,,Guide,] 7915
+					return new PatchState(Produce.SCARECROW, CropState.GROWING, 0);
+				}
+				if (value >= 37 && value <= 71)
+				{
+					// Flower Patch[Rake,Inspect,,Guide,] 7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843
+					return new PatchState(Produce.WEEDS, CropState.GROWING, 3);
+				}
+				if (value >= 72 && value <= 75)
+				{
+					// Marigold[,Inspect,,Guide,] 7872,7873,7874,7875
+					return new PatchState(Produce.MARIGOLD, CropState.GROWING, value - 72);
+				}
+				if (value == 76)
+				{
+					// Flower Patch[Rake,Inspect,,Guide,] 7843
+					return new PatchState(Produce.WEEDS, CropState.GROWING, 3);
+				}
+				if (value >= 77 && value <= 80)
+				{
+					// Rosemary[,Inspect,,Guide,] 7904,7905,7906,7907
+					return new PatchState(Produce.ROSEMARY, CropState.GROWING, value - 77);
+				}
+				if (value == 81)
+				{
+					// Flower Patch[Rake,Inspect,,Guide,] 7843
+					return new PatchState(Produce.WEEDS, CropState.GROWING, 3);
+				}
+				if (value >= 82 && value <= 85)
+				{
+					// Nasturtium[,Inspect,,Guide,] 7888,7889,7890,7891
+					return new PatchState(Produce.NASTURTIUM, CropState.GROWING, value - 82);
+				}
+				if (value == 86)
+				{
+					// Flower Patch[Rake,Inspect,,Guide,] 7843
+					return new PatchState(Produce.WEEDS, CropState.GROWING, 3);
+				}
+				if (value >= 87 && value <= 90)
+				{
+					// Woad[,Inspect,,Guide,] 7924,7925,7926,7927
+					return new PatchState(Produce.WOAD, CropState.GROWING, value - 87);
+				}
+				if (value == 91)
+				{
+					// Flower Patch[Rake,Inspect,,Guide,] 7843
+					return new PatchState(Produce.WEEDS, CropState.GROWING, 3);
+				}
+				if (value >= 92 && value <= 95)
+				{
+					// Limpwurt[,Inspect,,Guide,] 7856,7857,7858,7859
+					return new PatchState(Produce.LIMPWURT, CropState.GROWING, value - 92);
+				}
+				if (value >= 96 && value <= 136)
+				{
+					// Flower Patch[Rake,Inspect,,Guide,] 7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843
+					return new PatchState(Produce.WEEDS, CropState.GROWING, 3);
+				}
+				if (value >= 137 && value <= 139)
+				{
+					// Diseased marigold[Cure,Inspect,,Guide,] 7876,7877,7878
+					return new PatchState(Produce.MARIGOLD, CropState.DISEASED, value - 136);
+				}
+				if (value >= 140 && value <= 141)
+				{
+					// Flower Patch[Rake,Inspect,,Guide,] 7843,7843
+					return new PatchState(Produce.WEEDS, CropState.GROWING, 3);
+				}
+				if (value >= 142 && value <= 144)
+				{
+					// Diseased rosemary[Cure,Inspect,,Guide,] 7908,7909,7910
+					return new PatchState(Produce.ROSEMARY, CropState.DISEASED, value - 141);
+				}
+				if (value >= 145 && value <= 146)
+				{
+					// Flower Patch[Rake,Inspect,,Guide,] 7843,7843
+					return new PatchState(Produce.WEEDS, CropState.GROWING, 3);
+				}
+				if (value >= 147 && value <= 149)
+				{
+					// Diseased nasturtium[Cure,Inspect,,Guide,] 7892,7893,7894
+					return new PatchState(Produce.NASTURTIUM, CropState.DISEASED, value - 146);
+				}
+				if (value >= 150 && value <= 151)
+				{
+					// Flower Patch[Rake,Inspect,,Guide,] 7843,7843
+					return new PatchState(Produce.WEEDS, CropState.GROWING, 3);
+				}
+				if (value >= 152 && value <= 154)
+				{
+					// Diseased woad[Cure,Inspect,,Guide,] 7928,7929,7930
+					return new PatchState(Produce.WOAD, CropState.DISEASED, value - 151);
+				}
+				if (value >= 155 && value <= 156)
+				{
+					// Flower Patch[Rake,Inspect,,Guide,] 7843,7843
+					return new PatchState(Produce.WEEDS, CropState.GROWING, 3);
+				}
+				if (value >= 157 && value <= 159)
+				{
+					// Diseased limpwurt[Cure,Inspect,,Guide,] 7860,7861,7862
+					return new PatchState(Produce.LIMPWURT, CropState.DISEASED, value - 156);
+				}
+				if (value >= 160 && value <= 200)
+				{
+					// Flower Patch[Rake,Inspect,,Guide,] 7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843
+					return new PatchState(Produce.WEEDS, CropState.GROWING, 3);
+				}
+				if (value >= 201 && value <= 203)
+				{
+					// Dead marigold[Clear,Inspect,,Guide,] 7879,7880,7881,7882
+					return new PatchState(Produce.MARIGOLD, CropState.DEAD, value - 200);
+				}
+				if (value == 205)
+				{
+					// Flower Patch[Rake,Inspect,,Guide,] 7843
+					return new PatchState(Produce.WEEDS, CropState.GROWING, 3);
+				}
+				if (value >= 206 && value <= 208)
+				{
+					// Dead rosemary[Clear,Inspect,,Guide,] 7911,7912,7913,7914
+					return new PatchState(Produce.ROSEMARY, CropState.DEAD, value - 205);
+				}
+				if (value == 210)
+				{
+					// Flower Patch[Rake,Inspect,,Guide,] 7843
+					return new PatchState(Produce.WEEDS, CropState.GROWING, 3);
+				}
+				if (value >= 211 && value <= 213)
+				{
+					// Dead nasturtium[Clear,Inspect,,Guide,] 7895,7896,7897,7898
+					return new PatchState(Produce.NASTURTIUM, CropState.DEAD, value - 210);
+				}
+				if (value == 215)
+				{
+					// Flower Patch[Rake,Inspect,,Guide,] 7843
+					return new PatchState(Produce.WEEDS, CropState.GROWING, 3);
+				}
+				if (value >= 216 && value <= 218)
+				{
+					// Dead woad[Clear,Inspect,,Guide,] 7931,7932,7933,7934
+					return new PatchState(Produce.WOAD, CropState.DEAD, value - 215);
+				}
+				if (value == 220)
+				{
+					// Flower Patch[Rake,Inspect,,Guide,] 7843
+					return new PatchState(Produce.WEEDS, CropState.GROWING, 3);
+				}
+				if (value >= 221 && value <= 224)
+				{
+					// Dead limpwurt[Clear,Inspect,,Guide,] 7863,7864,7865,7866
+					return new PatchState(Produce.LIMPWURT, CropState.DEAD, value - 220);
+				}
+				if (value >= 225 && value <= 255)
+				{
+					// Flower Patch[Rake,Inspect,,Guide,] 7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843,7843
+					return new PatchState(Produce.WEEDS, CropState.GROWING, 3);
+				}
+				return null;
+			}
+		},
+	HERB(Tab.HERB)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			@Override
 			PatchState forVarbitValue(int value)
@@ -733,6 +1002,7 @@ public enum PatchImplementation
 				return null;
 			}
 		},
+<<<<<<< HEAD
 	FLOWER(Tab.HERB, "Flowers")
 		{
 			@Override
@@ -967,6 +1237,9 @@ public enum PatchImplementation
 			}
 		},
 	BUSH(Tab.BUSH, "")
+=======
+	BUSH(Tab.SPECIAL)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			@Override
 			PatchState forVarbitValue(int value)
@@ -1205,7 +1478,11 @@ public enum PatchImplementation
 				return null;
 			}
 		},
+<<<<<<< HEAD
 	FRUIT_TREE(Tab.FRUIT_TREE, "Fruit trees")
+=======
+	FRUIT_TREE(Tab.FRUIT_TREE)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			@Override
 			PatchState forVarbitValue(int value)
@@ -1454,7 +1731,11 @@ public enum PatchImplementation
 				return null;
 			}
 		},
+<<<<<<< HEAD
 	HOPS(Tab.SPECIAL, "Hops")
+=======
+	HOPS(Tab.SPECIAL)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			@Override
 			PatchState forVarbitValue(int value)
@@ -1757,7 +2038,11 @@ public enum PatchImplementation
 				return null;
 			}
 		},
+<<<<<<< HEAD
 	TREE(Tab.TREE, "")
+=======
+	TREE(Tab.TREE)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			@Override
 			PatchState forVarbitValue(int value)
@@ -1780,7 +2065,11 @@ public enum PatchImplementation
 				if (value == 12)
 				{
 					// Oak[Check-health,Inspect,,Guide,] 8466
+<<<<<<< HEAD
 					return new PatchState(Produce.OAK, CropState.GROWING, 4);
+=======
+					return new PatchState(Produce.OAK, CropState.GROWING, 5);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				}
 				if (value == 13)
 				{
@@ -1800,7 +2089,11 @@ public enum PatchImplementation
 				if (value == 21)
 				{
 					// Willow Tree[Check-health,Inspect,,Guide,] 8487
+<<<<<<< HEAD
 					return new PatchState(Produce.WILLOW, CropState.GROWING, 6);
+=======
+					return new PatchState(Produce.WILLOW, CropState.GROWING, 7);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				}
 				if (value == 22)
 				{
@@ -1840,7 +2133,11 @@ public enum PatchImplementation
 				if (value >= 36 && value <= 44)
 				{
 					// Yew tree[,Inspect,,Guide,] 8503,8504,8505,8506,8507,8508,8509,8510,8511
+<<<<<<< HEAD
 					return new PatchState(Produce.YEW, CropState.GROWING, value - 35);
+=======
+					return new PatchState(Produce.YEW, CropState.GROWING, value - 36);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				}
 				if (value == 45)
 				{
@@ -1890,7 +2187,11 @@ public enum PatchImplementation
 				if (value == 77)
 				{
 					// Diseased Oak[Prune,Inspect,,Guide,] 8476
+<<<<<<< HEAD
 					return new PatchState(Produce.OAK, CropState.DISEASED, 4);
+=======
+					return new PatchState(Produce.OAK, CropState.DISEASED, 5);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				}
 				if (value >= 78 && value <= 79)
 				{
@@ -1905,7 +2206,11 @@ public enum PatchImplementation
 				if (value == 86)
 				{
 					// Diseased Willow[Prune,Inspect,,Guide,] 8495
+<<<<<<< HEAD
 					return new PatchState(Produce.WILLOW, CropState.DISEASED, 6);
+=======
+					return new PatchState(Produce.WILLOW, CropState.DISEASED, 7);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				}
 				if (value >= 87 && value <= 88)
 				{
@@ -1965,7 +2270,11 @@ public enum PatchImplementation
 				if (value == 141)
 				{
 					// Dead Oak[Clear,Inspect,,Guide,] 8480
+<<<<<<< HEAD
 					return new PatchState(Produce.OAK, CropState.DEAD, 4);
+=======
+					return new PatchState(Produce.OAK, CropState.DEAD, 5);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				}
 				if (value >= 142 && value <= 143)
 				{
@@ -1980,7 +2289,11 @@ public enum PatchImplementation
 				if (value == 150)
 				{
 					// Dead Willow[Clear,Inspect,,Guide,] 8501
+<<<<<<< HEAD
 					return new PatchState(Produce.WILLOW, CropState.DEAD, 6);
+=======
+					return new PatchState(Produce.WILLOW, CropState.DEAD, 7);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				}
 				if (value >= 151 && value <= 152)
 				{
@@ -2045,7 +2358,11 @@ public enum PatchImplementation
 				return null;
 			}
 		},
+<<<<<<< HEAD
 	HARDWOOD_TREE(Tab.TREE, "Hardwood Trees")
+=======
+	HARDWOOD_TREE(Tab.TREE)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			@Override
 			PatchState forVarbitValue(int value)
@@ -2068,7 +2385,11 @@ public enum PatchImplementation
 				if (value == 15)
 				{
 					// Teak Tree[Check-health,Inspect,,Guide,] 30444
+<<<<<<< HEAD
 					return new PatchState(Produce.TEAK, CropState.GROWING, 7);
+=======
+					return new PatchState(Produce.TEAK, CropState.GROWING, 8);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				}
 				if (value == 16)
 				{
@@ -2098,12 +2419,20 @@ public enum PatchImplementation
 				if (value >= 31 && value <= 37)
 				{
 					// Mahogany tree[,Inspect,,Guide,] 30407,30408,30409,30410,30411,30412,30413
+<<<<<<< HEAD
 					return new PatchState(Produce.MAHOGANY, CropState.GROWING, value - 30);
+=======
+					return new PatchState(Produce.MAHOGANY, CropState.GROWING, value - 31);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				}
 				if (value == 38)
 				{
 					// Mahogany tree[Check-health,Inspect,,Guide,] 30416
+<<<<<<< HEAD
 					return new PatchState(Produce.MAHOGANY, CropState.GROWING, 8);
+=======
+					return new PatchState(Produce.MAHOGANY, CropState.GROWING, 9);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				}
 				if (value == 39)
 				{
@@ -2133,7 +2462,11 @@ public enum PatchImplementation
 				return null;
 			}
 		},
+<<<<<<< HEAD
 	SPIRIT_TREE(Tab.TREE, "Spirit Trees")
+=======
+	SPIRIT_TREE(Tab.TREE)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			@Override
 			PatchState forVarbitValue(int value)
@@ -2181,7 +2514,11 @@ public enum PatchImplementation
 				return null;
 			}
 		},
+<<<<<<< HEAD
 	SEAWEED(Tab.SPECIAL, "Seaweed")
+=======
+	SEAWEED(Tab.SPECIAL)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			@Override
 			PatchState forVarbitValue(int value)
@@ -2219,7 +2556,11 @@ public enum PatchImplementation
 				return null;
 			}
 		},
+<<<<<<< HEAD
 	CALQUAT(Tab.FRUIT_TREE, "Calquat")
+=======
+	CALQUAT(Tab.FRUIT_TREE)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			@Override
 			PatchState forVarbitValue(int value)
@@ -2267,7 +2608,11 @@ public enum PatchImplementation
 				return null;
 			}
 		},
+<<<<<<< HEAD
 	GRAPES(Tab.BUSH, "Grapes")
+=======
+		GRAPES(Tab.SPECIAL)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			@Override
 			PatchState forVarbitValue(int value)
@@ -2296,6 +2641,9 @@ public enum PatchImplementation
 	abstract PatchState forVarbitValue(int value);
 
 	private final Tab tab;
+<<<<<<< HEAD
 
 	private final String name;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

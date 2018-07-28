@@ -33,6 +33,10 @@ import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
+<<<<<<< HEAD
+=======
+import net.runelite.client.callback.Hooks;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSScript;
 import net.runelite.rs.api.RSScriptEvent;
@@ -90,7 +94,11 @@ public abstract class ScriptVMMixin implements RSClient
 				}
 				m.appendTail(out);
 
+<<<<<<< HEAD
 				client.getLogger().debug(out.toString());
+=======
+				Hooks.log.debug(out.toString());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 				client.setStringStackSize(stringStackSize);
 				client.setIntStackSize(intStackSize);
@@ -100,7 +108,11 @@ public abstract class ScriptVMMixin implements RSClient
 			ScriptCallbackEvent event = new ScriptCallbackEvent();
 			event.setScript(currentScript);
 			event.setEventName(stringOp);
+<<<<<<< HEAD
 			client.getCallbacks().post(event);
+=======
+			Hooks.eventBus.post(event);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			return true;
 		}
 		return false;
@@ -130,7 +142,10 @@ public abstract class ScriptVMMixin implements RSClient
 	public void runScript(int id, Object... args)
 	{
 		assert isClientThread();
+<<<<<<< HEAD
 		assert currentScript == null;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		Object[] cargs = new Object[args.length + 1];
 		cargs[0] = id;
 		System.arraycopy(args, 0, cargs, 1, args.length);

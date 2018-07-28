@@ -74,19 +74,28 @@ public class LocationOverlay extends Overlay
 
 			int[][][] instanceTemplateChunks = client.getInstanceTemplateChunks();
 			int z = client.getPlane();
+<<<<<<< HEAD
 			int chunkData = instanceTemplateChunks[z][localPoint.getSceneX() / CHUNK_SIZE][localPoint.getSceneY() / CHUNK_SIZE];
+=======
+			int chunkData = instanceTemplateChunks[z][localPoint.getRegionX() / CHUNK_SIZE][localPoint.getRegionY() / CHUNK_SIZE];
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 			int rotation = chunkData >> 1 & 0x3;
 			int chunkY = (chunkData >> 3 & 0x7FF) * CHUNK_SIZE;
 			int chunkX = (chunkData >> 14 & 0x3FF) * CHUNK_SIZE;
 
 			panelComponent.getChildren().add(LineComponent.builder()
+<<<<<<< HEAD
 				.left("Chunk " + localPoint.getSceneX() / CHUNK_SIZE + "," + localPoint.getSceneY() / CHUNK_SIZE)
+=======
+				.left("Chunk " + localPoint.getRegionX() / CHUNK_SIZE + "," + localPoint.getRegionY() / CHUNK_SIZE)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				.right(rotation + " " + chunkX + " " + chunkY)
 				.build());
 		}
 
 		panelComponent.getChildren().add(LineComponent.builder()
+<<<<<<< HEAD
 				.left("Base")
 				.right(client.getBaseX() + ", " + client.getBaseY())
 				.build());
@@ -102,6 +111,8 @@ public class LocationOverlay extends Overlay
 				.build());
 
 		panelComponent.getChildren().add(LineComponent.builder()
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			.left("Tile")
 			.right(localWorld.getX() + ", " + localWorld.getY() + ", " + client.getPlane())
 			.build());

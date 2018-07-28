@@ -24,6 +24,7 @@
  */
 package net.runelite.api;
 
+<<<<<<< HEAD
 import net.runelite.api.annotations.VisibleForDevtools;
 import net.runelite.api.kit.KitType;
 
@@ -61,4 +62,22 @@ public interface PlayerComposition
 
 	@VisibleForDevtools
 	void setTransformedNpcId(int id);
+=======
+import net.runelite.api.kit.KitType;
+
+public interface PlayerComposition
+{
+	/**
+	 * Get equipment ids. If id is &ge; 256 &amp;&amp; &lt; 512 then
+	 * subtract 256 and the id is a kit definition. If the id is &ge; 512
+	 * then subtract 512 and the id is an item id.
+	 *
+	 * @return
+	 */
+	int[] getEquipmentIds();
+
+	int getEquipmentId(KitType type);
+
+	int getKitId(KitType type);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

@@ -47,6 +47,14 @@ public class IDAStar extends Pathfinder
 	{
 		PuzzleState goalNode = path(root);
 
+<<<<<<< HEAD
+=======
+		if (goalNode == null)
+		{
+			return null;
+		}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		List<PuzzleState> path = new ArrayList<>();
 
 		PuzzleState parent = goalNode;

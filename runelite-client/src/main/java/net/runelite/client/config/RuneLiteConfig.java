@@ -27,7 +27,15 @@ package net.runelite.client.config;
 import java.awt.Dimension;
 import net.runelite.api.Constants;
 
+<<<<<<< HEAD
 @ConfigGroup("runelite")
+=======
+@ConfigGroup(
+	keyName = "runelite",
+	name = "RuneLite",
+	description = "Configuration for RuneLite client options"
+)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public interface RuneLiteConfig extends Config
 {
 	@ConfigItem(
@@ -109,6 +117,7 @@ public interface RuneLiteConfig extends Config
 	}
 
 	@ConfigItem(
+<<<<<<< HEAD
 		keyName = "warningOnExit",
 		name = "Display warning on exit",
 		description = "Toggles a warning popup when trying to exit the client",
@@ -120,6 +129,8 @@ public interface RuneLiteConfig extends Config
 	}
 
 	@ConfigItem(
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		keyName = "notificationTray",
 		name = "Enable tray notifications",
 		description = "Enables tray notifications",
@@ -228,6 +239,7 @@ public interface RuneLiteConfig extends Config
 	{
 		return 4;
 	}
+<<<<<<< HEAD
 
 	@ConfigItem(
 		keyName = "infoBoxSize",
@@ -239,4 +251,6 @@ public interface RuneLiteConfig extends Config
 	{
 		return 35;
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

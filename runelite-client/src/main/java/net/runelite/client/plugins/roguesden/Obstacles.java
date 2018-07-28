@@ -27,7 +27,10 @@ package net.runelite.client.plugins.roguesden;
 import com.google.common.collect.Sets;
 import java.util.Set;
 import static net.runelite.api.ObjectID.*;
+<<<<<<< HEAD
 import static net.runelite.api.NullObjectID.*;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 class Obstacles
 {

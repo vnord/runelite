@@ -34,8 +34,11 @@ import net.runelite.client.plugins.PluginDescriptor;
 
 @PluginDescriptor(
 	name = "Low Detail",
+<<<<<<< HEAD
 	description = "Turn off ground decorations and certain textures, reducing memory usage",
 	tags = {"memory", "usage", "ground", "decorations"},
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	enabledByDefault = false
 )
 public class LowMemoryPlugin extends Plugin
@@ -46,10 +49,14 @@ public class LowMemoryPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
+<<<<<<< HEAD
 		if (client.getGameState() == GameState.LOGGED_IN)
 		{
 			client.changeMemoryMode(true);
 		}
+=======
+		client.changeMemoryMode(true);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Override

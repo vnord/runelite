@@ -27,13 +27,20 @@ package net.runelite.api.events;
 import lombok.Value;
 
 /**
+<<<<<<< HEAD
  * An event where a request to remove a friend is sent to the server.
+=======
+ * Called when a request to remove a friend is sent to the server
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
  */
 @Value
 public class RemovedFriend
 {
+<<<<<<< HEAD
 	/**
 	 * The name of the removed friend.
 	 */
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private final String name;
 }

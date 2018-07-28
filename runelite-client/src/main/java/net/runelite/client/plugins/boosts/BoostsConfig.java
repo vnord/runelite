@@ -28,6 +28,7 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
+<<<<<<< HEAD
 @ConfigGroup("boosts")
 public interface BoostsConfig extends Config
 {
@@ -38,6 +39,15 @@ public interface BoostsConfig extends Config
 		NEVER
 	}
 
+=======
+@ConfigGroup(
+	keyName = "boosts",
+	name = "Boosts Information",
+	description = "Configuration for the Boosts plugin"
+)
+public interface BoostsConfig extends Config
+{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@ConfigItem(
 		keyName = "enableSkill",
 		name = "Enable Skill Boosts",
@@ -72,6 +82,7 @@ public interface BoostsConfig extends Config
 	}
 
 	@ConfigItem(
+<<<<<<< HEAD
 		keyName = "displayNextBuffChange",
 		name = "Display next buff change",
 		description = "Configures whether or not to display when the next buffed stat change will be",
@@ -102,5 +113,15 @@ public interface BoostsConfig extends Config
 	default int boostThreshold()
 	{
 		return 0;
+=======
+		keyName = "displayNextChange",
+		name = "Display next change",
+		description = "Configures whether or not to display when the next stat change will be",
+		position = 4
+	)
+	default boolean displayNextChange()
+	{
+		return true;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

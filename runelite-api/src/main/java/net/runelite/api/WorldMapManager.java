@@ -24,6 +24,7 @@
  */
 package net.runelite.api;
 
+<<<<<<< HEAD
 /**
  * Manages the world map.
  */
@@ -34,5 +35,9 @@ public interface WorldMapManager
 	 *
 	 * @return true if the map is loaded, false otherwise
 	 */
+=======
+public interface WorldMapManager
+{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	boolean isLoaded();
 }

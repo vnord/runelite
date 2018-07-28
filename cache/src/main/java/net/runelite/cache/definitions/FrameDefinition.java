@@ -26,12 +26,21 @@ package net.runelite.cache.definitions;
 
 public class FrameDefinition
 {
+<<<<<<< HEAD
 	public int id; // file id
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public FramemapDefinition framemap;
 	public int[] translator_x;
 	public int[] translator_y;
 	public int[] translator_z;
+<<<<<<< HEAD
 	public int translatorCount = -1;
 	public int[] indexFrameIds;
 	public boolean showing;
+=======
+	public int field1310 = -1;
+	public int[] indexFrameIds;
+	public boolean field1315;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

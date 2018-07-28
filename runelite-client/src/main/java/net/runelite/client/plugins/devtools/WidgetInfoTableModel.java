@@ -134,16 +134,24 @@ public class WidgetInfoTableModel extends AbstractTableModel
 		out.add(new WidgetField<>("RelativeY", Widget::getRelativeY, Widget::setRelativeY, Integer.class));
 		out.add(new WidgetField<>("CanvasLocation", Widget::getCanvasLocation));
 		out.add(new WidgetField<>("Bounds", Widget::getBounds));
+<<<<<<< HEAD
 		out.add(new WidgetField<>("ScrollX", Widget::getScrollX, Widget::setScrollX, Integer.class));
 		out.add(new WidgetField<>("ScrollY", Widget::getScrollY, Widget::setScrollY, Integer.class));
 		out.add(new WidgetField<>("ScrollWidth", Widget::getScrollWidth, Widget::setScrollWidth, Integer.class));
 		out.add(new WidgetField<>("ScrollHeight", Widget::getScrollHeight, Widget::setScrollHeight, Integer.class));
+=======
+		out.add(new WidgetField<>("ScrollX", Widget::getScrollX));
+		out.add(new WidgetField<>("ScrollY", Widget::getScrollY));
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		out.add(new WidgetField<>("OriginalX", Widget::getOriginalX));
 		out.add(new WidgetField<>("OriginalY", Widget::getOriginalY));
 		out.add(new WidgetField<>("PaddingX", Widget::getPaddingX));
 		out.add(new WidgetField<>("PaddingY", Widget::getPaddingY));
+<<<<<<< HEAD
 		out.add(new WidgetField<>("IsIf3", Widget::isIf3));
 		out.add(new WidgetField<>("HasListener", Widget::hasListener, Widget::setHasListener, Boolean.class));
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 		return out;
 	}

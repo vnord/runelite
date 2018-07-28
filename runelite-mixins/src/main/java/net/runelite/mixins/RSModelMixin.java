@@ -192,6 +192,7 @@ public abstract class RSModelMixin implements RSModel
 					int translateZ;
 					if (type == 2)
 					{
+<<<<<<< HEAD
 						int deltaX = nextTranslateX - currentTranslateX & 0xFF;
 						int deltaY = nextTranslateY - currentTranslateY & 0xFF;
 						int deltaZ = nextTranslateZ - currentTranslateZ & 0xFF;
@@ -210,6 +211,26 @@ public abstract class RSModelMixin implements RSModel
 						translateX = currentTranslateX + deltaX * interval / intervalCount & 0xFF;
 						translateY = currentTranslateY + deltaY * interval / intervalCount & 0xFF;
 						translateZ = currentTranslateZ + deltaZ * interval / intervalCount & 0xFF;
+=======
+						int deltaX = nextTranslateX - currentTranslateX & 0x3fff;
+						int deltaY = nextTranslateY - currentTranslateY & 0x3fff;
+						int deltaZ = nextTranslateZ - currentTranslateZ & 0x3fff;
+						if (deltaX >= 8192)
+						{
+							deltaX -= 16384;
+						}
+						if (deltaY >= 8192)
+						{
+							deltaY -= 16384;
+						}
+						if (deltaZ >= 8192)
+						{
+							deltaZ -= 16384;
+						}
+						translateX = currentTranslateX + deltaX * interval / intervalCount & 0x3fff;
+						translateY = currentTranslateY + deltaY * interval / intervalCount & 0x3fff;
+						translateZ = currentTranslateZ + deltaZ * interval / intervalCount & 0x3fff;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 					}
 					else if (type == 5)
 					{
@@ -253,7 +274,10 @@ public abstract class RSModelMixin implements RSModel
 			Point p = Perspective.worldToCanvas(client,
 				localX - v.getX(),
 				localY - v.getZ(),
+<<<<<<< HEAD
 				client.getPlane(),
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				-v.getY());
 			if (p != null)
 			{

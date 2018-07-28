@@ -25,45 +25,70 @@
 package net.runelite.client.plugins.kourendlibrary;
 
 import com.google.common.eventbus.Subscribe;
+<<<<<<< HEAD
 import com.google.inject.Provides;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.awt.image.BufferedImage;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
+<<<<<<< HEAD
 import javax.swing.SwingUtilities;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.AnimationID;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.MenuAction;
+<<<<<<< HEAD
 import net.runelite.api.Player;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.AnimationChanged;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.ConfigChanged;
+=======
+import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.events.AnimationChanged;
+import net.runelite.api.events.ChatMessage;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
+<<<<<<< HEAD
 import net.runelite.client.config.ConfigManager;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.ui.PluginToolbar;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
 	name = "Kourend Library",
 	description = "Show where the books are found in the Kourend Library",
 	tags = {"arceuus", "magic", "runecrafting", "overlay", "panel"}
+=======
+import net.runelite.client.ui.overlay.Overlay;
+
+@PluginDescriptor(
+	name = "Kourend Library"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 @Slf4j
 public class KourendLibraryPlugin extends Plugin
 {
+<<<<<<< HEAD
 	final static int REGION = 6459;
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	final static boolean debug = false;
 
 	@Inject
@@ -76,6 +101,7 @@ public class KourendLibraryPlugin extends Plugin
 	private Library library;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
@@ -85,15 +111,24 @@ public class KourendLibraryPlugin extends Plugin
 	private KourendLibraryConfig config;
 
 	@Inject
+=======
+	private KourendLibraryOverlay overlay;
+
+	@Inject
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private ItemManager itemManager;
 
 	private KourendLibraryPanel panel;
 	private NavigationButton navButton;
+<<<<<<< HEAD
 	private boolean buttonAttached = false;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	private WorldPoint lastBookcaseClick = null;
 	private WorldPoint lastBookcaseAnimatedOn = null;
 
+<<<<<<< HEAD
 	@Provides
 	KourendLibraryConfig provideConfig(ConfigManager configManager)
 	{
@@ -104,6 +139,11 @@ public class KourendLibraryPlugin extends Plugin
 	protected void startUp() throws Exception
 	{
 		overlayManager.add(overlay);
+=======
+	@Override
+	protected void startUp() throws Exception
+	{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		Book.fillImages(itemManager);
 
 		panel = injector.getInstance(KourendLibraryPanel.class);
@@ -116,12 +156,17 @@ public class KourendLibraryPlugin extends Plugin
 		}
 
 		navButton = NavigationButton.builder()
+<<<<<<< HEAD
 			.tooltip("Kourend Library")
 			.priority(6)
+=======
+			.name("Kourend Library")
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			.icon(icon)
 			.panel(panel)
 			.build();
 
+<<<<<<< HEAD
 		if (!config.hideButton())
 		{
 			pluginToolbar.addNavigation(navButton);
@@ -164,6 +209,21 @@ public class KourendLibraryPlugin extends Plugin
 		overlayManager.remove(overlay);
 
 		pluginToolbar.removeNavigation(navButton);
+=======
+		pluginToolbar.addNavigation(navButton);
+	}
+
+	@Override
+	protected void shutDown()
+	{
+		pluginToolbar.removeNavigation(navButton);
+	}
+
+	@Override
+	public Overlay getOverlay()
+	{
+		return overlay;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe
@@ -171,7 +231,11 @@ public class KourendLibraryPlugin extends Plugin
 	{
 		if (MenuAction.GAME_OBJECT_FIRST_OPTION == menuOpt.getMenuAction() && menuOpt.getMenuTarget().contains("Bookshelf"))
 		{
+<<<<<<< HEAD
 			lastBookcaseClick = WorldPoint.fromScene(client, menuOpt.getActionParam(), menuOpt.getWidgetId(), client.getPlane());
+=======
+			lastBookcaseClick = WorldPoint.fromRegion(client, menuOpt.getActionParam(), menuOpt.getWidgetId(), client.getPlane());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -204,6 +268,7 @@ public class KourendLibraryPlugin extends Plugin
 	@Subscribe
 	void onTick(GameTick tick)
 	{
+<<<<<<< HEAD
 		boolean inRegion = client.getLocalPlayer().getWorldLocation().getRegionID() == REGION;
 		if (config.hideButton() && inRegion != buttonAttached)
 		{
@@ -226,6 +291,8 @@ public class KourendLibraryPlugin extends Plugin
 			return;
 		}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		if (lastBookcaseAnimatedOn != null)
 		{
 			Widget find = client.getWidget(WidgetInfo.DIALOG_SPRITE_SPRITE);

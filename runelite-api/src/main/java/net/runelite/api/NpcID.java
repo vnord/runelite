@@ -2120,6 +2120,10 @@ public final class NpcID
 	public static final int DOOR_2257 = 2257;
 	public static final int DOOR_2258 = 2258;
 	public static final int DAGANNOTH_2259 = 2259;
+<<<<<<< HEAD
+=======
+	public static final int ASKELADDEN = 2260;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int GIANT_ROCK_CRAB = 2261;
 	public static final int BOULDER_2262 = 2262;
 	public static final int BARDUR = 2263;
@@ -2969,7 +2973,11 @@ public final class NpcID
 	public static final int IMP = 3134;
 	public static final int WEREWOLF_3135 = 3135;
 	public static final int WEREWOLF_3136 = 3136;
+<<<<<<< HEAD
 	public static final int FERAL_VAMPYRE = 3137;
+=======
+	public static final int VAMPIRE = 3137;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int BLOODVELD_3138 = 3138;
 	public static final int PYREFIEND_3139 = 3139;
 	public static final int ICEFIEND = 3140;
@@ -3058,12 +3066,21 @@ public final class NpcID
 	public static final int ELLIS = 3231;
 	public static final int WIZARD_3232 = 3232;
 	public static final int LEECH = 3233;
+<<<<<<< HEAD
 	public static final int FERAL_VAMPYRE_3234 = 3234;
 	public static final int SPIDER_3235 = 3235;
 	public static final int MIST = 3236;
 	public static final int FERAL_VAMPYRE_3237 = 3237;
 	public static final int VAMPYRIC_HOUND = 3238;
 	public static final int FERAL_VAMPYRE_3239 = 3239;
+=======
+	public static final int VAMPIRE_3234 = 3234;
+	public static final int SPIDER_3235 = 3235;
+	public static final int MIST = 3236;
+	public static final int VAMPIRE_3237 = 3237;
+	public static final int VAMPYRIC_HOUND = 3238;
+	public static final int VAMPIRE_3239 = 3239;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int TREE = 3240;
 	public static final int BLANDEBIR = 3241;
 	public static final int METARIALUS = 3242;
@@ -3071,9 +3088,15 @@ public final class NpcID
 	public static final int PRIEST_3244 = 3244;
 	public static final int GUARD_3245 = 3245;
 	public static final int WIZARD_FRUMSCONE = 3246;
+<<<<<<< HEAD
 	public static final int WIZARD_AKUTHA = 3247;
 	public static final int WIZARD_DISTENTOR = 3248;
 	public static final int WIZARD_SININA = 3249;
+=======
+	public static final int MAGIC_STORE_OWNER = 3247;
+	public static final int WIZARD_DISTENTOR = 3248;
+	public static final int ROBE_STORE_OWNER = 3249;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int DOOR_MAN = 3250;
 	public static final int WATCHMAN = 3251;
 	public static final int SOLDIER = 3252;
@@ -3490,6 +3513,7 @@ public final class NpcID
 	public static final int RAGNVALD = 3687;
 	public static final int FISHMONGER_3688 = 3688;
 	public static final int GREENGROCER_3689 = 3689;
+<<<<<<< HEAD
 	public static final int VAMPYRE_JUVINATE = 3690;
 	public static final int VAMPYRE_JUVINATE_3691 = 3691;
 	public static final int VAMPYRE_JUVENILE = 3692;
@@ -3500,6 +3524,18 @@ public final class NpcID
 	public static final int VAMPYRE_JUVENILE_3697 = 3697;
 	public static final int VAMPYRE_JUVINATE_3698 = 3698;
 	public static final int VAMPYRE_JUVINATE_3699 = 3699;
+=======
+	public static final int JUVINATE_GUARD = 3690;
+	public static final int JUVINATE_GUARD_3691 = 3691;
+	public static final int VAMPYRE_JUVENILE = 3692;
+	public static final int VAMPYRE_JUVENILE_3693 = 3693;
+	public static final int VAMPYRE_JUVINATE = 3694;
+	public static final int VAMPYRE_JUVINATE_3695 = 3695;
+	public static final int HELD_VAMPYRE_JUVENILE = 3696;
+	public static final int HELD_VAMPYRE_JUVENILE_3697 = 3697;
+	public static final int HELD_VAMPYRE_JUVINATE = 3698;
+	public static final int HELD_VAMPYRE_JUVINATE_3699 = 3699;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int VAMPYRE_JUVINATE_3700 = 3700;
 	public static final int FORMER_VAMPYRE = 3701;
 	public static final int FORMER_VAMPYRE_3702 = 3702;
@@ -3507,16 +3543,28 @@ public final class NpcID
 	public static final int FORMER_VAMPYRE_3704 = 3704;
 	public static final int FORMER_VAMPYRE_3705 = 3705;
 	public static final int FORMER_VAMPYRE_3706 = 3706;
+<<<<<<< HEAD
 	public static final int FERAL_VAMPYRE_3707 = 3707;
 	public static final int FERAL_VAMPYRE_3708 = 3708;
+=======
+	public static final int ANGRY_VAMPYRE = 3707;
+	public static final int ANGRY_VAMPYRE_3708 = 3708;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int VYREWATCH = 3709;
 	public static final int VYREWATCH_3710 = 3710;
 	public static final int VYREWATCH_3711 = 3711;
 	public static final int VYREWATCH_3712 = 3712;
+<<<<<<< HEAD
 	public static final int VYREWATCH_3713 = 3713;
 	public static final int VYREWATCH_3714 = 3714;
 	public static final int VYREWATCH_3715 = 3715;
 	public static final int VYREWATCH_3716 = 3716;
+=======
+	public static final int FLYING_FEMALE_VAMPIRE = 3713;
+	public static final int FLYING_FEMALE_VAMPIRE_3714 = 3714;
+	public static final int FLYING_FEMALE_VAMPIRE_3715 = 3715;
+	public static final int FLYING_FEMALE_VAMPIRE_3716 = 3716;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int VYREWATCH_3717 = 3717;
 	public static final int VYREWATCH_3718 = 3718;
 	public static final int VYREWATCH_3719 = 3719;
@@ -3564,7 +3612,11 @@ public final class NpcID
 	public static final int VYREWATCH_3761 = 3761;
 	public static final int VYREWATCH_3762 = 3762;
 	public static final int VYREWATCH_3763 = 3763;
+<<<<<<< HEAD
 	public static final int FLYING_FEMALE_VAMPIRE = 3764;
+=======
+	public static final int FLYING_FEMALE_VAMPIRE_3764 = 3764;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int FLYING_FEMALE_VAMPIRE_3765 = 3765;
 	public static final int FLYING_FEMALE_VAMPIRE_3766 = 3766;
 	public static final int FLYING_FEMALE_VAMPIRE_3767 = 3767;
@@ -3573,6 +3625,10 @@ public final class NpcID
 	public static final int VYREWATCH_3770 = 3770;
 	public static final int VYREWATCH_3771 = 3771;
 	public static final int OLD_MAN_RAL = 3772;
+<<<<<<< HEAD
+=======
+	public static final int VERTIDA_SEFALATIS = 3773;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int AEONISIG_RAISPHER = 3774;
 	public static final int SAFALAAN = 3775;
 	public static final int SARIUS_GUILE = 3776;
@@ -3723,6 +3779,10 @@ public final class NpcID
 	public static final int SIGLI_THE_HUNTSMAN = 3924;
 	public static final int SWENSEN_THE_NAVIGATOR = 3925;
 	public static final int BRUNDT_THE_CHIEFTAIN = 3926;
+<<<<<<< HEAD
+=======
+	public static final int ASKELADDEN_3927 = 3927;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int GUARD_3928 = 3928;
 	public static final int GUARD_3929 = 3929;
 	public static final int TOWN_GUARD = 3930;
@@ -4210,15 +4270,24 @@ public final class NpcID
 	public static final int VAMPYRE_JUVINATE_4428 = 4428;
 	public static final int VAMPYRE_JUVINATE_4429 = 4429;
 	public static final int VAMPYRE_JUVINATE_4430 = 4430;
+<<<<<<< HEAD
 	public static final int FERAL_VAMPYRE_4431 = 4431;
 	public static final int VAMPYRE_JUVINATE_4432 = 4432;
+=======
+	public static final int VAMPYRE_JUVINATE_4431 = 4431;
+	public static final int HELD_VAMPYRE_JUVINATE_4432 = 4432;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int VAMPYRE_JUVINATE_4433 = 4433;
 	public static final int VAMPYRE_JUVINATE_4434 = 4434;
 	public static final int MIST_4435 = 4435;
 	public static final int VAMPYRE_JUVENILE_4436 = 4436;
 	public static final int VAMPYRE_JUVENILE_4437 = 4437;
 	public static final int VAMPYRE_JUVENILE_4438 = 4438;
+<<<<<<< HEAD
 	public static final int VAMPYRE_JUVENILE_4439 = 4439;
+=======
+	public static final int HELD_VAMPYRE_JUVENILE_4439 = 4439;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int IVAN_STROM = 4440;
 	public static final int IVAN_STROM_4441 = 4441;
 	public static final int VAMPYRE_JUVINATE_4442 = 4442;
@@ -5353,6 +5422,7 @@ public final class NpcID
 	public static final int RIYL_SHADOW_5631 = 5631;
 	public static final int ASYN_SHADOW_5632 = 5632;
 	public static final int SHADE = 5633;
+<<<<<<< HEAD
 	public static final int VAMPYRE_JUVINATE_5634 = 5634;
 	public static final int VAMPYRE_JUVINATE_5635 = 5635;
 	public static final int VAMPYRE_JUVINATE_5636 = 5636;
@@ -5362,6 +5432,17 @@ public final class NpcID
 	public static final int FERAL_VAMPYRE_5640 = 5640;
 	public static final int FERAL_VAMPYRE_5641 = 5641;
 	public static final int FERAL_VAMPYRE_5642 = 5642;
+=======
+	public static final int JUVINATE = 5634;
+	public static final int JUVINATE_5635 = 5635;
+	public static final int JUVINATE_5636 = 5636;
+	public static final int HELD_VAMPYRE_JUVINATE_5637 = 5637;
+	public static final int HELD_VAMPYRE_JUVINATE_5638 = 5638;
+	public static final int HELD_VAMPYRE_JUVINATE_5639 = 5639;
+	public static final int ANGRY_JUVINATE = 5640;
+	public static final int ANGRY_JUVINATE_5641 = 5641;
+	public static final int ANGRY_JUVINATE_5642 = 5642;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int TENTACLE_5643 = 5643;
 	public static final int HEAD = 5644;
 	public static final int HEAD_5645 = 5645;
@@ -5782,6 +5863,10 @@ public final class NpcID
 	public static final int CAPTAIN_BLEEMADGE = 6090;
 	public static final int CAPTAIN_ERRDO_6091 = 6091;
 	public static final int CAPTAIN_KLEMFOODLE = 6092;
+<<<<<<< HEAD
+=======
+	public static final int NIGEL = 6093;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int GNOME_6094 = 6094;
 	public static final int GNOME_6095 = 6095;
 	public static final int GNOME_6096 = 6096;
@@ -6023,7 +6108,11 @@ public final class NpcID
 	public static final int FIDELIO = 6525;
 	public static final int SBOTT = 6526;
 	public static final int ROAVAR = 6527;
+<<<<<<< HEAD
 	public static final int FERAL_VAMPYRE_6529 = 6529;
+=======
+	public static final int VAMPIRE_6529 = 6529;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int ABIDOR_CRANK_6530 = 6530;
 	public static final int BLURBERRY = 6531;
 	public static final int BARMAN_6532 = 6532;
@@ -7470,6 +7559,7 @@ public final class NpcID
 	public static final int JAMES = 8193;
 	public static final int GROWTHLING = 8194;
 	public static final int BRYOPHYTA = 8195;
+<<<<<<< HEAD
 	public static final int DOGADILE = 8196;
 	public static final int TEKTONNE = 8197;
 	public static final int VANGUARD_8198 = 8198;
@@ -7654,4 +7744,6 @@ public final class NpcID
 	public static final int ASKELADDEN_8404 = 8404;
 	public static final int ASKELADDEN_8405 = 8405;
 	/* This file is automatically generated. Do not edit. */
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

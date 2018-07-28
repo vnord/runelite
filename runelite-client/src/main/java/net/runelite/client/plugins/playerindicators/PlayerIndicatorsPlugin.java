@@ -24,14 +24,37 @@
  */
 package net.runelite.client.plugins.playerindicators;
 
+<<<<<<< HEAD
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Provides;
 import java.awt.Color;
+=======
+import com.google.common.collect.Sets;
+import com.google.common.eventbus.Subscribe;
+import com.google.inject.Provides;
+import java.awt.Color;
+import java.util.Collection;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import javax.inject.Inject;
 import net.runelite.api.ClanMemberRank;
 import static net.runelite.api.ClanMemberRank.UNRANKED;
 import net.runelite.api.Client;
+<<<<<<< HEAD
 import static net.runelite.api.MenuAction.*;
+=======
+import static net.runelite.api.MenuAction.FOLLOW;
+import static net.runelite.api.MenuAction.ITEM_USE_ON_PLAYER;
+import static net.runelite.api.MenuAction.PLAYER_EIGTH_OPTION;
+import static net.runelite.api.MenuAction.PLAYER_FIFTH_OPTION;
+import static net.runelite.api.MenuAction.PLAYER_FIRST_OPTION;
+import static net.runelite.api.MenuAction.PLAYER_FOURTH_OPTION;
+import static net.runelite.api.MenuAction.PLAYER_SECOND_OPTION;
+import static net.runelite.api.MenuAction.PLAYER_SEVENTH_OPTION;
+import static net.runelite.api.MenuAction.PLAYER_SIXTH_OPTION;
+import static net.runelite.api.MenuAction.PLAYER_THIRD_OPTION;
+import static net.runelite.api.MenuAction.SPELL_CAST_ON_PLAYER;
+import static net.runelite.api.MenuAction.TRADE;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.MenuEntry;
 import net.runelite.api.Player;
 import net.runelite.api.events.MenuEntryAdded;
@@ -39,19 +62,29 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.game.ClanManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
 	name = "Player Indicators",
 	description = "Highlight players on-screen and/or on the minimap",
 	tags = {"highlight", "minimap", "overlay", "players"}
+=======
+import net.runelite.client.ui.overlay.Overlay;
+
+@PluginDescriptor(
+	name = "Player Indicators"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 public class PlayerIndicatorsPlugin extends Plugin
 {
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private PlayerIndicatorsConfig config;
 
 	@Inject
@@ -73,6 +106,7 @@ public class PlayerIndicatorsPlugin extends Plugin
 	}
 
 	@Override
+<<<<<<< HEAD
 	protected void startUp() throws Exception
 	{
 		overlayManager.add(playerIndicatorsOverlay);
@@ -84,6 +118,11 @@ public class PlayerIndicatorsPlugin extends Plugin
 	{
 		overlayManager.remove(playerIndicatorsOverlay);
 		overlayManager.remove(playerIndicatorsMinimapOverlay);
+=======
+	public Collection<Overlay> getOverlays()
+	{
+		return Sets.newHashSet(playerIndicatorsOverlay, playerIndicatorsMinimapOverlay);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe

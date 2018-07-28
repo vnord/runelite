@@ -26,14 +26,18 @@ package net.runelite.api;
 
 import java.awt.Polygon;
 
+<<<<<<< HEAD
 /**
  * Represents a player entity in the game.
  */
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public interface Player extends Actor
 {
 	@Override
 	int getCombatLevel();
 
+<<<<<<< HEAD
 	/**
 	 * Gets the composition of this player.
 	 *
@@ -75,5 +79,17 @@ public interface Player extends Actor
 	 *
 	 * @return the overhead icon
 	 */
+=======
+	PlayerComposition getPlayerComposition();
+
+	Polygon[] getPolygons();
+
+	int getTeam();
+
+	boolean isClanMember();
+
+	boolean isFriend();
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	HeadIcon getOverheadIcon();
 }

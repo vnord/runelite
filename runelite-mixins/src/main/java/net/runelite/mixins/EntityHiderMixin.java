@@ -34,11 +34,19 @@ import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSNPC;
 import net.runelite.rs.api.RSPlayer;
 import net.runelite.rs.api.RSProjectile;
+<<<<<<< HEAD
 import net.runelite.rs.api.RSScene;
 import net.runelite.rs.api.RSRenderable;
 
 @Mixin(RSScene.class)
 public abstract class EntityHiderMixin implements RSScene
+=======
+import net.runelite.rs.api.RSRegion;
+import net.runelite.rs.api.RSRenderable;
+
+@Mixin(RSRegion.class)
+public abstract class EntityHiderMixin implements RSRegion
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 {
 	@Shadow("clientInstance")
 	private static RSClient client;

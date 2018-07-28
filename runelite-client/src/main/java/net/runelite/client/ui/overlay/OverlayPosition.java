@@ -27,10 +27,13 @@ package net.runelite.client.ui.overlay;
 public enum OverlayPosition
 {
 	/**
+<<<<<<< HEAD
 	 * Not attached anywhere, but still movable
 	 */
 	DETACHED,
 	/**
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	 * Overlay places itself where it wants
 	 */
 	DYNAMIC,

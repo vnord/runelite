@@ -1,6 +1,10 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2016-2018, Adam <Adam@sigterm.info>
  * Copyright (c) 2018, Jordan Atwood <jordan.atwood423@gmail.com>
+=======
+ * Copyright (c) 2016-2017, Adam <Adam@sigterm.info>
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,22 +32,32 @@ package net.runelite.client.plugins.opponentinfo;
 import com.google.common.eventbus.Subscribe;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+<<<<<<< HEAD
 import com.google.inject.Provides;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.time.Duration;
 import java.time.Instant;
+=======
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.EnumSet;
 import java.util.Map;
 import javax.inject.Inject;
 import lombok.AccessLevel;
 import lombok.Getter;
+<<<<<<< HEAD
 import net.runelite.api.Actor;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.WorldType;
 import net.runelite.api.events.GameStateChanged;
+<<<<<<< HEAD
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.InteractingChanged;
 import net.runelite.client.config.ConfigManager;
@@ -61,10 +75,23 @@ public class OpponentInfoPlugin extends Plugin
 {
 	private static final Duration WAIT = Duration.ofSeconds(5);
 
+=======
+import net.runelite.client.plugins.Plugin;
+import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.ui.overlay.Overlay;
+import net.runelite.http.api.hiscore.HiscoreEndpoint;
+
+@PluginDescriptor(
+	name = "Opponent Information"
+)
+public class OpponentInfoPlugin extends Plugin
+{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Inject
 	private Client client;
 
 	@Inject
+<<<<<<< HEAD
 	private OpponentInfoConfig config;
 
 	@Inject
@@ -75,10 +102,14 @@ public class OpponentInfoPlugin extends Plugin
 
 	@Inject
 	private PlayerComparisonOverlay playerComparisonOverlay;
+=======
+	private OpponentInfoOverlay overlay;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Getter(AccessLevel.PACKAGE)
 	private HiscoreEndpoint hiscoreEndpoint = HiscoreEndpoint.NORMAL;
 
+<<<<<<< HEAD
 	@Getter(AccessLevel.PACKAGE)
 	private Actor lastOpponent;
 
@@ -107,6 +138,12 @@ public class OpponentInfoPlugin extends Plugin
 		lastTime = null;
 		overlayManager.remove(opponentInfoOverlay);
 		overlayManager.remove(playerComparisonOverlay);
+=======
+	@Override
+	public Overlay getOverlay()
+	{
+		return overlay;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe
@@ -118,6 +155,7 @@ public class OpponentInfoPlugin extends Plugin
 		}
 
 		EnumSet<WorldType> worldType = client.getWorldType();
+<<<<<<< HEAD
 		if (worldType.contains(WorldType.SEASONAL_DEADMAN))
 		{
 			hiscoreEndpoint = HiscoreEndpoint.SEASONAL_DEADMAN;
@@ -125,6 +163,15 @@ public class OpponentInfoPlugin extends Plugin
 		else if (worldType.contains(WorldType.DEADMAN))
 		{
 			hiscoreEndpoint = HiscoreEndpoint.DEADMAN;
+=======
+		if (worldType.contains(WorldType.DEADMAN))
+		{
+			hiscoreEndpoint = HiscoreEndpoint.DEADMAN;
+		}
+		else if (worldType.contains(WorldType.SEASONAL_DEADMAN))
+		{
+			hiscoreEndpoint = HiscoreEndpoint.SEASONAL_DEADMAN;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 		else
 		{
@@ -132,6 +179,7 @@ public class OpponentInfoPlugin extends Plugin
 		}
 	}
 
+<<<<<<< HEAD
 	@Subscribe
 	public void onInteractingChanged(InteractingChanged event)
 	{
@@ -164,6 +212,9 @@ public class OpponentInfoPlugin extends Plugin
 	}
 
 	private Map<String, Integer> loadNpcHealth()
+=======
+	public static Map<String, Integer> loadNpcHealth()
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		Gson gson = new Gson();
 		Type type = new TypeToken<Map<String, Integer>>()

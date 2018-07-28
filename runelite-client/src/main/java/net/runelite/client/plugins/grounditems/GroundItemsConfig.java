@@ -25,6 +25,7 @@
 
 package net.runelite.client.plugins.grounditems;
 
+<<<<<<< HEAD
 import java.awt.Color;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
@@ -92,6 +93,54 @@ public interface GroundItemsConfig extends Config
 	default boolean dontHideUntradeables()
 	{
 		return true;
+=======
+import net.runelite.client.config.Config;
+import net.runelite.client.config.ConfigGroup;
+import net.runelite.client.config.ConfigItem;
+
+import java.awt.Color;
+import net.runelite.client.plugins.grounditems.config.ItemHighlightMode;
+import net.runelite.client.plugins.grounditems.config.MenuHighlightMode;
+
+@ConfigGroup(
+	keyName = "grounditems",
+	name = "Ground Items",
+	description = "Configuration for the ground items plugin"
+)
+public interface GroundItemsConfig extends Config
+{
+	@ConfigItem(
+		keyName = "showHighlightedOnly",
+		name = "Show Highlighted items only",
+		description = "Configures whether or not to draw items only on your highlighted list",
+		position = 1
+	)
+	default boolean showHighlightedOnly()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+		keyName = "showGEPrice",
+		name = "Show Grand Exchange Prices",
+		description = "Configures whether or not to draw GE prices alongside ground items",
+		position = 2
+	)
+	default boolean showGEPrice()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+		keyName = "showHAValue",
+		name = "Show High Alchemy Values",
+		description = "Configures whether or not to draw High Alchemy values alongside ground items",
+		position = 3
+	)
+	default boolean showHAValue()
+	{
+		return false;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@ConfigItem(
@@ -106,6 +155,7 @@ public interface GroundItemsConfig extends Config
 	}
 
 	@ConfigItem(
+<<<<<<< HEAD
 		keyName = "recolorMenuHiddenItems",
 		name = "Recolor Menu Hidden Items",
 		description = "Configures whether or not hidden items in right click menu will be recolored",
@@ -181,12 +231,96 @@ public interface GroundItemsConfig extends Config
 	{
 		return 0;
 	}
+=======
+		keyName = "itemHighlightMode",
+		name = "Item Highlight Mode",
+		description = "Configures how ground items will be highlighted",
+		position = 5
+	)
+	default ItemHighlightMode itemHighlightMode()
+	{
+		return ItemHighlightMode.BOTH;
+	}
+
+	@ConfigItem(
+		keyName = "menuHighlightMode",
+		name = "Menu Highlight Mode",
+		description = "Configures what to highlight in right-click menu",
+		position = 6
+	)
+	default MenuHighlightMode menuHighlightMode()
+	{
+		return MenuHighlightMode.NAME;
+	}
+
+	@ConfigItem(
+		keyName = "hideUnderGeValue",
+		name = "Hide < GE Value",
+		description = "Configures hidden ground items under GE value",
+		position = 7
+	)
+	default int getHideUnderGeValue()
+	{
+		return 0;
+	}
+
+	@ConfigItem(
+		keyName = "hideUnderHaValue",
+		name = "Hide < HA Value",
+		description = "Configures hidden ground items under High Alch value",
+		position = 8
+	)
+	default int getHideUnderHAValue()
+	{
+		return 0;
+	}
+
+	@ConfigItem(
+		keyName = "highlightedItems",
+		name = "Highlighted Items",
+		description = "Configures specifically highlighted ground items. Format: (item), (item)",
+		position = 9
+	)
+	default String getHighlightItems()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+		keyName = "highlightedItems",
+		name = "",
+		description = ""
+	)
+	void setHighlightedItem(String key);
+
+	@ConfigItem(
+		keyName = "hiddenItems",
+		name = "Hidden Items",
+		description = "Configures hidden ground items. Format: (item), (item)",
+		position = 10
+	)
+	default String getHiddenItems()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+		keyName = "hiddenItems",
+		name = "",
+		description = ""
+	)
+	void setHiddenItems(String key);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@ConfigItem(
 		keyName = "defaultColor",
 		name = "Default items color",
 		description = "Configures the color for default, non-highlighted items",
+<<<<<<< HEAD
 		position = 12
+=======
+		position = 11
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	)
 	default Color defaultColor()
 	{
@@ -197,7 +331,11 @@ public interface GroundItemsConfig extends Config
 		keyName = "highlightedColor",
 		name = "Highlighted items color",
 		description = "Configures the color for highlighted items",
+<<<<<<< HEAD
 		position = 13
+=======
+		position = 12
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	)
 	default Color highlightedColor()
 	{
@@ -205,6 +343,7 @@ public interface GroundItemsConfig extends Config
 	}
 
 	@ConfigItem(
+<<<<<<< HEAD
 		keyName = "hiddenColor",
 		name = "Hidden items color",
 		description = "Configures the color for hidden items in right-click menu and when holding ALT",
@@ -220,6 +359,12 @@ public interface GroundItemsConfig extends Config
 		name = "Low value items color",
 		description = "Configures the color for low value items",
 		position = 15
+=======
+		keyName = "lowValueColor",
+		name = "Low value items color",
+		description = "Configures the color for low value items",
+		position = 13
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	)
 	default Color lowValueColor()
 	{
@@ -230,7 +375,11 @@ public interface GroundItemsConfig extends Config
 		keyName = "lowValuePrice",
 		name = "Low value price",
 		description = "Configures the start price for low value items",
+<<<<<<< HEAD
 		position = 16
+=======
+		position = 14
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	)
 	default int lowValuePrice()
 	{
@@ -241,7 +390,11 @@ public interface GroundItemsConfig extends Config
 		keyName = "mediumValueColor",
 		name = "Medium value items color",
 		description = "Configures the color for medium value items",
+<<<<<<< HEAD
 		position = 17
+=======
+		position = 15
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	)
 	default Color mediumValueColor()
 	{
@@ -252,7 +405,11 @@ public interface GroundItemsConfig extends Config
 		keyName = "mediumValuePrice",
 		name = "Medium value price",
 		description = "Configures the start price for medium value items",
+<<<<<<< HEAD
 		position = 18
+=======
+		position = 16
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	)
 	default int mediumValuePrice()
 	{
@@ -263,7 +420,11 @@ public interface GroundItemsConfig extends Config
 		keyName = "highValueColor",
 		name = "High value items color",
 		description = "Configures the color for high value items",
+<<<<<<< HEAD
 		position = 19
+=======
+		position = 17
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	)
 	default Color highValueColor()
 	{
@@ -274,7 +435,11 @@ public interface GroundItemsConfig extends Config
 		keyName = "highValuePrice",
 		name = "High value price",
 		description = "Configures the start price for high value items",
+<<<<<<< HEAD
 		position = 20
+=======
+		position = 18
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	)
 	default int highValuePrice()
 	{
@@ -285,7 +450,11 @@ public interface GroundItemsConfig extends Config
 		keyName = "insaneValueColor",
 		name = "Insane value items color",
 		description = "Configures the color for insane value items",
+<<<<<<< HEAD
 		position = 21
+=======
+		position = 19
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	)
 	default Color insaneValueColor()
 	{
@@ -296,7 +465,11 @@ public interface GroundItemsConfig extends Config
 		keyName = "insaneValuePrice",
 		name = "Insane value price",
 		description = "Configures the start price for insane value items",
+<<<<<<< HEAD
 		position = 22
+=======
+		position = 20
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	)
 	default int insaneValuePrice()
 	{

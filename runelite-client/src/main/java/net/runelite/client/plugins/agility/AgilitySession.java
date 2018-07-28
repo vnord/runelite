@@ -33,21 +33,37 @@ import net.runelite.api.Skill;
 
 @Getter
 @Setter
+<<<<<<< HEAD
 class AgilitySession
+=======
+public class AgilitySession
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 {
 	private final Courses course;
 	private Instant lastLapCompleted;
 	private int totalLaps;
 	private int lapsTillLevel;
 
+<<<<<<< HEAD
 	AgilitySession(Courses course)
+=======
+	public AgilitySession(Courses course)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		this.course = course;
 	}
 
+<<<<<<< HEAD
 	void incrementLapCount(Client client)
 	{
 		lastLapCompleted = Instant.now();
+=======
+	public void incrementLapCount(Client client)
+	{
+		Instant now = Instant.now();
+
+		lastLapCompleted = now;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		++totalLaps;
 
 		int currentExp = client.getSkillExperience(Skill.AGILITY);
@@ -63,7 +79,11 @@ class AgilitySession
 		lapsTillLevel = remainingXp > 0 ? (int) Math.ceil(remainingXp / course.getTotalXp()) : 0;
 	}
 
+<<<<<<< HEAD
 	void resetLapCount()
+=======
+	public void resetLapCount()
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		totalLaps = 0;
 		lapsTillLevel = 0;

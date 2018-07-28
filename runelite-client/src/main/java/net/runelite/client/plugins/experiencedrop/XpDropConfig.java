@@ -29,14 +29,26 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
+<<<<<<< HEAD
 @ConfigGroup("xpdrop")
+=======
+@ConfigGroup(
+	keyName = "xpdrop",
+	name = "XP Drop",
+	description = "Configuration for XP drop customization"
+)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public interface XpDropConfig extends Config
 {
 	@ConfigItem(
 		keyName = "hideSkillIcons",
 		name = "Hide skill icons",
+<<<<<<< HEAD
 		description = "Configure if XP drops will show their respective skill icons",
 		position = 0
+=======
+		description = "Configure if XP drops will show their respective skill icons"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	)
 	default boolean hideSkillIcons()
 	{
@@ -46,8 +58,12 @@ public interface XpDropConfig extends Config
 	@ConfigItem(
 		keyName = "meleePrayerColor",
 		name = "Melee Prayer Color",
+<<<<<<< HEAD
 		description = "XP drop color when a melee prayer is active",
 		position = 1
+=======
+		description = "XP drop color when a melee prayer is active"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	)
 	default Color getMeleePrayerColor()
 	{
@@ -57,8 +73,12 @@ public interface XpDropConfig extends Config
 	@ConfigItem(
 		keyName = "rangePrayerColor",
 		name = "Range Prayer Color",
+<<<<<<< HEAD
 		description = "XP drop color when a range prayer is active",
 		position = 2
+=======
+		description = "XP drop color when a range prayer is active"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	)
 	default Color getRangePrayerColor()
 	{
@@ -68,8 +88,12 @@ public interface XpDropConfig extends Config
 	@ConfigItem(
 		keyName = "magePrayerColor",
 		name = "Mage Prayer Color",
+<<<<<<< HEAD
 		description = "XP drop color when a mage prayer is active",
 		position = 3
+=======
+		description = "XP drop color when a mage prayer is active"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	)
 	default Color getMagePrayerColor()
 	{

@@ -27,6 +27,11 @@ package net.runelite.client.plugins.poh;
 import com.google.common.collect.Sets;
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Provides;
+<<<<<<< HEAD
+=======
+import java.util.Arrays;
+import java.util.Collection;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -53,12 +58,19 @@ import net.runelite.api.events.GameStateChanged;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
 	name = "Player-owned House",
 	description = "Show minimap icons and mark unlit/lit burners",
 	tags = {"construction", "poh", "minimap", "overlay"}
+=======
+import net.runelite.client.ui.overlay.Overlay;
+
+@PluginDescriptor(
+	name = "Player-owned House"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 public class PohPlugin extends Plugin
 {
@@ -69,9 +81,12 @@ public class PohPlugin extends Plugin
 	private final Map<TileObject, Tile> pohObjects = new HashMap<>();
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private PohOverlay overlay;
 
 	@Inject
@@ -84,18 +99,32 @@ public class PohPlugin extends Plugin
 	}
 
 	@Override
+<<<<<<< HEAD
 	protected void startUp() throws Exception
 	{
 		overlayManager.add(overlay);
 		overlayManager.add(burnerOverlay);
+=======
+	public Collection<Overlay> getOverlays()
+	{
+		return Arrays.asList(overlay, burnerOverlay);
+	}
+
+	@Override
+	protected void startUp() throws Exception
+	{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		overlay.updateConfig();
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
+<<<<<<< HEAD
 		overlayManager.remove(overlay);
 		overlayManager.remove(burnerOverlay);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		pohObjects.clear();
 	}
 

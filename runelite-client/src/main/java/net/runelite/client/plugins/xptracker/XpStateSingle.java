@@ -25,12 +25,20 @@
  */
 package net.runelite.client.plugins.xptracker;
 
+<<<<<<< HEAD
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+=======
+import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalTime;
+import lombok.Data;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Experience;
 import net.runelite.api.Skill;
 
+<<<<<<< HEAD
 @Slf4j
 @RequiredArgsConstructor
 class XpStateSingle
@@ -47,10 +55,25 @@ class XpStateSingle
 	private int actions = 0;
 	private int startLevelExp = 0;
 	private int endLevelExp = 0;
+=======
+@Data
+@Slf4j
+class XpStateSingle
+{
+	private final Skill skill;
+	private final int startXp;
+	private Instant skillTimeStart = null;
+	private int xpGained = 0;
+	private int actions = 0;
+	private int nextLevelExp = 0;
+	private int startLevelExp = 0;
+	private int level = 0;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private boolean actionsHistoryInitialized = false;
 	private int[] actionExps = new int[10];
 	private int actionExpIndex = 0;
 
+<<<<<<< HEAD
 	private int getCurrentXp()
 	{
 		return startXp + xpGained;
@@ -74,6 +97,26 @@ class XpStateSingle
 	private long getTimeElapsedInSeconds()
 	{
 		if (skillTime == 0)
+=======
+	int getXpHr()
+	{
+		return toHourly(xpGained);
+	}
+
+	int getXpSec()
+	{
+		return getXpHr() / 3600;
+	}
+
+	int getActionsHr()
+	{
+		return toHourly(actions);
+	}
+
+	private int toHourly(int value)
+	{
+		if (skillTimeStart == null)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			return 0;
 		}
@@ -82,6 +125,7 @@ class XpStateSingle
 		// To prevent that, pretend the skill has been active for a minute (60 seconds)
 		// This will create a lower estimate for the first minute,
 		// but it isn't ridiculous like saying 2 billion XP per hour.
+<<<<<<< HEAD
 		return Math.max(60, skillTime / 1000);
 	}
 
@@ -91,10 +135,23 @@ class XpStateSingle
 	}
 
 	private int getActionsRemaining()
+=======
+		long timeElapsedInSeconds = Math.max(60, Duration.between(skillTimeStart, Instant.now()).getSeconds());
+		return (int) ((1.0 / (timeElapsedInSeconds / 3600.0)) * value);
+	}
+
+	int getXpRemaining()
+	{
+		return nextLevelExp - (startXp + xpGained);
+	}
+
+	int getActionsRemaining()
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		if (actionsHistoryInitialized)
 		{
 			long xpRemaining = getXpRemaining() * actionExps.length;
+<<<<<<< HEAD
 			long totalActionXp = 0;
 
 			for (int actionXp : actionExps)
@@ -108,6 +165,21 @@ class XpStateSingle
 				// Make sure to account for the very last action at the end
 				long remainder = xpRemaining % totalActionXp;
 				long quotient = xpRemaining / totalActionXp;
+=======
+			long actionExp = 0;
+
+			for (int i = 0; i < actionExps.length; i++)
+			{
+				actionExp += actionExps[i];
+			}
+
+			// Let's not divide by zero (or negative)
+			if (actionExp > 0)
+			{
+				// Make sure to account for the very last action at the end
+				long remainder = xpRemaining % actionExp;
+				long quotient = xpRemaining / actionExp;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				return Math.toIntExact(quotient + (remainder > 0 ? 1 : 0));
 			}
 		}
@@ -115,6 +187,7 @@ class XpStateSingle
 		return Integer.MAX_VALUE;
 	}
 
+<<<<<<< HEAD
 	private int getSkillProgress()
 	{
 		double xpGained = getCurrentXp() - startLevelExp;
@@ -170,6 +243,28 @@ class XpStateSingle
 	}
 
 	boolean update(int currentXp, int goalStartXp, int goalEndXp)
+=======
+	int getSkillProgress()
+	{
+		int currentXp = startXp + xpGained;
+
+		double xpGained = currentXp - startLevelExp;
+		double xpGoal = nextLevelExp - startLevelExp;
+		return (int) ((xpGained / xpGoal) * 100);
+	}
+
+	String getTimeTillLevel()
+	{
+		if (getXpSec() > 0)
+		{
+			return LocalTime.MIN.plusSeconds( getXpRemaining() / getXpSec() ).toString();
+		}
+		return "\u221e";
+	}
+
+
+	boolean update(int currentXp)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		if (startXp == -1)
 		{
@@ -180,7 +275,10 @@ class XpStateSingle
 		int originalXp = xpGained + startXp;
 		int actionExp = currentXp - originalXp;
 
+<<<<<<< HEAD
 		// No experience gained
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		if (actionExp == 0)
 		{
 			return false;
@@ -202,6 +300,7 @@ class XpStateSingle
 		}
 
 		actionExpIndex = (actionExpIndex + 1) % actionExps.length;
+<<<<<<< HEAD
 		actions++;
 
 		// Calculate experience gained
@@ -240,11 +339,31 @@ class XpStateSingle
 			return;
 		}
 		skillTime += delta;
+=======
+
+		actions++;
+		xpGained = currentXp - startXp;
+		startLevelExp = Experience.getXpForLevel(Experience.getLevelForXp(currentXp));
+
+		int currentLevel = Experience.getLevelForXp(currentXp);
+
+		level = currentLevel;
+
+		nextLevelExp = currentLevel + 1 <= Experience.MAX_VIRT_LEVEL ? Experience.getXpForLevel(currentLevel + 1) : -1;
+
+		if (skillTimeStart == null)
+		{
+			skillTimeStart = Instant.now();
+		}
+
+		return true;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	XpSnapshotSingle snapshot()
 	{
 		return XpSnapshotSingle.builder()
+<<<<<<< HEAD
 			.startLevel(Experience.getLevelForXp(startLevelExp))
 			.endLevel(Experience.getLevelForXp(endLevelExp))
 			.xpGainedInSession(xpGained)
@@ -260,3 +379,17 @@ class XpStateSingle
 			.build();
 	}
 }
+=======
+			.currentLevel(getLevel())
+			.xpGainedInSession(getXpGained())
+			.xpRemainingToGoal(getXpRemaining())
+			.xpPerHour(getXpHr())
+			.skillProgressToGoal(getSkillProgress())
+			.actionsInSession(getActions())
+			.actionsRemainingToGoal(getActionsRemaining())
+			.actionsPerHour(getActionsHr())
+			.timeTillGoal(getTimeTillLevel())
+			.build();
+	}
+}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b

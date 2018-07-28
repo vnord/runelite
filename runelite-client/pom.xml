@@ -29,13 +29,22 @@
 	<parent>
 		<groupId>net.runelite</groupId>
 		<artifactId>runelite-parent</artifactId>
+<<<<<<< HEAD
 		<version>1.4.10-SNAPSHOT</version>
+=======
+		<version>1.3.9-SNAPSHOT</version>
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	</parent>
 
 	<artifactId>client</artifactId>
 	<name>RuneLite Client</name>
 
 	<properties>
+<<<<<<< HEAD
+=======
+		<slf4j.version>1.7.12</slf4j.version>
+		<logback.version>1.2.3</logback.version>
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		<guice.version>4.1.0</guice.version>
 
 		<jarsigner.skip>true</jarsigner.skip>
@@ -45,10 +54,18 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
+<<<<<<< HEAD
+=======
+			<version>${slf4j.version}</version>
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
+<<<<<<< HEAD
+=======
+			<version>${logback.version}</version>
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		</dependency>
 		<dependency>
 			<groupId>net.sf.jopt-simple</groupId>
@@ -68,16 +85,28 @@
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
+<<<<<<< HEAD
+=======
+			<version>2.4</version>
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		</dependency>
 		<dependency>
 			<groupId>net.runelite.pushingpixels</groupId>
 			<artifactId>substance</artifactId>
+<<<<<<< HEAD
 			<version>8.0.02</version>
+=======
+			<version>8.0.00-dev</version>
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		</dependency>
 		<dependency>
 			<groupId>net.runelite.pushingpixels</groupId>
 			<artifactId>trident</artifactId>
+<<<<<<< HEAD
 			<version>1.5.00</version>
+=======
+			<version>1.4</version>
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -110,6 +139,15 @@
 		</dependency>
 		<dependency>
 			<groupId>net.runelite</groupId>
+<<<<<<< HEAD
+=======
+			<artifactId>scripts</artifactId>
+			<version>${project.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.runelite</groupId>
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			<artifactId>http-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
@@ -271,6 +309,7 @@
 					<artifact>${project.build.directory}/${project.artifactId}-${project.version}-shaded.${project.packaging}</artifact>
 				</configuration>
 			</plugin>
+<<<<<<< HEAD
 			<plugin>
 				<groupId>net.runelite</groupId>
 				<artifactId>script-assembler-plugin</artifactId>
@@ -298,6 +337,8 @@
 					</execution>
 				</executions>
 			</plugin>
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		</plugins>
 	</build>
 </project>

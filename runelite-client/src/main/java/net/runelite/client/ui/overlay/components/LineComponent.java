@@ -48,22 +48,32 @@ public class LineComponent implements LayoutableRenderableEntity
 	private Color rightColor = Color.WHITE;
 
 	@Builder.Default
+<<<<<<< HEAD
 	private Point preferredLocation = new Point();
 
 	@Builder.Default
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private Dimension preferredSize = new Dimension(ComponentConstants.STANDARD_WIDTH, 0);
 
 	@Override
 	public Dimension render(Graphics2D graphics)
 	{
+<<<<<<< HEAD
 		graphics.translate(preferredLocation.x, preferredLocation.y);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		// Prevent NPEs
 		final String left = MoreObjects.firstNonNull(this.left, "");
 		final String right = MoreObjects.firstNonNull(this.right, "");
 
 		final FontMetrics metrics = graphics.getFontMetrics();
 		int x = 0;
+<<<<<<< HEAD
 		int y = metrics.getHeight();
+=======
+		int y = 0;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		final int leftFullWidth = getLineWidth(left, metrics);
 		final int rightFullWidth = getLineWidth(right, metrics);
 
@@ -105,15 +115,23 @@ public class LineComponent implements LayoutableRenderableEntity
 				leftLineComponent.render(graphics);
 
 				final TextComponent rightLineComponent = new TextComponent();
+<<<<<<< HEAD
 				rightLineComponent.setPosition(new Point(x + leftSmallWidth + rightSmallWidth - getLineWidth(rightText, metrics), y));
+=======
+				rightLineComponent.setPosition(new Point(x + leftSmallWidth + rightFullWidth - getLineWidth(rightText, metrics), y));
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				rightLineComponent.setText(rightText);
 				rightLineComponent.setColor(rightColor);
 				rightLineComponent.render(graphics);
 				y += metrics.getHeight();
 			}
 
+<<<<<<< HEAD
 			graphics.translate(-preferredLocation.x, -preferredLocation.y);
 			return new Dimension(preferredSize.width, y - metrics.getHeight());
+=======
+			return new Dimension(preferredSize.width, y);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 
 		final TextComponent leftLineComponent = new TextComponent();
@@ -129,8 +147,12 @@ public class LineComponent implements LayoutableRenderableEntity
 		rightLineComponent.render(graphics);
 		y += metrics.getHeight();
 
+<<<<<<< HEAD
 		graphics.translate(-preferredLocation.x, -preferredLocation.y);
 		return new Dimension(preferredSize.width, y - metrics.getHeight());
+=======
+		return new Dimension(preferredSize.width, y);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	private static int getLineWidth(final String line, final FontMetrics metrics)

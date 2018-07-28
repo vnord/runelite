@@ -169,6 +169,7 @@ public class ItemClient
 			throw new IOException(ex);
 		}
 	}
+<<<<<<< HEAD
 
 	public ItemPrice[] getPrices() throws IOException
 	{
@@ -200,4 +201,6 @@ public class ItemClient
 			throw new IOException(ex);
 		}
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

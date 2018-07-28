@@ -48,9 +48,13 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 
 @PluginDescriptor(
+<<<<<<< HEAD
 	name = "Bank Tags",
 	description = "Enable tagging of bank items and searching of bank tags",
 	tags = {"searching", "tagging"}
+=======
+	name = "Bank Tags"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 @Slf4j
 public class BankTagsPlugin extends Plugin
@@ -63,10 +67,13 @@ public class BankTagsPlugin extends Plugin
 		"Show items whose names or tags contain the following text:<br>" +
 		"(To show only tagged items, start your search with 'tag:')";
 
+<<<<<<< HEAD
 	private static final String SEARCH_BANK_INPUT_TEXT_FOUND =
 		"Show items whose names or tags contain the following text: (%d found)<br>" +
 			"(To show only tagged items, start your search with 'tag:')";
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private static final String TAG_SEARCH = "tag:";
 
 	private static final String EDIT_TAGS_MENU_OPTION = "Edit-tags";
@@ -136,12 +143,15 @@ public class BankTagsPlugin extends Plugin
 			case "setSearchBankInputText":
 				stringStack[stringStackSize - 1] = SEARCH_BANK_INPUT_TEXT;
 				break;
+<<<<<<< HEAD
 			case "setSearchBankInputTextFound":
 			{
 				int matches = intStack[intStackSize - 1];
 				stringStack[stringStackSize - 1] = String.format(SEARCH_BANK_INPUT_TEXT_FOUND, matches);
 				break;
 			}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			case "setBankItemMenu":
 			{
 				// set menu action index so the edit tags option will not be overridden

@@ -81,11 +81,18 @@ public class InventoryWidgetItemQuery extends WidgetItemQuery
 				Widget[] children = inventory.getDynamicChildren();
 				for (int i = 0; i < children.length; i++)
 				{
+<<<<<<< HEAD
 					Widget child = children[i];
 					// set bounds to same size as default inventory
 					Rectangle bounds = child.getBounds();
 					bounds.setBounds(bounds.x - 1, bounds.y - 1, 32, 32);
 					widgetItems.add(new WidgetItem(child.getItemId(), child.getItemQuantity(), i, bounds));
+=======
+					// set bounds to same size as default inventory
+					Rectangle bounds = children[i].getBounds();
+					bounds.setBounds(bounds.x - 1, bounds.y - 1, 32, 32);
+					widgetItems.add(new WidgetItem(children[i].getItemId(), children[i].getItemQuantity(), i, bounds));
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				}
 				break;
 			}

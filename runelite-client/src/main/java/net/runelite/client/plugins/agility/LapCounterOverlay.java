@@ -35,7 +35,11 @@ import net.runelite.client.ui.overlay.OverlayPriority;
 import net.runelite.client.ui.overlay.components.LineComponent;
 import net.runelite.client.ui.overlay.components.PanelComponent;
 
+<<<<<<< HEAD
 class LapCounterOverlay extends Overlay
+=======
+public class LapCounterOverlay extends Overlay
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 {
 	private final AgilityPlugin plugin;
 	private final AgilityConfig config;
@@ -43,7 +47,11 @@ class LapCounterOverlay extends Overlay
 	private final PanelComponent panelComponent = new PanelComponent();
 
 	@Inject
+<<<<<<< HEAD
 	private LapCounterOverlay(AgilityPlugin plugin, AgilityConfig config)
+=======
+	LapCounterOverlay(AgilityPlugin plugin, AgilityConfig config)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		setPosition(OverlayPosition.TOP_LEFT);
 		setPriority(OverlayPriority.LOW);

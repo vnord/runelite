@@ -47,9 +47,13 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.task.Schedule;
 
 @PluginDescriptor(
+<<<<<<< HEAD
 	name = "Report Button",
 	description = "Replace the text on the Report button with the current time",
 	tags = {"time", "utc"}
+=======
+	name = "Report Button"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 @Slf4j
 public class ReportButtonPlugin extends Plugin

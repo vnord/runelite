@@ -57,7 +57,11 @@ import static net.runelite.client.plugins.kourendlibrary.Book.*;
  */
 @Singleton
 @Slf4j
+<<<<<<< HEAD
 class Library
+=======
+public class Library
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 {
 	private final Map<WorldPoint, Bookcase> byPoint = new HashMap<>();
 	private final Map<Integer, ArrayList<Bookcase>> byLevel = new HashMap<>();
@@ -83,23 +87,39 @@ class Library
 		reset();
 	}
 
+<<<<<<< HEAD
 	synchronized List<Bookcase> getBookcasesOnLevel(int z)
+=======
+	public synchronized List<Bookcase> getBookcasesOnLevel(int z)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		return Collections.unmodifiableList(byLevel.get(z));
 	}
 
+<<<<<<< HEAD
 	synchronized List<Bookcase> getBookcases()
+=======
+	public synchronized List<Bookcase> getBookcases()
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		return Collections.unmodifiableList(byIndex);
 	}
 
+<<<<<<< HEAD
 	void setCustomer(LibraryCustomer customer, Book book)
+=======
+	public void setCustomer(LibraryCustomer customer, Book book)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		this.customer = customer;
 		this.customerBook = book;
 	}
 
+<<<<<<< HEAD
 	synchronized void reset()
+=======
+	public synchronized void reset()
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		state = SolvedState.NO_DATA;
 		for (Bookcase b : byIndex)
@@ -110,7 +130,11 @@ class Library
 		log.info("Library is now reset");
 	}
 
+<<<<<<< HEAD
 	synchronized void mark(WorldPoint loc, Book book)
+=======
+	public synchronized void mark(WorldPoint loc, Book book)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		Bookcase bookcase = byPoint.get(loc);
 		if (bookcase == null)

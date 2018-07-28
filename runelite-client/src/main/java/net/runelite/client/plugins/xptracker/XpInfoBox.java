@@ -1,6 +1,9 @@
 /*
  * Copyright (c) 2018, Adam <Adam@sigterm.info>
+<<<<<<< HEAD
  * Copyright (c) 2018, Psikoi <https://github.com/psikoi>
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,6 +30,7 @@ package net.runelite.client.plugins.xptracker;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+<<<<<<< HEAD
 import java.awt.Dimension;
 import java.io.IOException;
 import javax.swing.ImageIcon;
@@ -51,10 +55,43 @@ import net.runelite.client.ui.components.ProgressBar;
 import net.runelite.client.util.LinkBrowser;
 import net.runelite.client.util.StackFormatter;
 import net.runelite.client.util.SwingUtil;
+=======
+import java.awt.GridLayout;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.awt.image.LookupOp;
+import java.awt.image.LookupTable;
+import java.io.IOException;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.JProgressBar;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Client;
+import net.runelite.api.Skill;
+import net.runelite.client.game.SkillIconManager;
+import net.runelite.client.ui.JShadowedLabel;
+import net.runelite.client.util.LinkBrowser;
+import org.pushingpixels.substance.internal.SubstanceSynapse;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 @Slf4j
 class XpInfoBox extends JPanel
 {
+<<<<<<< HEAD
 	// Templates
 	private static final String HTML_TOOL_TIP_TEMPLATE =
 		"<html>%s actions done<br/>"
@@ -90,10 +127,31 @@ class XpInfoBox extends JPanel
 
 	XpInfoBox(XpTrackerPlugin xpTrackerPlugin, Client client, JPanel panel, Skill skill, SkillIconManager iconManager) throws IOException
 	{
+=======
+	private static final Rectangle ICON_BOUNDS = new Rectangle(0, 0, 26, 26);
+
+	private final Client client;
+	private final JPanel panel;
+	private final Skill skill;
+
+	private final JPanel container = new JPanel();
+	private final JPanel statsPanel = new JPanel();
+	private final JProgressBar progressBar = new JProgressBar();
+	private final JLabel xpHr = new JLabel();
+	private final JLabel xpGained = new JLabel();
+	private final JLabel xpLeft = new JLabel();
+	private final JLabel actionsLeft = new JLabel();
+	private final JLabel levelLabel = new JShadowedLabel();
+
+	XpInfoBox(XpTrackerPlugin xpTrackerPlugin, Client client, JPanel panel, Skill skill, SkillIconManager iconManager) throws IOException
+	{
+		this.client = client;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		this.panel = panel;
 		this.skill = skill;
 
 		setLayout(new BorderLayout());
+<<<<<<< HEAD
 		setBorder(new EmptyBorder(5, 0, 0, 0));
 
 		container.setLayout(new BorderLayout());
@@ -166,6 +224,123 @@ class XpInfoBox extends JPanel
 		progressBar.setComponentPopupMenu(popupMenu);
 
 		add(container, BorderLayout.NORTH);
+=======
+		setBorder(new CompoundBorder
+		(
+			new EmptyBorder(2, 0, 2, 0),
+			new LineBorder(getBackground().brighter(), 1)
+		));
+
+		// Expand stats panel on click
+		Color backgroundColor = getBackground();
+
+		MouseListener panelMouseListener = new MouseAdapter()
+		{
+			@Override
+			public void mouseEntered(MouseEvent e)
+			{
+				container.setBackground(backgroundColor.darker().darker());
+			}
+			@Override
+			public void mouseExited(MouseEvent e)
+			{
+				container.setBackground(backgroundColor);
+			}
+			@Override
+			public void mouseReleased(MouseEvent e)
+			{
+				if (SwingUtilities.isLeftMouseButton(e))
+				{
+					showStatsPanel();
+				}
+			}
+		};
+
+		container.setLayout(new BorderLayout());
+		container.setBorder(new EmptyBorder(5, 5, 5, 5));
+		container.addMouseListener(panelMouseListener);
+
+		// Create open xp tracker menu
+		final JMenuItem openXpTracker = new JMenuItem("Open XP tracker");
+		openXpTracker.addActionListener(e -> LinkBrowser.browse(XpPanel.buildXpTrackerUrl(client.getLocalPlayer(), skill)));
+
+		// Create popup menu
+		final JPopupMenu popupMenu = new JPopupMenu();
+		popupMenu.add(openXpTracker);
+		container.setComponentPopupMenu(popupMenu);
+
+		// Create icon panel
+		final JPanel iconBarPanel = new JPanel();
+		iconBarPanel.setLayout(new BorderLayout(5, 0));
+		iconBarPanel.setOpaque(false);
+
+		// Create skill/reset icon
+		final BufferedImage skillImage = iconManager.getSkillImage(skill);
+		final JButton skillIcon = new JButton();
+
+		skillIcon.putClientProperty(SubstanceSynapse.FLAT_LOOK, Boolean.TRUE);
+		skillIcon.putClientProperty(SubstanceSynapse.BUTTON_NEVER_PAINT_BACKGROUND, Boolean.TRUE);
+		skillIcon.setIcon(new ImageIcon(skillImage));
+		skillIcon.setRolloverIcon(new ImageIcon(createHoverImage(skillImage)));
+
+		skillIcon.setToolTipText("Reset " + skill.getName() + " tracker");
+		skillIcon.addActionListener(e -> xpTrackerPlugin.resetSkillState(skill));
+		skillIcon.setBounds(ICON_BOUNDS);
+		skillIcon.setOpaque(false);
+		skillIcon.setFocusPainted(false);
+
+		// Create level label
+		levelLabel.setHorizontalAlignment(JLabel.CENTER);
+		levelLabel.setForeground(Color.YELLOW);
+		levelLabel.setBounds(ICON_BOUNDS);
+		levelLabel.setOpaque(false);
+
+		// Create pane for grouping skill icon and level label
+		final JLayeredPane layeredPane = new JLayeredPane();
+		layeredPane.add(skillIcon, new Integer(1));
+		layeredPane.add(levelLabel, new Integer(2));
+		layeredPane.setPreferredSize(ICON_BOUNDS.getSize());
+		iconBarPanel.add(layeredPane, BorderLayout.LINE_START);
+
+		// Create progress bar
+		progressBar.setStringPainted(true);
+		progressBar.setValue(0);
+		progressBar.setMinimum(0);
+		progressBar.setMaximum(100);
+		progressBar.setBackground(Color.RED);
+		progressBar.addMouseListener(panelMouseListener);
+		iconBarPanel.add(progressBar, BorderLayout.CENTER);
+
+		container.add(iconBarPanel, BorderLayout.NORTH);
+
+		// Stats panel
+		statsPanel.setLayout(new GridLayout(2, 2));
+		statsPanel.setBorder(new EmptyBorder(3, 0, 0, 0));
+		statsPanel.setOpaque(false);
+
+		statsPanel.add(xpGained);
+		xpHr.setHorizontalAlignment(SwingConstants.RIGHT);
+		statsPanel.add(xpHr);
+		statsPanel.add(xpLeft);
+		actionsLeft.setHorizontalAlignment(SwingConstants.RIGHT);
+		statsPanel.add(actionsLeft);
+
+		add(container, BorderLayout.CENTER);
+	}
+
+	private void showStatsPanel()
+	{
+		if (statsPanel.isShowing())
+		{
+			container.remove(statsPanel);
+			revalidate();
+		}
+		else
+		{
+			container.add(statsPanel, BorderLayout.SOUTH);
+			revalidate();
+		}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	void reset()
@@ -175,12 +350,21 @@ class XpInfoBox extends JPanel
 		panel.revalidate();
 	}
 
+<<<<<<< HEAD
 	void update(boolean updated, boolean paused, XpSnapshotSingle xpSnapshotSingle)
 	{
 		SwingUtilities.invokeLater(() -> rebuildAsync(updated, paused, xpSnapshotSingle));
 	}
 
 	private void rebuildAsync(boolean updated, boolean skillPaused, XpSnapshotSingle xpSnapshotSingle)
+=======
+	void update(boolean updated, XpSnapshotSingle xpSnapshotSingle)
+	{
+		SwingUtilities.invokeLater(() -> rebuildAsync(updated, xpSnapshotSingle));
+	}
+
+	private void rebuildAsync(boolean updated, XpSnapshotSingle xpSnapshotSingle)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		if (updated)
 		{
@@ -190,6 +374,7 @@ class XpInfoBox extends JPanel
 				panel.revalidate();
 			}
 
+<<<<<<< HEAD
 			paused = skillPaused;
 
 			// Update information labels
@@ -240,5 +425,48 @@ class XpInfoBox extends JPanel
 	{
 		String valueStr = StackFormatter.quantityToRSDecimalStack(value);
 		return String.format(HTML_LABEL_TEMPLATE, SwingUtil.toHexColor(ColorScheme.LIGHT_GRAY_COLOR), key, valueStr);
+=======
+			levelLabel.setText(String.valueOf(xpSnapshotSingle.getCurrentLevel()));
+			xpGained.setText(XpPanel.formatLine(xpSnapshotSingle.getXpGainedInSession(), "xp gained"));
+			xpLeft.setText(XpPanel.formatLine(xpSnapshotSingle.getXpRemainingToGoal(), "xp left"));
+			actionsLeft.setText(XpPanel.formatLine(xpSnapshotSingle.getActionsRemainingToGoal(), "actions left"));
+
+			final int progress = xpSnapshotSingle.getSkillProgressToGoal();
+
+			progressBar.setValue(progress);
+			progressBar.setBackground(Color.getHSBColor((progress / 100.f) * (120.f / 360.f), 1, 1));
+
+			progressBar.setToolTipText("<html>"
+				+ XpPanel.formatLine(xpSnapshotSingle.getActionsInSession(), "actions")
+				+ "<br/>"
+				+ XpPanel.formatLine(xpSnapshotSingle.getActionsPerHour(), "actions/hr")
+				+ "<br/>"
+				+ xpSnapshotSingle.getTimeTillGoal() + " till next lvl"
+				+ "</html>");
+		}
+
+		// Always update xp/hr as time always changes
+		xpHr.setText(XpPanel.formatLine(xpSnapshotSingle.getXpPerHour(), "xp/hr"));
+	}
+
+	private static BufferedImage createHoverImage(BufferedImage image)
+	{
+		LookupTable lookup = new LookupTable(0, 4)
+		{
+			@Override
+			public int[] lookupPixel(int[] src, int[] dest)
+			{
+				if (dest[3] != 0)
+				{
+					dest[3] = 60;
+				}
+
+				return dest;
+			}
+		};
+
+		LookupOp op = new LookupOp(lookup, new RenderingHints(null));
+		return op.filter(image, null);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

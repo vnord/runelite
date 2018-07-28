@@ -45,12 +45,19 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.FontManager;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
 	name = "Barbarian Assault",
 	description = "Show a timer to the next call change",
 	tags = {"minigame", "overlay"}
+=======
+import net.runelite.client.ui.overlay.Overlay;
+
+@PluginDescriptor(
+	name = "Barbarian Assault"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 public class BarbarianAssaultPlugin extends Plugin
 {
@@ -66,9 +73,12 @@ public class BarbarianAssaultPlugin extends Plugin
 	private Client client;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private BarbarianAssaultConfig config;
 
 	@Inject
@@ -83,7 +93,10 @@ public class BarbarianAssaultPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
+<<<<<<< HEAD
 		overlayManager.add(overlay);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		font = FontManager.getRunescapeFont()
 			.deriveFont(Font.BOLD, 24);
 
@@ -93,12 +106,15 @@ public class BarbarianAssaultPlugin extends Plugin
 		}
 	}
 
+<<<<<<< HEAD
 	@Override
 	protected void shutDown() throws Exception
 	{
 		overlayManager.remove(overlay);
 	}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Subscribe
 	public void onGameTick(GameTick event)
 	{
@@ -167,6 +183,15 @@ public class BarbarianAssaultPlugin extends Plugin
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	@Override
+	public Overlay getOverlay()
+	{
+		return overlay;
+	}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public Font getFont()
 	{
 		return font;

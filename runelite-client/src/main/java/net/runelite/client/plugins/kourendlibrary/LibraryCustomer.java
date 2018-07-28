@@ -30,11 +30,19 @@ import lombok.Getter;
 
 import net.runelite.api.NpcID;
 
+<<<<<<< HEAD
 enum LibraryCustomer
 {
 	VILLIA(NpcID.VILLIA, "Villia"),
 	PROFESSOR_GRACKLEBONE(NpcID.PROFESSOR_GRACKLEBONE, "Prof. Gracklebone"),
 	SAM(NpcID.SAM_7049, "Sam");
+=======
+public enum LibraryCustomer
+{
+	VILLIA(NpcID.VILLIA, "Villia"),
+	PROFESSOR_GRACKLEBONE(NpcID.PROFESSOR_GRACKLEBONE, "Prof. Gracklebone"),
+	Sam(NpcID.SAM_7049, "Sam");
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Getter
 	private final int id;
@@ -50,7 +58,11 @@ enum LibraryCustomer
 		this.name = name;
 	}
 
+<<<<<<< HEAD
 	static LibraryCustomer getById(int id)
+=======
+	public static LibraryCustomer getById(int id)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		return byId.get(id);
 	}

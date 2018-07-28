@@ -1,6 +1,9 @@
 /*
  * Copyright (c) 2018 Abex
+<<<<<<< HEAD
  * Copyright (c) 2018, Psikoi <https://github.com/psikoi>
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -25,13 +28,19 @@
  */
 package net.runelite.client.plugins.farmingtracker;
 
+<<<<<<< HEAD
 import com.google.common.base.Strings;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
+<<<<<<< HEAD
 import java.awt.image.BufferedImage;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
@@ -40,9 +49,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import javax.swing.ImageIcon;
+<<<<<<< HEAD
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+=======
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import javax.swing.border.EmptyBorder;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
@@ -50,11 +65,15 @@ import net.runelite.api.vars.Autoweed;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.game.AsyncBufferedImage;
 import net.runelite.client.game.ItemManager;
+<<<<<<< HEAD
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.PluginPanel;
 import net.runelite.client.ui.components.materialtabs.MaterialTab;
 import net.runelite.client.ui.components.materialtabs.MaterialTabGroup;
+=======
+import net.runelite.client.ui.PluginPanel;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 @Slf4j
 class FarmingTrackerPanel extends PluginPanel
@@ -68,10 +87,13 @@ class FarmingTrackerPanel extends PluginPanel
 
 	private List<FarmingPatchPanel> patchPanels = new ArrayList<>();
 
+<<<<<<< HEAD
 	/* This is the panel the tabs' respective panels will be displayed on. */
 	private final JPanel display = new JPanel();
 	private final MaterialTabGroup tabGroup = new MaterialTabGroup(display);
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	FarmingTrackerPanel(
 		Client client,
 		ItemManager itemManager,
@@ -88,6 +110,7 @@ class FarmingTrackerPanel extends PluginPanel
 		this.config = config;
 
 		setLayout(new BorderLayout());
+<<<<<<< HEAD
 		setBackground(ColorScheme.DARK_GRAY_COLOR);
 
 		display.setBorder(new EmptyBorder(10, 10, 8, 10));
@@ -100,6 +123,13 @@ class FarmingTrackerPanel extends PluginPanel
 		farmingWorld.getTabs().forEach((tab, patches) ->
 		{
 			JPanel container = new JPanel(new GridBagLayout())
+=======
+
+		JTabbedPane tabs = new JTabbedPane();
+		farmingWorld.getTabs().forEach((tab, patches) ->
+		{
+			JPanel panel = new JPanel(new GridBagLayout())
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			{
 				@Override
 				public Dimension getPreferredSize()
@@ -107,7 +137,11 @@ class FarmingTrackerPanel extends PluginPanel
 					return new Dimension(PluginPanel.PANEL_WIDTH, super.getPreferredSize().height);
 				}
 			};
+<<<<<<< HEAD
 			container.setBackground(ColorScheme.DARK_GRAY_COLOR);
+=======
+			panel.setBorder(new EmptyBorder(2, 6, 6, 6));
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 			GridBagConstraints c = new GridBagConstraints();
 			c.fill = GridBagConstraints.HORIZONTAL;
@@ -115,6 +149,7 @@ class FarmingTrackerPanel extends PluginPanel
 			c.gridx = 0;
 			c.gridy = 0;
 
+<<<<<<< HEAD
 			PatchImplementation lastImpl = null;
 
 			boolean first = true;
@@ -176,10 +211,33 @@ class FarmingTrackerPanel extends PluginPanel
 			{
 				BufferedImage subIcon = icon.getSubimage(0, 0, 32, 32);
 				materialTab.setIcon(new ImageIcon(subIcon.getScaledInstance(24, 24, Image.SCALE_SMOOTH)));
+=======
+			for (FarmingPatch patch : patches)
+			{
+				FarmingPatchPanel p = new FarmingPatchPanel(patch);
+				patchPanels.add(p);
+				panel.add(p, c);
+				c.gridy++;
+			}
+
+			JPanel wrapped = new JPanel(new BorderLayout());
+			wrapped.add(panel, BorderLayout.NORTH);
+			JScrollPane scroller = new JScrollPane(wrapped);
+			scroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+			scroller.getVerticalScrollBar().setUnitIncrement(16);
+
+			AsyncBufferedImage icon = itemManager.getImage(tab.getItemID());
+			tabs.addTab(null, null, scroller, tab.getName());
+			int idx = tabs.getTabCount() - 1;
+			Runnable resize = () ->
+			{
+				tabs.setIconAt(idx, new ImageIcon(icon.getScaledInstance(24, 21, Image.SCALE_SMOOTH)));
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			};
 			icon.onChanged(resize);
 			resize.run();
 
+<<<<<<< HEAD
 			materialTab.setOnSelectEvent(() ->
 			{
 				config.setPatch(tab);
@@ -192,6 +250,21 @@ class FarmingTrackerPanel extends PluginPanel
 				tabGroup.select(materialTab);
 			}
 		});
+=======
+			if (config.patch() == tab)
+			{
+				tabs.setSelectedComponent(scroller);
+			}
+			tabs.addChangeListener(e ->
+			{
+				if (tabs.getSelectedComponent() == scroller)
+				{
+					config.setPatch(tab);
+				}
+			});
+		});
+		add(tabs, BorderLayout.CENTER);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	void update()
@@ -236,11 +309,18 @@ class FarmingTrackerPanel extends PluginPanel
 			PatchState state = unixTime <= 0 ? null : patch.getImplementation().forVarbitValue(value);
 			if (state == null)
 			{
+<<<<<<< HEAD
 				itemManager.getImage(Produce.WEEDS.getItemID()).addTo(panel.getIcon());
 				panel.getIcon().setToolTipText("Unknown state");
 				panel.getProgress().setMaximumValue(0);
 				panel.getProgress().setValue(0);
 				panel.getProgress().setVisible(false);
+=======
+				panel.getIcon().setIcon(null);
+				panel.getIcon().setToolTipText("Unknown state");
+				panel.getProgress().setMaximum(0);
+				panel.getProgress().setValue(0);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				panel.getEstimate().setText("Unknown");
 				panel.getProgress().setBackground(null);
 			}
@@ -357,6 +437,7 @@ class FarmingTrackerPanel extends PluginPanel
 					}
 				}
 
+<<<<<<< HEAD
 				/* Hide any fully grown weeds' progress bar. */
 				if (state.getProduce() != Produce.WEEDS
 					|| (state.getProduce() == Produce.WEEDS && !autoweed && stage < stages - 1))
@@ -371,6 +452,11 @@ class FarmingTrackerPanel extends PluginPanel
 				{
 					panel.getProgress().setVisible(false);
 				}
+=======
+				panel.getProgress().setBackground(state.getCropState().getColor().darker());
+				panel.getProgress().setMaximum(stages - 1);
+				panel.getProgress().setValue(stage);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			}
 		}
 	}

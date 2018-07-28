@@ -24,18 +24,24 @@
  */
 package net.runelite.api;
 
+<<<<<<< HEAD
 /**
  * Utility class used for mapping projectile IDs.
  * <p>
  * Note: This class is not complete and may be missing mapped IDs.
  */
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public class ProjectileID
 {
 	public static final int CANNONBALL = 53;
 	public static final int GRANITE_CANNONBALL = 1443;
 
+<<<<<<< HEAD
 	public static final int TELEKINETIC_SPELL = 143;
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public static final int LIZARDMAN_SHAMAN_AOE = 1293;
 	public static final int CRAZY_ARCHAEOLOGIST_AOE = 1260;
 	public static final int ICE_DEMON_RANGED_AOE = 1324;

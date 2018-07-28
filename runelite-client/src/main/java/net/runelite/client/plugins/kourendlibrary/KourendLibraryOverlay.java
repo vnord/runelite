@@ -49,9 +49,17 @@ import net.runelite.client.ui.overlay.OverlayUtil;
 
 import static net.runelite.api.Perspective.getCanvasTilePoly;
 
+<<<<<<< HEAD
 class KourendLibraryOverlay extends Overlay
 {
 	private final static int MAXIMUM_DISTANCE = 24;
+=======
+public class KourendLibraryOverlay extends Overlay
+{
+	private final static WorldPoint LIBRARY_CENTER = new WorldPoint(1632, 3807, 1);
+	private final static int MAXIMUM_DISTANCE = 24;
+	private final static int ROUGH_ENABLE_DISTANCE = 45;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	private final Library library;
 	private final Client client;
@@ -77,13 +85,25 @@ class KourendLibraryOverlay extends Overlay
 
 		WorldPoint playerLoc = player.getWorldLocation();
 
+<<<<<<< HEAD
 		if (playerLoc.getRegionID() != KourendLibraryPlugin.REGION)
+=======
+		if (playerLoc.distanceTo2D(LIBRARY_CENTER) > ROUGH_ENABLE_DISTANCE)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			return null;
 		}
 
 		List<Bookcase> allBookcases = library.getBookcasesOnLevel(client.getPlane());
 
+<<<<<<< HEAD
+=======
+		if (allBookcases == null)
+		{
+			return null;
+		}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		for (Bookcase bookcase : allBookcases)
 		{
 			// AABB

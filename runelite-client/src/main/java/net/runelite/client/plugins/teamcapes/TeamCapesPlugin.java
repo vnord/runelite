@@ -24,7 +24,10 @@
  */
 package net.runelite.client.plugins.teamcapes;
 
+<<<<<<< HEAD
 import com.google.inject.Provides;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -33,6 +36,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
+<<<<<<< HEAD
+=======
+import com.google.inject.Provides;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.Player;
@@ -40,12 +47,19 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.task.Schedule;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
 	name = "Team Capes",
 	description = "Show the different team capes in your area and the amount of each",
 	tags = {"overlay", "players"},
+=======
+import net.runelite.client.ui.overlay.Overlay;
+
+@PluginDescriptor(
+	name = "Team Capes",
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	enabledByDefault = false
 )
 public class TeamCapesPlugin extends Plugin
@@ -54,10 +68,17 @@ public class TeamCapesPlugin extends Plugin
 	private Client client;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
 	private TeamCapesOverlay overlay;
+=======
+	private TeamCapesConfig config;
+
+	@Inject
+	private TeamCapesOverlay teamCapesOverlay;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	// Hashmap of team capes: Key is the teamCape #, Value is the count of teamcapes in the area.
 	private Map<Integer, Integer> teams = new HashMap<>();
@@ -69,15 +90,24 @@ public class TeamCapesPlugin extends Plugin
 	}
 
 	@Override
+<<<<<<< HEAD
 	protected void startUp() throws Exception
 	{
 		overlayManager.add(overlay);
+=======
+	public Overlay getOverlay()
+	{
+		return teamCapesOverlay;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
+<<<<<<< HEAD
 		overlayManager.remove(overlay);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		teams.clear();
 	}
 

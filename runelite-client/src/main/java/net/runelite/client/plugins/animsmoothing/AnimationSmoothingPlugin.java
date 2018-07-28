@@ -35,8 +35,11 @@ import javax.inject.Inject;
 
 @PluginDescriptor(
 	name = "Animation Smoothing",
+<<<<<<< HEAD
 	description = "Show smoother player, NPC, and object animations",
 	tags = {"npcs", "objects", "players"},
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	enabledByDefault = false
 )
 public class AnimationSmoothingPlugin extends Plugin

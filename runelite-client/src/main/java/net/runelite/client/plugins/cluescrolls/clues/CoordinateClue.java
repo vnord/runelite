@@ -54,7 +54,11 @@ public class CoordinateClue extends ClueScroll implements TextClueScroll, Locati
 		panelComponent.getChildren().add(TitleComponent.builder().text("Coordinate Clue").build());
 
 		panelComponent.getChildren().add(LineComponent.builder()
+<<<<<<< HEAD
 			.left("Click the clue scroll along the edge of your world map to see where you should dig.")
+=======
+			.left("Travel to the marked out destination to see a marker for where you should dig.")
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			.build());
 
 		if (plugin.getEquippedItems() != null)

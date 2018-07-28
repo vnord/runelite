@@ -25,6 +25,7 @@
  */
 package net.runelite.client.plugins.puzzlesolver;
 
+<<<<<<< HEAD
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Provides;
 import java.util.Arrays;
@@ -89,6 +90,25 @@ public class PuzzleSolverPlugin extends Plugin
 	{
 		overlayManager.remove(overlay);
 	}
+=======
+import com.google.inject.Provides;
+import java.util.concurrent.ScheduledExecutorService;
+import javax.inject.Inject;
+import net.runelite.client.config.ConfigManager;
+import net.runelite.client.plugins.Plugin;
+import net.runelite.client.plugins.PluginDescriptor;
+
+@PluginDescriptor(
+	name = "Puzzle Solver"
+)
+public class PuzzleSolverPlugin extends Plugin
+{
+	@Inject
+	private PuzzleSolverOverlay puzzleSolverOverlay;
+
+	@Inject
+	private ScheduledExecutorService executorService;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Provides
 	PuzzleSolverConfig provideConfig(ConfigManager configManager)
@@ -96,6 +116,7 @@ public class PuzzleSolverPlugin extends Plugin
 		return configManager.getConfig(PuzzleSolverConfig.class);
 	}
 
+<<<<<<< HEAD
 	@Subscribe
 	public void onWidgetLoaded(WidgetLoaded widget)
 	{
@@ -268,5 +289,11 @@ public class PuzzleSolverPlugin extends Plugin
 				title.setText("Light box - Solution: unknown");
 			}
 		}
+=======
+	@Override
+	public PuzzleSolverOverlay getOverlay()
+	{
+		return puzzleSolverOverlay;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

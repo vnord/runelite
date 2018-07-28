@@ -482,17 +482,29 @@
     },
     {
       "level": 85,
+<<<<<<< HEAD
       "icon": 7208,
       "name": "Wild Pie",
       "xp": 240
     },
     {
       "level": 90,
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
       "icon": 11936,
       "name": "Dark Crab",
       "xp": 215
     },
     {
+<<<<<<< HEAD
+=======
+      "level": 85,
+      "icon": 7208,
+      "name": "Wild Pie",
+      "xp": 240
+    },
+    {
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
       "level": 91,
       "icon": 391,
       "name": "Manta Ray",

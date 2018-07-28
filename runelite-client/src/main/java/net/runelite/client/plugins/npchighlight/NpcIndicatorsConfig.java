@@ -29,7 +29,15 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
+<<<<<<< HEAD
 @ConfigGroup("npcindicators")
+=======
+@ConfigGroup(
+	keyName = "npcindicators",
+	name = "NPC Indicators",
+	description = "Configuration for the NPC indicators plugin"
+)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public interface NpcIndicatorsConfig extends Config
 {
 	@ConfigItem(
@@ -60,7 +68,11 @@ public interface NpcIndicatorsConfig extends Config
 		name = "Highlight Color",
 		description = "Color of the NPC highlight"
 	)
+<<<<<<< HEAD
 	default Color getHighlightColor()
+=======
+	default Color getNpcColor()
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		return Color.CYAN;
 	}
@@ -78,6 +90,20 @@ public interface NpcIndicatorsConfig extends Config
 
 	@ConfigItem(
 		position = 4,
+<<<<<<< HEAD
+=======
+		keyName = "tagColor",
+		name = "Tag Color",
+		description = "Color of the NPC tag highlight"
+	)
+	default Color getTagColor()
+	{
+		return Color.CYAN;
+	}
+
+	@ConfigItem(
+		position = 5,
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		keyName = "drawNames",
 		name = "Draw names above NPC",
 		description = "Configures whether or not NPC names should be drawn above the NPC"
@@ -88,7 +114,11 @@ public interface NpcIndicatorsConfig extends Config
 	}
 
 	@ConfigItem(
+<<<<<<< HEAD
 		position = 5,
+=======
+		position = 6,
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		keyName = "drawMinimapNames",
 		name = "Draw names on minimap",
 		description = "Configures whether or not NPC names should be drawn on the minimap"
@@ -97,6 +127,7 @@ public interface NpcIndicatorsConfig extends Config
 	{
 		return false;
 	}
+<<<<<<< HEAD
 
 	@ConfigItem(
 		position = 6,
@@ -107,4 +138,6 @@ public interface NpcIndicatorsConfig extends Config
 	{
 		return false;
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

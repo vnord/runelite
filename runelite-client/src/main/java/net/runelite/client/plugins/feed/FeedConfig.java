@@ -4,7 +4,15 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
+<<<<<<< HEAD
 @ConfigGroup("feed")
+=======
+@ConfigGroup(
+	keyName = "feed",
+	name = "News Feed",
+	description = "Displays client and game-related news"
+)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public interface FeedConfig extends Config
 {
 	@ConfigItem(

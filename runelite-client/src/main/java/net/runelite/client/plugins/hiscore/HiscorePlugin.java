@@ -53,8 +53,11 @@ import org.apache.commons.lang3.ArrayUtils;
 
 @PluginDescriptor(
 	name = "HiScore",
+<<<<<<< HEAD
 	description = "Enable the HiScore panel and an optional Lookup option on players",
 	tags = {"panel", "players"},
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	loadWhenOutdated = true
 )
 public class HiscorePlugin extends Plugin
@@ -100,6 +103,7 @@ public class HiscorePlugin extends Plugin
 		BufferedImage icon;
 		synchronized (ImageIO.class)
 		{
+<<<<<<< HEAD
 			icon = ImageIO.read(getClass().getResourceAsStream("normal.png"));
 		}
 
@@ -107,6 +111,14 @@ public class HiscorePlugin extends Plugin
 			.tooltip("Hiscore")
 			.icon(icon)
 			.priority(5)
+=======
+			icon = ImageIO.read(getClass().getResourceAsStream("hiscore.gif"));
+		}
+
+		navButton = NavigationButton.builder()
+			.name("Hiscore")
+			.icon(icon)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			.panel(hiscorePanel)
 			.build();
 

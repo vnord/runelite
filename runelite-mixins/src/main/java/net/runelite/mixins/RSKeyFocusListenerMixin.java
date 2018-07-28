@@ -24,6 +24,7 @@
  */
 package net.runelite.mixins;
 
+<<<<<<< HEAD
 import java.awt.event.FocusEvent;
 import java.awt.event.KeyEvent;
 import net.runelite.api.events.FocusChanged;
@@ -34,14 +35,24 @@ import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
+=======
+import java.awt.event.KeyEvent;
+import net.runelite.api.mixins.Copy;
+import net.runelite.api.mixins.Mixin;
+import net.runelite.api.mixins.Replace;
+import net.runelite.client.callback.Hooks;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.rs.api.RSKeyFocusListener;
 
 @Mixin(RSKeyFocusListener.class)
 public abstract class RSKeyFocusListenerMixin implements RSKeyFocusListener
 {
+<<<<<<< HEAD
 	@Shadow("clientInstance")
 	private static RSClient client;
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Copy("keyPressed")
 	abstract void rs$keyPressed(KeyEvent keyEvent);
 
@@ -55,7 +66,11 @@ public abstract class RSKeyFocusListenerMixin implements RSKeyFocusListener
 	@Replace("keyPressed")
 	public final synchronized void keyPressed(KeyEvent keyEvent)
 	{
+<<<<<<< HEAD
 		client.getCallbacks().keyPressed(keyEvent);
+=======
+		Hooks.keyPressed(keyEvent);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		if (!keyEvent.isConsumed())
 		{
 			rs$keyPressed(keyEvent);
@@ -66,7 +81,11 @@ public abstract class RSKeyFocusListenerMixin implements RSKeyFocusListener
 	@Replace("keyReleased")
 	public final synchronized void keyReleased(KeyEvent keyEvent)
 	{
+<<<<<<< HEAD
 		client.getCallbacks().keyReleased(keyEvent);
+=======
+		Hooks.keyReleased(keyEvent);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		if (!keyEvent.isConsumed())
 		{
 			rs$keyReleased(keyEvent);
@@ -77,12 +96,17 @@ public abstract class RSKeyFocusListenerMixin implements RSKeyFocusListener
 	@Replace("keyTyped")
 	public final void keyTyped(KeyEvent keyEvent)
 	{
+<<<<<<< HEAD
 		client.getCallbacks().keyTyped(keyEvent);
+=======
+		Hooks.keyTyped(keyEvent);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		if (!keyEvent.isConsumed())
 		{
 			rs$keyTyped(keyEvent);
 		}
 	}
+<<<<<<< HEAD
 
 	@Inject
 	@MethodHook("focusLost")
@@ -92,4 +116,6 @@ public abstract class RSKeyFocusListenerMixin implements RSKeyFocusListener
 		focusChanged.setFocused(false);
 		client.getCallbacks().post(focusChanged);
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

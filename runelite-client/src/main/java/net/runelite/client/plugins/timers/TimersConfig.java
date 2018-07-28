@@ -28,7 +28,15 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
+<<<<<<< HEAD
 @ConfigGroup("timers")
+=======
+@ConfigGroup(
+	keyName = "timers",
+	name = "Timers",
+	description = "Configuration for the timers plugin"
+)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public interface TimersConfig extends Config
 {
 	@ConfigItem(
@@ -111,7 +119,11 @@ public interface TimersConfig extends Config
 	@ConfigItem(
 		position = 7,
 		keyName = "showAntiFire",
+<<<<<<< HEAD
 		name = "Antifire timer",
+=======
+		name = "AntiFire timer",
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		description = "Configures whether antifire timer is displayed"
 	)
 	default boolean showAntiFire()
@@ -209,6 +221,7 @@ public interface TimersConfig extends Config
 
 	@ConfigItem(
 		position = 16,
+<<<<<<< HEAD
 		keyName = "showCharge",
 		name = "Charge timer",
 		description = "Configures whether to show a timer for the Charge spell"
@@ -220,6 +233,8 @@ public interface TimersConfig extends Config
 
 	@ConfigItem(
 		position = 17,
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		keyName = "showImbuedHeart",
 		name = "Imbued heart timer",
 		description = "Configures whether imbued heart timer is displayed"
@@ -230,7 +245,11 @@ public interface TimersConfig extends Config
 	}
 
 	@ConfigItem(
+<<<<<<< HEAD
 		position = 18,
+=======
+		position = 17,
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		keyName = "showVengeance",
 		name = "Vengeance timer",
 		description = "Configures whether vengeance timer is displayed"
@@ -241,7 +260,11 @@ public interface TimersConfig extends Config
 	}
 
 	@ConfigItem(
+<<<<<<< HEAD
 		position = 19,
+=======
+		position = 18,
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		keyName = "showVengeanceOther",
 		name = "Vengeance Other timer",
 		description = "Configures whether vengeance other timer is displayed"
@@ -252,7 +275,11 @@ public interface TimersConfig extends Config
 	}
 
 	@ConfigItem(
+<<<<<<< HEAD
 		position = 20,
+=======
+		position = 19,
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		keyName = "showTeleblock",
 		name = "Teleblock timer",
 		description = "Configures whether teleblock timer is displayed"
@@ -263,7 +290,11 @@ public interface TimersConfig extends Config
 	}
 
 	@ConfigItem(
+<<<<<<< HEAD
 		position = 21,
+=======
+		position = 20,
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		keyName = "showFreezes",
 		name = "Freeze timer",
 		description = "Configures whether freeze timer is displayed"
@@ -274,7 +305,11 @@ public interface TimersConfig extends Config
 	}
 
 	@ConfigItem(
+<<<<<<< HEAD
 		position = 22,
+=======
+		position = 21,
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		keyName = "showGodWarsAltar",
 		name = "God wars altar timer",
 		description = "Configures whether god wars altar timer is displayed"
@@ -283,6 +318,7 @@ public interface TimersConfig extends Config
 	{
 		return true;
 	}
+<<<<<<< HEAD
 
 	@ConfigItem(
 		position = 23,
@@ -305,4 +341,6 @@ public interface TimersConfig extends Config
 	{
 		return true;
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

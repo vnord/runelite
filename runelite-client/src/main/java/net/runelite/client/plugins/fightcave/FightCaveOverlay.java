@@ -52,7 +52,11 @@ public class FightCaveOverlay extends Overlay
 	private BufferedImage protectFromMissilesImg;
 
 	@Inject
+<<<<<<< HEAD
 	private FightCaveOverlay(Client client, FightCavePlugin plugin)
+=======
+	FightCaveOverlay(Client client, FightCavePlugin plugin)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		setPosition(OverlayPosition.BOTTOM_RIGHT);
 		setPriority(OverlayPriority.HIGH);
@@ -63,7 +67,11 @@ public class FightCaveOverlay extends Overlay
 	@Override
 	public Dimension render(Graphics2D graphics)
 	{
+<<<<<<< HEAD
 		final JadAttack attack = plugin.getAttack();
+=======
+		JadAttack attack = plugin.getAttack();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 		if (attack == null)
 		{

@@ -28,27 +28,45 @@ import com.google.common.eventbus.Subscribe;
 import com.google.inject.Provides;
 import java.awt.Color;
 import java.util.ArrayList;
+<<<<<<< HEAD
+=======
+import java.util.Arrays;
+import java.util.Collection;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.List;
 import javax.inject.Inject;
 import lombok.AccessLevel;
 import lombok.Getter;
+<<<<<<< HEAD
 import net.runelite.api.GameState;
 import net.runelite.api.NPC;
 import net.runelite.api.events.GameStateChanged;
+=======
+import net.runelite.api.NPC;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.events.NpcDespawned;
 import net.runelite.api.events.NpcSpawned;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
+=======
+import net.runelite.client.ui.overlay.Overlay;
+import net.runelite.client.util.QueryRunner;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 /**
  * @author robin
  */
 @PluginDescriptor(
+<<<<<<< HEAD
 	name = "Implings",
 	description = "Highlight nearby implings on the minimap and on-screen",
 	tags = {"hunter", "minimap", "overlay"}
+=======
+	name = "Implings"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 public class ImplingsPlugin extends Plugin
 {
@@ -56,9 +74,12 @@ public class ImplingsPlugin extends Plugin
 	private final List<NPC> implings = new ArrayList<>();
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private ImplingsOverlay overlay;
 
 	@Inject
@@ -67,12 +88,19 @@ public class ImplingsPlugin extends Plugin
 	@Inject
 	private ImplingsConfig config;
 
+<<<<<<< HEAD
+=======
+	@Inject
+	private QueryRunner queryRunner;
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Provides
 	ImplingsConfig getConfig(ConfigManager configManager)
 	{
 		return configManager.getConfig(ImplingsConfig.class);
 	}
 
+<<<<<<< HEAD
 
 	@Override
 	protected void startUp() throws Exception
@@ -86,6 +114,12 @@ public class ImplingsPlugin extends Plugin
 	{
 		overlayManager.remove(overlay);
 		overlayManager.remove(minimapOverlay);
+=======
+	@Override
+	public Collection<Overlay> getOverlays()
+	{
+		return Arrays.asList(overlay, minimapOverlay);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe
@@ -101,6 +135,7 @@ public class ImplingsPlugin extends Plugin
 	}
 
 	@Subscribe
+<<<<<<< HEAD
 	public void onGameStateChange(GameStateChanged event)
 	{
 		if (event.getGameState() == GameState.LOGIN_SCREEN || event.getGameState() == GameState.HOPPING)
@@ -110,6 +145,8 @@ public class ImplingsPlugin extends Plugin
 	}
 
 	@Subscribe
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public void onNpcDespawned(NpcDespawned npcDespawned)
 	{
 		if (implings.isEmpty())

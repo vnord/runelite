@@ -231,7 +231,11 @@ public class XpGlobesOverlay extends Overlay
 		String skillCurrentXp = decimalFormat.format(mouseOverSkill.getCurrentXp());
 
 		xpTooltip.getChildren().clear();
+<<<<<<< HEAD
 		xpTooltip.setPreferredLocation(new java.awt.Point(x, y));
+=======
+		graphics.translate(x, y);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		xpTooltip.setPreferredSize(new Dimension(TOOLTIP_RECT_SIZE_X, 0));
 
 		xpTooltip.getChildren().add(LineComponent.builder()
@@ -248,6 +252,7 @@ public class XpGlobesOverlay extends Overlay
 		if (mouseOverSkill.getGoalXp() != -1)
 		{
 			int actionsLeft = xpTrackerService.getActionsLeft(mouseOverSkill.getSkill());
+<<<<<<< HEAD
 			if (actionsLeft != Integer.MAX_VALUE)
 			{
 				String actionsLeftString = decimalFormat.format(actionsLeft);
@@ -257,6 +262,14 @@ public class XpGlobesOverlay extends Overlay
 					.right(actionsLeftString)
 					.build());
 			}
+=======
+			String actionsLeftString = decimalFormat.format(actionsLeft);
+			xpTooltip.getChildren().add(LineComponent.builder()
+				.left("Actions left:")
+				.leftColor(Color.ORANGE)
+				.right(actionsLeftString)
+				.build());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 			int xpLeft = mouseOverSkill.getGoalXp() - mouseOverSkill.getCurrentXp();
 			String skillXpToLvl = decimalFormat.format(xpLeft);
@@ -267,6 +280,7 @@ public class XpGlobesOverlay extends Overlay
 				.build());
 
 			int xpHr = xpTrackerService.getXpHr(mouseOverSkill.getSkill());
+<<<<<<< HEAD
 			if (xpHr != 0)
 			{
 				String xpHrString = decimalFormat.format(xpHr);
@@ -276,6 +290,14 @@ public class XpGlobesOverlay extends Overlay
 					.right(xpHrString)
 					.build());
 			}
+=======
+			String xpHrString = decimalFormat.format(xpHr);
+			xpTooltip.getChildren().add(LineComponent.builder()
+				.left("Xp per hour:")
+				.leftColor(Color.ORANGE)
+				.right(xpHrString)
+				.build());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 			//Create progress bar for skill.
 			ProgressBarComponent progressBar = new ProgressBarComponent();
@@ -286,5 +308,9 @@ public class XpGlobesOverlay extends Overlay
 		}
 
 		xpTooltip.render(graphics);
+<<<<<<< HEAD
+=======
+		graphics.translate(-x, -y);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

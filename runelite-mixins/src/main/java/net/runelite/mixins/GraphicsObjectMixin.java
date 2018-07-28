@@ -25,16 +25,22 @@
 package net.runelite.mixins;
 
 import net.runelite.api.coords.LocalPoint;
+<<<<<<< HEAD
 import net.runelite.api.events.GraphicsObjectCreated;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
+=======
+import net.runelite.api.mixins.Inject;
+import net.runelite.api.mixins.Mixin;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.rs.api.RSGraphicsObject;
 
 @Mixin(RSGraphicsObject.class)
 public abstract class GraphicsObjectMixin implements RSGraphicsObject
 {
+<<<<<<< HEAD
 	@Shadow("clientInstance")
 	private static RSClient client;
 
@@ -45,6 +51,8 @@ public abstract class GraphicsObjectMixin implements RSGraphicsObject
 		client.getCallbacks().post(event);
 	}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Override
 	@Inject
 	public LocalPoint getLocation()

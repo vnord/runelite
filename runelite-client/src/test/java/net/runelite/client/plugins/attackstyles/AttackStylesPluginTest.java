@@ -30,14 +30,22 @@ import com.google.inject.testing.fieldbinder.BoundFieldModule;
 import java.util.Set;
 import javax.inject.Inject;
 import net.runelite.api.Client;
+<<<<<<< HEAD
 import net.runelite.api.Skill;
 import net.runelite.api.VarPlayer;
+=======
+import net.runelite.api.VarPlayer;
+import net.runelite.api.Skill;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.Varbits;
 import net.runelite.api.events.ConfigChanged;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
@@ -57,10 +65,13 @@ public class AttackStylesPluginTest
 
 	@Mock
 	@Bind
+<<<<<<< HEAD
 	OverlayManager overlayManager;
 
 	@Mock
 	@Bind
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	AttackStylesConfig attackConfig;
 
 	@Inject

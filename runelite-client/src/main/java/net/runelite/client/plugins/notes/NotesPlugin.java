@@ -39,8 +39,11 @@ import net.runelite.client.ui.PluginToolbar;
 
 @PluginDescriptor(
 	name = "Notes",
+<<<<<<< HEAD
 	description = "Enable the Notes panel",
 	tags = {"panel"},
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	loadWhenOutdated = true
 )
 @Slf4j
@@ -74,9 +77,14 @@ public class NotesPlugin extends Plugin
 		}
 
 		navButton = NavigationButton.builder()
+<<<<<<< HEAD
 			.tooltip("Notes")
 			.icon(icon)
 			.priority(7)
+=======
+			.name("Notes")
+			.icon(icon)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			.panel(panel)
 			.build();
 

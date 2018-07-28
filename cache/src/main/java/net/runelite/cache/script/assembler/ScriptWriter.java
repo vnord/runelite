@@ -32,7 +32,10 @@ import java.util.Objects;
 import net.runelite.cache.definitions.ScriptDefinition;
 import net.runelite.cache.script.Instruction;
 import net.runelite.cache.script.Instructions;
+<<<<<<< HEAD
 import net.runelite.cache.script.Opcodes;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -217,8 +220,11 @@ public class ScriptWriter extends rs2asmBaseListener
 
 	public ScriptDefinition buildScript()
 	{
+<<<<<<< HEAD
 		setSwitchOperands();
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		ScriptDefinition script = new ScriptDefinition();
 		script.setId(id);
 		script.setIntStackCount(intStackCount);
@@ -235,6 +241,7 @@ public class ScriptWriter extends rs2asmBaseListener
 		return script;
 	}
 
+<<<<<<< HEAD
 	private void setSwitchOperands()
 	{
 		int count = 0;
@@ -249,6 +256,8 @@ public class ScriptWriter extends rs2asmBaseListener
 		}
 	}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private Map<Integer, Integer>[] buildSwitches()
 	{
 		int count = (int) switches.stream().filter(Objects::nonNull).count();

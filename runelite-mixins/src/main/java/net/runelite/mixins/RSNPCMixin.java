@@ -24,8 +24,11 @@
  */
 package net.runelite.mixins;
 
+<<<<<<< HEAD
 import net.runelite.api.AnimationID;
 import net.runelite.api.NPCComposition;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.events.NpcDespawned;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
@@ -33,6 +36,10 @@ import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
+<<<<<<< HEAD
+=======
+import static net.runelite.client.callback.Hooks.eventBus;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSModel;
 import net.runelite.rs.api.RSNPC;
@@ -48,9 +55,12 @@ public abstract class RSNPCMixin implements RSNPC
 	private int npcIndex;
 
 	@Inject
+<<<<<<< HEAD
 	private boolean dead;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Override
 	public int getId()
 	{
@@ -106,7 +116,11 @@ public abstract class RSNPCMixin implements RSNPC
 	{
 		if (composition == null)
 		{
+<<<<<<< HEAD
 			client.getCallbacks().post(new NpcDespawned(this));
+=======
+			eventBus.post(new NpcDespawned(this));
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
@@ -116,8 +130,12 @@ public abstract class RSNPCMixin implements RSNPC
 	@Replace("getModel")
 	public RSModel rl$getModel()
 	{
+<<<<<<< HEAD
 		if (!client.isInterpolateNpcAnimations()
 			|| getAnimation() == AnimationID.HELLHOUND_DEFENCE)
+=======
+		if (!client.isInterpolateNpcAnimations())
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			return rs$getModel();
 		}
@@ -141,6 +159,7 @@ public abstract class RSNPCMixin implements RSNPC
 			setSpotAnimFrame(spotAnimFrame);
 		}
 	}
+<<<<<<< HEAD
 
 	@Inject
 	@Override
@@ -167,4 +186,6 @@ public abstract class RSNPCMixin implements RSNPC
 	{
 		this.dead = dead;
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

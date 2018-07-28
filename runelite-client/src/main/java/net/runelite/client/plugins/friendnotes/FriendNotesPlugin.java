@@ -30,7 +30,10 @@ package net.runelite.client.plugins.friendnotes;
 import com.google.common.base.Strings;
 import com.google.common.collect.ObjectArrays;
 import com.google.common.eventbus.Subscribe;
+<<<<<<< HEAD
 import javax.annotation.Nullable;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import javax.inject.Inject;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -48,6 +51,7 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.game.ChatboxInputManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.util.Text;
 
@@ -61,6 +65,19 @@ public class FriendNotesPlugin extends Plugin
 	private static final String CONFIG_GROUP = "friendNotes";
 	private static final int CHARACTER_LIMIT = 128;
 	private static final String KEY_PREFIX = "note_";
+=======
+import net.runelite.client.ui.overlay.Overlay;
+import net.runelite.client.util.Text;
+
+@Slf4j
+@PluginDescriptor(name = "Friend Notes")
+public class FriendNotesPlugin extends Plugin
+{
+	private static final String CONFIG_GROUP = "friendNotes";
+
+	private static final int CHARACTER_LIMIT = 128;
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private static final String ADD_NOTE = "Add Note";
 	private static final String EDIT_NOTE = "Edit Note";
 	private static final String NOTE_PROMPT_FORMAT = "%s's Notes<br>" +
@@ -73,9 +90,12 @@ public class FriendNotesPlugin extends Plugin
 	private ConfigManager configManager;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private FriendNoteOverlay overlay;
 
 	@Inject
@@ -85,6 +105,7 @@ public class FriendNotesPlugin extends Plugin
 	private HoveredFriend hoveredFriend = null;
 
 	@Override
+<<<<<<< HEAD
 	protected void startUp() throws Exception
 	{
 		overlayManager.add(overlay);
@@ -135,10 +156,46 @@ public class FriendNotesPlugin extends Plugin
 				log.debug("Update friend's username: '{}' -> '{}'", prevDisplayName, currentDisplayName);
 				setFriendNote(prevDisplayName, null);
 				setFriendNote(currentDisplayName, prevNote);
+=======
+	public Overlay getOverlay()
+	{
+		return overlay;
+	}
+
+	private void setFriendNote(String friend, String note)
+	{
+		if (!Strings.isNullOrEmpty(note))
+		{
+			configManager.setConfiguration(CONFIG_GROUP, "note_" + friend, note);
+		}
+		else
+		{
+			configManager.unsetConfiguration(CONFIG_GROUP, "note_" + friend);
+		}
+	}
+
+	private String getFriendNote(String friend)
+	{
+		return configManager.getConfiguration(CONFIG_GROUP, "note_" + friend);
+	}
+
+	private void checkNameChange(String currentDisplayName, String previousDisplayName)
+	{
+		String currentNote = getFriendNote(currentDisplayName);
+		if (currentNote == null)
+		{
+			String prevNote = getFriendNote(previousDisplayName);
+			if (prevNote != null)
+			{
+				setFriendNote(previousDisplayName, null);
+				setFriendNote(currentDisplayName, prevNote);
+				log.debug("Updating friends username: '{}' '{}'", currentDisplayName, previousDisplayName);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			}
 		}
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Set the currently hovered display name, if a friend note exists for it.
 	 */
@@ -152,6 +209,19 @@ public class FriendNotesPlugin extends Plugin
 			if (note != null)
 			{
 				hoveredFriend = new HoveredFriend(displayName, note);
+=======
+	private void setCurrentFriend(String target)
+	{
+		hoveredFriend = null;
+
+		if (!Strings.isNullOrEmpty(target))
+		{
+			target = Text.removeTags(target);
+			String targetNote = getFriendNote(target);
+			if (targetNote != null)
+			{
+				hoveredFriend = new HoveredFriend(target, targetNote);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			}
 		}
 	}
@@ -161,6 +231,7 @@ public class FriendNotesPlugin extends Plugin
 	{
 		final int groupId = WidgetInfo.TO_GROUP(event.getActionParam1());
 
+<<<<<<< HEAD
 		// Look for "Message" on friends list
 		if (groupId == WidgetInfo.FRIENDS_LIST.getGroupId() && event.getOption().equals("Message"))
 		{
@@ -172,11 +243,26 @@ public class FriendNotesPlugin extends Plugin
 			addNote.setOption(hoveredFriend == null || hoveredFriend.getNote() == null ? ADD_NOTE : EDIT_NOTE);
 			addNote.setType(MenuAction.RUNELITE.getId());
 			addNote.setTarget(event.getTarget()); //Preserve color codes here
+=======
+		// look for "Message" on friends list
+		if (groupId == WidgetInfo.FRIENDS_LIST.getGroupId() && event.getOption().equals("Message"))
+		{
+			setCurrentFriend(event.getTarget());
+
+			final MenuEntry addNote = new MenuEntry();
+			addNote.setOption(hoveredFriend == null || hoveredFriend.getNote() == null ? ADD_NOTE : EDIT_NOTE);
+			addNote.setType(MenuAction.RUNELITE.getId());
+			addNote.setTarget(event.getTarget());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			addNote.setParam0(event.getActionParam0());
 			addNote.setParam1(event.getActionParam1());
 
 			// Add menu entry
+<<<<<<< HEAD
 			final MenuEntry[] menuEntries = ObjectArrays.concat(client.getMenuEntries(), addNote);
+=======
+			MenuEntry[] menuEntries = ObjectArrays.concat(client.getMenuEntries(), addNote);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			client.setMenuEntries(menuEntries);
 		}
 		else if (hoveredFriend != null)
@@ -195,17 +281,27 @@ public class FriendNotesPlugin extends Plugin
 				return;
 			}
 
+<<<<<<< HEAD
 			//Friends have color tags
 			final String sanitizedTarget = Text.removeTags(event.getMenuTarget());
 
 			// Handle clicks on "Add Note" or "Edit Note"
+=======
+			final String sanitizedTarget = Text.removeTags(event.getMenuTarget());
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			if (event.getMenuOption().equals(ADD_NOTE) || event.getMenuOption().equals(EDIT_NOTE))
 			{
 				event.consume();
 
+<<<<<<< HEAD
 				final String note = getFriendNote(sanitizedTarget);
 
 				// Open the chatbox input dialog
+=======
+				String note = getFriendNote(sanitizedTarget);
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				chatboxInputManager.openInputWindow(String.format(NOTE_PROMPT_FORMAT, sanitizedTarget,
 					CHARACTER_LIMIT), Strings.nullToEmpty(note), CHARACTER_LIMIT, (content) ->
 				{
@@ -224,6 +320,7 @@ public class FriendNotesPlugin extends Plugin
 	}
 
 	@Subscribe
+<<<<<<< HEAD
 	public void onNameableNameChange(NameableNameChanged event)
 	{
 		final Nameable nameable = event.getNameable();
@@ -233,15 +330,35 @@ public class FriendNotesPlugin extends Plugin
 			// Migrate a friend's note to their new display name
 			final Friend friend = (Friend) nameable;
 			migrateFriendNote(friend.getName(), friend.getPrevName());
+=======
+	public void onNameableNameChange(NameableNameChanged nameableNameChanged)
+	{
+		Nameable nameable = nameableNameChanged.getNameable();
+
+		if (nameable instanceof Friend)
+		{
+			Friend friend = (Friend) nameable;
+			String name = friend.getName();
+			String prevName = friend.getPrevName();
+			checkNameChange(name, prevName);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
 	@Subscribe
+<<<<<<< HEAD
 	public void onRemoveFriend(RemovedFriend event)
 	{
 		// Delete a friend's note if they are removed
 		final String displayName = event.getName();
 		log.debug("Remove friend: '{}'", displayName);
 		setFriendNote(displayName, null);
+=======
+	public void onRemoveFriend(RemovedFriend removedFriend)
+	{
+		String name = removedFriend.getName();
+		log.debug("Removed friend: '{}'", name);
+		setFriendNote(name, null);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

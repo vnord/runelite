@@ -29,22 +29,35 @@ import java.awt.image.BufferedImage;
 import lombok.Getter;
 import net.runelite.api.Client;
 import net.runelite.api.Skill;
+<<<<<<< HEAD
+=======
+import net.runelite.client.plugins.Plugin;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.ui.overlay.infobox.InfoBox;
 import net.runelite.client.ui.overlay.infobox.InfoBoxPriority;
 
 public class BoostIndicator extends InfoBox
 {
+<<<<<<< HEAD
 	private final BoostsPlugin plugin;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private final BoostsConfig config;
 	private final Client client;
 
 	@Getter
 	private final Skill skill;
 
+<<<<<<< HEAD
 	BoostIndicator(Skill skill, BufferedImage image, BoostsPlugin plugin, Client client, BoostsConfig config)
 	{
 		super(image, plugin);
 		this.plugin = plugin;
+=======
+	public BoostIndicator(Skill skill, BufferedImage image, Plugin plugin, Client client, BoostsConfig config)
+	{
+		super(image, plugin);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		this.config = config;
 		this.client = client;
 		this.skill = skill;
@@ -83,6 +96,7 @@ public class BoostIndicator extends InfoBox
 
 		return new Color(238, 51, 51);
 	}
+<<<<<<< HEAD
 
 	@Override
 	public boolean render()
@@ -94,4 +108,6 @@ public class BoostIndicator extends InfoBox
 
 		return false;
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

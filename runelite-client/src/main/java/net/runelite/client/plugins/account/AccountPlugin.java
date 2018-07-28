@@ -44,8 +44,11 @@ import net.runelite.client.util.RunnableExceptionLogger;
 
 @PluginDescriptor(
 	name = "Account",
+<<<<<<< HEAD
 	description = "Sync RuneLite config settings with your Google account",
 	tags = {"external", "google", "integration"},
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	loadWhenOutdated = true
 )
 @Slf4j

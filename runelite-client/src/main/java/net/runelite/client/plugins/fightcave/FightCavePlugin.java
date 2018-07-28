@@ -24,6 +24,7 @@
  */
 package net.runelite.client.plugins.fightcave;
 
+<<<<<<< HEAD
 import com.google.common.eventbus.Subscribe;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
@@ -42,15 +43,40 @@ import net.runelite.client.ui.overlay.OverlayManager;
 	name = "Fight Cave",
 	description = "Show what to pray against Jad",
 	tags = {"bosses", "combat", "minigame", "overlay", "prayer", "pve"}
+=======
+import java.time.temporal.ChronoUnit;
+import javax.inject.Inject;
+import net.runelite.api.Client;
+import net.runelite.api.GameState;
+import net.runelite.api.NPC;
+import net.runelite.api.Query;
+import net.runelite.api.queries.NPCQuery;
+import net.runelite.client.plugins.Plugin;
+import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.task.Schedule;
+import net.runelite.client.ui.overlay.Overlay;
+import net.runelite.client.util.QueryRunner;
+
+@PluginDescriptor(
+	name = "Fight Cave"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 public class FightCavePlugin extends Plugin
 {
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
+=======
+	private Client client;
+
+	@Inject
+	private QueryRunner queryRunner;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Inject
 	private FightCaveOverlay overlay;
 
+<<<<<<< HEAD
 	@Getter(AccessLevel.PACKAGE)
 	@Nullable
 	private JadAttack attack;
@@ -88,10 +114,46 @@ public class FightCavePlugin extends Plugin
 		if (jad == event.getNpc())
 		{
 			jad = null;
+=======
+	private JadAttack attack;
+
+	@Override
+	public Overlay getOverlay()
+	{
+		return overlay;
+	}
+
+	@Schedule(
+		period = 600,
+		unit = ChronoUnit.MILLIS
+	)
+	public void update()
+	{
+		if (client.getGameState() != GameState.LOGGED_IN)
+		{
+			return;
+		}
+
+		NPC jad = findJad();
+		if (jad != null)
+		{
+			if (jad.getAnimation() == JadAttack.MAGIC.getAnimation())
+			{
+				attack = JadAttack.MAGIC;
+			}
+			else if (jad.getAnimation() == JadAttack.RANGE.getAnimation())
+			{
+				attack = JadAttack.RANGE;
+			}
+		}
+		else
+		{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			attack = null;
 		}
 	}
 
+<<<<<<< HEAD
 	@Subscribe
 	public void onAnimationChanged(final AnimationChanged event)
 	{
@@ -108,5 +170,17 @@ public class FightCavePlugin extends Plugin
 		{
 			attack = JadAttack.RANGE;
 		}
+=======
+	private NPC findJad()
+	{
+		Query query = new NPCQuery().nameContains("TzTok-Jad");
+		NPC[] result = queryRunner.runQuery(query);
+		return result.length >= 1 ? result[0] : null;
+	}
+
+	JadAttack getAttack()
+	{
+		return attack;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

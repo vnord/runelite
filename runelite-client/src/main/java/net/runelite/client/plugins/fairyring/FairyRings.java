@@ -26,8 +26,15 @@
 
 package net.runelite.client.plugins.fairyring;
 
+<<<<<<< HEAD
 import lombok.Getter;
 
+=======
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public enum FairyRings
 {
 	// A
@@ -48,7 +55,11 @@ public enum FairyRings
 	BIQ("Kalphite Hive"),
 	BIS("Ardougne Zoo - Unicorns"),
 	BJR("Realm of the Fisher King"),
+<<<<<<< HEAD
 	BJS("(Island) Near Zul-Andra", "zulrah"),
+=======
+	BJS("(Island) Near Zul-Andra"),
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	BKP("South of Castle Wars"),
 	BKQ("Enchanted Valley"),
 	BKR("Mort Myre Swamp, south of Canifis"),
@@ -71,7 +82,11 @@ public enum FairyRings
 	// D
 	DIP("(Sire Boss) Abyssal Nexus"),
 	DIR("Gorak's Plane"),
+<<<<<<< HEAD
 	DIQ("Player-owned house", "poh home"),
+=======
+	DIQ("Player-owned house"),
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	DIS("Wizards' Tower"),
 	DJP("Tower of Life"),
 	DJR("Chasm of Fire"),
@@ -84,6 +99,7 @@ public enum FairyRings
 
 	@Getter
 	private final String destination;
+<<<<<<< HEAD
 
 	@Getter
 	private final String tags;
@@ -99,4 +115,6 @@ public enum FairyRings
 		this.tags = tags.toLowerCase() + " " + destination.toLowerCase();
 	}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

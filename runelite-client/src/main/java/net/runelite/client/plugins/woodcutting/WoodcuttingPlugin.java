@@ -26,6 +26,7 @@ package net.runelite.client.plugins.woodcutting;
 
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Provides;
+<<<<<<< HEAD
 import java.time.Duration;
 import java.time.Instant;
 import java.util.HashSet;
@@ -44,18 +45,30 @@ import net.runelite.api.events.GameObjectDespawned;
 import net.runelite.api.events.GameObjectSpawned;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
+=======
+import javax.inject.Inject;
+import net.runelite.api.ChatMessageType;
+import net.runelite.api.events.ChatMessage;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.Notifier;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDependency;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.xptracker.XpTrackerPlugin;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
 	name = "Woodcutting",
 	description = "Show woodcutting statistics and/or bird nest notifications",
 	tags = {"birds", "nest", "notifications", "overlay", "skilling", "wc"}
+=======
+import net.runelite.client.ui.overlay.Overlay;
+
+@PluginDescriptor(
+	name = "Woodcutting"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 @PluginDependency(XpTrackerPlugin.class)
 public class WoodcuttingPlugin extends Plugin
@@ -64,6 +77,7 @@ public class WoodcuttingPlugin extends Plugin
 	private Notifier notifier;
 
 	@Inject
+<<<<<<< HEAD
 	private Client client;
 
 	@Inject
@@ -86,6 +100,14 @@ public class WoodcuttingPlugin extends Plugin
 
 	@Getter
 	private final Set<GameObject> treeObjects = new HashSet<>();
+=======
+	private WoodcuttingOverlay overlay;
+
+	@Inject
+	private WoodcuttingConfig config;
+
+	private final WoodcuttingSession session = new WoodcuttingSession();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Provides
 	WoodcuttingConfig getConfig(ConfigManager configManager)
@@ -94,6 +116,7 @@ public class WoodcuttingPlugin extends Plugin
 	}
 
 	@Override
+<<<<<<< HEAD
 	protected void startUp() throws Exception
 	{
 		overlayManager.add(overlay);
@@ -126,6 +149,16 @@ public class WoodcuttingPlugin extends Plugin
 			session = null;
 			axe = null;
 		}
+=======
+	public Overlay getOverlay()
+	{
+		return overlay;
+	}
+
+	public WoodcuttingSession getSession()
+	{
+		return session;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe
@@ -135,11 +168,14 @@ public class WoodcuttingPlugin extends Plugin
 		{
 			if (event.getMessage().startsWith("You get some") && event.getMessage().endsWith("logs."))
 			{
+<<<<<<< HEAD
 				if (session == null)
 				{
 					session = new WoodcuttingSession();
 				}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				session.setLastLogCut();
 			}
 
@@ -149,6 +185,7 @@ public class WoodcuttingPlugin extends Plugin
 			}
 		}
 	}
+<<<<<<< HEAD
 
 	@Subscribe
 	public void onGameObjectSpawned(final GameObjectSpawned event)
@@ -201,3 +238,6 @@ public class WoodcuttingPlugin extends Plugin
 		}
 	}
 }
+=======
+}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b

@@ -31,6 +31,10 @@ class PendingLookup
 {
 	enum Type
 	{
+<<<<<<< HEAD
+=======
+		PRICE,
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		SEARCH,
 		ITEM;
 	}

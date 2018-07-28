@@ -97,12 +97,15 @@
       "xp": 65
     },
     {
+<<<<<<< HEAD
       "level": 40,
       "icon": 1629,
       "name": "Gem Rocks",
       "xp": 65
     },
     {
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
       "level": 45,
       "icon": 6979,
       "name": "Granite (500g)",

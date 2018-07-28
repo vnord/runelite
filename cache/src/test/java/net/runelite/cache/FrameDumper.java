@@ -37,6 +37,7 @@ import net.runelite.cache.definitions.FramemapDefinition;
 import net.runelite.cache.definitions.loaders.FrameLoader;
 import net.runelite.cache.definitions.loaders.FramemapLoader;
 import net.runelite.cache.fs.Archive;
+<<<<<<< HEAD
 import net.runelite.cache.fs.ArchiveFiles;
 import net.runelite.cache.fs.FSFile;
 import net.runelite.cache.fs.Index;
@@ -45,6 +46,12 @@ import net.runelite.cache.fs.Store;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
+=======
+import net.runelite.cache.fs.Index;
+import net.runelite.cache.fs.Storage;
+import net.runelite.cache.fs.Store;
+import org.junit.Rule;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import org.junit.rules.TemporaryFolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,8 +65,12 @@ public class FrameDumper
 
 	private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
+<<<<<<< HEAD
 	@Test
 	@Ignore
+=======
+	//@Test
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public void extract() throws IOException
 	{
 		File base = StoreLocation.LOCATION,
@@ -80,6 +91,7 @@ public class FrameDumper
 				List<FrameDefinition> frames = new ArrayList<>();
 
 				byte[] archiveData = storage.loadArchive(archive);
+<<<<<<< HEAD
 
 				ArchiveFiles archiveFiles = archive.getFiles(archiveData);
 				for (FSFile archiveFile : archiveFiles.getFiles())
@@ -100,6 +112,23 @@ public class FrameDumper
 
 					frames.add(frame);
 				}
+=======
+				byte[] contents = archive.decompress(archiveData);
+
+				int framemapArchiveId = (contents[0] & 0xff) << 8 | contents[1] & 0xff;
+
+				Archive framemapArchive = framemapIndex.getArchives().get(framemapArchiveId);
+				archiveData = storage.loadArchive(framemapArchive);
+				byte[] framemapContents = framemapArchive.decompress(archiveData);
+
+				FramemapLoader fmloader = new FramemapLoader();
+				FramemapDefinition framemap = fmloader.load(0, framemapContents);
+
+				FrameLoader frameLoader = new FrameLoader();
+				FrameDefinition frame = frameLoader.load(framemap, contents);
+
+				frames.add(frame);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 				Files.write(gson.toJson(frames), new File(outDir, archive.getArchiveId() + ".json"), Charset.defaultCharset());
 				++count;

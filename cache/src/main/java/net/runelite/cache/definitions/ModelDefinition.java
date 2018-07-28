@@ -1,6 +1,9 @@
 package net.runelite.cache.definitions;
 
+<<<<<<< HEAD
 import java.util.Arrays;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.cache.models.CircularAngle;
 import net.runelite.cache.models.FaceNormal;
 import net.runelite.cache.models.VertexNormal;
@@ -48,6 +51,7 @@ public class ModelDefinition
 	public byte[] aByteArray2580;
 	public short[] aShortArray2586;
 
+<<<<<<< HEAD
 	private transient int[][] vertexGroups;
 
 	private transient int[] origVX;
@@ -56,6 +60,8 @@ public class ModelDefinition
 
 	public static transient int animOffsetX, animOffsetY, animOffsetZ;
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public void computeNormals()
 	{
 		if (this.vertexNormals != null)
@@ -268,6 +274,7 @@ public class ModelDefinition
 		}
 	}
 
+<<<<<<< HEAD
 	public void computeAnimationTables()
 	{
 		if (this.vertexSkins != null)
@@ -305,6 +312,8 @@ public class ModelDefinition
 		// triangleSkinValues is here
 	}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public void rotate(int orientation)
 	{
 		int sin = CircularAngle.SINE[orientation];
@@ -322,6 +331,7 @@ public class ModelDefinition
 		reset();
 	}
 
+<<<<<<< HEAD
 	public void resetAnim()
 	{
 		if (origVX == null)
@@ -503,6 +513,8 @@ public class ModelDefinition
 		}
 	}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	public void method1493()
 	{
 		int var1;
@@ -601,6 +613,7 @@ public class ModelDefinition
 
 		}
 	}
+<<<<<<< HEAD
 
 	public void move(int xOffset, int yOffset, int zOffset)
 	{
@@ -612,4 +625,6 @@ public class ModelDefinition
 		}
 		this.reset();
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

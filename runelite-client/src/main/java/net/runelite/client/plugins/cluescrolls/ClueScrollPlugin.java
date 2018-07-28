@@ -33,6 +33,10 @@ import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Arrays;
+<<<<<<< HEAD
+=======
+import java.util.Collection;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.List;
 import java.util.stream.Stream;
 import javax.imageio.ImageIO;
@@ -49,7 +53,11 @@ import net.runelite.api.ItemComposition;
 import net.runelite.api.ItemContainer;
 import net.runelite.api.NPC;
 import net.runelite.api.Query;
+<<<<<<< HEAD
 import net.runelite.api.Scene;
+=======
+import net.runelite.api.Region;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.api.Tile;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
@@ -81,15 +89,23 @@ import net.runelite.client.plugins.cluescrolls.clues.MapClue;
 import net.runelite.client.plugins.cluescrolls.clues.NpcClueScroll;
 import net.runelite.client.plugins.cluescrolls.clues.ObjectClueScroll;
 import net.runelite.client.plugins.cluescrolls.clues.TextClueScroll;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
+=======
+import net.runelite.client.ui.overlay.Overlay;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.ui.overlay.worldmap.WorldMapPointManager;
 import net.runelite.client.util.QueryRunner;
 import net.runelite.client.util.Text;
 
 @PluginDescriptor(
+<<<<<<< HEAD
 	name = "Clue Scroll",
 	description = "Show answers to clue scroll riddles, anagrams, ciphers, and cryptic clues",
 	tags = {"arrow", "hints", "world", "map"}
+=======
+	name = "Clue Scroll"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 @Slf4j
 public class ClueScrollPlugin extends Plugin
@@ -114,9 +130,12 @@ public class ClueScrollPlugin extends Plugin
 	private Item[] equippedItems;
 
 	@Getter
+<<<<<<< HEAD
 	private Item[] inventoryItems;
 
 	@Getter
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private Instant clueTimeout;
 
 	@Inject
@@ -130,9 +149,12 @@ public class ClueScrollPlugin extends Plugin
 	private QueryRunner queryRunner;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private ClueScrollOverlay clueScrollOverlay;
 
 	@Inject
@@ -176,6 +198,7 @@ public class ClueScrollPlugin extends Plugin
 	}
 
 	@Override
+<<<<<<< HEAD
 	protected void startUp() throws Exception
 	{
 		overlayManager.add(clueScrollOverlay);
@@ -190,6 +213,17 @@ public class ClueScrollPlugin extends Plugin
 		overlayManager.remove(clueScrollEmoteOverlay);
 		overlayManager.remove(clueScrollWorldOverlay);
 		resetClue();
+=======
+	protected void shutDown() throws Exception
+	{
+		resetClue();
+	}
+
+	@Override
+	public Collection<Overlay> getOverlays()
+	{
+		return Arrays.asList(clueScrollOverlay, clueScrollEmoteOverlay, clueScrollWorldOverlay);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe
@@ -272,7 +306,10 @@ public class ClueScrollPlugin extends Plugin
 		npcsToMark = null;
 		objectsToMark = null;
 		equippedItems = null;
+<<<<<<< HEAD
 		inventoryItems = null;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 		if (clue instanceof LocationsClueScroll)
 		{
@@ -339,9 +376,15 @@ public class ClueScrollPlugin extends Plugin
 
 					if (localLocation != null)
 					{
+<<<<<<< HEAD
 						final Scene scene = client.getScene();
 						final Tile[][][] tiles = scene.getTiles();
 						final Tile tile = tiles[client.getPlane()][localLocation.getSceneX()][localLocation.getSceneY()];
+=======
+						final Region region = client.getRegion();
+						final Tile[][][] tiles = region.getTiles();
+						final Tile tile = tiles[client.getPlane()][localLocation.getRegionX()][localLocation.getRegionY()];
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 						objectsToMark = Arrays.stream(tile.getGameObjects())
 							.filter(object -> object != null && object.getId() == objectId)
@@ -359,6 +402,7 @@ public class ClueScrollPlugin extends Plugin
 
 		if (clue instanceof EmoteClue)
 		{
+<<<<<<< HEAD
 			ItemContainer equipment = client.getItemContainer(InventoryID.EQUIPMENT);
 			
 			if (equipment != null)
@@ -371,6 +415,13 @@ public class ClueScrollPlugin extends Plugin
 			if (inventory != null)
 			{
 				inventoryItems = inventory.getItems();
+=======
+			ItemContainer container = client.getItemContainer(InventoryID.EQUIPMENT);
+			
+			if (container != null)
+			{
+				equippedItems = container.getItems();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			}
 		}
 
@@ -447,7 +498,11 @@ public class ClueScrollPlugin extends Plugin
 					.replaceAll("[ ]+", " ")
 					.toLowerCase());
 
+<<<<<<< HEAD
 			if (clue instanceof TextClueScroll)
+=======
+			if (clue != null && clue instanceof TextClueScroll)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			{
 				if (((TextClueScroll) clue).getText().equalsIgnoreCase(text))
 				{

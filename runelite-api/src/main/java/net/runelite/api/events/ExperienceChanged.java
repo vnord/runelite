@@ -28,14 +28,21 @@ package net.runelite.api.events;
 import lombok.Data;
 import net.runelite.api.Skill;
 
+<<<<<<< HEAD
 /**
  * An event where the experience level of a {@link Skill} has been modified.
  */
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 @Data
 public class ExperienceChanged
 {
 	/**
+<<<<<<< HEAD
 	 * The modified skill.
+=======
+	 * The {@link Skill} that had its experience changed.
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	 */
 	private Skill skill;
 }

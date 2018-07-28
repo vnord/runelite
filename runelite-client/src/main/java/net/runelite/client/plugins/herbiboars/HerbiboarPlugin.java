@@ -27,6 +27,10 @@ package net.runelite.client.plugins.herbiboars;
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Provides;
 import java.util.Arrays;
+<<<<<<< HEAD
+=======
+import java.util.Collection;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -57,6 +61,7 @@ import net.runelite.api.events.VarbitChanged;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @Slf4j
@@ -64,6 +69,13 @@ import net.runelite.client.ui.overlay.OverlayManager;
 	name = "Herbiboar",
 	description = "Highlight starting rocks, trails, and the objects to search at the end of each trail",
 	tags = {"herblore", "hunter", "skilling", "overlay"}
+=======
+import net.runelite.client.ui.overlay.Overlay;
+
+@Slf4j
+@PluginDescriptor(
+	name = "Herbiboar"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 public class HerbiboarPlugin extends Plugin
 {
@@ -98,14 +110,32 @@ public class HerbiboarPlugin extends Plugin
 	private Client client;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private HerbiboarOverlay overlay;
 
 	@Inject
 	private HerbiboarMinimapOverlay minimapOverlay;
 
+<<<<<<< HEAD
+=======
+	@Override
+	public Collection<Overlay> getOverlays()
+	{
+		return Arrays.asList(overlay, minimapOverlay);
+	}
+
+	@Provides
+	HerbiboarConfig getConfig(ConfigManager configManager)
+	{
+		return configManager.getConfig(HerbiboarConfig.class);
+	}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Getter
 	private boolean inHerbiboarArea;
 
@@ -137,6 +167,7 @@ public class HerbiboarPlugin extends Plugin
 	@Setter
 	private int finishId;
 
+<<<<<<< HEAD
 	@Provides
 	HerbiboarConfig getConfig(ConfigManager configManager)
 	{
@@ -158,6 +189,14 @@ public class HerbiboarPlugin extends Plugin
 		overlayManager.remove(minimapOverlay);
 	}
 
+=======
+	@Override
+	protected void startUp() throws Exception
+	{
+		inHerbiboarArea = checkArea();
+	}
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private void updateTrailData()
 	{
 		currentTrail = null;

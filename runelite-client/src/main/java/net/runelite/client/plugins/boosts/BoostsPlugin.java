@@ -24,6 +24,7 @@
  */
 package net.runelite.client.plugins.boosts;
 
+<<<<<<< HEAD
 import com.google.common.collect.ImmutableSet;
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Provides;
@@ -43,10 +44,28 @@ import net.runelite.api.events.ConfigChanged;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.client.Notifier;
+=======
+import com.google.common.collect.ObjectArrays;
+import com.google.common.eventbus.Subscribe;
+import com.google.inject.Provides;
+import java.awt.image.BufferedImage;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
+import javax.inject.Inject;
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Client;
+import net.runelite.api.Skill;
+import net.runelite.api.events.BoostedLevelChanged;
+import net.runelite.api.events.ConfigChanged;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.game.SkillIconManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 
@@ -73,6 +92,32 @@ public class BoostsPlugin extends Plugin
 
 	@Inject
 	private Notifier notifier;
+=======
+import net.runelite.client.ui.overlay.Overlay;
+import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
+
+@PluginDescriptor(
+	name = "Boosts Information"
+)
+@Slf4j
+public class BoostsPlugin extends Plugin
+{
+	private static final Skill[] COMBAT = new Skill[]
+	{
+		Skill.ATTACK, Skill.STRENGTH, Skill.DEFENCE, Skill.RANGED, Skill.MAGIC
+	};
+	private static final Skill[] SKILLING = new Skill[]
+	{
+		Skill.MINING, Skill.AGILITY, Skill.SMITHING, Skill.HERBLORE, Skill.FISHING, Skill.THIEVING,
+		Skill.COOKING, Skill.CRAFTING, Skill.FIREMAKING, Skill.FLETCHING, Skill.WOODCUTTING, Skill.RUNECRAFT,
+		Skill.SLAYER, Skill.FARMING, Skill.CONSTRUCTION, Skill.HUNTER
+	};
+
+	private final int[] lastSkillLevels = new int[Skill.values().length - 1];
+
+	@Getter
+	private Instant lastChange;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Inject
 	private Client client;
@@ -81,9 +126,12 @@ public class BoostsPlugin extends Plugin
 	private InfoBoxManager infoBoxManager;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private BoostsOverlay boostsOverlay;
 
 	@Inject
@@ -93,6 +141,7 @@ public class BoostsPlugin extends Plugin
 	private SkillIconManager skillIconManager;
 
 	@Getter
+<<<<<<< HEAD
 	private final Set<Skill> shownSkills = new HashSet<>();
 
 	private boolean isChangedDown = false;
@@ -102,6 +151,13 @@ public class BoostsPlugin extends Plugin
 	private int lastChangeUp = -1;
 	private boolean preserveBeenActive = false;
 	private long lastTickMillis;
+=======
+	private Skill[] shownSkills;
+
+	private StatChangeIndicator statChangeIndicator;
+
+	private BufferedImage overallIcon;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Provides
 	BoostsConfig provideConfig(ConfigManager configManager)
@@ -110,6 +166,7 @@ public class BoostsPlugin extends Plugin
 	}
 
 	@Override
+<<<<<<< HEAD
 	protected void startUp() throws Exception
 	{
 		overlayManager.add(boostsOverlay);
@@ -156,6 +213,25 @@ public class BoostsPlugin extends Plugin
 				lastChangeDown = -1;
 				lastChangeUp = -1;
 		}
+=======
+	public Overlay getOverlay()
+	{
+		return boostsOverlay;
+	}
+
+	@Override
+	protected void startUp()
+	{
+		updateShownSkills(config.enableSkill());
+		Arrays.fill(lastSkillLevels, -1);
+		overallIcon = skillIconManager.getSkillImage(Skill.OVERALL);
+	}
+
+	@Override
+	protected void shutDown() throws Exception
+	{
+		infoBoxManager.removeIf(t -> t instanceof BoostIndicator || t instanceof StatChangeIndicator);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Subscribe
@@ -166,6 +242,7 @@ public class BoostsPlugin extends Plugin
 			return;
 		}
 
+<<<<<<< HEAD
 		updateShownSkills();
 
 		if (config.displayNextBuffChange() == BoostsConfig.DisplayChangeMode.NEVER)
@@ -176,15 +253,39 @@ public class BoostsPlugin extends Plugin
 		if (config.displayNextDebuffChange() == BoostsConfig.DisplayChangeMode.NEVER)
 		{
 			lastChangeUp = -1;
+=======
+		if (event.getKey().equals("displayIndicators") || event.getKey().equals("displayNextChange"))
+		{
+			addStatChangeIndicator();
+			return;
+		}
+
+		Skill[] old = shownSkills;
+		updateShownSkills(config.enableSkill());
+
+		if (!Arrays.equals(old, shownSkills))
+		{
+			infoBoxManager.removeIf(t -> t instanceof BoostIndicator
+				&& !Arrays.asList(shownSkills).contains(((BoostIndicator) t).getSkill()));
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 	}
 
 	@Subscribe
+<<<<<<< HEAD
 	public void onBoostedLevelChange(BoostedLevelChanged boostedLevelChanged)
 	{
 		Skill skill = boostedLevelChanged.getSkill();
 
 		if (!BOOSTABLE_COMBAT_SKILLS.contains(skill) && !BOOSTABLE_NON_COMBAT_SKILLS.contains(skill))
+=======
+	void onBoostedLevelChange(BoostedLevelChanged boostedLevelChanged)
+	{
+		Skill skill = boostedLevelChanged.getSkill();
+
+		// Ignore changes to hitpoints or prayer
+		if (skill == Skill.HITPOINTS || skill == Skill.PRAYER)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		{
 			return;
 		}
@@ -193,6 +294,7 @@ public class BoostsPlugin extends Plugin
 		int last = lastSkillLevels[skillIdx];
 		int cur = client.getBoostedSkillLevel(skill);
 
+<<<<<<< HEAD
 		if (cur == last - 1)
 		{
 			// Stat was restored down (from buff)
@@ -377,5 +479,46 @@ public class BoostsPlugin extends Plugin
 	{
 		final long diff = System.currentTimeMillis() - lastTickMillis;
 		return time != -1 ? (int)(time * 0.6 - (diff / 1000d)) : time;
+=======
+		// Check if stat goes +1 or -2
+		if (cur == last + 1 || cur == last - 1)
+		{
+			log.debug("Skill {} healed", skill);
+			lastChange = Instant.now();
+			addStatChangeIndicator();
+		}
+		lastSkillLevels[skillIdx] = cur;
+	}
+
+	private void updateShownSkills(boolean showSkillingSkills)
+	{
+		if (showSkillingSkills)
+		{
+			shownSkills = ObjectArrays.concat(COMBAT, SKILLING, Skill.class);
+		}
+		else
+		{
+			shownSkills = COMBAT;
+		}
+	}
+
+	public void addStatChangeIndicator()
+	{
+		infoBoxManager.removeInfoBox(statChangeIndicator);
+		statChangeIndicator = null;
+
+		if (lastChange != null
+			&& config.displayIndicators()
+			&& config.displayNextChange())
+		{
+			statChangeIndicator = new StatChangeIndicator(getChangeTime(), ChronoUnit.SECONDS, overallIcon, this);
+			infoBoxManager.addInfoBox(statChangeIndicator);
+		}
+	}
+
+	public int getChangeTime()
+	{
+		return 60 - (int) Duration.between(lastChange, Instant.now()).getSeconds();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

@@ -24,7 +24,10 @@
  */
 package net.runelite.client.plugins;
 
+<<<<<<< HEAD
 import com.google.common.annotations.VisibleForTesting;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.eventbus.EventBus;
@@ -37,6 +40,10 @@ import com.google.common.reflect.ClassPath;
 import com.google.common.reflect.ClassPath.ClassInfo;
 import com.google.inject.Binder;
 import com.google.inject.CreationException;
+<<<<<<< HEAD
+=======
+import com.google.inject.Inject;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import com.google.inject.Injector;
 import com.google.inject.Key;
 import com.google.inject.Module;
@@ -52,8 +59,11 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.stream.Collectors;
+<<<<<<< HEAD
 import javax.inject.Inject;
 import javax.inject.Named;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import javax.inject.Singleton;
 import javax.swing.SwingUtilities;
 import lombok.Setter;
@@ -69,7 +79,11 @@ import net.runelite.client.events.PluginChanged;
 import net.runelite.client.task.Schedule;
 import net.runelite.client.task.ScheduledMethod;
 import net.runelite.client.task.Scheduler;
+<<<<<<< HEAD
 import net.runelite.client.util.SceneTileManager;
+=======
+import net.runelite.client.util.RegionTileManager;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 @Singleton
 @Slf4j
@@ -80,6 +94,7 @@ public class PluginManager
 	 */
 	private static final String PLUGIN_PACKAGE = "net.runelite.client.plugins";
 
+<<<<<<< HEAD
 	private final boolean developerMode;
 	private final EventBus eventBus;
 	private final Scheduler scheduler;
@@ -90,10 +105,27 @@ public class PluginManager
 	private final List<Plugin> activePlugins = new CopyOnWriteArrayList<>();
 	private final String runeliteGroupName = RuneLiteConfig.class
 			.getAnnotation(ConfigGroup.class).value();
+=======
+	@Inject
+	EventBus eventBus;
+
+	@Inject
+	Scheduler scheduler;
+
+	@Inject
+	ConfigManager configManager;
+
+	@Inject
+	ScheduledExecutorService executor;
+
+	@Inject
+	RegionTileManager regionTileManager;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Setter
 	boolean isOutdated;
 
+<<<<<<< HEAD
 	@Inject
 	@VisibleForTesting
 	PluginManager(
@@ -111,6 +143,12 @@ public class PluginManager
 		this.executor = executor;
 		this.sceneTileManager = sceneTileManager;
 	}
+=======
+	private final List<Plugin> plugins = new CopyOnWriteArrayList<>();
+	private final List<Plugin> activePlugins = new CopyOnWriteArrayList<>();
+	private final String runeliteGroupName = RuneLiteConfig.class
+			.getAnnotation(ConfigGroup.class).keyName();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Subscribe
 	public void onSessionOpen(SessionOpen event)
@@ -215,6 +253,11 @@ public class PluginManager
 
 	List<Plugin> scanAndInstantiate(ClassLoader classLoader, String packageName) throws IOException
 	{
+<<<<<<< HEAD
+=======
+		boolean developerPlugins = RuneLite.getOptions().has("developer-mode");
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		MutableGraph<Class<? extends Plugin>> graph = GraphBuilder
 			.directed()
 			.build();
@@ -251,7 +294,11 @@ public class PluginManager
 				continue;
 			}
 
+<<<<<<< HEAD
 			if (pluginDescriptor.developerPlugin() && !developerMode)
+=======
+			if (pluginDescriptor.developerPlugin() && !developerPlugins)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			{
 				continue;
 			}
@@ -323,7 +370,11 @@ public class PluginManager
 			});
 
 			log.debug("Plugin {} is now running", plugin.getClass().getSimpleName());
+<<<<<<< HEAD
 			sceneTileManager.simulateObjectSpawns(plugin);
+=======
+			regionTileManager.simulateObjectSpawns(plugin);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			eventBus.register(plugin);
 			schedule(plugin);
 			eventBus.post(new PluginChanged(plugin, true));

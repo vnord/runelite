@@ -31,16 +31,21 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ScheduledExecutorService;
+<<<<<<< HEAD
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.inject.Inject;
 import lombok.Value;
+=======
+import javax.inject.Inject;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.MessageNode;
+<<<<<<< HEAD
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.SetMessage;
@@ -59,18 +64,33 @@ import net.runelite.client.events.ChatboxInput;
 import net.runelite.client.events.PrivateMessageInput;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.input.KeyManager;
+=======
+import net.runelite.api.events.ConfigChanged;
+import net.runelite.api.events.GameStateChanged;
+import net.runelite.api.events.SetMessage;
+import net.runelite.client.chat.ChatColor;
+import net.runelite.client.chat.ChatColorType;
+import net.runelite.client.chat.ChatMessageBuilder;
+import net.runelite.client.chat.ChatMessageManager;
+import net.runelite.client.config.ConfigManager;
+import net.runelite.client.game.ItemManager;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.util.StackFormatter;
 import net.runelite.http.api.hiscore.HiscoreClient;
+<<<<<<< HEAD
 import net.runelite.http.api.hiscore.HiscoreEndpoint;
 import net.runelite.http.api.hiscore.HiscoreResult;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.http.api.hiscore.HiscoreSkill;
 import net.runelite.http.api.hiscore.SingleHiscoreSkillResult;
 import net.runelite.http.api.hiscore.Skill;
 import net.runelite.http.api.item.Item;
 import net.runelite.http.api.item.ItemPrice;
 import net.runelite.http.api.item.SearchResult;
+<<<<<<< HEAD
 import net.runelite.http.api.kc.KillCountClient;
 
 @PluginDescriptor(
@@ -91,6 +111,18 @@ public class ChatCommandsPlugin extends Plugin implements ChatboxInputListener
 	private final KillCountClient killCountClient = new KillCountClient();
 
 	private boolean logKills;
+=======
+
+@PluginDescriptor(
+	name = "Chat Commands"
+)
+@Slf4j
+public class ChatCommandsPlugin extends Plugin
+{
+	private static final float HIGH_ALCHEMY_CONSTANT = 0.6f;
+
+	private final HiscoreClient hiscoreClient = new HiscoreClient();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	@Inject
 	private Client client;
@@ -99,9 +131,12 @@ public class ChatCommandsPlugin extends Plugin implements ChatboxInputListener
 	private ChatCommandsConfig config;
 
 	@Inject
+<<<<<<< HEAD
 	private ConfigManager configManager;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private ItemManager itemManager;
 
 	@Inject
@@ -110,6 +145,7 @@ public class ChatCommandsPlugin extends Plugin implements ChatboxInputListener
 	@Inject
 	private ScheduledExecutorService executor;
 
+<<<<<<< HEAD
 	@Inject
 	private KeyManager keyManager;
 
@@ -131,6 +167,13 @@ public class ChatCommandsPlugin extends Plugin implements ChatboxInputListener
 	{
 		keyManager.unregisterKeyListener(chatKeyboardListener);
 		commandManager.unregister(this);
+=======
+	@Override
+	protected void startUp()
+	{
+		cacheConfiguredColors();
+		chatMessageManager.refreshAll();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Provides
@@ -139,6 +182,7 @@ public class ChatCommandsPlugin extends Plugin implements ChatboxInputListener
 		return configManager.getConfig(ChatCommandsConfig.class);
 	}
 
+<<<<<<< HEAD
 	private void setKc(String boss, int killcount)
 	{
 		configManager.setConfiguration("killcount." + client.getUsername().toLowerCase(),
@@ -150,6 +194,54 @@ public class ChatCommandsPlugin extends Plugin implements ChatboxInputListener
 		Integer killCount = configManager.getConfiguration("killcount." + client.getUsername().toLowerCase(),
 			boss.toLowerCase(), int.class);
 		return killCount == null ? 0 : killCount;
+=======
+	@Subscribe
+	public void onGameStateChange(GameStateChanged event)
+	{
+		if (event.getGameState().equals(GameState.LOGIN_SCREEN))
+		{
+			cacheConfiguredColors();
+		}
+	}
+
+	@Subscribe
+	public void onConfigChanged(ConfigChanged event)
+	{
+		if (event.getGroup().equals("chatcommands"))
+		{
+			cacheConfiguredColors();
+			chatMessageManager.refreshAll();
+		}
+	}
+
+	private void cacheConfiguredColors()
+	{
+		chatMessageManager
+			.cacheColor(new ChatColor(ChatColorType.NORMAL, config.getPublicRecolor(), false),
+				ChatMessageType.PUBLIC)
+			.cacheColor(new ChatColor(ChatColorType.HIGHLIGHT, config.getPublicHRecolor(), false),
+				ChatMessageType.PUBLIC)
+			.cacheColor(new ChatColor(ChatColorType.NORMAL, config.getPrivateRecolor(), false),
+				ChatMessageType.PRIVATE_MESSAGE_SENT, ChatMessageType.PRIVATE_MESSAGE_RECEIVED)
+			.cacheColor(new ChatColor(ChatColorType.HIGHLIGHT, config.getPrivateHRecolor(), false),
+				ChatMessageType.PRIVATE_MESSAGE_SENT, ChatMessageType.PRIVATE_MESSAGE_RECEIVED)
+			.cacheColor(new ChatColor(ChatColorType.NORMAL, config.getCcRecolor(), false),
+				ChatMessageType.CLANCHAT)
+			.cacheColor(new ChatColor(ChatColorType.HIGHLIGHT, config.getCcHRecolor(), false),
+				ChatMessageType.CLANCHAT)
+			.cacheColor(new ChatColor(ChatColorType.NORMAL, config.getTransparentPublicRecolor(), true),
+				ChatMessageType.PUBLIC)
+			.cacheColor(new ChatColor(ChatColorType.HIGHLIGHT, config.getTransparentPublicHRecolor(), true),
+				ChatMessageType.PUBLIC)
+			.cacheColor(new ChatColor(ChatColorType.NORMAL, config.getTransparentPrivateRecolor(), true),
+				ChatMessageType.PRIVATE_MESSAGE_SENT, ChatMessageType.PRIVATE_MESSAGE_RECEIVED)
+			.cacheColor(new ChatColor(ChatColorType.HIGHLIGHT, config.getTransparentPrivateHRecolor(), true),
+				ChatMessageType.PRIVATE_MESSAGE_SENT, ChatMessageType.PRIVATE_MESSAGE_RECEIVED)
+			.cacheColor(new ChatColor(ChatColorType.NORMAL, config.getTransparentCcRecolor(), true),
+				ChatMessageType.CLANCHAT)
+			.cacheColor(new ChatColor(ChatColorType.HIGHLIGHT, config.getTransparentCcHRecolor(), true),
+				ChatMessageType.CLANCHAT);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	/**
@@ -168,7 +260,10 @@ public class ChatCommandsPlugin extends Plugin implements ChatboxInputListener
 		switch (setMessage.getType())
 		{
 			case PUBLIC:
+<<<<<<< HEAD
 			case PUBLIC_MOD:
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			case CLANCHAT:
 			case PRIVATE_MESSAGE_RECEIVED:
 			case PRIVATE_MESSAGE_SENT:
@@ -187,13 +282,21 @@ public class ChatCommandsPlugin extends Plugin implements ChatboxInputListener
 		if (config.lvl() && message.toLowerCase().equals("!total"))
 		{
 			log.debug("Running total level lookup");
+<<<<<<< HEAD
 			executor.submit(() -> playerSkillLookup(setMessage, "total"));
+=======
+			executor.submit(() -> playerSkillLookup(setMessage.getType(), setMessage, "total"));
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 		else if (config.price() && message.toLowerCase().startsWith("!price") && message.length() > 7)
 		{
 			String search = message.substring(7);
 
 			log.debug("Running price lookup for {}", search);
+<<<<<<< HEAD
+=======
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			executor.submit(() -> itemPriceLookup(setMessage.getMessageNode(), search));
 		}
 		else if (config.lvl() && message.toLowerCase().startsWith("!lvl") && message.length() > 5)
@@ -201,6 +304,7 @@ public class ChatCommandsPlugin extends Plugin implements ChatboxInputListener
 			String search = message.substring(5);
 
 			log.debug("Running level lookup for {}", search);
+<<<<<<< HEAD
 			executor.submit(() -> playerSkillLookup(setMessage, search));
 		}
 		else if (config.clue() && message.toLowerCase().equals("!clues"))
@@ -435,6 +539,10 @@ public class ChatCommandsPlugin extends Plugin implements ChatboxInputListener
 		messageNode.setRuneLiteFormatMessage(response);
 		chatMessageManager.update(messageNode);
 		client.refreshChat();
+=======
+			executor.submit(() -> playerSkillLookup(setMessage.getType(), setMessage, search));
+		}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	/**
@@ -442,7 +550,11 @@ public class ChatCommandsPlugin extends Plugin implements ChatboxInputListener
 	 * response.
 	 *
 	 * @param messageNode The chat message containing the command.
+<<<<<<< HEAD
 	 * @param search      The item given with the command.
+=======
+	 * @param search The item given with the command.
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	 */
 	private void itemPriceLookup(MessageNode messageNode, String search)
 	{
@@ -468,7 +580,21 @@ public class ChatCommandsPlugin extends Plugin implements ChatboxInputListener
 			}
 
 			int itemId = item.getId();
+<<<<<<< HEAD
 			ItemPrice itemPrice = itemManager.getItemPrice(itemId);
+=======
+			ItemPrice itemPrice;
+
+			try
+			{
+				itemPrice = itemManager.getItemPrice(itemId);
+			}
+			catch (IOException ex)
+			{
+				log.warn("Unable to fetch item price for {}", itemId, ex);
+				return;
+			}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 			final ChatMessageBuilder builder = new ChatMessageBuilder()
 				.append(ChatColorType.NORMAL)
@@ -505,12 +631,32 @@ public class ChatCommandsPlugin extends Plugin implements ChatboxInputListener
 	 * response.
 	 *
 	 * @param setMessage The chat message containing the command.
+<<<<<<< HEAD
 	 * @param search     The item given with the command.
 	 */
 	private void playerSkillLookup(SetMessage setMessage, String search)
 	{
 		search = SkillAbbreviations.getFullName(search);
 		final HiscoreSkill skill;
+=======
+	 * @param search The item given with the command.
+	 */
+	private void playerSkillLookup(ChatMessageType type, SetMessage setMessage, String search)
+	{
+		search = SkillAbbreviations.getFullName(search);
+
+		String player;
+		if (type.equals(ChatMessageType.PRIVATE_MESSAGE_SENT))
+		{
+			player = client.getLocalPlayer().getName();
+		}
+		else
+		{
+			player = sanitize(setMessage.getName());
+		}
+
+		HiscoreSkill skill;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		try
 		{
 			skill = HiscoreSkill.valueOf(search.toUpperCase());
@@ -520,6 +666,7 @@ public class ChatCommandsPlugin extends Plugin implements ChatboxInputListener
 			return;
 		}
 
+<<<<<<< HEAD
 		final HiscoreLookup lookup = getCorrectLookupFor(setMessage);
 
 		try
@@ -528,6 +675,14 @@ public class ChatCommandsPlugin extends Plugin implements ChatboxInputListener
 			final Skill hiscoreSkill = result.getSkill();
 
 			final String response = new ChatMessageBuilder()
+=======
+		try
+		{
+			SingleHiscoreSkillResult result = hiscoreClient.lookup(player, skill);
+			Skill hiscoreSkill = result.getSkill();
+
+			String response = new ChatMessageBuilder()
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				.append(ChatColorType.NORMAL)
 				.append("Level ")
 				.append(ChatColorType.HIGHLIGHT)
@@ -555,6 +710,7 @@ public class ChatCommandsPlugin extends Plugin implements ChatboxInputListener
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Looks up the quantities of clues completed
 	 * for the requested clue-level (no arg if requesting total)
 	 * easy, medium, hard, elite, master
@@ -663,11 +819,17 @@ public class ChatCommandsPlugin extends Plugin implements ChatboxInputListener
 	}
 
 	/**
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	 * Compares the names of the items in the list with the original input.
 	 * Returns the item if its name is equal to the original input or null
 	 * if it can't find the item.
 	 *
+<<<<<<< HEAD
 	 * @param items         List of items.
+=======
+	 * @param items List of items.
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	 * @param originalInput String with the original input.
 	 * @return Item which has a name equal to the original input.
 	 */
@@ -695,6 +857,7 @@ public class ChatCommandsPlugin extends Plugin implements ChatboxInputListener
 		String cleaned = lookup.contains("<img") ? lookup.substring(lookup.lastIndexOf('>') + 1) : lookup;
 		return cleaned.replace('\u00A0', ' ');
 	}
+<<<<<<< HEAD
 
 	/**
 	 * Looks up the ironman status of the local player. Does NOT work on other players.
@@ -868,4 +1031,6 @@ public class ChatCommandsPlugin extends Plugin implements ChatboxInputListener
 				return boss;
 		}
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

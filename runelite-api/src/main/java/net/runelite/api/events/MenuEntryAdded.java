@@ -27,13 +27,17 @@ package net.runelite.api.events;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+<<<<<<< HEAD
 /**
  * An event when a new entry is added to a right-click menu.
  */
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 @Data
 @AllArgsConstructor
 public class MenuEntryAdded
 {
+<<<<<<< HEAD
 	/**
 	 * The option text added to the menu (ie. "Walk here", "Use").
 	 */
@@ -61,4 +65,12 @@ public class MenuEntryAdded
 	 * A second additional parameter for the action.
 	 */
 	private final int actionParam1;
+=======
+	private String option;
+	private String target;
+	private int type;
+	private int identifier;
+	private int actionParam0;
+	private int actionParam1;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

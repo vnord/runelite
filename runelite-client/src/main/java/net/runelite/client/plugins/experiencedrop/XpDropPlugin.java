@@ -41,6 +41,7 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 
 @PluginDescriptor(
+<<<<<<< HEAD
 	name = "XP Drop",
 	description = "Enable customization of the way XP drops are displayed",
 	tags = {"experience", "levels"}
@@ -49,6 +50,12 @@ public class XpDropPlugin extends Plugin
 {
 	private static final int XPDROP_PADDING = 2; // space between xp drop icons
 
+=======
+	name = "XP Drop"
+)
+public class XpDropPlugin extends Plugin
+{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Inject
 	private Client client;
 
@@ -78,6 +85,7 @@ public class XpDropPlugin extends Plugin
 			return;
 		}
 
+<<<<<<< HEAD
 		if (config.hideSkillIcons())
 		{
 			if (widget.getSpriteId() > 0)
@@ -119,6 +127,12 @@ public class XpDropPlugin extends Plugin
 						break;
 				}
 			}
+=======
+		if (config.hideSkillIcons() && widget.getSpriteId() > 0)
+		{
+			widget.setHidden(true);
+			return;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		}
 
 		PrayerType prayer = getActivePrayerType();

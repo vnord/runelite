@@ -32,30 +32,42 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Arrays;
 import javax.imageio.ImageIO;
+<<<<<<< HEAD
 import net.runelite.api.Client;
 import net.runelite.api.Experience;
 import net.runelite.api.Skill;
 import net.runelite.api.events.ConfigChanged;
 import net.runelite.api.events.ExperienceChanged;
+=======
+import net.runelite.api.events.ConfigChanged;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.worldmap.WorldMapPointManager;
 
 @PluginDescriptor(
+<<<<<<< HEAD
 	name = "World Map",
 	description = "Enhance the world map to display additional information",
 	tags = {"agility", "fairy", "rings", "teleports"}
+=======
+	name = "World Map"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 public class WorldMapPlugin extends Plugin
 {
 	static final BufferedImage BLANK_ICON;
 	static final BufferedImage FAIRY_TRAVEL_ICON;
+<<<<<<< HEAD
 	static final BufferedImage NOPE_ICON;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	static final String CONFIG_KEY = "worldmap";
 	static final String CONFIG_KEY_FAIRY_RING_TOOLTIPS = "fairyRingTooltips";
 	static final String CONFIG_KEY_FAIRY_RING_ICON = "fairyRingIcon";
+<<<<<<< HEAD
 	static final String CONFIG_KEY_AGILITY_SHORTCUT_TOOLTIPS = "agilityShortcutTooltips";
 	static final String CONFIG_KEY_AGILITY_SHORTCUT_LEVEL_ICON = "agilityShortcutIcon";
 	static final String CONFIG_KEY_NORMAL_TELEPORT_ICON = "standardSpellbookIcon";
@@ -65,6 +77,8 @@ public class WorldMapPlugin extends Plugin
 	static final String CONFIG_KEY_JEWELLERY_TELEPORT_ICON = "jewelleryIcon";
 	static final String CONFIG_KEY_SCROLL_TELEPORT_ICON = "scrollIcon";
 	static final String CONFIG_KEY_MISC_TELEPORT_ICON = "miscellaneousTeleportIcon";
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 	static
 	{
@@ -80,10 +94,13 @@ public class WorldMapPlugin extends Plugin
 				FAIRY_TRAVEL_ICON = new BufferedImage(iconBufferSize, iconBufferSize, BufferedImage.TYPE_INT_ARGB);
 				final BufferedImage icon = ImageIO.read(WorldMapPlugin.class.getResourceAsStream("fairy_ring_travel.png"));
 				FAIRY_TRAVEL_ICON.getGraphics().drawImage(icon, 1, 1, null);
+<<<<<<< HEAD
 
 				NOPE_ICON = new BufferedImage(iconBufferSize, iconBufferSize, BufferedImage.TYPE_INT_ARGB);
 				final BufferedImage nopeImage = ImageIO.read(WorldMapPlugin.class.getResourceAsStream("nope_icon.png"));
 				NOPE_ICON.getGraphics().drawImage(nopeImage, 1, 1, null);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			}
 		}
 		catch (IOException e)
@@ -93,16 +110,22 @@ public class WorldMapPlugin extends Plugin
 	}
 
 	@Inject
+<<<<<<< HEAD
 	private Client client;
 
 	@Inject
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private WorldMapConfig config;
 
 	@Inject
 	private WorldMapPointManager worldMapPointManager;
 
+<<<<<<< HEAD
 	private int agilityLevel = 0;
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Provides
 	WorldMapConfig provideConfig(ConfigManager configManager)
 	{
@@ -131,6 +154,7 @@ public class WorldMapPlugin extends Plugin
 				case CONFIG_KEY_FAIRY_RING_ICON:
 					FairyRingLocation.setIcon(config.fairyRingIcon() ? FAIRY_TRAVEL_ICON : BLANK_ICON);
 					break;
+<<<<<<< HEAD
 				case CONFIG_KEY_AGILITY_SHORTCUT_TOOLTIPS:
 				case CONFIG_KEY_AGILITY_SHORTCUT_LEVEL_ICON:
 					worldMapPointManager.removeIf(AgilityShortcutPoint.class::isInstance);
@@ -153,6 +177,8 @@ public class WorldMapPlugin extends Plugin
 					worldMapPointManager.removeIf(TeleportPoint.class::isInstance);
 					createMagicTeleportPoints();
 					break;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			}
 		}
 	}
@@ -168,6 +194,7 @@ public class WorldMapPlugin extends Plugin
 				.map(FairyRingLocation::getFairyRingPoint)
 				.forEach(worldMapPointManager::add);
 		}
+<<<<<<< HEAD
 		if (config.agilityShortcutTooltips())
 		{
 			Arrays.stream(AgilityShortcutLocation.values())
@@ -185,12 +212,15 @@ public class WorldMapPlugin extends Plugin
 		{
 			createMagicTeleportPoints();
 		}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
 		worldMapPointManager.removeIf(FairyRingPoint.class::isInstance);
+<<<<<<< HEAD
 		worldMapPointManager.removeIf(AgilityShortcutPoint.class::isInstance);
 		worldMapPointManager.removeIf(TeleportPoint.class::isInstance);
 	}
@@ -239,5 +269,7 @@ public class WorldMapPlugin extends Plugin
 				}
 			}).map(TeleportPoint::new)
 			.forEach(worldMapPointManager::add);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

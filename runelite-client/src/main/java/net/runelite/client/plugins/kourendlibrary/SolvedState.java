@@ -24,7 +24,11 @@
  */
 package net.runelite.client.plugins.kourendlibrary;
 
+<<<<<<< HEAD
 enum SolvedState
+=======
+public enum SolvedState
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 {
 	NO_DATA,
 	INCOMPLETE,

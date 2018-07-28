@@ -24,7 +24,11 @@
  */
 package net.runelite.client.plugins.xptracker;
 
+<<<<<<< HEAD
 import net.runelite.api.WorldType;
+=======
+import net.runelite.http.api.worlds.WorldType;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 enum XpWorldType
 {
@@ -32,7 +36,11 @@ enum XpWorldType
 	DMM,
 	SDMM;
 
+<<<<<<< HEAD
 	static XpWorldType of(WorldType type)
+=======
+	public static XpWorldType of(WorldType type)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		switch (type)
 		{

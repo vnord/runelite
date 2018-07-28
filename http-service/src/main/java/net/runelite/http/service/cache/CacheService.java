@@ -43,10 +43,14 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
+<<<<<<< HEAD
 import net.runelite.cache.ConfigType;
 import net.runelite.cache.IndexType;
 import net.runelite.cache.definitions.ItemDefinition;
 import net.runelite.cache.definitions.loaders.ItemLoader;
+=======
+import net.runelite.cache.IndexType;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import net.runelite.cache.fs.ArchiveFiles;
 import net.runelite.cache.fs.Container;
 import net.runelite.cache.fs.FSFile;
@@ -229,6 +233,7 @@ public class CacheService
 			return cacheDao.findArchiveByName(con, cache, index, nameHash);
 		}
 	}
+<<<<<<< HEAD
 
 	public List<ItemDefinition> getItems() throws IOException
 	{
@@ -245,4 +250,6 @@ public class CacheService
 		}
 		return result;
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

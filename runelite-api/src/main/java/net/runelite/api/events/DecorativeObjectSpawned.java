@@ -28,6 +28,7 @@ import lombok.Data;
 import net.runelite.api.DecorativeObject;
 import net.runelite.api.Tile;
 
+<<<<<<< HEAD
 /**
  * An event where a {@link DecorativeObject} is attached to a {@link Tile}.
  */
@@ -41,5 +42,11 @@ public class DecorativeObjectSpawned
 	/**
 	 * The newly spawned decorative object.
 	 */
+=======
+@Data
+public class DecorativeObjectSpawned
+{
+	private Tile tile;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private DecorativeObject decorativeObject;
 }

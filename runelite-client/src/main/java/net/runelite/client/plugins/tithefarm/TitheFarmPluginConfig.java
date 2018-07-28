@@ -29,11 +29,33 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
+<<<<<<< HEAD
 @ConfigGroup("tithefarmplugin")
+=======
+@ConfigGroup(
+	keyName = "tithefarmplugin",
+	name = "Tithe Farm",
+	description = "Configuration for the Tithe Farm plugin"
+)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public interface TitheFarmPluginConfig extends Config
 {
 	@ConfigItem(
 		position = 0,
+<<<<<<< HEAD
+=======
+		keyName = "showWateringCanOverlay",
+		name = "Show watering can doses",
+		description = "Configures whether or not the watering can doses are displayed"
+	)
+	default boolean showWateringCanOverlay()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+		position = 1,
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		keyName = "showSack",
 		name = "Show fruit sack",
 		description = "Configures whether or not the fruit sack is displayed"
@@ -44,7 +66,11 @@ public interface TitheFarmPluginConfig extends Config
 	}
 
 	@ConfigItem(
+<<<<<<< HEAD
 		position = 1,
+=======
+		position = 2,
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		keyName = "hexColorUnwatered",
 		name = "Unwatered plant",
 		description = "Color of unwatered plant timer"
@@ -55,7 +81,11 @@ public interface TitheFarmPluginConfig extends Config
 	}
 
 	@ConfigItem(
+<<<<<<< HEAD
 		position = 2,
+=======
+		position = 3,
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		keyName = "hexColorWatered",
 		name = "Watered plant",
 		description = "Color of watered plant timer"
@@ -66,7 +96,11 @@ public interface TitheFarmPluginConfig extends Config
 	}
 
 	@ConfigItem(
+<<<<<<< HEAD
 		position = 3,
+=======
+		position = 4,
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		keyName = "hexColorGrown",
 		name = "Grown plant",
 		description = "Color of grown plant timer"

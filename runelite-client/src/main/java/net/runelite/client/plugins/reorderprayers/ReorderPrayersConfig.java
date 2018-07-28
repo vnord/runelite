@@ -29,7 +29,15 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
+<<<<<<< HEAD
 @ConfigGroup(ReorderPrayersPlugin.CONFIG_GROUP_KEY)
+=======
+@ConfigGroup(
+	keyName = ReorderPrayersPlugin.CONFIG_GROUP_KEY,
+	name = "Reorder Prayers",
+	description = "Configuration for the data orb regeneration meters"
+)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public interface ReorderPrayersConfig extends Config
 {
 

@@ -24,6 +24,7 @@
  */
 package net.runelite.api;
 
+<<<<<<< HEAD
 /**
  * Represents tile collision data for the scene
  */
@@ -42,5 +43,9 @@ public interface CollisionData
 	 * @return all collision flags for the tiles in the scene
 	 * @see Constants#SCENE_SIZE
 	 */
+=======
+public interface CollisionData
+{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	int[][] getFlags();
 }

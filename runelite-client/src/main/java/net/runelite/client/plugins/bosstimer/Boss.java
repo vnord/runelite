@@ -31,11 +31,15 @@ import java.util.HashMap;
 import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ItemID;
+<<<<<<< HEAD
 import net.runelite.api.NpcID;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 @Slf4j
 enum Boss
 {
+<<<<<<< HEAD
 	GENERAL_GRAARDOR(NpcID.GENERAL_GRAARDOR, 90, ChronoUnit.SECONDS, ItemID.PET_GENERAL_GRAARDOR),
 	KRIL_TSUTSAROTH(NpcID.KRIL_TSUTSAROTH, 90, ChronoUnit.SECONDS, ItemID.PET_KRIL_TSUTSAROTH),
 	KREEARRA(NpcID.KREEARRA, 90, ChronoUnit.SECONDS, ItemID.PET_KREEARRA),
@@ -62,6 +66,33 @@ enum Boss
 	private static final Map<Integer, Boss> bosses = new HashMap<>();
 
 	private final int id;
+=======
+	GENERAL_GRAARDOR("General Graardor", 90, ChronoUnit.SECONDS, ItemID.PET_GENERAL_GRAARDOR),
+	KRIL_TSUTSAROTH("K'ril Tsutsaroth", 90, ChronoUnit.SECONDS, ItemID.PET_KRIL_TSUTSAROTH),
+	KREEARRA("Kree'arra", 90, ChronoUnit.SECONDS, ItemID.PET_KREEARRA),
+	COMMANDER_ZILYANA("Commander Zilyana", 90, ChronoUnit.SECONDS, ItemID.PET_ZILYANA),
+	CALLISTO("Callisto", 30, ChronoUnit.SECONDS, ItemID.CALLISTO_CUB),
+	CHAOS_ELEMENTAL("Chaos Elemental", 150, ChronoUnit.SECONDS, ItemID.PET_CHAOS_ELEMENTAL),
+	CHAOS_FANATIC("Chaos fanatic", 30, ChronoUnit.SECONDS, ItemID.ANCIENT_STAFF),
+	CRAZY_ARCHAEOLOGIST("Crazy archaeologist", 30, ChronoUnit.SECONDS, ItemID.FEDORA),
+	KING_BLACK_DRAGON("King Black Dragon", 10, ChronoUnit.SECONDS, ItemID.PRINCE_BLACK_DRAGON),
+	SCORPIA("Scorpia", 10, ChronoUnit.SECONDS, ItemID.SCORPIAS_OFFSPRING),
+	VENENATIS("Venenatis", 30, ChronoUnit.SECONDS, ItemID.VENENATIS_SPIDERLING),
+	VETION("Vet'ion", 30, ChronoUnit.SECONDS, ItemID.VETION_JR),
+	DAGANNOTH_PRIME("Dagannoth Prime", 90, ChronoUnit.SECONDS, ItemID.PET_DAGANNOTH_PRIME),
+	DAGANNOTH_REX("Dagannoth Rex", 90, ChronoUnit.SECONDS, ItemID.PET_DAGANNOTH_REX),
+	DAGANNOTH_SUPREME("Dagannoth Supreme", 90, ChronoUnit.SECONDS, ItemID.PET_DAGANNOTH_SUPREME),
+	CORPOREAL_BEAST("Corporeal Beast", 30, ChronoUnit.SECONDS, ItemID.PET_DARK_CORE),
+	GIANT_MOLE("Giant Mole", 10, ChronoUnit.SECONDS, ItemID.BABY_MOLE),
+	DERANGED_ARCHAEOLOGIST("Deranged archaeologist", 30, ChronoUnit.SECONDS, ItemID.UNIDENTIFIED_LARGE_FOSSIL),
+	CERBERUS("Cerberus", 10800, ChronoUnit.MILLIS, ItemID.HELLPUPPY),
+	THERMONUCLEAR_SMOKE_DEVIL("Thermonuclear smoke devil", 12, ChronoUnit.SECONDS, ItemID.PET_SMOKE_DEVIL),
+	KRAKEN("Kraken", 10800, ChronoUnit.MILLIS, ItemID.PET_KRAKEN);
+
+	private static final Map<String, Boss> bosses = new HashMap<>();
+
+	private final String name;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private final Duration spawnTime;
 	private final int itemSpriteId;
 
@@ -69,6 +100,7 @@ enum Boss
 	{
 		for (Boss boss : values())
 		{
+<<<<<<< HEAD
 			bosses.put(boss.getId(), boss);
 		}
 	}
@@ -76,13 +108,28 @@ enum Boss
 	private Boss(int id, long period, ChronoUnit unit, int itemSpriteId)
 	{
 		this.id = id;
+=======
+			bosses.put(boss.getName(), boss);
+		}
+	}
+
+	private Boss(String name, long period, ChronoUnit unit, int itemSpriteId)
+	{
+		this.name = name;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		this.spawnTime = Duration.of(period, unit);
 		this.itemSpriteId = itemSpriteId;
 	}
 
+<<<<<<< HEAD
 	public int getId()
 	{
 		return id;
+=======
+	public String getName()
+	{
+		return name;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 
 	public Duration getSpawnTime()
@@ -95,8 +142,14 @@ enum Boss
 		return itemSpriteId;
 	}
 
+<<<<<<< HEAD
 	public static Boss find(int id)
 	{
 		return bosses.get(id);
+=======
+	public static Boss find(String name)
+	{
+		return bosses.get(name);
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

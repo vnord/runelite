@@ -26,6 +26,7 @@ package net.runelite.api;
 
 public final class ScriptID
 {
+<<<<<<< HEAD
 	/**
 	 * Updates the scrollbar handle and container to the new height of the content container
 	 * <ul>
@@ -75,4 +76,7 @@ public final class ScriptID
 	 * Send a private message.
 	 */
 	public static final int PRIVMSG = 10004;
+=======
+	public static final int RUNELITE_CHATBOX_INPUT_INIT = 10001;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

@@ -48,6 +48,7 @@ import net.runelite.client.Notifier;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+<<<<<<< HEAD
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @Slf4j
@@ -55,6 +56,13 @@ import net.runelite.client.ui.overlay.OverlayManager;
 	name = "Hunter",
 	description = "Show the state of your traps",
 	tags = {"overlay", "skilling", "timers"}
+=======
+import net.runelite.client.util.QueryRunner;
+
+@Slf4j
+@PluginDescriptor(
+	name = "Hunter"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 )
 public class HunterPlugin extends Plugin
 {
@@ -62,9 +70,16 @@ public class HunterPlugin extends Plugin
 	private Client client;
 
 	@Inject
+<<<<<<< HEAD
 	private OverlayManager overlayManager;
 
 	@Inject
+=======
+	private QueryRunner queryRunner;
+
+	@Inject
+	@Getter
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private TrapOverlay overlay;
 
 	@Inject
@@ -90,14 +105,20 @@ public class HunterPlugin extends Plugin
 	@Override
 	protected void startUp()
 	{
+<<<<<<< HEAD
 		overlayManager.add(overlay);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		overlay.updateConfig();
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
+<<<<<<< HEAD
 		overlayManager.remove(overlay);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		lastActionTime = Instant.ofEpochMilli(0);
 		traps.clear();
 	}
@@ -306,7 +327,11 @@ public class HunterPlugin extends Plugin
 	{
 		// Check if all traps are still there, and remove the ones that are not.
 		Iterator<Map.Entry<WorldPoint, HunterTrap>> it = traps.entrySet().iterator();
+<<<<<<< HEAD
 		Tile[][][] tiles = client.getScene().getTiles();
+=======
+		Tile[][][] tiles = client.getRegion().getTiles();
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 
 		Instant expire = Instant.now().minus(HunterTrap.TRAP_TIME.multipliedBy(2));
 
@@ -330,7 +355,11 @@ public class HunterPlugin extends Plugin
 				continue;
 			}
 
+<<<<<<< HEAD
 			Tile tile = tiles[world.getPlane()][local.getSceneX()][local.getSceneY()];
+=======
+			Tile tile = tiles[world.getPlane()][local.getRegionX()][local.getRegionY()];
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			GameObject[] objects = tile.getGameObjects();
 
 			boolean containsBoulder = false;

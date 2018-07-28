@@ -28,14 +28,26 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
+<<<<<<< HEAD
 @ConfigGroup("discord")
+=======
+@ConfigGroup(
+	keyName = "discord",
+	name = "Discord",
+	description = "Configuration for Discord plugin"
+)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 public interface DiscordConfig extends Config
 {
 	@ConfigItem(
 		keyName = "actionTimeout",
 		name = "Action timeout (minutes)",
+<<<<<<< HEAD
 		description = "Configures after how long of not updating status will be reset (in minutes)",
 		position = 1
+=======
+		description = "Configures after how long of not updating status will be reset (in minutes)"
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	)
 	default int actionTimeout()
 	{
@@ -43,6 +55,7 @@ public interface DiscordConfig extends Config
 	}
 
 	@ConfigItem(
+<<<<<<< HEAD
 		keyName = "showSkillActivity",
 		name = "Show activity while skilling",
 		description = "Configures if your activity while training skills should be shown.",
@@ -95,5 +108,14 @@ public interface DiscordConfig extends Config
 	default boolean showMinigameActivity()
 	{
 		return true;
+=======
+		keyName = "actionDelay",
+		name = "New action delay (seconds)",
+		description = "Configures the delay before new action will be considered as valid"
+	)
+	default int actionDelay()
+	{
+		return 10;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

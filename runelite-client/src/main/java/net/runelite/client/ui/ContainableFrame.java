@@ -119,7 +119,11 @@ public class ContainableFrame extends JFrame
 
 			if (wouldExpandThroughEdge)
 			{
+<<<<<<< HEAD
 				if (!isFrameCloseToRightEdge() || isFrameCloseToLeftEdge())
+=======
+				if (!isFrameCloseToRightEdge())
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 				{
 					// Move the window to the edge
 					newWindowX = (int)(screenBounds.getX() + screenBounds.getWidth()) - getWidth();
@@ -186,12 +190,15 @@ public class ContainableFrame extends JFrame
 		return (getExtendedState() & Frame.MAXIMIZED_BOTH) == Frame.MAXIMIZED_BOTH;
 	}
 
+<<<<<<< HEAD
 	private boolean isFrameCloseToLeftEdge()
 	{
 		Rectangle screenBounds = getGraphicsConfiguration().getBounds();
 		return Math.abs(getX() - screenBounds.getX()) <= SCREEN_EDGE_CLOSE_DISTANCE;
 	}
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private boolean isFrameCloseToRightEdge()
 	{
 		Rectangle screenBounds = getGraphicsConfiguration().getBounds();

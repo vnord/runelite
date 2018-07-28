@@ -30,7 +30,10 @@ import net.runelite.mapping.Import;
 public interface RSHashTable extends HashTable
 {
 	@Import("get")
+<<<<<<< HEAD
 	@Override
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	RSNode get(long value);
 
 	@Import("size")

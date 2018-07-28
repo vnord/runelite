@@ -48,8 +48,11 @@ import net.runelite.http.api.feed.FeedResult;
 
 @PluginDescriptor(
 	name = "News Feed",
+<<<<<<< HEAD
 	description = "Show the latest RuneLite blog posts, OSRS news, and JMod Twitter posts",
 	tags = {"external", "integration", "panel", "twitter"},
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	loadWhenOutdated = true
 )
 @Slf4j
@@ -93,9 +96,14 @@ public class FeedPlugin extends Plugin
 		}
 
 		navButton = NavigationButton.builder()
+<<<<<<< HEAD
 			.tooltip("News Feed")
 			.icon(icon)
 			.priority(8)
+=======
+			.name("News Feed")
+			.icon(icon)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			.panel(feedPanel)
 			.build();
 

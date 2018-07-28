@@ -30,8 +30,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.UUID;
 import net.runelite.http.api.RuneLiteAPI;
+<<<<<<< HEAD
 import okhttp3.Call;
 import okhttp3.Callback;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import okhttp3.HttpUrl;
 import okhttp3.MediaType;
 import okhttp3.Request;
@@ -77,7 +80,11 @@ public class ConfigClient
 		}
 	}
 
+<<<<<<< HEAD
 	public void set(String key, String value)
+=======
+	public void set(String key, String value) throws IOException
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		HttpUrl url = RuneLiteAPI.getApiBase().newBuilder()
 			.addPathSegment("config")
@@ -92,6 +99,7 @@ public class ConfigClient
 			.url(url)
 			.build();
 
+<<<<<<< HEAD
 		RuneLiteAPI.CLIENT.newCall(request).enqueue(new Callback()
 		{
 			@Override
@@ -110,6 +118,15 @@ public class ConfigClient
 	}
 
 	public void unset(String key)
+=======
+		try (Response response = RuneLiteAPI.CLIENT.newCall(request).execute())
+		{
+			logger.debug("Set configuration value '{}' to '{}'", key, value);
+		}
+	}
+
+	public void unset(String key) throws IOException
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	{
 		HttpUrl url = RuneLiteAPI.getApiBase().newBuilder()
 			.addPathSegment("config")
@@ -124,6 +141,7 @@ public class ConfigClient
 			.url(url)
 			.build();
 
+<<<<<<< HEAD
 		RuneLiteAPI.CLIENT.newCall(request).enqueue(new Callback()
 		{
 			@Override
@@ -139,5 +157,11 @@ public class ConfigClient
 				logger.debug("Unset configuration value '{}'", key);
 			}
 		});
+=======
+		try (Response response = RuneLiteAPI.CLIENT.newCall(request).execute())
+		{
+			logger.debug("Unset configuration value '{}'", key);
+		}
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	}
 }

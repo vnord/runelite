@@ -36,13 +36,17 @@ public interface RSWidget extends Widget
 	@Override
 	RSWidget[] getChildren();
 
+<<<<<<< HEAD
 	@Import("children")
 	void setChildren(RSWidget[] children);
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Import("id")
 	@Override
 	int getId();
 
+<<<<<<< HEAD
 	void setRenderParentId(int parentId);
 
 	void setRenderX(int x);
@@ -58,6 +62,11 @@ public interface RSWidget extends Widget
 	@Import("parentId")
 	void setParentId(int id);
 
+=======
+	@Import("parentId")
+	int getRSParentId();
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Import("clickMask")
 	int getClickMask();
 
@@ -150,9 +159,12 @@ public interface RSWidget extends Widget
 	@Import("index")
 	int getIndex();
 
+<<<<<<< HEAD
 	@Import("index")
 	void setIndex(int index);
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Import("rotationX")
 	int getRotationX();
 
@@ -194,6 +206,7 @@ public interface RSWidget extends Widget
 	@Override
 	void setScrollY(int scrollY);
 
+<<<<<<< HEAD
 	@Import("scrollWidth")
 	@Override
 	int getScrollWidth();
@@ -210,6 +223,8 @@ public interface RSWidget extends Widget
 	@Override
 	void setScrollHeight(int height);
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Import("spriteId")
 	@Override
 	int getSpriteId();
@@ -245,6 +260,7 @@ public interface RSWidget extends Widget
 	@Override
 	void setOriginalY(int originalY);
 
+<<<<<<< HEAD
 	@Import("originalHeight")
 	@Override
 	int getOriginalHeight();
@@ -261,6 +277,8 @@ public interface RSWidget extends Widget
 	@Override
 	void setOriginalWidth(int originalWidth);
 
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	@Import("paddingX")
 	@Override
 	int getPaddingX();
@@ -278,6 +296,7 @@ public interface RSWidget extends Widget
 	void setPaddingY(int paddingY);
 
 	void broadcastHidden(boolean hidden);
+<<<<<<< HEAD
 
 	@Import("onOpListener")
 	@Override
@@ -301,4 +320,6 @@ public interface RSWidget extends Widget
 	@Import("hasListener")
 	@Override
 	void setHasListener(boolean hasListener);
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }

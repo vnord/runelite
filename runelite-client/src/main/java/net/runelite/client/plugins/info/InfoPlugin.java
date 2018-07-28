@@ -34,7 +34,10 @@ import net.runelite.client.ui.PluginToolbar;
 
 @PluginDescriptor(
 	name = "Info Panel",
+<<<<<<< HEAD
 	description = "Enable the Info panel",
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	loadWhenOutdated = true
 )
 public class InfoPlugin extends Plugin
@@ -57,9 +60,14 @@ public class InfoPlugin extends Plugin
 		}
 
 		navButton = NavigationButton.builder()
+<<<<<<< HEAD
 			.tooltip("Info")
 			.icon(icon)
 			.priority(9)
+=======
+			.name("Info")
+			.icon(icon)
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 			.panel(panel)
 			.build();
 

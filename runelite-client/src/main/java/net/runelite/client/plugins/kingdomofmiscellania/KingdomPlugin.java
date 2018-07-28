@@ -42,8 +42,11 @@ import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 
 @PluginDescriptor(
 	name = "Kingdom of Miscellania",
+<<<<<<< HEAD
 	description = "Show amount of favor when inside Miscellania",
 	tags = {"favor", "favour", "managing", "overlay"},
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	enabledByDefault = false
 )
 @Slf4j

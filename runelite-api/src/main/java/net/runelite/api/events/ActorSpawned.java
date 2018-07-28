@@ -26,6 +26,7 @@ package net.runelite.api.events;
 
 import net.runelite.api.Actor;
 
+<<<<<<< HEAD
 /**
  * Represents the base event where an {@link Actor} has spawned.
  * <p>
@@ -46,5 +47,9 @@ public interface ActorSpawned
 	 *
 	 * @return spawned entity
 	 */
+=======
+public interface ActorSpawned
+{
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	Actor getActor();
 }

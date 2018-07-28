@@ -25,14 +25,20 @@
 package net.runelite.client.util;
 
 import java.awt.AWTException;
+<<<<<<< HEAD
 import java.awt.Color;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
+<<<<<<< HEAD
 import java.awt.RenderingHints;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.awt.SystemTray;
 import java.awt.Toolkit;
 import java.awt.TrayIcon;
@@ -42,8 +48,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
+<<<<<<< HEAD
 import java.awt.image.LookupOp;
 import java.awt.image.LookupTable;
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import java.util.Enumeration;
 import java.util.concurrent.Callable;
 import java.util.function.BiConsumer;
@@ -62,9 +71,13 @@ import javax.swing.UnsupportedLookAndFeelException;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.plaf.FontUIResource;
 import lombok.extern.slf4j.Slf4j;
+<<<<<<< HEAD
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.ui.components.CustomScrollBarUI;
+=======
+import net.runelite.client.ui.NavigationButton;
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 import org.pushingpixels.substance.internal.SubstanceSynapse;
 import org.pushingpixels.substance.internal.utils.SubstanceCoreUtilities;
 
@@ -83,6 +96,7 @@ public class SwingUtil
 		// Force heavy-weight popups/tooltips.
 		// Prevents them from being obscured by the game applet.
 		ToolTipManager.sharedInstance().setLightWeightPopupEnabled(false);
+<<<<<<< HEAD
 		ToolTipManager.sharedInstance().setInitialDelay(300);
 		JPopupMenu.setDefaultLightWeightPopupEnabled(false);
 
@@ -97,6 +111,10 @@ public class SwingUtil
 		UIManager.put("TextArea.selectionBackground", ColorScheme.BRAND_ORANGE_TRANSPARENT);
 		UIManager.put("TextArea.selectionForeground", Color.WHITE);
 
+=======
+		JPopupMenu.setDefaultLightWeightPopupEnabled(false);
+
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		// Do not render shadows under popups/tooltips.
 		// Fixes black boxes under popups that are above the game applet.
 		System.setProperty("jgoodies.popupDropShadowEnabled", "false");
@@ -107,6 +125,7 @@ public class SwingUtil
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Offsets an image in the grayscale (darkens/brightens) by an offset
 	 */
 	public static BufferedImage grayscaleOffset(BufferedImage image, int offset)
@@ -149,6 +168,8 @@ public class SwingUtil
 	}
 
 	/**
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	 * Safely sets Swing theme
 	 *
 	 * @param laf the swing look and feel
@@ -270,7 +291,11 @@ public class SwingUtil
 						result = JOptionPane.showConfirmDialog(
 							frame,
 							"Are you sure you want to exit?", "Exit",
+<<<<<<< HEAD
 							JOptionPane.OK_CANCEL_OPTION,
+=======
+							JOptionPane .OK_CANCEL_OPTION,
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 							JOptionPane.QUESTION_MESSAGE);
 					}
 				}
@@ -288,6 +313,7 @@ public class SwingUtil
 		});
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Re-size a BufferedImage to the given dimensions.
 	 *
@@ -296,6 +322,8 @@ public class SwingUtil
 	 * @param newHeight The height to set the BufferedImage to.
 	 * @return The BufferedImage with the specified dimensions
 	 */
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 	private static BufferedImage resizeImage(BufferedImage image, int newWidth, int newHeight)
 	{
 		final Image tmp = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
@@ -326,7 +354,11 @@ public class SwingUtil
 			: navigationButton.getIcon();
 
 		final JButton button = new JButton();
+<<<<<<< HEAD
 		button.setMaximumSize(new Dimension(30, 30));
+=======
+		button.setName(navigationButton.getName());
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 		button.setToolTipText(navigationButton.getTooltip());
 		button.setIcon(new ImageIcon(scaledImage));
 		button.putClientProperty(SubstanceSynapse.FLAT_LOOK, Boolean.TRUE);
@@ -372,6 +404,7 @@ public class SwingUtil
 	{
 		return SubstanceCoreUtilities.getTitlePaneComponent(frame) != null;
 	}
+<<<<<<< HEAD
 
 	/**
 	 * Linearly interpolates between colors a and b by t.
@@ -395,4 +428,6 @@ public class SwingUtil
 			(int) Math.round(b1 + (t * (b2 - b1)))
 		);
 	}
+=======
+>>>>>>> e9bf6ec55c5b440a5ed5dd6f3a5d84a30e756b3b
 }
