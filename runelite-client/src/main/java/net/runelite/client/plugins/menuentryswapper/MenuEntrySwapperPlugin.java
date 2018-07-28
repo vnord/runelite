@@ -27,6 +27,10 @@ package net.runelite.client.plugins.menuentryswapper;
 
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Provides;
+
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import javax.inject.Inject;
@@ -331,8 +335,19 @@ public class MenuEntrySwapperPlugin extends Plugin
 		String option = Text.removeTags(event.getOption()).toLowerCase();
 		String target = Text.removeTags(event.getTarget()).toLowerCase();
 
+
+		if (option.equals( "pickpocket" ) && shiftModifier){
+		    swap("knock-out", option, target, false);
+        }
+
 		if (option.equals("talk-to"))
 		{
+            if (config.swapMenaphite() && target.contains( "menaphite" ))
+            {
+                remove("talk-to", target);
+//            swap("pickpocket", option, target, true);
+            }
+
 			if (config.swapPickpocket() && target.contains("h.a.m."))
 			{
 				swap("pickpocket", option, target, true);
@@ -342,6 +357,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 			{
 				swap("teleport", option, target, true);
 			}
+
 
 			if (config.swapBank())
 			{
@@ -483,6 +499,14 @@ public class MenuEntrySwapperPlugin extends Plugin
 		}
 	}
 
+//	@Override
+//    public void keyPressed( KeyEvent e){
+//        if (e.getKeyCode() == KeyEvent.VK_SHIFT)
+//        {
+//
+//        }
+//    }V
+
 	@Subscribe
 	public void onPostItemComposition(PostItemComposition event)
 	{
@@ -541,6 +565,27 @@ public class MenuEntrySwapperPlugin extends Plugin
 
 			client.setMenuEntries(entries);
 		}
+	}
+
+	private void remove(String optionToRemove, String target)
+	{
+		MenuEntry[] entries = client.getMenuEntries();
+//		int idOfOptionToRemove = searchIndex(entries, optionToRemove, target, strict);
+
+		MenuEntry[] newEntries = new MenuEntry[entries.length - 1];
+
+		int i = 0;
+		for(MenuEntry me : entries){
+		    String entryOption = Text.removeTags( me.getOption() ).toLowerCase();
+		    String entryTarget = Text.removeTags( me.getTarget() ).toLowerCase();
+		    if(!(entryOption.contains( optionToRemove.toLowerCase() ) && entryTarget.equals( target )) ){
+		        newEntries[i] = me;
+		        i++;
+            }
+        }
+
+        client.setMenuEntries( newEntries );
+
 	}
 
 	private void removeShiftClickCustomizationMenus()

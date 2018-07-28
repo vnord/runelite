@@ -239,4 +239,12 @@ public interface MenuEntrySwapperConfig extends Config
 	{
 		return false;
 	}
+
+	@ConfigItem(
+	    position = 18,
+	    keyName = "swapMenaphite",
+	    name = "Menaphite",
+	    description = "Swap Talk-to with Pickpocket for Menaphite Thugs in the desert."
+    )
+    default boolean swapMenaphite() {return false; }
 }
